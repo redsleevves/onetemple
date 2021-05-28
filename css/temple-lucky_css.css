@@ -1,0 +1,1802 @@
+
+/* 字體 */
+body{
+    font-family: 'Sitka Display', NSimSun, 'sans-serif';
+    background-image: url(/img/background/bcc.png);
+    height: 100vh;
+    position: relative;
+}
+h2 {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: normal;
+}
+h5{
+    font-weight: 600;
+}
+h6{
+    /* font-style: 12px; */
+    font-weight: normal;
+}
+
+p {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 32px;
+}
+
+nav {
+    position: unset;
+}
+.lucky_Swipe_page{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.lucky_Swipe_page ul{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.lucky_Swipe_page li{
+    width: 20px;
+    height: 2px;
+    background-color: tomato;
+}
+
+/* ---------------------------------手機版---------------------------- */
+@media only screen and (max-width: 1000px){
+/* ----------------導覽列--------------- */
+
+/* -------------內容------------ */
+.lucky_relative{
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.lucky_space_between{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+    margin: 0;
+    padding: 0;
+
+}
+ /*-------- 01手機版------*/
+/* 求籤-最外層 */
+.lucky_contianer{
+    width: 100%;
+    padding:0 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.lucky_item_group{
+    position: relative;
+    /* display: block; */
+}
+/* 在固定的DIV寬度文字左右切齊 */
+.lucky_text{
+    text-align: justify;
+    text-justify: inter-ideograph;
+}
+.lucky_w{
+    width: 335px;
+    /* width: 100%; */
+}
+
+/* 神明說話 */
+.lucky_row .lucky_God_speaks{
+    position: relative;
+}
+
+.lucky_God_speaks h5{
+    /* position: absolute; */
+    /* top: 50px; */
+    margin-top: 15px;
+    padding-top: 60px;
+    padding-left: 70px;
+    line-height: 25px;
+}
+.lucky_God_speaks .lucky_round{
+    position: absolute;
+    top: 0;
+    /* left: -25px; */
+    z-index: -50;
+    /* padding: 0px 20px 0px 0px; */
+    /* padding:上 右 下 左; */
+
+    
+}
+.lucky_row .lucky_round{
+    width: 150px;
+    /* border: 1px solid rgb(255, 0, 0); */
+}
+.lucky_row img{
+    width: 100%;
+/* border: 1px solid rgb(255, 0, 0); */
+}
+/* 選擇神明 */
+.lucky_row .lucky_Search_gods{
+    /* margin-bottom: 4vh; */
+    margin-top: 8vh;
+}
+.lucky_right{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+select{
+    border-style: none;
+    border-bottom: 1px solid rgb(66, 65, 65);
+    width: 40%;
+    font-size: 20px;
+    background-color: transparent;
+}
+/* 求籤步驟說明 */
+.lucky_row .lucky_Request_signature{
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.lucky_row .lucky_Request_signature h3{
+    /* line-height: 60px; */
+    display: flex;
+    flex-direction:column;
+    justify-content:space-between;
+    /* margin-bottom: 20px; */
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: 600;
+}
+.lucky_row .lucky_Request_signature p{
+
+}
+/* 跳轉按鈕 */
+.lucky_button01{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 5px 20px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+/* 固定背景神明圖 */
+.lucky_GodImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    transform: translateX(100px);
+}
+.lucky_GodImg img{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    opacity: 0.5;
+    /* right: -50px; */
+    /* border: 1px solid rgb(255, 0, 0); */
+    /* object-fit: cover; */
+}
+
+ /*------------------------- 02-手機版--------------------*/
+.lucky_contianer02{
+    width: 100%;
+    margin-top: 80px;
+    /* max-width: 1920px; */
+    /* max-width螢幕最大寬度 */
+    padding: 20px 20px 0px 20px;
+    /* padding:上 右 下 左; */
+    overflow: hidden;
+    letter-spacing:5px;
+    /* letter-spacing:長度;  */
+    /* display: none; */
+    /* display: flex; */
+    /* position: absolute; */
+    left: 0;
+    top: 0;
+}
+.fa-chevron-right{
+    padding: 0 5px 0 5px;
+    
+}
+.item-group02 h6{
+    margin-bottom: 20px;
+}
+.item-group02 h4{
+    margin-bottom: -20px;
+}
+.lucky_content02 h4{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight:600;
+    color: #4d4b4b;
+}
+/* ----icon九宮格---- */
+.lucky_icon{
+    margin: 0 auto;
+    width: 300px;
+}
+.lucky_icon_row{
+    display: flex;
+    justify-content:space-between;
+ 
+
+}
+.lucky_icon_row02{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 55px;
+
+}
+.icon_01 img{
+    width: 60%;
+}
+.icon_02 img{
+    width: 50%; 
+}
+
+
+
+.icon{
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border: 1px solid #cc5436;
+    border-radius: 50%;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+   
+}
+.icon_60 img{
+    width: 60%;
+}
+.icon_50 img{
+    width: 50%;
+}
+.icon_40 img{
+    width: 40%;
+}
+.icon_01 img{
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+.icon_02 img{
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+.icon_03 img{
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+.icon_04 img{
+    margin-top: 80px;
+    margin-bottom:30px;
+}
+.lucky_icon_text{
+    width: 130px;
+    text-align:center;
+    line-height: 22px;
+    
+}
+/* 跳轉按鈕 */
+.lucky_button02{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 5px 20px;
+    margin-top: 90px;
+    margin-bottom: 50px;
+    font-size: 20px;
+    /* width: 25%; */
+    /* height: 4vh; */
+}
+
+
+.lucky_GodImg02{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    display: none;
+    /* overflow: hidden; */
+    transform: translateX(100px);
+
+    
+}
+.lucky_GodImg02 img{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    opacity: 0.5;
+    /* right: -50px; */
+    /* border: 1px solid rgb(255, 0, 0); */
+    /* object-fit: cover; */
+}
+h6{
+    font-size: 13px;
+    font-weight: normal;
+}
+/*-------------------------- 03--手機版---------------------------*/
+.lucky_contianer03{
+    /* width: 100vh; */
+    margin-top: 80px;
+    /* max-width: 1920px; */
+    /* max-width螢幕最大寬度 */
+    padding: 20px 20px 0px 20px;
+    /* padding:上 右 下 左; */
+    overflow: hidden;
+    letter-spacing:5px;
+    /* letter-spacing:長度;  */
+    /* display: none; */
+    /* display: flex; */
+    /* position: absolute; */
+    /* border: 1px solid rgb(255, 0, 0); */
+    left: 0;
+    top: 0;
+    
+}
+
+.lucky_content03{
+    margin: 0;
+    padding: 0;
+    /* width: 1200px; */
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    /* flex-direction:row; */
+    /* align-items: */
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.item-group03 h6{
+    /* margin-bottom: 50px; */
+    /* width: 400px; */
+    /* width: 300px; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+/* 求籤動畫 */
+.lucky_Sign_animation03{
+    /* padding-left: 20%; */
+    width:130px;
+    transform: translateY(-15px);
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_Sign_animation03 img{
+    width: 100%;
+    /* border: 1px solid rgb(8, 0, 255);  */
+}
+
+
+/* 固定背景神明圖 */
+.lucky_GodImg03{
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* overflow: hidden; */
+    /* transform: translateX(100px); */
+    /* position: absolute;
+    bottom: 0;
+    right: 0px; */
+    /* float: right; */
+    /* border: 1px solid rgb(255, 0, 0); */
+    
+}
+.lucky_GodImg03 img{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    opacity: 0.5;
+    /* right: -50px; */
+    /* border: 1px solid rgb(255, 0, 0); */
+    /* object-fit: cover; */
+}
+/*-------------------------- 04-手機版---------------------------*/
+.lucky_contianer04{
+    padding:100px 20px 0px 20px;
+    overflow: hidden;
+    /* position: relative; */
+    /* width: 375px; */
+    /* display: none; */
+    
+}
+.lucky_Sign_order04{
+    /* border: 1px solid rgb(30, 0, 255); */
+    /* width: 335px; */
+    word-break: normal;
+}
+.lucky_row04{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.lucky_text15{
+    transform: translate(14px,20px);
+    color: #fff;
+    font-size: 16px;
+    z-index: 10;
+}
+.lucky_content04{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+}
+.item-group04{
+    /* border: 1px solid rgb(30, 0, 255); */
+}
+.item-group04 h6{
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+/* 求籤動畫 */
+.lucky_Sign_animation04{
+    width:130px;
+    transform: translateY(-20%);
+    /* border: 1px solid rgb(213, 29, 29);  */
+}
+.lucky_Sign_animation04 img{
+    width: 100%;
+}
+.lucky_result{
+    display: flex;
+    flex-direction:column;
+    transform: translate(-20px,-40%);
+    /* border: 1px solid rgb(38, 213, 29);  */
+}
+.lucky_result p{
+    font-size:18px;
+
+
+}
+/* 跳轉按鈕 */
+.lucky_button04{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 5px 30px;
+    font-size: 20px;
+    margin-top: 25px;
+}
+/* 固定背景神明圖 */
+.lucky_GodImg04{
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    display: none;
+    /* overflow: hidden; */
+    /* border: 1px solid rgb(255, 0, 0); */
+    
+}
+.lucky_GodImg04 img{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    opacity: 0.5;
+    /* border: 1px solid rgb(255, 0, 0); */
+    /* object-fit: cover; */
+}
+/*-------------------------- 05_1-手機版----------------------------*/
+.lucky_contianer05_1{
+    width: 100%;
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    /* max-width螢幕最大寬度 */
+    padding:100px 20px 0px 20px;
+    overflow: hidden;
+    /* position: relative; */
+    /* display: none; */
+    
+}
+
+.lucky_content05_1{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height: 518px;
+    /* height: 100vh; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_Sign_order05_1{
+    line-height: 25px;
+}
+.item-group05_1{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group05_1 h6{
+    
+ 
+}
+/* 求籤動畫 */
+.lucky_Sign_animation05_1{
+    width:200px;
+    transform: rotate(-30deg);
+    /* border: 1px solid rgba(48, 138, 92, 0.952); */
+}
+.lucky_Sign_animation05_1 img{
+    width: 100%;
+}
+.lucky_result05_1{
+    transform: translateY(50px);
+    /* border: 1px solid rgba(0, 64, 255, 0.952); */
+}
+.lucky_result05_1 p{
+}
+.lucky_result05_1 h3{
+transform: translate(75px,-120px);
+font-size: 25px;
+}
+/* 跳轉按鈕 */
+.lucky_button05_1{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 5px 20px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+/* 固定背景神明圖 */
+.lucky_GodImg05_1{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    display: none;
+    /* overflow: hidden; */
+    transform: translateX(100px);  
+}
+.lucky_GodImg05_1 img{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    opacity: 0.5;
+}
+/*-------------------------- 05_2-手機版----------------------------*/
+.lucky_contianer05_2{
+    width: 100%;
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    /* max-width螢幕最大寬度 */
+    padding:100px 20px 0px 20px;
+    overflow: hidden;
+    /* position: relative; */
+    /* display: none; */
+    
+}
+
+.lucky_content05_2{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_Sign_order05_2{
+    line-height: 25px;
+}
+.item-group05_2{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group05_2 h6{
+    
+ 
+}
+/* 求籤動畫 */
+.lucky_Sign_animation05_2{
+    width:200px;
+    transform: rotate(-30deg);
+    /* border: 1px solid rgba(48, 138, 92, 0.952); */
+}
+.lucky_Sign_animation05_2 img{
+    width: 100%;
+}
+.lucky_result05_2{
+    transform: translateY(50px);
+    /* border: 1px solid rgba(0, 64, 255, 0.952); */
+}
+.lucky_result05_2 p{
+}
+.lucky_result05_2 h3{
+transform: translate(75px,-120px);
+font-size: 25px;
+}
+/* 跳轉按鈕 */
+.lucky_button05_2{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 5px 20px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+/* 固定背景神明圖 */
+.lucky_GodImg05_2{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    display: none;
+    /* overflow: hidden; */
+    transform: translateX(100px);  
+}
+.lucky_GodImg05_2 img{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    opacity: 0.5;
+}
+/*-------------------------- 05_3-手機版----------------------------*/
+.lucky_contianer05_3{
+    width: 100%;
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    /* max-width螢幕最大寬度 */
+    padding:100px 20px 0px 20px;
+    overflow: hidden;
+    /* position: relative; */
+    /* display: none; */
+    
+}
+
+.lucky_content05_3{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_Sign_order05_3{
+    line-height: 25px;
+}
+.item-group05_3{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group05_3 h6{
+    
+ 
+}
+/* 求籤動畫 */
+.lucky_Sign_animation05_3{
+    width:200px;
+    transform: rotate(-30deg);
+    /* border: 1px solid rgba(48, 138, 92, 0.952); */
+}
+.lucky_Sign_animation05_3 img{
+    width: 100%;
+}
+.lucky_result05_3{
+    transform: translateY(50px);
+    /* border: 1px solid rgba(0, 64, 255, 0.952); */
+}
+.lucky_result05_3 p{
+}
+.lucky_result05_3 h3{
+transform: translate(75px,-120px);
+font-size: 25px;
+}
+/* 跳轉按鈕 */
+.lucky_button05_3{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 5px 20px;
+    margin-top: 20px;
+    font-size: 20px;
+}
+/* 固定背景神明圖 */
+.lucky_GodImg05_3{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    display: none;
+    /* overflow: hidden; */
+    transform: translateX(100px);  
+}
+.lucky_GodImg05_3 img{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    opacity: 0.5;
+}
+/*--------------------------06手機版----------------------------*/
+.lucky_contianer06{
+    width: 100%;
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    /* max-width螢幕最大寬度 */
+    padding:100px 20px 0px 20px;
+    overflow: hidden;
+    /* position: relative; */
+    /* display: none; */
+    
+}
+.lucky_group06{
+    display: flex;
+    flex-direction:column;
+    /* justify-content:center; */
+    align-items:center;
+    margin-top: 50px;
+}
+.lucky_Poetry06{
+    margin-bottom: 50px;
+    width: 200px;
+}
+.lucky_Poetry06 img{
+    width: 100%;
+    /* border: 1px solid rgb(255, 0, 0); */
+
+}
+.lucky_content06{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    /* margin-left: 60px; */
+    /* margin-right: 0px; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.item-group06{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group06 h6{
+    /* margin-bottom: 50px; */
+ 
+}
+
+.lucky_result06{
+display: flex;
+width: 300px;
+justify-content:space-between;
+/* flex-direction: row; */
+/* justify-content:space-between; */
+/* margin-bottom: 10px; */
+}
+
+.lucky_title06_1{
+    display: flex;
+    flex-direction: row;
+    /* align-items:center; */
+    align-items:center;
+}
+.lucky_title06_2{
+    background-color: #cc543a;
+    width: 60px;
+    height: 60px;
+    border-radius:50%;
+}
+.lucky_title06_1 h4{
+    font-weight: 600;
+    /* word-spacing:normal; */
+    /* word-spacing:16px; */
+    /* word-spacing:normal;預設值，單字或段落間的水平距離為預設效果。 */
+    /* word-spacing:長度;　額外設計單字或段落間的水平距離， */
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_title06_2 h5{
+    /* border: 1px solid rgb(255, 0, 0);  */
+    color: #fff;
+    line-height: 65px;
+    font-size: 15px;
+    text-align:center;
+    /* margin: 0 auto; */
+    /* display: flex;
+    flex-direction:column;
+    align-items:center; */
+}
+.lucky_Commentary06{
+    margin-bottom: 25px;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_Commentary06 p{
+    font-size: 16px;
+}
+/* 跳轉按鈕 */
+.lucky_btn06{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_button06{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 5px 30px;
+    font-size: 20px;
+    /* border: 1px solid rgb(255, 0, 0);  */
+   
+}
+/* 固定背景神明圖 */
+.lucky_GodImg06{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* overflow: hidden; */
+    display: none;
+    /* border: 1px solid rgb(255, 0, 0); */
+    
+}
+.lucky_GodImg06 img{
+    /* position: absolute; */
+    bottom: 0;
+    width: 80%;
+    opacity: 0.5;
+    /* right: -50px; */
+    /* border: 1px solid rgb(255, 0, 0); */
+    /* object-fit: cover; */
+}
+
+}
+
+
+
+/* ---------------------------------電腦版---------------------------- */
+@media only screen and (min-width: 1000px){
+ /*----------------- 電腦版-01--------------------*/
+    .lucky_contianer{
+        margin: 0;
+        padding: 30px 0 0 80px;
+        height: 80%;
+        overflow: hidden;
+        /* position: absolute; */
+        
+    }
+    .lucky_content01{
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+    }
+    .item-group01{
+        margin-left: 70px;
+    }
+    /* 求籤步驟 */
+
+    .item-group01{
+        width:100px;
+    }
+    .lucky_content01 h3{
+        margin-top: 25px;
+    }
+.lucky_row{
+    width: 40%;
+    position: relative;
+
+}
+    /* 選擇神明 */
+    .lucky_p1,
+    .lucky_Search_gods{
+        width: 100%;
+        padding-top: 5vh;
+        display: flex;
+        flex-direction: column;
+        }
+.lucky_p2 h4{
+    margin-bottom: 30px;
+}
+    .lucky_p2{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding-top: 5vh;
+    }
+.lucky_p3{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.lucky_p4{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.lucky_p501,.lucky_p502,.lucky_p503{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 20vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+}
+
+.lucky_p6{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 7vh;
+    display: flex;
+}
+
+
+    select{
+            border-style: none;
+            border-bottom: 2px solid rgb(66, 65, 65);
+            font-size: 22px;
+            color: dimgray;
+            background-color: transparent;
+            width:100%;
+        }
+
+        option{
+            font-size: 20px;
+            /* color: dimgray; */
+        }
+        /* 神明說話 */
+        .lucky_God_speaks{
+            width: 70%;
+            height: 150px;
+            align-self:flex-start;
+            /* flex-start：項目的交叉開始緣邊緣被放置在交叉啟動線 */
+            position: relative;
+            display: flex;
+            align-items: center;
+            /* align-items: center;對齊交錯軸線中央 */
+        }
+
+        .lucky_God_speaks h5{
+            padding-top: 30px;
+            padding-left: 50px;
+            line-height: 30px;
+        }
+        .lucky_God_speaks .lucky_round{
+            position: absolute;
+            top: 0;
+            left: -25px;
+            z-index: -50;
+            
+        }
+
+        .lucky_right{
+            width: 80%;
+            align-self:flex-end;
+            position: relative;
+        }
+
+        .lucky_row .lucky_round{
+            width: 150px;
+            /* border: 1px solid rgb(255, 0, 0); */
+        }
+
+        .lucky_row img{
+            width: 100%;
+        /* border: 1px solid rgb(255, 0, 0); */
+        }
+        .lucky_Search_gods{
+            padding: 20px 0;
+        }
+        .lucky_Request_signature h3{
+            margin-bottom: 20px;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        .lucky_Request_signature p{
+            font-size: 18px;
+            line-height: 36px;
+        }
+            /* 跳轉按鈕 */
+        .lucky_button01{
+            border-radius: 30px;
+            color: #fff;
+            background-color: #cc543a;
+            border-style: none;
+            width: fit-content;
+            /* width:fit-content可以實現元素收縮效果的同時，保持原本的block水平狀態 */
+            padding: 8px 30px;
+            position: absolute;
+            bottom: 17%;
+            font-size: 20px;
+        }
+        /* 固定背景神明圖 */
+        .lucky_GodImg{
+            width: 30%;
+            height: 700px;
+            z-index: -1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lucky_GodImg img{
+            width: 100%;
+            object-fit: contain;
+            opacity: 0.5;
+            position: absolute;
+            right: 0;
+            transform: translateY(5%);
+        }
+ /*-------------------------- 電腦版-02----------------------------*/
+ .lucky_contianer02{
+    margin: 0;
+    padding: 30px 80px 0px 80px;
+    margin-top: 100px;
+    /* width: 100vh; */
+    overflow: hidden;
+    letter-spacing:5px;
+    display: flex;
+    /* letter-spacing:長度;  */
+    /* padding:上 右 下 左; */
+    /* display: none; */
+    /* position: absolute; */
+    /* position: relative; */
+    
+}
+.lucky_content02{
+    margin-left: 70px;
+    /* margin-right: 100px; */
+    /* padding-right: 50px; */
+    width: 300px;
+    /* border: 1px solid rgb(21, 0, 255); */
+}
+/* 箭頭 */
+.fa-chevron-right{
+    padding: 0 5px 0 5px;
+    
+}
+.lucky_Sign_order02{
+    margin-bottom: 5vh;
+
+}
+.item-group02 h4{
+     
+}
+.item-group h6{
+    margin-bottom: 50px;
+}
+/* ----icon九宮格---- */
+
+
+.lucky_icon_row{
+    display: flex;
+    justify-content:space-around;
+    margin-bottom: 30px;
+ 
+}
+.lucky_icon_row02{
+    display: flex;
+    justify-content:space-around;
+    margin-top: 55px;
+    margin-bottom: 30px;
+
+}
+.icon{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    /* margin-top: 0px; */
+    display: flex;
+    align-items:center;
+    justify-content:center;
+   
+}
+.icon_01 img{
+    width: 60%;
+}
+.icon_02 img{
+    width: 50%; 
+}
+
+.icon{
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border: 1px solid #cc5436;
+    border-radius: 50%;
+    /* margin-top: 55px; */
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+   
+}
+.icon_60 img{
+    width: 60%;
+}
+.icon_50 img{
+    width: 50%;
+}
+.icon_40 img{
+    width: 40%;
+}
+.icon_01 img{
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+.icon_02 img{
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+.icon_03 img{
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+.icon_04 img{
+    margin-top: 80px;
+    margin-bottom:30px;
+}
+.lucky_icon_text{
+    width: 130px;
+    text-align:center;
+    line-height: 22px;
+    
+}
+
+/* 跳轉按鈕 */
+.lucky_button02{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 25px;
+    margin-top: 80px;
+    position: absolute;
+    right: 53%;
+    transform: translateX(195px);
+    font-size: 20px;
+    
+}
+ /* 固定背景神明圖 */
+ .lucky_GodImg02{
+    height: 95vh;
+    width: 575px;
+    z-index: -1;
+    padding-right: 200px;
+    transform: translate(110px,-17px);
+}
+
+.lucky_GodImg02 img{
+    width: 165%;
+    height: 165%;
+    object-fit: contain;
+    opacity: 0.5;
+    /* border: 1px solid rgb(255, 0, 0); */
+    /* transform: translate(63px,-35px); */
+
+}
+/*-------------------------- 電腦版-03----------------------------*/
+    .lucky_contianer03{
+        margin: 0;
+        padding: 130px 0px 0px 150px;
+        /* height: 100vh; */
+        /* max-width: 1920px; */
+        /* width: 100vw; */
+        display: flex;
+        /* padding:上 右 下 左; */
+        /* display: none; */
+        /* display: block; */
+        /* position: absolute; */
+        
+    }
+
+    .lucky_content03{
+        margin: 0;
+        padding: 0;
+        width: 1200px;
+        display: flex;
+        justify-content:space-between;
+    }
+    .item-group03 h6{
+        margin-bottom: 50px;
+        width: 400px;
+        /* width: 300px; */
+        /* border: 1px solid rgb(255, 0, 0);  */
+    }
+    /* 求籤動畫 */
+    .lucky_Sign_animation03{
+       width: 25%;
+    }
+    .lucky_Sign_animation03 img{
+        width: 100%;
+    }
+
+
+    /* 固定背景神明圖 */
+    .lucky_GodImg03{
+        /* width: 40%; */
+        height: 95vh;
+        width: 575px;
+        z-index: -1;
+        overflow: hidden;
+        /* padding-left: 550px; */
+        /* bottom: 0;
+        right:0px; */
+        /* transform: translate(100%,-100px); */
+        /* border: 1px solid rgb(32, 117, 66);    */
+    }
+
+    .lucky_GodImg03 img{
+        width: 145%;
+        height: 145%;
+        object-fit: contain;
+        opacity: 0.5;
+        transform: translate(-114px,40px);
+        /* border: 1px solid rgb(255, 0, 0); */
+    }   
+/*-------------------------- 電腦版-04----------------------------*/
+.lucky_contianer04{
+    margin: 0;
+    padding: 130px 0px 0px 80px;
+    /* height: 100vh; */
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    display: flex;
+    overflow: hidden;
+    /* padding:上 右 下 左; */
+    /* display: none; */
+    /* display: block; */
+    /* position: absolute; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+    
+}
+.item-group04{
+    margin-left: 70px;
+    /* border: 1px solid rgb(30, 0, 255); */
+}
+.lucky_text15{
+    transform: translate(105px,80px);
+    color: #fff;
+}
+.lucky_content04{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding-left: 300px;
+    padding-top: 50px;
+    
+    /* justify-content:space-between; */
+    /* flex-direction:row; */
+    /* align-items: */
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.item-group04{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group04 h6{
+    margin-bottom: 50px;
+    /* width: 300px; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+/* 求籤動畫 */
+
+.lucky_result{
+/* padding-left: 300px; */
+display: flex;
+flex-direction:row-reverse;
+align-items:center;
+padding-left:40px;
+/* align-content:space-between; */
+/* justify-content:space-between; */
+/* border: 1px solid rgb(38, 213, 29);  */
+}
+.lucky_result p{
+    width: 270px;
+
+}
+/* 跳轉按鈕 */
+.lucky_button04{
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 40px;
+    margin-top: 70px;
+    position: absolute;
+    /* right: 45%; */
+    transform: translateY(160px);
+    font-size: 20px;
+}
+/* 固定背景神明圖 */
+.lucky_GodImg04{
+    /* width: 40%; */
+    height: 95vh;
+    width: 610px;
+    z-index: -1;
+    /* bottom: 0; */
+    /* right:0px; */
+    /* margin-left: 100px; */
+    /* padding-right: 200px; */
+    /* transform: translate(110px,-17px); */
+    /* border: 1px solid rgb(38, 0, 255); */
+}
+
+.lucky_GodImg04 img{
+    width: 145%;
+    height: 145%;
+    object-fit: contain;
+    opacity: 0.5;
+    /* border: 1px solid rgb(255, 0, 0); */
+    transform: translate(-62px,42px);
+
+}
+/*-------------------------- 電腦版-05_1----------------------------*/
+.lucky_contianer05_1{
+    margin: 0;
+    padding: 130px 0px 0px 150px;
+    /* height: 100vh; */
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    display: flex;
+    /* padding:上 右 下 左; */
+    /* display: none; */
+    /* display: block; */
+    /* position: absolute; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+    
+}
+
+.lucky_content05_1{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding-left: 180px;
+    padding-top: 100px;
+    padding-bottom: 200px;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.item-group05_1{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group05_1 h6{
+    margin-bottom: 50px;
+ 
+}
+/* 求籤動畫 */
+.lucky_Sign_animation05_1{
+    width:350px;
+    transform: rotate(-30deg);
+}
+.lucky_Sign_animation05_1 img{
+    width: 100%;
+}
+.lucky_result05_1{
+    position: relative;
+    width: 210px;
+    transform: translateY(120px);
+    /* padding-bottom: 50px; */
+    /* border: 1px solid rgba(0, 64, 255, 0.952); */
+}
+.lucky_result05_1 p{
+   position: absolute;
+   right: 0;
+   top: 130px;
+}
+.lucky_result05_1 h3{
+transform: translate(-210px,-30px);
+}
+/* 跳轉按鈕 */
+.lucky_button05_1{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 30px;
+    margin-top: 70px;
+    font-size: 20px;
+   
+}
+/* 固定背景神明圖 */
+.lucky_GodImg05_1{
+    /* width: 40%; */
+    height: 95vh;
+    width: 610px;
+    z-index: -1;
+    overflow: hidden;
+    padding-left: 0px;
+    /* border: 1px solid rgb(255, 0, 0);    */
+}
+
+.lucky_GodImg05_1 img{
+    width: 145%;
+    height: 145%;
+    object-fit: contain;
+    opacity: 0.5;
+    /* border: 1px solid rgb(0, 13, 255); */
+    transform: translate(-58px,40px);
+}  
+/*-------------------------- 電腦版-05_2----------------------------*/
+.lucky_contianer05_2{
+    margin: 0;
+    padding: 130px 0px 0px 150px;
+    /* height: 100vh; */
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    display: flex;
+    /* padding:上 右 下 左; */
+    /* display: none; */
+    /* display: block; */
+    /* position: absolute; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+    
+}
+
+.lucky_content05_2{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding-left: 180px;
+    padding-top: 100px;
+    padding-bottom: 200px;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.item-group05_2{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group05_2 h6{
+    margin-bottom: 50px;
+ 
+}
+/* 求籤動畫 */
+.lucky_Sign_animation05_2{
+    width:350px;
+    transform: rotate(-30deg);
+}
+.lucky_Sign_animation05_2 img{
+    width: 100%;
+}
+.lucky_result05_2{
+    position: relative;
+    width: 210px;
+    transform: translateY(120px);
+    /* padding-bottom: 50px; */
+    /* border: 1px solid rgba(0, 64, 255, 0.952); */
+}
+.lucky_result05_2 p{
+   position: absolute;
+   right: 0;
+   top: 130px;
+}
+.lucky_result05_2 h3{
+    transform: translate(-210px,-30px);
+}
+/* 跳轉按鈕 */
+.lucky_button05_2{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 30px;
+    margin-top: 70px;
+    font-size: 20px;
+   
+}
+/* 固定背景神明圖 */
+.lucky_GodImg05_2{
+    /* width: 40%; */
+    height: 95vh;
+    width: 610px;
+    z-index: -1;
+    overflow: hidden;
+    padding-left: 0px;
+    /* border: 1px solid rgb(255, 0, 0);    */
+}
+
+.lucky_GodImg05_2 img{
+    width: 145%;
+    height: 145%;
+    object-fit: contain;
+    opacity: 0.5;
+    /* border: 1px solid rgb(0, 13, 255); */
+    transform: translate(-58px,40px);
+}    
+/*-------------------------- 電腦版-05_3----------------------------*/
+.lucky_contianer05_3{
+    margin: 0;
+    padding: 130px 0px 0px 150px;
+    /* height: 100vh; */
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    display: flex;
+    /* padding:上 右 下 左; */
+    /* display: none; */
+    /* display: block; */
+    /* position: absolute; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+    
+}
+
+.lucky_content05_3{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding-left: 180px;
+    padding-top: 100px;
+    padding-bottom: 200px;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.item-group05_3{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group05_3 h6{
+    margin-bottom: 50px;
+ 
+}
+/* 求籤動畫 */
+.lucky_Sign_animation05_3{
+    width:350px;
+    transform: rotate(-30deg);
+}
+.lucky_Sign_animation05_3 img{
+    width: 100%;
+}
+.lucky_result05_3{
+    position: relative;
+    width: 210px;
+    transform: translateY(120px);
+    /* padding-bottom: 50px; */
+    /* border: 1px solid rgba(0, 64, 255, 0.952); */
+}
+.lucky_result05_3 p{
+   position: absolute;
+   right: 0;
+   top: 130px;
+}
+.lucky_result05_3 h3{
+    transform: translate(-210px,-30px);
+}
+/* 跳轉按鈕 */
+.lucky_button05_3{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 30px;
+    margin-top: 70px;
+    font-size: 20px;
+   
+}
+/* 固定背景神明圖 */
+.lucky_GodImg05_3{
+    /* width: 40%; */
+    height: 95vh;
+    width: 610px;
+    z-index: -1;
+    overflow: hidden;
+    padding-left: 0px;
+    /* border: 1px solid rgb(255, 0, 0);    */
+}
+
+.lucky_GodImg05_3 img{
+    width: 145%;
+    height: 145%;
+    object-fit: contain;
+    opacity: 0.5;
+    /* border: 1px solid rgb(0, 13, 255); */
+    transform: translate(-58px,40px);
+}   
+/*-------------------------- 電腦版-06----------------------------*/
+.lucky_contianer06{
+    margin: 0;
+    padding: 130px 0px 0px 150px;
+    /* height: 100vh; */
+    /* max-width: 1920px; */
+    /* width: 100vw; */
+    display: flex;
+    overflow: hidden;
+    /* flex-direction: column; */
+    /* padding:上 右 下 左; */
+    /* display: none; */
+    /* display: block; */
+    /* position: absolute; */
+    /* border: 1px solid rgb(255, 0, 0);  */
+    
+}
+.lucky_group06{
+    display: flex;
+    flex-direction:row;
+    padding-left: 130px;
+    padding-top: 50px;
+}
+.lucky_Poetry06{
+    /* margin-top: 20px; */
+    width: 200px;
+}
+.lucky_Poetry06 img{
+    width: 100%;
+    /* border: 1px solid rgb(255, 0, 0); */
+
+}
+.lucky_content06{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    margin-left: 60px;
+    margin-right: 0px;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.item-group06{
+    /* border: 1px solid rgba(0, 64, 255, 0.952);  */
+}
+.item-group06 h6{
+    /* margin-bottom: 50px; */
+ 
+}
+
+.lucky_result06{
+display: flex;
+flex-direction: row;
+justify-content:space-between;
+margin-bottom: 10px;
+}
+
+.lucky_title06_1{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    
+}
+.lucky_title06_2{
+    background-color: #cc543a;
+    width: 60px;
+    height: 60px;
+    border-radius:50%;
+}
+.lucky_title06_1 h4{
+    font-weight: 600;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_title06_2 h5{
+    /* border: 1px solid rgb(255, 0, 0);  */
+    color: #fff;
+    line-height: 65px;
+    font-size: 15px;
+    text-align:center;
+    /* margin: 0 auto; */
+    /* display: flex;
+    flex-direction:column;
+    align-items:center; */
+}
+.lucky_Commentary06{
+    /* width: 300px; */
+   
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_Commentary06 p{
+    font-size: 16px;
+}
+/* 跳轉按鈕 */
+.lucky_btn06{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    padding-top: 20px;
+    /* border: 1px solid rgb(255, 0, 0);  */
+}
+.lucky_button06{
+    /* position: absolute;
+    right: 0;
+    bottom: 0; */
+    /* height: 30px; */
+    /* width: 50px; */
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 30px;
+    font-size: 18px;
+    /* margin-top: 70px; */
+
+    /* border: 1px solid rgb(255, 0, 0);  */
+   
+}
+/* 固定背景神明圖 */
+.lucky_GodImg06{
+    /* width: 40%; */
+    height: 95vh;
+    width: 610px;
+    z-index: -1;
+    /* overflow: hidden; */
+    padding-left: 0px;
+    /* border: 1px solid rgb(255, 0, 0);    */
+}
+
+.lucky_GodImg06 img{
+    width: 145%;
+    height: 145%;
+    object-fit: contain;
+    opacity: 0.5;
+    /* border: 1px solid rgb(0, 13, 255); */
+    transform: translate(-55px,40px);
+}   
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

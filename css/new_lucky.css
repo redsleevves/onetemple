@@ -1,0 +1,966 @@
+* {
+    background-size: contain !important;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+#YanCup {
+    animation-name: YanCup;
+    animation-duration: 0.8s;
+    width: 170px;
+    height: 160px;
+    animation-iteration-count: 1;
+    background: url("/img/cup-0.png") no-repeat;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(0.1, 0.1, 0.25, 1);
+}
+
+#YanCup_1 {
+    animation-name: YanCup01;
+    animation-duration: 3s;
+    width: 170px;
+    height: 160px;
+    animation-iteration-count: 1;
+    background: url("/img/cup-2.png") no-repeat;
+    opacity: 1;
+    animation-fill-mode: forwards;
+}
+
+#YanCup_2 {
+    animation-name: YanCup02;
+    animation-duration: 3s;
+    width: 170px;
+    height: 160px;
+    animation-iteration-count: 1;
+    background: url("/img/cup-1.png") no-repeat;
+    transform-origin: bottom right;
+    opacity: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes YanCup {
+    0% {
+        transform: translate(150%, -40%);
+    }
+
+    100% {
+        transform: translate(150%, 180%);
+    }
+}
+
+@keyframes YanCup01 {
+    0% {
+        transform: translate(270%, 10%) rotate(-30deg);
+    }
+
+    25% {
+        transform: translate(270%, 60%) rotate(-30deg);
+    }
+
+    50% {
+        background: url("/img/cup-2.png") no-repeat;
+        transform: translate(300%, 20%) rotate(-30deg);
+        opacity: 1;
+    }
+
+    75% {
+        background: url("/img/cup-01.png") no-repeat;
+        transform: translate(270%, 10%) rotate(-20deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        background: url("/img/cup-2.png") no-repeat;
+        transform: translate(270%, 0%) rotate(-40deg);
+        opacity: 1;
+    }
+
+
+}
+
+@keyframes YanCup02 {
+    0% {
+        transform: translate(120%, -60%) rotate(30deg);
+    }
+
+    25% {
+        transform: translate(120%, 0%) rotate(30deg);
+    }
+
+    50% {
+        background: url("/img/cup-1.png") no-repeat;
+        transform: translate(50%, -30%) rotate(30deg);
+        opacity: 1;
+    }
+
+    75% {
+        background: url("/img/cup-02.png") no-repeat;
+        transform: translate(60%, -40%) rotate(40deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        background: url("/img/cup-1.png") no-repeat;
+        transform: translate(70%, -50%)rotate(30deg);
+        opacity: 1;
+    }
+}
+body {
+    font-family: 'Faustina', serif;
+    background-image: url(/img/background/bcc.png);
+    position: relative;
+    height: 100vh;
+}
+
+h2 {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+h4 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+h5 {
+    font-weight: 600;
+}
+
+h6 {
+    /* font-style: 12px; */
+    font-weight: normal;
+}
+
+p {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 32px;
+}
+
+
+
+.lucky_Swipe_page {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lucky_Swipe_page ul {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.lucky_Swipe_page li {
+    width: 20px;
+    height: 4px;
+    background-color: rgb(148, 148, 148);
+}
+
+.lucky_Swipe_page .stageColor {
+    background-color: #cc543a;
+}
+
+.lucky_contianer {
+    margin: 0;
+    padding: 0 0 0 80px;
+    height: 80%;
+    /* overflow: hidden; */
+}
+
+.lucky_content01 {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.item-group01 {
+    height: 100%;
+    margin-left: 70px;
+    width: 100px;
+}
+
+.lucky_content01 h3 {
+    margin-top: 25px;
+}
+
+.lucky_row {
+    width: 40%;
+    position: relative;
+}
+
+.lucky_Sign_order {
+    position: absolute;
+    top: 0;
+
+}
+.lucky_txtAdd{
+    display: flex;
+}
+
+/* 選擇神明 */
+.lucky_p1,
+.lucky_Search_gods {
+    width: 100%;
+    padding-top: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+#quest{
+    display: flex;
+    flex-direction: row;
+}
+.lucky_p2 h4 {
+    margin-bottom: 30px;
+}
+
+.lucky_p2 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.lucky_p3 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.lucky_p4 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: -1vh;
+}
+
+/* 筊 */
+.lucky_p5{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 15vh;
+    margin: 0 auto;
+}
+
+.lucky_p6 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding-top: 4vh;
+    display: flex;
+    flex-direction: row;
+    text-align: justify;
+}
+
+.nextstep {
+    display: none;
+}
+
+select {
+    border-style: none;
+    border-bottom: 2px solid rgb(66, 65, 65);
+    font-size: 22px;
+    color: dimgray;
+    background-color: transparent;
+    width: 100%;
+}
+
+option {
+    font-size: 20px;
+}
+
+.lucky_God_speaks {
+    width: 70%;
+    height: 150px;
+    align-self: flex-start;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.lucky_God_speaks h5 {
+    padding-top: 30px;
+    padding-left: 50px;
+    line-height: 30px;
+}
+
+.lucky_God_speaks .lucky_round {
+    position: absolute;
+    top: 0;
+    left: -25px;
+    z-index: -50;
+}
+
+.lucky_right {
+    width: 80%;
+    align-self: flex-end;
+    position: relative;
+}
+
+.lucky_round {
+    width: 150px;
+}
+
+.lucky_row img {
+    width: 100%;
+}
+
+.lucky_Search_gods {
+    padding: 20px 0;
+}
+
+.lucky_Request_signature h3 {
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.lucky_Request_signature p {
+    font-size: 20px;
+    line-height: 36px;
+}
+
+/* 跳轉按鈕 */
+.lucky_button01 button {
+    height: fit-content;
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    padding: 8px 40px;
+    font-size: 20px;
+    position: absolute;
+}
+
+.lucky_button01 {
+    min-width:140px;
+    position: absolute;
+    /* bottom: 17%; */
+    bottom: 20%;
+    right: 35%;
+    /* margin-bottom: 20px; */
+}
+
+/* 固定背景神明圖 */
+.lucky_GodImg {
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.lucky_GodImg img {
+    width: 100%;
+    object-fit: contain;
+    opacity: 0.5;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    /* transform: translateY(-4%); */
+}
+.lucky_p3 img{
+    animation-name: shaking;
+    animation-duration:1.6s;
+    transform-origin: bottom;
+    animation-iteration-count:infinite;
+}
+
+@keyframes shaking{
+    0% {
+        transform: translateY(0); }
+    10% {
+        transform: translateY(-20%); }
+    20% {
+        transform: translateY(0%);}
+    30% {
+        transform: translateY(-20%); }
+    40% {
+        transform: translateY(0%);}
+    50% {
+        transform: rotate(-10deg);}      
+    60% {
+        transform: rotate(10deg);}      
+    70% {
+        transform: rotate(-10deg);}
+    80% {
+        transform: rotate(10deg);}        
+    100% {
+        transform: rotate(0);}      
+}
+
+
+.lucky_Sign_animation03 {
+    width: 25%;
+    margin: 0 auto;
+}
+
+.lucky_Sign_animation03 img {
+    width: 100%;
+}
+
+.lucky_text15 {
+    transform: translate(102px, 130px);
+    color: #fff;
+}
+
+.lucky_result {
+    display: flex;
+    justify-content: flex-end;
+    transform: translateY(-100%);
+}
+
+.lucky_Sign_animation05_1 {
+    width: 80%;
+    position: relative;
+}
+
+.lucky_Sign_animation05_1 img {
+    width: 100%;
+    transform: rotate(-30deg);
+}
+
+.lucky_Sign_animation05_1 h3 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.lucky_Poetry06 {
+    width: 200px;
+}
+
+.lucky_Poetry06 img {
+    width: 100%;
+}
+
+.lucky_content06 {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    margin-left: 60px;
+    margin-right: 0px;
+}
+
+.lucky_result06 {
+    display: flex;
+    width: 325px;
+    justify-content: space-between;
+}
+
+.lucky_title06_1 {
+    display: flex;
+    flex-direction: row;
+    /* align-items:center; */
+    align-items: center;
+}
+
+.lucky_title06_2 {
+    background-color: #cc543a;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.lucky_title06_1 h4 {
+    font-weight: 600;
+}
+
+.lucky_title06_2 h5 {
+    color: #fff;
+    line-height: 65px;
+    font-size: 15px;
+    text-align: center;
+
+}
+
+.lucky_Commentary06 p {
+    font-size: 18px;
+}
+
+.lucky_btn06 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.lucky_button06 {
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 30px;
+    font-size: 18px;
+}
+.wishes {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.wishes .unit {
+    width: 120px;
+    margin: 8px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 2s;
+}
+
+.pic {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 1px solid #cc543a;
+    transition: 0.5s;
+}
+
+#pic07 svg{
+    width: 80%;
+}
+
+.wishes h4 {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 18px;
+    transition: 1.5s;
+}
+.wishes p {
+    font-size: 14px;
+    transition: 1.5s;
+}
+.wishes .clickIcon{
+    background-color: #cc543a;
+}
+
+.unclickWish{
+    fill: white;
+}
+
+.clickWish{
+    fill: #cc543a;
+}
+
+.wishes button{
+    box-shadow: none;
+    cursor: pointer;
+}
+.lucky_contianer05_1 {
+    margin: 0;
+    padding: 130px 0px 0px 190px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lucky_content05_1 {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.item-group05_1 h6 {
+    margin-bottom: 50px;
+}
+
+.lucky_result05_1 {
+    position: relative;
+    width: 230px;
+    left: 630px;
+}
+
+
+/* 跳轉按鈕 */
+.lucky_button05_1 {
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 30px;
+    margin-top: 10px;
+    font-size: 20px;
+
+}
+
+/* ------------ */
+
+.wishes .btn_09{
+    display: none;
+}
+@media screen and (min-width: 1000px) {
+
+.lucky_contianer {
+    padding: 30px 0 0 80px;
+}
+#quest h4 {
+    margin-bottom: 30px;
+}
+.item-group01 {
+    margin-left: 70px;
+    width: 100px;
+}
+.lucky_God_speaks h5 {
+    padding-left: 50px;
+}
+select {
+    font-size: 22px;
+}
+.lucky_Commentary06 p{
+    line-height: 30px;
+    font-size: 18px;
+}
+.lucky_btn06 button{
+    font-size: 20px;
+}
+}
+/* ---------手機------ */
+@media screen and (max-width: 1000px) {
+h5{
+    font-size: 18px;
+}
+.lucky_Sign_order{
+    margin-top: 20px;
+}
+.lucky_Request_signature h3,.lucky_Request_signature p{
+    font-size: 16px;
+}
+.lucky_GodImg{
+    display: none;
+}
+.lucky_contianer{
+    padding: 0;
+}
+
+.item-group01{
+    margin: 0;
+    width: 50px;
+}
+.lucky_row{
+    width: 70%;
+}
+.lucky_God_speaks{
+    width: 90%;
+}
+
+.lucky_God_speaks h5{
+    padding: 30px 0 0 0;
+}
+.lucky_round{
+    opacity: 0.7;
+}
+.lucky_Search_gods {
+    padding: 20px 0;
+    height: 50px;
+}
+
+.lucky_right {
+    width: 95%;
+    align-self: flex-start;
+}
+.lucky_right option{
+    font-size: 16px;
+}
+.lucky_button01 {
+    bottom: 22%;
+}
+
+select{
+    font-size: 18px;
+
+}
+.lucky_p2{
+    padding: 0;
+}
+.lucky_button01 .lucky_p2{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transform: translate(170%,-80%);
+    padding: 0;
+    /* background-image: url(/img/arrow-down-solid.svg); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+.lucky_Swipe_page li{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.lucky_content01 {
+    justify-content: center;
+}
+#quest {
+    margin:0;
+}
+
+#quest h4{
+    font-size: 20px;
+    margin: 0;
+}
+
+#quest p{
+    line-height: unset;
+    margin: 0;
+
+}
+.wishes{
+    width: 95%;
+}
+.wishes .unit {
+    width: 80px;
+    margin: 8px 10px;
+}
+.pic {
+    width: 60px;
+    height: 60px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    border: 1px solid #cc543a;
+    transition: 0.5s;
+}
+.wishes .unit p{
+    display: none;
+}
+.wishes button{
+    padding: 10px;
+}
+.lucky_text15 {
+    transform: translate(57px, 90px);
+    font-size: 15px;
+    color:white;
+}
+.lucky_p3,.lucky_p4 {
+    height: 80%;
+    padding-top: 0;
+    align-items: center;
+    transform: translateX(-10px);
+}
+.lucky_p4{
+    padding-top: 3vh;
+}
+.lucky_p4 .lucky_result{
+    justify-content: center;
+}
+.lucky_p4 .lucky_result p, .lucky_result05_1{
+    position: unset;
+    text-align: center;
+    transform: translateY(130%);
+}
+
+.lucky_Sign_animation03 {
+    width: 40%;
+}
+.lucky_button01 .lucky_p3,
+.lucky_button01 .lucky_p4,
+.lucky_button01 .lucky_p5{
+    transform: translate(25%,-130%);
+}
+
+.lucky_p5 .extra{
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+}
+
+.lucky_p6 {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+    padding-bottom: 100px;
+}
+
+.lucky_content06 {
+    flex-direction: column;
+    width: 95%;
+    margin-left: 0px;
+    text-align: justify;
+}
+
+.lucky_result06 {
+    width: 100%;
+    margin: 20px 0;
+}
+.lucky_btn06{
+    padding: 0;
+}
+.lucky_btn06 button{
+    padding: 10px 15px;
+}
+
+/* ------------求籤動畫-------- */
+.lucky_contianer05_1 {
+    margin: 0;
+    padding: 130px 0px 0px 190px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.lucky_content05_1 {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+
+}
+.item-group05_1 h6 {
+    margin-bottom: 50px;
+
+}
+
+.lucky_result05_1 p {
+    right: 0;
+    top: 130px;
+}
+
+.lucky_result05_1 h3 {
+    transform: translate(-190px, -100px);
+}
+
+/* 跳轉按鈕 */
+.lucky_button05_1 {
+    border-radius: 30px;
+    color: #fff;
+    background-color: #cc543a;
+    border-style: none;
+    width: fit-content;
+    padding: 8px 30px;
+    margin-top: 10px;
+    font-size: 20px;
+
+}
+#YanCup {
+    animation-name: YanCup;
+    animation-duration: 0.8s;
+    width: 70px;
+    height: 60px;
+    animation-iteration-count: 1;
+    background: url("/img/cup-0.png") no-repeat;
+    animation-fill-mode: forwards;
+    transition-timing-function: cubic-bezier(0.1, 0.1, 0.25, 1);
+}
+
+#YanCup_1 {
+    animation-name: YanCup01;
+    animation-duration: 3s;
+    width: 100px;
+    height: 100px;
+    animation-iteration-count: 1;
+    background: url("/img/cup-2.png") no-repeat;
+    opacity: 1;
+    animation-fill-mode: forwards;
+}
+
+#YanCup_2 {
+    animation-name: YanCup02;
+    animation-duration: 3s;
+    width: 100px;
+    height: 100px;
+    animation-iteration-count: 1;
+    background: url("/img/cup-1.png") no-repeat;
+    transform-origin: bottom right;
+    opacity: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes YanCup {
+    0% {
+        transform: translate(-30%, -40%);
+    }
+
+    100% {
+        transform: translate(-30%, 180%);
+    }
+}
+
+@keyframes YanCup01 {
+    0% {
+        transform: translate(170%, 10%) rotate(-30deg);
+    }
+
+    25% {
+        transform: translate(170%, 60%) rotate(-30deg);
+    }
+
+    50% {
+        background: url("/img/cup-2.png") no-repeat;
+        transform: translate(200%, 20%) rotate(-30deg);
+        opacity: 1;
+    }
+
+    75% {
+        background: url("/img/cup-01.png") no-repeat;
+        transform: translate(200%, 10%) rotate(-20deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        background: url("/img/cup-2.png") no-repeat;
+        transform: translate(200%, 0%) rotate(-40deg);
+        opacity: 1;
+    }
+
+
+}
+
+@keyframes YanCup02 {
+    0% {
+        transform: translate(70%, -60%) rotate(30deg);
+    }
+
+    25% {
+        transform: translate(70%, 0%) rotate(30deg);
+    }
+
+    50% {
+        background: url("/img/cup-1.png") no-repeat;
+        transform: translate(0%, -30%) rotate(30deg);
+        opacity: 1;
+    }
+
+    75% {
+        background: url("/img/cup-02.png") no-repeat;
+        transform: translate(10%, -40%) rotate(40deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        background: url("/img/cup-1.png") no-repeat;
+        transform: translate(20%, -50%)rotate(30deg);
+        opacity: 1;
+    }
+}
+}

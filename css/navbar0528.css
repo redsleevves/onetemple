@@ -1,0 +1,260 @@
+/* burgurBar */
+.nav_burgurBar{
+    background-image: url(/img/nav_bcc.png);
+    position: sticky;
+    top: 0;
+    display: none;
+    z-index: 9;
+    padding: 20px 0;
+
+    border-bottom: 1px solid rgba(203, 203, 203, .5);
+}
+.nav_burgurBar_img {
+    margin: 0 20px;
+}
+
+.nav_logo_mobile{
+    margin: 0 10px;
+}
+
+
+/* overlayNav */
+.nav_overlayNav {
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    /* display: none; */
+    transition: .7s;
+
+    transform: translateY(-2500px);
+}
+
+.nav_overlayNavBox {
+    text-align: center;
+}
+
+.nav_overlayNavBox li {
+    font-family: 'Noto Serif TC', serif;
+    color: #fff;
+    letter-spacing: 0.2rem;
+    padding: 25px 0;
+}
+
+
+
+
+/* navbar */
+.nav_navbar_com {
+    width: 100%;
+    background-image: url(/img/nav_barBcc.jpg);
+
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+
+.nav_navbar_com_container {
+    width: 90%;
+    display: flex;
+    margin: 10px auto;
+    padding: 0;
+}
+
+.nav_navbar {
+    width: 94%;
+    display: flex;
+    align-items: center;
+}
+
+.nav_navbarBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav_nav_left {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0px;
+}
+
+.nav_nav_right {
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin: 0;
+}
+
+.nav_navbarBox li {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px;
+    color: #000;
+    letter-spacing: 0.2rem;
+    position: relative;
+    bottom: 0;
+    transition: .5s;
+}
+
+.nav_navbarBox li:hover {
+    color: #cc543a;
+    bottom: 10px;
+}
+
+.nav_nav_left li{
+    width: 77px;
+}
+
+.nav_navbarBox span {
+    padding: 0 10px;
+}
+
+.nav_navbarBox a,
+.nav_overlayNavBox a {
+    text-decoration: none;
+}
+
+.nav_navline {
+    width: 80%;
+    height: 1px;
+    background-color: rgba(203, 203, 203, .7);
+    border: 0;
+    margin: 0 auto;
+}
+
+nav img {
+    width: 6%;
+}
+
+.nav_news::before{
+    content: "最新消息";
+}
+.nav_news:hover::before{
+    content: "NEWS";
+}
+.nav_explore::before{
+    content: "探索灣廟";
+}
+.nav_explore:hover::before{
+    content: "EXPLORE";
+}
+.nav_serv::before{
+    content: "線上服務";
+}
+.nav_serv:hover::before{
+    content: "SERVICE";
+}
+.nav_trip::before{
+    content: "聖地巡禮";
+}
+.nav_trip:hover::before{
+    content: "TRIP";
+}
+.nav_shop::before{
+    content: "祈福商店";
+}
+.nav_shop:hover::before{
+    content: "SHOP";
+}
+.nav_cart::before{
+    content: "購物車";
+}
+.nav_cart:hover::before{
+    content: "CART";
+}
+
+
+
+
+/* login */
+.modal-content-re {
+    background-image: url(/img/background/bcc2.png);
+    border: 0;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.modal-header-re {
+    border-bottom: 0px;
+    display: block;
+    text-align: center;
+}
+
+.modal-footer-re {
+    border-top: 0px;
+    margin: 0 auto;
+}
+
+.modal-footer2-re {
+    margin: 0 auto;
+    font-size: 14px;
+    color: #000;
+}
+
+.modal-footer2-re a {
+    color: #000;
+}
+
+.form-control-re {
+    background-image: url(./img/nav_bcc.png);
+    border-radius: 0%;
+    border: 1px solid #cdcdcd;
+}
+
+.form-control-re:focus {
+    border-color: #cdcdcd;
+    box-shadow: none;
+    background-color: #f5f4f1;
+}
+
+.close:focus {
+    outline: none;
+}
+
+.btn-primary-re {
+    background-color: #cc543a;
+    border: 0;
+    border-radius: 33px;
+    padding: 5px 35px;
+}
+
+.btn-primary-re:hover {
+    background-color: #dd745e;
+}
+
+.btn-primary-re:active {
+    background-color: #dd745e;
+}
+
+.btn-primary-re:focus {
+    background-color: #dd745e;
+}
+
+
+@media (max-width: 770px) {
+
+/* nav */
+    .nav_burgurBar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .nav_navbar_com {
+        display: none;
+    }
+
+    .nav_overlayNav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+}

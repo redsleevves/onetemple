@@ -1,0 +1,53 @@
+
+.mybtn_cart_add, .mybtn_like {
+    color: #cc543a;
+    border: 1px solid #cc543a;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 15px;
+}
+
+.mybtn_cart_add.active, .mybtn_like.active {
+    background-color: #cc543a;
+    color: #fff;
+}
+
+
+/* -------------------------------------------------------- */
+.mybtn_cart_add::after {
+    content: "加入購物車";
+}
+.mybtn_cart_add.active::before {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f00c";
+    padding-right: 5px;
+}
+
+.mybtn_like {
+    width:68px;
+    text-align: center;
+}
+
+.mybtn_like::after {
+    content: "收藏";
+}
+
+.mybtn_like.active::before {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f004";
+}
+
+.mybtn_like.active::after {
+    display: none;
+}
+
+
+@media (min-width: 992px) {
+    .mybtn_cart_add:hover, .mybtn_like:hover {
+        background-color: #cc543a;
+        color: #fff;
+    }
+}

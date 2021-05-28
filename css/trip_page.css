@@ -1,0 +1,491 @@
+body {
+    font-family: 'Faustina', serif;
+    background-image: url(../img/nav_bcc.png);
+    font-size: 16px;
+}
+
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #707070;
+}
+
+.trip_title_img img {
+    border-radius: 5px;
+}
+
+.trip_title_img .trip_imghover img:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.trip_like_mobile {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #cc543a;
+    border-radius: 50%;
+    top: 15px;
+    right: 15px;
+    font-size: 18px;
+    color: #cc543a;
+    background-color: #fff;
+}
+.trip_like_mobile .fas {
+    font-size: 18px;
+    color: #FFF;
+}
+
+.trip_like_mobile.active {
+    background-color: #cc543a;
+}
+
+
+.trip_like_mobile.active i {
+    font-weight: 900;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.trip_like_mobile.active {
+    background-color: #cc543a;
+}
+
+
+.trip_like_mobile.active i {
+    font-weight: 900;
+    font-size: 16px;
+    color: #FFF;
+}
+
+
+
+
+.trip-breadcrumb {
+    font-size: 18px;
+}
+
+.trip_title_text {
+    line-height: 2;
+}
+
+.trip_text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #707070;
+
+}
+
+.trip_text1 {
+    font-size: 22px;
+    color: #707070;
+    font-weight: bold;
+}
+
+.trip_item_body {
+    background-color: #fff;
+    font-size: 18px;
+}
+
+.trip_item_body_more {
+    background-color: #cc543a;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.trip_item_body_more:hover {
+    background-color: #cc543a;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: bold;
+   
+}
+
+.trip_day {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #707070;
+    border-top: 2px #C1C1C1 solid;
+    border-bottom: 2px #C1C1C1 solid;
+
+}
+
+.trip_input_date {
+    border-radius: 5px;
+    color: #707070;
+    border: 1px solid #C1C1C1;
+    height: 40px;
+    background-color: #fff;  
+}
+
+.trip_input_date.is-invalid {
+    border-color:red;
+}
+
+.trip_input_qty {
+    width: 153px;
+}
+
+/* .trip_input_qty .bootstrap-touchspin-down {
+    border-radius: 5px;
+    border-left: 1px solid #C1C1C1;
+    border-top: 1px solid #C1C1C1;
+    border-bottom: 1px solid #C1C1C1;
+} */
+
+/* .trip_input_qty .bootstrap-touchspin-up {
+    border-radius: 5px;
+    border-right: 1px solid #C1C1C1;
+    border-top: 1px solid #C1C1C1;
+    border-bottom: 1px solid #C1C1C1;
+} */
+
+
+.trip_input_qty .form-control {
+    background: transparent;
+    text-align: center;
+    border: none;
+    color: #707070;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.trip_input_qty .input-group {
+            background-color: #fff;
+            border: 1px solid #C1C1C1;
+            border-radius: 5px;
+        }
+
+.trip_btn2 {
+    color: #cc543a;
+    border: 1px solid #cc543a;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 15px;
+
+}
+
+.trip_btn2:hover,
+.trip_btn2.active{
+    background-color: #cc543a;
+    color: #fff;
+}
+
+.trip_btn3{
+    color: #cc543a;
+    border: 1px solid #cc543a;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 15px;
+}
+.trip_btn3:hover{
+    background-color: #cc543a;
+    color: #fff;
+}
+
+
+
+.trip_btn_mobile{
+    color: #cc543a;
+    border: 1px solid #cc543a;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 15px;
+}
+
+.trip_btn_mobile.active{
+    background-color: #cc543a;
+    color: #fff;
+}
+
+.trip_btn1 a{
+    background-color: #cc543a;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            padding: 5px 15px;
+            color: #fff;
+            text-decoration: none;
+           
+}
+
+
+
+.trip_text2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #707070;
+
+}
+
+.trip_list_text {
+    line-height: 2;
+}
+
+.trip_list_text img {
+    width:100%;
+}
+.trip_list_text p {
+    margin:0;
+    margin:0.5rem 0;
+}
+
+.trip_gb {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #707070;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.trip_gbtext {
+    font-size: 16px;
+    line-height: 2;
+}
+
+
+.tripc_item_body_price span {
+    color: #cc543a;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.trip_item_body_title {
+    color: #cc543a;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.trip_item_body_body {
+    color: #666;
+    font-size: 20px;
+}
+
+.trip_item_body_body i {
+    width: 30px;
+    text-align: center;
+}
+
+.trip_input_qty button,
+.trip_input_qty input {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.trip_input_qty span,
+.trip_input_qty input {
+    height: 34px;
+}
+
+.trip-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+    content: "\f054";
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    color: #707070;
+    font-size: 12px;
+}
+
+.breadcrumb-item {
+    font-size: 18px;
+
+}
+
+.breadcrumb-item a {
+    color: #707070;
+}
+
+.trip_item_border {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.trip_item_scroll {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 500px;
+}
+
+.trip_solution_choice {
+    font-size: 22px;
+    font-weight: bold;
+    color: #707070;
+}
+
+.trip_fixed_bottom {
+    background-color: #CC543A;
+    color: #fff;
+    text-align: center;
+
+}
+
+.trip_fixed_bottom1 {
+    width: 50%;
+    font-weight: bold;
+    font-size: 18px;
+
+}
+
+.trip_fixed_bottom1 span {
+    display: none;
+}
+
+.trip_fixed_bottom1.active span {
+    display: inline;
+}
+
+.trip_fixed_bottom_line {
+    width: 1px;
+    background-color: #fff;
+
+}
+
+.datepicker {
+    width: 100px;
+}
+
+#carouselHotControls i {
+    font-size: 18px;
+    color:#707070;
+}
+
+#carouselExampleIndicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    /* background-color: #c0c0c0; */
+
+}
+
+
+.trip_details{
+    border-radius:20px;
+    background-image: url(../img/nav_bcc.png);
+    font-size: 20px;
+    color: #707070;
+    width: 520px;
+    height: 370px;
+    line-height: 2;
+    text-align:left;
+}
+.trip_details_text{
+    font-weight: bold;
+}
+
+.trip_details .modal-header{
+    border: none;
+}
+
+.trip_like_btn {
+   
+    border-radius: 50px;
+    padding: 5px 15px;
+}
+.trip_container1{
+    background-image: url(../img/nav_bcc2.png);
+}    
+.trip_modal{
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+
+#tripModalCommentLong .modal-body{
+    height: 90vh;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#tripModalCommentLong .modal-body::-webkit-scrollbar {
+    display: none;
+}
+  
+
+
+@media (min-width: 992px) {
+    .trip_container {
+        width: 1400px;
+    }
+    .trip_hot{
+        width: 1400px;
+    }
+    .trip_left {
+        width: auto;
+        left: 50px;
+    }
+    .trip_right {
+        width: auto;
+        right: 50px;
+    }
+    .trip_btn1 a:hover {
+        background-color: #dd745e;
+    }
+}
+
+@media (max-width: 991px) {
+    
+    .trip_scrolling_wrapper {
+        overflow-x: auto;
+    }
+
+    .trip_btn1 a{
+       font-size: 16px;
+       padding: 3px 15px;
+    }
+    .trip_btn1.active a{
+        background-color: #dd745e;
+    
+    }
+
+    .tripc_item_body_price span {
+        font-size: 16px;
+    }
+    .trip_item_image{
+        width: 100%;
+    }
+
+    .trip_item_body_title {
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .trip_gb {
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        padding-top: 5px;
+        font-size: 20px;
+        
+    }
+
+    .trip_gbtext{
+        font-size: 14px;
+    }
+
+    .trip_btn2,
+    .trip_item_body_body,
+    .tripc_item_body_price {
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    .trip_item_body_more {
+        padding: 2px 10px;
+    }
+
+    .trip_item_body_more {
+        font-size: 14px;
+        font-weight: normal;
+    }
+    footer {
+        display: none;
+    }
+   
+}

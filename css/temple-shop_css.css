@@ -1,0 +1,354 @@
+ body {
+            font-family: 'Sitka Display', NSimSun, 'sans-serif';
+            background-image: url(../img/background/bcc.png);
+            font-size: 16px;
+        }
+
+        h3 {
+            font-size: 30px;
+            font-weight: bold;
+            color: #707070;
+        }
+
+        @media only screen and (min-width: 1000px) {
+            .trip_item {
+
+                background-color: #FFF;
+            }
+
+            .trip_item_body {
+                font-size: 20px;
+            }
+
+            .trip_item_body_title {
+                color: #cc543a;
+                font-weight: bold;
+                font-size: 26px;
+            }
+
+            .trip_item_body_body {
+                color: #666;
+            }
+
+            .trip_item_body_body i {
+                width: 30px;
+                text-align: center;
+            }
+
+            .fake_img {
+                width: 100%;
+                height: 370px;
+                background-color: lightblue;
+            }
+
+            .trip_search {
+                border-bottom: 2px solid #c0c0c0;
+                font-size: 24px;
+            }
+
+            .trip_search input {
+                font-size: 24px;
+            }
+
+            .trip_search i {
+                font-size: 24px;
+                color: #c0c0c0;
+                position: absolute;
+                right: 0px;
+                top: 15px;
+            }
+
+            .trip_category {
+                color: #707070;
+            }
+
+            .trip_category ul li {
+                font-size: 24px;
+            }
+
+            .trip_item_body_more {
+                background-color: #cc543a;
+                border-radius: 40px;
+            }
+
+            .tripc_item_body_price span {
+                color: #cc543a;
+                font-weight: bold;
+                font-size: 26px;
+            }
+
+            .trip_select_area.collapsed i {
+                transform: rotate(180deg);
+                transition-property: transform;
+            }
+
+            .trip_select_area {
+                color: #707070;
+            }
+
+            .trip_select_area i {
+                color: #c0c0c0;
+            }
+
+            .trip_select_area:hover {
+                color: #707070;
+                text-decoration: none;
+            }
+
+            #trip_price_range .slider-selection {
+                background: #cc543a;
+            }
+
+            #trip_price_range .slider-handle {
+                border: 5px solid #cc543a;
+                background: #FFF;
+            }
+
+            #trip_price_range .arrow {
+                display: none;
+            }
+
+            #trip_price_range .tooltip-inner {
+                font-family: 'Sitka Display', NSimSun, 'sans-serif';
+                font-size: 20px;
+                padding: 0;
+                color: #000;
+                background-color: transparent;
+            }
+
+            .trip_page {
+                /* top: 50px; */
+            }
+
+            .trip_page-item {
+                color: #707070;
+                font-size: 24px;
+            }
+
+            .fa-chevron-right {
+                padding: 0 12px 0 12px;
+
+            }
+
+            .card {
+                position: relative;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                min-width: 0;
+                word-wrap: break-word;
+                background-color: #fff;
+                background-clip: border-box;
+                border: none;
+                border-radius: 0rem;
+                width: 300px;
+                height: 380px;
+
+            }
+
+            .shop_card_img {
+                margin: 0;
+                padding: 0;
+                width: 220px;
+                height: 320px;
+
+            }
+
+            .shop_card_img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .card {
+                background-color: transparent;
+                position: relative;
+                /* border: 1px solid #3a41cc; */
+            }
+
+            .icon {
+                position: absolute;
+                right: 70px;
+                top: 5px;
+                z-index: 2;
+                background-color: #FFF;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+
+
+            }
+
+            .fa-heart {
+                display: flex;
+                align-items: center;
+                /* align-content: center; */
+                flex-direction: column;
+                justify-content: center;
+                transform: translateY(35%);
+                color: #4d4b4b;
+
+            }
+
+            .card-body {
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                min-height: 1px;
+                padding: 1.25rem 0 1.25rem 0;
+                /* background-color: transparent; */
+            }
+
+            .card-deck {
+                margin-bottom: 50px;
+            }
+
+            .shop_Displacement {
+                justify-content: space-between;
+                width: 85.7%;
+            }
+
+            .col-9 {
+                padding: 0;
+                margin: 0;
+                flex: 0 0 60%;
+                max-width: 60%;
+            }
+
+            ul {
+                list-style-type: none;
+            }
+
+            .breadcrumb {
+                align-items: center;
+            }
+
+            .ml-10 {
+                padding-left: 775px;
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+
+            }
+
+            .ml_120 {
+                margin-left: 150px;
+            }
+
+            .r0 {
+                display: flex;
+                flex-direction: column;
+                background-color: #fff;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                align-items: center;
+                justify-content: center;
+                padding-bottom: 10px;
+                border: 1px solid #a2a2a2;
+                align-self: flex-end;
+                margin-bottom: 160px;
+
+
+            }
+
+            .r0 img {
+                width: 35px;
+                height: 35px;
+                transform: translate(-1px, 4px);
+            }
+
+            .top0 {
+
+                width: 30px;
+                right: 0;
+            }
+
+            .shop_top100 {
+                margin-top: 70px;
+            }
+
+            .shop_pl_120 {
+                padding-left: 120px;
+            }
+
+            .shop_pl_100 {
+                padding-left: 100px;
+            }
+
+            .shop_space_between {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 0;
+                padding: 0;
+                /* height: 100vh; */
+            }
+
+            .shop_center {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                /* align-items: center; */
+            }
+
+            .shop_Separate {
+                display: flex;
+                flex-direction: column;
+            }
+
+
+
+            .mb-5,
+            .my-5 {
+                margin-bottom: 1.5rem !important;
+            }
+
+            .shop_Displacement {
+                justify-content: space-between;
+                width: 93.25%;
+            }
+
+            .mr-45 {
+                margin-right: 45px;
+                margin-top: 80px;
+                margin-bottom: px;
+            }
+            .shop_fa_search{
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+            .display_none{
+                display: none;
+            }
+            /* --------放大鏡----- */
+            .fa-search{
+                /* position: absolute;
+                top: 0; */
+                display: block;
+                z-index: 1000;
+            }
+            .shop_mt_80{
+                margin: 0;
+                padding: 0;
+                margin-top: 40px;
+            }
+            .trip_category{
+            
+            }
+            .py-2{
+            
+            }
+            .trip_category ul{
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+            }
+            .col-3{
+                padding-left: 0;
+            }
+        }
