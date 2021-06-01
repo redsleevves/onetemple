@@ -2,9 +2,10 @@
 
 require __DIR__ . "/parts/config.php";
 
+
 $_gdata = [
     // 網頁名稱
-    'title' => '聖地行旅', 
+    'title' => '灣廟 | 聖地行旅', 
     // 頁面私有 css
     'styles' => '
     <link rel="stylesheet"
@@ -30,9 +31,13 @@ $_gdata = [
 ];
 
 // SELECT * FROM trip WHERE id = ''
-$sql = "SELECT * FROM trips WHERE id = '".$_GET['id']."'"; //組合SQL指令
+$member_sid = $_SESSION['user']['sid'];
+$sql = "SELECT t.*, IFNULL(f.sid, 0) as fav 
+FROM trips as t 
+LEFT JOIN fav_trip as f ON t.id = f.trip_sid and f.member_sid = ? 
+WHERE id = ?"; //組合SQL指令
 $stmt = $pdo->prepare($sql); //預處理SQL
-$stmt->execute(); //執行SQL
+$stmt->execute([$member_sid, $_GET['id']]); //執行SQL
 $trip = $stmt->fetch(PDO::FETCH_ASSOC); //取資料
 
 
@@ -112,7 +117,7 @@ for($i=0;$i<count($hot_trips);$i++) {
 
             <div class="col-lg-5 col-12">
                 <div
-                    class="trip_like_mobile position-absolute d-flex justify-content-center align-items-center d-lg-none">
+                    class="trip_like_mobile position-absolute d-flex justify-content-center align-items-center d-lg-none <?=($trip['fav']!=0)?"active":""?>" data-id="<?=$trip['id']?>">
                     <i class="far fa-heart"></i>
                 </div>
                 <h3 class="mt-4 mt-lg-3"><?=$trip['title2']?></h3>
@@ -218,13 +223,13 @@ for($i=0;$i<count($hot_trips);$i++) {
                         <div class="trip_text2">NTD <span id="trip_calculate1"><?=number_format($trip['price'],0,".",",")?></span>元</div>
                     </div>
                     <div class="d-none d-lg-flex justify-content-end pt-4">
-                        <div class="mybtn_like mr-3" data-toggle="mybtn"></div>
+                        <div class="mybtn_like mr-3 <?=($trip['fav']!=0)?"active":""?>" data-id="<?=$trip['id']?>" data-toggle="mybtn"></div>
                         <div class="mybtn_cart_add pr-3" data-toggle="mybtn"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row pt-4">
+        <div class="row justify-content-between pt-4">
             <div class="col-lg-7 pt-lg-5 d-none d-lg-block">
                 <div class="row">
                     <div class="col-12">
@@ -235,7 +240,7 @@ for($i=0;$i<count($hot_trips);$i++) {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 pt-lg-5 pt-0 d-none d-lg-block">
+            <div class="col-lg-4 pt-lg-5 pt-0 d-none d-lg-block">
                 <h3 class="pb-4">評價 |</h3>
                 <div class="pb-5 d-flex justify-content-between">
                     <div class="d-flex justify-content-start">
@@ -958,8 +963,9 @@ foreach($pc_hot_trips as $key => $group) {
                 
                 $.ajax({
                     type: "POST",
-                    url: 'trip_add.php',
+                    url: 'trip_api.php',
                     data: {
+                        op: 'add_cart',
                         id: $('#trip_id').val(),
                         name: $('#trip_name').val(),
                         image: $('#trip_image').val(),
@@ -1009,8 +1015,9 @@ foreach($pc_hot_trips as $key => $group) {
                 
                 $.ajax({
                     type: "POST",
-                    url: 'trip_add.php',
+                    url: 'trip_api.php',
                     data: {
+                        op: "add_cart",
                         id: $('#trip_id').val(),
                         name: $('#trip_name').val(),
                         image: $('#trip_image').val(),
@@ -1066,8 +1073,24 @@ foreach($pc_hot_trips as $key => $group) {
             $(this).toggleClass("active");
         });
 
-        $(".trip_like_mobile").click(function () {
-            $(this).toggleClass('active');
+        $(".trip_like_mobile, .mybtn_like").click(function () {
+            let btn = this;
+            $.ajax({
+                type: "POST",
+                url: 'trip_api.php',
+                data: {
+                    op: 'toggle_fav',
+                    id: $(btn).data('id')
+                },
+                success: function(data){
+                    if(data.code == 200) {
+                        $(btn).toggleClass("active");
+                    } else {
+                        alert(data.info);
+                    }
+                },
+                dataType: 'json'
+            });
         });
 
 
