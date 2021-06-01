@@ -69,15 +69,11 @@ for($i=0;$i<count($hot_trips);$i++) {
     
     <div class="breadcrumb_style   backgroundimg_1">
         <div class="d-flex flex-wrap breadcrumb_style_1 ">
-            <a href="" class="astlyep">首頁</a>
+            <a href="temple_index.php" class="astlyep">首頁</a>
             <!-- 共用雲端找箭頭icon-->
             <img src="./img/nav_arrow_right.svg">
-            <a href="" class="astlyep">聖地行旅</a>
-            <img src="./img/nav_arrow_right.svg">
-            <a href="" class="astlyep">熱門行程</a>
-            <img src="./img/nav_arrow_right.svg">
-            台南...
-        </div>
+            <a href="trip.php" class="astlyep">聖地行旅</a>
+            <img src="./img/nav_arrow_right.svg"><?=$trip['title2']?></div>
     </div>
     <div class="trip_container container-fluid px-lg-5">
         <div class="row">
