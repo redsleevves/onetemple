@@ -29,7 +29,10 @@
         </div>
         <div class="nav_overlayNavBox">
             <ul>
-                <a href="">
+                <a href="<?= WEB_ROOT?>/temple_index.php">
+                    <li>灣廟首頁</li>
+                </a>
+                <a href="<?= WEB_ROOT?>/news_main.php">
                     <li>最新消息</li>
                 </a>
                 <a href="">
@@ -40,10 +43,10 @@
                     <i class="fas fa-angle-down"></i>
                 </li>
                 <ul class="nav_dropDownMenu_mobile">
-                    <a class="dropdown-item nav_ser_item_mob" href="#">祈福點燈</a>
+                    <a class="dropdown-item nav_ser_item_mob" href="<?= WEB_ROOT?>/light_Introduction.php">祈福點燈</a>
                     <a class="dropdown-item nav_ser_item_mob" href="#">求神問卜</a>
                 </ul>
-                <a href="">
+                <a href="<?= WEB_ROOT?>/trip.php">
                     <li>聖地行旅</li>
                 </a>
                 <a href="">
@@ -75,12 +78,14 @@
     <nav class="nav_navbar_com">
         <div class="nav_navbar_com_container">
             <!-- 請依檔案位置修改logo路徑 -->
-            <img src='<?= WEB_ROOT ?>/img/nav_logo.svg'>
-
+            <a href="<?= WEB_ROOT?>/temple_index.php">
+                <img src='<?= WEB_ROOT ?>/img/nav_logo.svg'>
+            </a>
+            
             <div class="nav_navbar">
                 <div class="nav_navbarBox">
                     <div class="nav_nav_left">
-                        <a href="" class="nav_navbar_item">
+                        <a href="<?= WEB_ROOT?>/news_main.php" class="nav_navbar_item">
                             <div class="nav_hide_ch">最新消息</div>
                             <div class="nav_hide_en">NEWS</div>
                         </a>
@@ -93,12 +98,12 @@
                             <div class="nav_hide_en">SERVICE</div>
 
                             <ul class="nav_dropDownMenu">
-                                <a class="dropdown-item nav_ser_item" href="#">祈福點燈</a>
+                                <a class="dropdown-item nav_ser_item" href="<?= WEB_ROOT?>/light_Introduction.php">祈福點燈</a>
                                 <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
                             </ul>
                         </a>
 
-                        <a href="" class="nav_navbar_item">
+                        <a href="<?= WEB_ROOT?>/trip.php" class="nav_navbar_item">
                             <div class="nav_hide_ch">聖地行旅</div>
                             <div class="nav_hide_en">TRIP</div>
                         </a>
@@ -163,7 +168,7 @@
                         </div>
                         <input type="checkbox"> 記住帳號
                         <div class="modal-footer modal-footer-re">
-                    <button type="submit" class="btn btn-primary btn-primary-re">登入</button>
+                    <button type="submit" class="btn-primary-re">登入</button>
                 </div>
                     </form>
                 </div>
@@ -195,7 +200,7 @@
                                 placeholder="Email">
                         </div>
                         <div class="modal-footer modal-footer-re">
-                    <button type="button" class="btn btn-primary btn-primary-re">送出</button>
+                    <button type="button" class="btn-primary-re">送出</button>
                 </div>
                     </form>
                 </div>
@@ -240,7 +245,7 @@
                             <small class="form-text error"></small>
                         </div>
                         <div class="modal-footer modal-footer-re">
-                    <button id='submit'  type="submit" class="btn btn-primary btn-primary-re">註冊</button>
+                    <button id='submit'  type="submit" class="btn-primary-re">註冊</button>
                     </div>
                     </form>
                 </div>

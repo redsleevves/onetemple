@@ -209,7 +209,7 @@ body::-webkit-scrollbar {
 .nav_dropDownMenu{
     position: absolute;
     top: 80%;
-    left: 26%;
+    left: 31%;
     background-image: url(../img/nav_bcc2.png);
     border:1px solid #ddd;
     box-shadow: 0.5px 0.5px 5px 1px rgba(0, 0, 0, 0.1);

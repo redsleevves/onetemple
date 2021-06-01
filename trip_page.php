@@ -13,7 +13,8 @@ $_gdata = [
     crossorigin="anonymous" />
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/trip_page.css">
-    <link rel="stylesheet" href="' . WEB_ROOT . '/css/mybtn.css">',
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/mybtn.css">
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">',
     // 頁面私有 scripts
     'scripts' => '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"

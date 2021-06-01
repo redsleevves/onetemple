@@ -15,7 +15,6 @@ body::-webkit-scrollbar {
     border-radius: 10px;
     }
 
-
 /* burgurBar */
 .nav_burgurBar{
     background-image: url(../img/nav_bcc.png);
@@ -110,6 +109,7 @@ form .form-group small.error {
 .nav_nav_right img{
     width: 50px;
 }
+
 .mobile_login{
 width: 240%;
 justify-content:space-between;

@@ -12,7 +12,8 @@ $_gdata = [
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css"
     integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ=="
     crossorigin="anonymous" />
-    <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">',
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">',
     //頁面私有 scripts
     'scripts' => '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"
@@ -506,7 +507,8 @@ function getPageLink($page) {
         }
 
 
-    </style>
+</style>
+
     <div class="breadcrumb_style   backgroundimg_1">
         <div class="d-flex flex-wrap breadcrumb_style_1 ">
             <a href="" class="astlyep">首頁</a>
@@ -556,6 +558,7 @@ function getPageLink($page) {
             </div>
             <div class="d-block d-lg-none">
             <?php
+
 if(count($trips) > 0) {
     foreach($trips as $trip) {
 ?>
