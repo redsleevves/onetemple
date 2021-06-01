@@ -1292,7 +1292,7 @@ $_gdata = [
     </div>
 
     <!-- 導航用代碼包含彈窗 -->
-    <?php include __DIR__ . '/parts/ournav_nav1.php'; ?>
+    <?php include __DIR__ . '/parts/navbar1.php'; ?>
 
     <div class="index_newsArea d-flex justify-content-between">
         <div class="index_newsBox col-sm-6">
@@ -2685,9 +2685,11 @@ $_gdata = [
     <?php include __DIR__ . '/parts/go-top.php' ?>
 
     <!-- 導航用代碼包含彈窗 -->
-    <?php include __DIR__ . '/parts/ourscripts_nav1.php'; ?>
+    <?php include __DIR__ . '/parts/ourscripts.php'; ?>
 
     <script>
+        
+
         //banner-carousel
 
         let slideImg = $('.index_bannerBox').find('img');

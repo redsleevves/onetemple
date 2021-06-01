@@ -86,7 +86,7 @@ $_SESSION = [
 <!-- 整個頁面的頭 -->
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
 <!-- 導航用代碼包含彈窗 -->
-<?php include __DIR__ . '/parts/ournav.php'; ?>
+<?php include __DIR__ . '/parts/navbar2.php'; ?>
 <style>
 
         body {

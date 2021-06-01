@@ -1,4 +1,4 @@
-    <div class="nav_burgurBar" id="nav_burgurBar">
+<div class="nav_burgurBar">
         <div class="nav_burgurBar_img">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20">
                 <g id="Group_135" data-name="Group 135" transform="translate(-341.5 -1313.5)">
@@ -29,7 +29,10 @@
         </div>
         <div class="nav_overlayNavBox">
             <ul>
-                <a href="">
+                <a href="<?= WEB_ROOT?>/temple_index.php">
+                    <li>灣廟首頁</li>
+                </a>
+                <a href="<?= WEB_ROOT?>/news_main.php">
                     <li>最新消息</li>
                 </a>
                 <a href="">
@@ -40,10 +43,10 @@
                     <i class="fas fa-angle-down"></i>
                 </li>
                 <ul class="nav_dropDownMenu_mobile">
-                    <a class="dropdown-item nav_ser_item_mob" href="#">祈福點燈</a>
+                    <a class="dropdown-item nav_ser_item_mob" href="<?= WEB_ROOT?>/light_Introduction.php">祈福點燈</a>
                     <a class="dropdown-item nav_ser_item_mob" href="#">求神問卜</a>
                 </ul>
-                <a href="">
+                <a href="<?= WEB_ROOT?>/trip.php">
                     <li>聖地行旅</li>
                 </a>
                 <a href="">
@@ -55,7 +58,7 @@
                 <?php if(isset($_SESSION['user'])): ?>
                     <div class="mobile_login d-flex">
                     <div class="mobile_nav_profile d-flex">
-                        <img src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
+                        <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
                         <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
                     </div>
                     <div class="nav-item">
@@ -71,10 +74,14 @@
         </div>
     </div>
 
-    <div class="nav_index_navbar_com" id="nav_index_navbar_com">
+    <div class="nav_index_navbar_com">
         <div class="nav_index_navbarBox">
             <div class="nav_index_navbar_left">
-                <a href="" class="nav_navbar_item">
+                <a href="<?= WEB_ROOT?>/temple_index.php" class="nav_navbar_item">
+                    <div class="nav_hide_ch">灣廟首頁</div>
+                    <div class="nav_hide_en">HOME</div>
+                </a>
+                <a href="<?= WEB_ROOT?>/news_main.php" class="nav_navbar_item">
                     <div class="nav_hide_ch">最新消息</div>
                     <div class="nav_hide_en">NEWS</div>
                 </a>
@@ -87,12 +94,12 @@
                     <div class="nav_hide_en">SERVICE</div>
 
                     <ul class="nav_dropDownMenu">
-                        <a class="dropdown-item nav_ser_item" href="#">祈福點燈</a>
+                        <a class="dropdown-item nav_ser_item" href="<?= WEB_ROOT?>/light_Introduction.php">祈福點燈</a>
                         <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
                     </ul>
                 </a>
                 
-                <a href="" class="nav_navbar_item">
+                <a href="<?= WEB_ROOT?>/trip.php" class="nav_navbar_item">
                     <div class="nav_hide_ch">聖地行旅</div>
                     <div class="nav_hide_en">TRIP</div>
                 </a>
@@ -108,7 +115,7 @@
             <div class="nav_index_navbar_right">
             <?php if(isset($_SESSION['user'])): ?>
                     <li class="nav-item d-flex align-items-center">
-                        <img src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
+                        <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
                         <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
                     </li>
                     <li class="nav-item">
@@ -145,12 +152,12 @@
                             <small class="form-text error"></small>
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-re" id="login_password"  name="password" placeholder="Password">
+                            <input class="form-control form-control-re" type="password" id="login_password"  name="password" placeholder="Password">
                             <small class="form-text error"></small>
                         </div>
                         <input type="checkbox"> 記住帳號
                         <div class="modal-footer modal-footer-re">
-                    <button type="submit" class="btn btn-primary btn-primary-re">登入</button>
+                    <button type="submit" class="btn-primary-re">登入</button>
                 </div>
                     </form>
                 </div>
@@ -183,7 +190,7 @@
                     </form>
                 </div>
                 <div class="modal-footer modal-footer-re">
-                    <button type="button" class="btn btn-primary btn-primary-re">送出</button>
+                    <button type="button" class="btn-primary-re">送出</button>
                 </div>
             </div>
         </div>
@@ -225,10 +232,11 @@
                             <small class="form-text error"></small>
                         </div>
                         <div class="modal-footer modal-footer-re">
-                    <button id='submit'  type="submit" class="btn btn-primary btn-primary-re">註冊</button>
+                    <button id='submit'  type="submit" class="btn-primary-re">註冊</button>
                 </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+

@@ -16,8 +16,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- navbar2 -->
-    <!-- <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/navbar2.css">
-    <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/navbar1.css"> -->
     <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/nav_footor.css">
     <!--<link rel="stylesheet" href="<?= WEB_ROOT ?>/css/member_data.css">-->
     
