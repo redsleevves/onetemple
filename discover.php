@@ -15,7 +15,7 @@ $_gdata = [
     <style>
         body {
             font-family: 'Faustina', serif;
-            background-image: url(<?= WEB_ROOT ?>/img/bcc.png);
+            background-image: url(./img/bcc.png);
             position: relative;
         }
 
@@ -51,19 +51,6 @@ $_gdata = [
         button:focus {
             outline: 0;
             box-shadow: 0 0 0 1pt rgb(77, 77, 77);
-        }
-
-
-        footer {
-            width: 100%;
-            height: 100px;
-            background-color: #cc543a;
-            color: white;
-            letter-spacing: 3px;
-            position: absolute;
-            bottom:0;
-            justify-content: center;
-            align-items: center;
         }
 
         .discover_head {
@@ -286,7 +273,7 @@ $_gdata = [
         }
 
         .discover_story {
-            background-image: url(<?= WEB_ROOT ?>/img/bcc2.png);
+            background-image: url(./img/bcc2.png);
             padding: 0;
             position: relative;
             display: flex;
@@ -667,7 +654,7 @@ $_gdata = [
                 height: 100vh;
                 bottom: 0;
                 left: 0;
-                background-image: url(<?= WEB_ROOT ?>/img/bcc2.png);
+                background-image: url(./img/bcc2.png);
                 padding: 50px 0;
                 border-radius: 20px;
                 /* box-shadow: 3px 0 3px 3px rgb(116, 116, 116); */
@@ -789,7 +776,9 @@ $_gdata = [
     </div>
     <div id="cover">
     </div>
+
     <?php include __DIR__ . '/parts/navbar1.php'; ?>
+    
     <section class="discover_search container col-lg-12">
         <img class="discover_footprint" src="<?= WEB_ROOT ?>/img/footprints.svg">
         <div class="discover_box col-lg-10">
@@ -1044,4 +1033,6 @@ $_gdata = [
         })
         
     </script>
+
+    
     <?php include __DIR__. '/parts/html-foot.php'; ?>

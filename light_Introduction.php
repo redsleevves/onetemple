@@ -516,7 +516,7 @@
     </div>
 
     <!-- 導航用代碼包含彈窗 -->
-    <?php include __DIR__ . '/parts/ournav_nav1.php'; ?>
+    <?php include __DIR__ . '/parts/navbar1.php'; ?>
 
 
     <div class="light_light_Introduction_content">
@@ -672,7 +672,7 @@
 
     <?php include __DIR__ . '/parts/go-top.php' ?>
     <!-- 導航用代碼包含彈窗 -->
-    <?php include __DIR__ . '/parts/ourscripts_nav1.php'; ?>
+    <?php include __DIR__ . '/parts/ourscripts.php'; ?>
 
 
     <script>
