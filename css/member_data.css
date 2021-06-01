@@ -79,7 +79,6 @@
 }
 
 .member_img img {
-    width: 100%;
     border-radius: 50%;
 }
 
@@ -206,10 +205,6 @@
 
     .displayflex {
         display: flex;
-    }
-
-    .member_img {
-        width: 100%;
     }
 
     .member_upimg {
