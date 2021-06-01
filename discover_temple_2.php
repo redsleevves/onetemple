@@ -13,7 +13,7 @@ $_gdata = [
     integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ=="
     crossorigin="anonymous" />
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">
-    <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/navbar2.css">',
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">',
     //頁面私有 scripts
     'scripts' => '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"
@@ -37,7 +37,7 @@ $_gdata = [
         font-family: 'Faustina', serif !important;
         /* font-family: 'Sitka Display', NSimSun, 'sans-serif'; */
         /* font-family: 'Noto Sans TC', serif !important; */
-        background-image: url(../img/nav_bcc.png);
+        background-image: url(./img/nav_bcc.png);
     }
 
     h2 {

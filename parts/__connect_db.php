@@ -1,9 +1,9 @@
 <?php
 $db_host = 'localhost';
 $db_name = 'onetemple';
-$db_user = 'root';
-$db_pass = 'Touji1231';
-// cc543a
+$db_user = 'cheng';
+$db_pass = 'cc543a';
+
 // data source name
 $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', $db_host, $db_name);
 
