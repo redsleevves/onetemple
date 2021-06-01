@@ -1,7 +1,13 @@
 <?php include __DIR__ . '/parts/config.php'; ?>
 <?php
-$title = '購物車';
-$pageName = 'cart';
+$_gdata = [
+    // 網頁名稱
+    'title' => '灣廟 | 購物車', 
+    // 頁面私有 css
+    'styles' => '<link rel="stylesheet" href="'.WEB_ROOT.'/css/navbar2.css">',
+    //頁面私有 scripts
+    '', 
+];
 
 ?>
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
@@ -339,7 +345,7 @@ $pageName = 'cart';
         }
     }
 </style>
-<?php include __DIR__ . '/parts/ournav.php'; ?>
+<?php include __DIR__ . '/parts/navbar2.php'; ?>
 
 <div class="container cart col-lg-10 col-12">
     <section class="bill container-fluid col-3">
