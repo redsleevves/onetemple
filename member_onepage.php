@@ -3,14 +3,14 @@
 <?php
 $_gdata = [
     // 網頁名稱
-    'title' => '聖地行旅', 
+    'title' => '灣廟 | 會員中心', 
     // 頁面私有 css
-    'styles' => '<link rel="stylesheet" href="'.WEB_ROOT.'/css/member_data.css">',
+    'styles' => '<link rel="stylesheet" href="'.WEB_ROOT.'/css/member_data.css"><link rel="stylesheet" href="'.WEB_ROOT.'/css/navbar2.css">',
     //頁面私有 scripts
     'scripts' => '', 
 ];
 
-$title = '會員中心';
+$title = '灣廟 | 會員中心';
 $pageName = 'member';
 $member_sid = $_SESSION['user']['sid'];
 
@@ -24,7 +24,6 @@ $lucky_sql = "SELECT fav_lucky.sid, member.sid AS member_id, fav_lucky.lucky_sid
 $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
 ?>
-<?php include __DIR__ . '/parts/ourhead.php'; ?>
     <style>
         body {
             font-family: 'Faustina', serif;
@@ -499,6 +498,20 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         .lucky_pop{
             background-image: url(<?= WEB_ROOT ?>/img/bcc.png);
         }
+        .ppic{
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
+        .member_img{
+            width: 400px;
+            height: 400px;
+        }
+        .member_img img{
+            width: 100%;
+            height: 100%;
+            object-fit:cover;
+        }
         @media screen and (min-width: 1000px) {
             .popwindow {
             width: 35%;
@@ -896,8 +909,8 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         }
 
     </style>
-
-<?php include __DIR__ . '/navbar2.php'; ?>
+<?php include __DIR__ . '/parts/ourhead.php'; ?>
+<?php include __DIR__ . '/parts/navbar2.php'; ?>
     <div class="popwindow">
             <h3>會員資料修改</h3>
         <form name="editMyData" class="editMyData" method="post" novalidate onsubmit="checkEdit(); return false;">
@@ -1059,9 +1072,9 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         <!-- 底部照片+個人資料 -->
         <div class=" displayflex jucse aic maxwidth displayno_md">
             <!-- 底部照片頭像 -->
-            <div class=" col-lg-5 col-10 marginauto">
+            <div class="col-lg-5 col-10 marginauto ppic">
                 <div class="member_img">
-                <img id="myimg" src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>" alt="">
+                    <img id="myimg" src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>" alt="">
                 </div>
                 <div class="member_upimg">
                     <img src="<?= WEB_ROOT ?>/img/uplaod.png" onclick="avatar.click()">
@@ -2005,7 +2018,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         .then(r=>r.json())
         .then(obj=>{
             if(obj.success) {
-                document.querySelector('#myimg').src = 'imgs/' + obj.filename;
+                document.querySelector('#myimg').src = 'upload/' + obj.filename;
             }
         })
     });
