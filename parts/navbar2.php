@@ -43,13 +43,13 @@
                     <a class="dropdown-item nav_ser_item_mob" href="#">祈福點燈</a>
                     <a class="dropdown-item nav_ser_item_mob" href="#">求神問卜</a>
                 </ul>
-                <a href="">
+                <a href="trip.php">
                     <li>聖地行旅</li>
                 </a>
                 <a href="">
                     <li>祈福商店</li>
                 </a>
-                <a href="">
+                <a href="cart.php">
                     <li>購物車</li>
                 </a>
                 <?php if(isset($_SESSION['user'])): ?>
@@ -98,7 +98,7 @@
                             </ul>
                         </a>
 
-                        <a href="" class="nav_navbar_item">
+                        <a href="trip.php" class="nav_navbar_item">
                             <div class="nav_hide_ch">聖地行旅</div>
                             <div class="nav_hide_en">TRIP</div>
                         </a>
@@ -106,7 +106,7 @@
                             <div class="nav_hide_ch">祈福商店</div>
                             <div class="nav_hide_en">SHOP</div>
                         </a>
-                        <a href="" class="nav_navbar_item">
+                        <a href="cart.php" class="nav_navbar_item">
                             <div class="nav_hide_ch">購物車</div>
                             <div class="nav_hide_en">CART</div>
                         </a>

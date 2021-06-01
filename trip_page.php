@@ -60,7 +60,7 @@ for($i=0;$i<count($hot_trips);$i++) {
 <!-- 整個頁面的頭 -->
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
 <!-- 導航用代碼包含彈窗 -->
-<?php include __DIR__ . '/parts/ournav.php'; ?>
+<?php include __DIR__ . '/parts/navbar2.php'; ?>
 
     <input type="hidden" name="price" id="trip_price" value="<?=$trip['price']?>">
     <input type="hidden" name="trip_id" id="trip_id" value="<?=$trip['id']?>">
@@ -718,7 +718,7 @@ foreach($pc_hot_trips as $key => $group) {
         <div class="trip_fixed_bottom1 py-2"><i class="fas fa-shopping-cart px-2" style="color: #fff;"></i><span>已</span>加入購物車
         </div>
         <div class="trip_fixed_bottom_line"></div>
-        <div class="trip_fixed_bottom1 py-2">前往結帳</div>
+        <div class="trip_fixed_bottom1 py-2" onclick="location.href='cart.php';">前往結帳</div>
     </div>
     </div>
 
