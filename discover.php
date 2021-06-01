@@ -60,10 +60,10 @@ $_gdata = [
             background-color: #cc543a;
             color: white;
             letter-spacing: 3px;
-            display: flex;
+            position: absolute;
+            bottom:0;
             justify-content: center;
             align-items: center;
-            z-index: 2;
         }
 
         .discover_head {
@@ -690,6 +690,7 @@ $_gdata = [
 
             .discover_box {
                 justify-content: center;
+                margin-bottom:100px;
             }
 
             .intro {
