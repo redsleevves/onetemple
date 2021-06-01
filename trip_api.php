@@ -1,6 +1,12 @@
 <?php
 require __DIR__ . "/parts/config.php";
 
+if (!isset($_SESSION['user']['sid'])) {
+    $result['success'] = false;
+    $result['code'] = 500;
+    $result['info'] = '請先登入會員';
+    echo json_encode($result, JSON_UNESCAPED_UNICODE);
+}
 if ($_POST['op'] == 'add_cart') {
     $trip = [
         'id' => $_POST['id'],
@@ -11,7 +17,7 @@ if ($_POST['op'] == 'add_cart') {
         'note' => $_POST['date'],
     ];
     
-    $_SESSION['cart']['trip'][] = $trip; // append to $_SESSION['cart']['trip']
+    $_SESSION['cart']['plan'][] = $trip; // append to $_SESSION['cart']['plan']
     
     $result['success'] = true;
     $result['code'] = 200;

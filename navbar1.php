@@ -1,4 +1,4 @@
-    <div class="nav_burgurBar">
+    <div class="nav_burgurBar" id="nav_burgurBar">
         <div class="nav_burgurBar_img">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20">
                 <g id="Group_135" data-name="Group 135" transform="translate(-341.5 -1313.5)">
@@ -71,48 +71,42 @@
         </div>
     </div>
 
-    <!-- 電腦螢幕大小的navbar -->
-    <nav class="nav_navbar_com">
-        <div class="nav_navbar_com_container">
-            <!-- 請依檔案位置修改logo路徑 -->
-            <img src='<?= WEB_ROOT ?>/img/nav_logo.svg'>
+    <div class="nav_index_navbar_com" id="nav_index_navbar_com">
+        <div class="nav_index_navbarBox">
+            <div class="nav_index_navbar_left">
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">最新消息</div>
+                    <div class="nav_hide_en">NEWS</div>
+                </a>
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">探索灣廟</div>
+                    <div class="nav_hide_en">EXPLORE</div>
+                </a>
+                <a href="#" class="nav_navbar_item nav_ser">
+                    <div class="nav_hide_ch">線上服務</div>
+                    <div class="nav_hide_en">SERVICE</div>
 
-            <div class="nav_navbar">
-                <div class="nav_navbarBox">
-                    <div class="nav_nav_left">
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">最新消息</div>
-                            <div class="nav_hide_en">NEWS</div>
-                        </a>
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">探索灣廟</div>
-                            <div class="nav_hide_en">EXPLORE</div>
-                        </a>
-                        <a href="#" class="nav_navbar_item nav_ser">
-                            <div class="nav_hide_ch">線上服務</div>
-                            <div class="nav_hide_en">SERVICE</div>
-
-                            <ul class="nav_dropDownMenu">
-                                <a class="dropdown-item nav_ser_item" href="#">祈福點燈</a>
-                                <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
-                            </ul>
-                        </a>
-
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">聖地行旅</div>
-                            <div class="nav_hide_en">TRIP</div>
-                        </a>
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">祈福商店</div>
-                            <div class="nav_hide_en">SHOP</div>
-                        </a>
-                        <a href="" class="nav_navbar_item">
-                            <div class="nav_hide_ch">購物車</div>
-                            <div class="nav_hide_en">CART</div>
-                        </a>
-                    </div>
-                    <div class="nav_nav_right">
-                    <?php if(isset($_SESSION['user'])): ?>
+                    <ul class="nav_dropDownMenu">
+                        <a class="dropdown-item nav_ser_item" href="#">祈福點燈</a>
+                        <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
+                    </ul>
+                </a>
+                
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">聖地行旅</div>
+                    <div class="nav_hide_en">TRIP</div>
+                </a>
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">祈福商店</div>
+                    <div class="nav_hide_en">SHOP</div>
+                </a>
+                <a href="" class="nav_navbar_item">
+                    <div class="nav_hide_ch">購物車</div>
+                    <div class="nav_hide_en">CART</div>
+                </a>
+            </div>
+            <div class="nav_index_navbar_right">
+            <?php if(isset($_SESSION['user'])): ?>
                     <li class="nav-item d-flex align-items-center">
                         <img src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
                         <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
@@ -121,22 +115,17 @@
                         <a class="nav-link" href="logout.php">登出</a>
                     </li>
                     <?php else: ?>
-                        <a href="login.php" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item <?= $pageName=='login' ? 'active' : '' ?>" >
-                            <div>登入</div>
-                        </a>
-                        <span class="nav_navbar_item">|</span>
-                        <a href="register.php" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item <?= $pageName=='register' ? 'active' : '' ?>">
-                            <div>註冊</div>
-                        </a>
-                        <?php endif; ?>
-                    </div>
-                </div>
+                <a href="login.php" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item <?= $pageName=='login' ? 'active' : '' ?>">
+                    <div>登入</div>
+                </a>
+                <span class="nav_navbar_item">|</span>
+                <a href="register.php" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item <?= $pageName=='register' ? 'active' : '' ?>">
+                    <div>註冊</div>
+                </a>
+                <?php endif; ?>
             </div>
-
         </div>
-
-        <hr class="nav_navline">
-    </nav>
+    </div>
 
     <!-- login -->
     <div class="modal fade" id="loginCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
@@ -150,16 +139,14 @@
                     <h5 class="modal-title" id="exampleModalCenterTitle">登入 | LOGIN</h5>
                 </div>
                 <div class="modal-body">
-                    <form class="mt-3"  name="formLog" method="post" novalidate onsubmit="checkLogin(); return false;">
+                    <form class="mt-3" name="formLog" method="post" novalidate onsubmit="checkLogin(); return false;">
                         <div class="form-group mb-3">
                             <input type="text" class="form-control form-control-re" id="login_email" name="email" placeholder="Email">
                             <small class="form-text error"></small>
-
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-re"  type="password" id="login_password"  name="password" placeholder="Password">
+                            <input class="form-control form-control-re" id="login_password"  name="password" placeholder="Password">
                             <small class="form-text error"></small>
-
                         </div>
                         <input type="checkbox"> 記住帳號
                         <div class="modal-footer modal-footer-re">
@@ -167,7 +154,6 @@
                 </div>
                     </form>
                 </div>
-
                 <div class="modal-footer2-re mt-3">
                     <a class="mr-5" data-toggle="modal" data-target="#lostPassword" id="passwordbtn">忘記密碼</a>
                     <a data-toggle="modal" data-target="#registerCenter" id="registerbtn">註冊帳號</a>
@@ -194,12 +180,11 @@
                             <input type="text" class="form-control form-control-re" id="account-name"
                                 placeholder="Email">
                         </div>
-                        <div class="modal-footer modal-footer-re">
-                    <button type="button" class="btn btn-primary btn-primary-re">送出</button>
-                </div>
                     </form>
                 </div>
-
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn btn-primary btn-primary-re">送出</button>
+                </div>
             </div>
         </div>
     </div>
@@ -227,12 +212,12 @@
                                 placeholder="Email">
                                 <small class="form-text error"></small>
                         </div>
-                        <div class="form-group">
-                            <input class="form-control form-control-re" id="mobile" name="mobile" placeholder="手機號碼">
-                            <small class="form-text error"></small>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control form-control-re" id="mobile" name="mobile" placeholder="手機號碼">
+                                <small class="form-text error"></small>
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-re" name="password" id="password" type="password"
+                            <input class="form-control form-control-re" id="password" type="password"
                              placeholder="密碼">
                         </div>
                         <div class="form-group">
@@ -241,10 +226,9 @@
                         </div>
                         <div class="modal-footer modal-footer-re">
                     <button id='submit'  type="submit" class="btn btn-primary btn-primary-re">註冊</button>
-                    </div>
+                </div>
                     </form>
                 </div>
-                
             </div>
         </div>
     </div>
