@@ -4,7 +4,7 @@ require __DIR__ . "/parts/config.php";
 
 $_gdata = [
     // 網頁名稱
-    'title' => '聖地行旅', 
+    'title' => '灣廟 | 聖地行旅', 
     // 頁面私有 css
     'styles' => '
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -12,7 +12,8 @@ $_gdata = [
     href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css"
     integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ=="
     crossorigin="anonymous" />
-    <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">',
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">',
     //頁面私有 scripts
     'scripts' => '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"
@@ -104,6 +105,7 @@ function getPageLink($page) {
         @media (min-width: 992px) {
             .trip_container {
                 width: 1400px;
+                margin-top: 30px;
             }
 
             .trip_body_bg {

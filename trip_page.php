@@ -2,9 +2,10 @@
 
 require __DIR__ . "/parts/config.php";
 
+
 $_gdata = [
     // 網頁名稱
-    'title' => '聖地行旅', 
+    'title' => '灣廟 | 聖地行旅', 
     // 頁面私有 css
     'styles' => '
     <link rel="stylesheet"
@@ -13,7 +14,8 @@ $_gdata = [
     crossorigin="anonymous" />
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/trip_page.css">
-    <link rel="stylesheet" href="' . WEB_ROOT . '/css/mybtn.css">',
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/mybtn.css">
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">',
     // 頁面私有 scripts
     'scripts' => '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -227,7 +229,7 @@ for($i=0;$i<count($hot_trips);$i++) {
                 </div>
             </div>
         </div>
-        <div class="row pt-4">
+        <div class="row justify-content-between pt-4">
             <div class="col-lg-7 pt-lg-5 d-none d-lg-block">
                 <div class="row">
                     <div class="col-12">
@@ -238,7 +240,7 @@ for($i=0;$i<count($hot_trips);$i++) {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 pt-lg-5 pt-0 d-none d-lg-block">
+            <div class="col-lg-4 pt-lg-5 pt-0 d-none d-lg-block">
                 <h3 class="pb-4">評價 |</h3>
                 <div class="pb-5 d-flex justify-content-between">
                     <div class="d-flex justify-content-start">

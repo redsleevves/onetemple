@@ -413,6 +413,7 @@ h3 {
 @media (min-width: 992px) {
     .trip_container {
         width: 1400px;
+        margin-top: 30px;
     }
     .trip_hot{
         width: 1400px;
