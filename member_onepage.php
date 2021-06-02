@@ -23,14 +23,15 @@ $trip_rows = $pdo->query($trip_sql)->fetchAll();
 $lucky_sql = "SELECT fav_lucky.sid, member.sid AS member_id, fav_lucky.lucky_sid, fav_lucky.getdate, peom.img FROM fav_lucky JOIN member ON member.sid=fav_lucky.member_sid JOIN peom ON fav_lucky.lucky_sid=peom.sid where member.sid='$member_sid'";
 $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
+$lit_sql = "SELECT order_lit_details.bless_name, orders_lit.member_sid AS member_id, order_lit_details.bless_gender, order_lit_details.bless_birth, order_lit_details.bless_address FROM orders_lit JOIN order_lit_details ON orders_lit.sid=order_lit_details.order_lit_sid where member_sid='$member_sid'";
+$lit_rows = $pdo->query($lit_sql)->fetchAll();
+
 ?>
     <style>
         body {
             font-family: 'Faustina', serif;
             background-image: url(<?= WEB_ROOT ?>/img/bcc.png);
             position: relative;
-            /* min-height: 100vh; */
-            padding-bottom: 150px;
             width: 100vw;
             overflow-x: hidden;
         }
@@ -148,15 +149,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
         footer {
             width: 100%;
-            height: 100px;
-            background-color: #cc543a;
-            color: white;
-            letter-spacing: 3px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            z-index: 3;
+
         }
 
         .member_head {
@@ -165,6 +158,10 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+        }
+
+        .member_head h4{
+            font-size:18px !important;
         }
 
         .fav_product img {
@@ -512,6 +509,11 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             height: 100%;
             object-fit:cover;
         }
+        .family{
+            width: 50%;
+            margin: auto;
+            margin-top:100px;
+        }
         @media screen and (min-width: 1000px) {
             .popwindow {
             width: 35%;
@@ -667,6 +669,14 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         }
 
         @media screen and (max-width: 1000px) {
+            .fav p{
+                margin-bottom:0;
+            } 
+
+            .member_img{
+            width: 250px;
+            height: 250px;
+            }
             .popwindow {
                 width: 90%;
             }
@@ -731,6 +741,9 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             .tab h4 {
                 margin: 0;
             }
+            .member_profile p{
+                font-size:16px;
+            }
 
             .prow {
                 margin: 30px 0;
@@ -741,8 +754,17 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
                 display: none;
             }
 
+            .fav_product_container{
+                height: 240px;
+            }
+
             .fav_product_card {
-                width: 160px;
+                width: 200px;
+            }
+
+            .fav_product_card p{
+                font-size:16px;
+                margin-top:10px;
             }
 
             .prod_pic {
@@ -757,12 +779,17 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             }
 
             .fav_plan_container {
+                height: 220px;
                 margin: 0;
                 overflow: scroll;
             }
 
+            .fav_plan_card{
+                height: 90%;
+            }
+
             .fav_plan_container h3 {
-                font-size: 16px;
+                font-size: 16px !important;
             }
 
             .fav_plan_container p {
@@ -770,26 +797,31 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             }
 
             .fav_plan_container span {
-                font-size: 18px;
+                font-size: 14px;
             }
 
             .fav_plan_container button {
-                font-size: 16px;
+                font-size: 13px;
             }
 
             .fav_lucky_card {
-                height: 360px;
-                width: 200px;
-                border: none;
-                background-color: white;
-                margin-right: 50px;
-
+                height: 250px;
+                margin-right: 10px;
             }
 
             .fav_lucky_container {
+                height: 300px;
                 padding: 0;
                 margin: 20px 0;
                 overflow: scroll;
+            }
+
+            .more button{
+                font-size:16px;
+            }
+
+            .fav_lucky_card p{
+                font-size: 14px;
             }
 
             .fav_product_card .delete {
@@ -1068,7 +1100,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         </div>
         <hr id=pointer>
     </section>
-    <div class="member_profile padtp50 container-fluid animate__animated animate__slideInLeft ">
+    <div class="member_profile padtp50 container-fluid animate__animated animate__fadeInUp animate__faster">
         <!-- 底部照片+個人資料 -->
         <div class=" displayflex jucse aic maxwidth displayno_md">
             <!-- 底部照片頭像 -->
@@ -1153,12 +1185,11 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
                 <!-- 手機用 底部照片頭像 -->
                 <div class=" col-lg-5 col-10 marginauto">
                     <div class="member_img">
-                        <img src="<?= WEB_ROOT ?>/img/member_my.png">
+                        <img src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
                     </div>
                     <div class="member_upimg">
                         <img src="<?= WEB_ROOT ?>/img/uplaod.png">
                     </div>
-
                 </div>
                 <!-- 手機用  會員資料 -->
                 <div class=" padtp10_md">
@@ -1173,80 +1204,68 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
                             </div>
                         </div>
                         <!-- 手機用  會員資料_內文集合 -->
-                        <div class="set col-11 marginauto p-0">
+                        <div class="set col-10 marginauto p-0">
                             <!-- 手機用  會員資料_內文組 -->
-                            <div class=" displayflex_md pad00150 ">
+                            <div class=" displayflex_md">
                                 <div class="text_p displayflex_md jcsb col-4 p-0">
                                     <p class="">姓名</p>
                                     <p class="">|</p>
                                 </div>
-                                <P class="col">峰峰峰峰峰</P>
+                                <P class="col"><?= htmlentities($_SESSION['user']['name']) ?></P>
                             </div>
 
 
-                            <div class=" displayflex_md pad00150 ">
+                            <div class=" displayflex_md">
                                 <div class="text_p displayflex_md jcsb col-4 p-0">
                                     <p class="">生日</p>
                                     <p class="">|</p>
                                 </div>
-                                <P class="col">1990/01/01</P>
+                                <P class="col"><?= htmlentities($_SESSION['user']['birth']) ?></P>
                             </div>
-                            <div class=" displayflex_md pad00150 ">
-                                <div class="text_p displayflex_md jcsb col-4 p-0">
-                                    <p class="">生辰</p>
-                                    <p class="">|</p>
-                                </div>
-                                <P class="col">吉時</P>
-                            </div>
-                            <div class=" displayflex_md pad00150 ">
+                            <div class=" displayflex_md">
                                 <div class="text_p displayflex_md jcsb col-4 p-0">
                                     <p class="">性別</p>
                                     <p class="">|</p>
                                 </div>
-                                <P class="col">男</P>
+                                <P class="col"><?= htmlentities($_SESSION['user']['gender']) ?></P>
                             </div>
-                            <div class=" displayflex_md pad00150 ">
+                            <div class=" displayflex_md">
                                 <div class="text_p displayflex_md jcsb col-4 p-0">
                                     <p class="">密碼</p>
                                     <p class="">|</p>
                                 </div>
                                 <P class="col">********</P>
                             </div>
-                            <div class=" displayflex_md pad00150 ">
+                            <div class=" displayflex_md">
                                 <div class="text_p displayflex_md jcsb col-4 p-0">
                                     <p class="">連絡電話</p>
                                     <p class="">|</p>
                                 </div>
-                                <P class="col">0987654321</P>
+                                <P class="col"><?= htmlentities($_SESSION['user']['mobile']) ?></P>
                             </div>
-                            <div class=" displayflex_md pad00150 ">
+                            <div class=" displayflex_md">
                                 <div class="text_p displayflex_md jcsb col-4 p-0">
                                     <p class="">電子信箱</p>
                                     <p class="">|</p>
                                 </div>
-                                <P class="col">abc@gmail.com</P>
+                                <P class="col"><?= htmlentities($_SESSION['user']['email']) ?></P>
                             </div>
-                            <div class=" displayflex_md pad00150 ">
+                            <div class=" displayflex_md">
                                 <div class="text_p displayflex_md jcsb col-4 p-0">
                                     <p class="">地址</p>
                                     <p class="">|</p>
                                 </div>
-                                <P class="col">100 台北市中正區中正路100號1樓1111</P>
+                                <P class="col"><?= htmlentities($_SESSION['user']['address']) ?></P>
                             </div>
                         </div>
-
-
-
                     </div>
-
                 </div>
             </div>
         </div>
 
         <!--  親友資料 -->
-        <div class=" maxwidth1400 marginauto padtp100  displayno_md">
+        <div class="family displayno_md">
             <!--  親友資料標題 -->
-
             <div class="d-flex pad00150 aic col-12">
                 <h3>親友資料</h3>
                 <button class="butstyle d-flex aic popeditfriends ml-4">
@@ -1254,52 +1273,30 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
                     <p class="pl-2">修改</p>
                 </button>
             </div>
-
-
             <!-- 親友資料表 -->
-            <div class="displayno_md">
-
-                <div class="member_tablehead d-flex col-12 marginauto pad00200 borderbtline">
-                    <p class="col-1">姓名</p>
+            <div class="displayno_md col-12">
+                <div class="member_tablehead d-flex col-12 marginauto borderbtline">
+                    <p class="col-2">姓名</p>
                     <p class="col-1">性別</p>
                     <p class="col-2">生日(國曆)</p>
                     <p class="col-2">生日(農曆)</p>
-
                     <p class="col">地址</p>
 
                 </div>
-                <div class="member_tablehead d-flex col-12 marginauto pad200">
-                    <p class="col-1">封封封封</p>
-                    <p class="col-1">男</p>
-                    <p class="col-2">1990/01/01</p>
-                    <p class="col-2">1990/01/01</p>
-
-                    <p class="col">100 台北市中正區中正路100號1樓</p>
-
+                <?php foreach ($lit_rows as $k) : ?>
+                <div class="member_tablehead d-flex col-12 marginauto">
+                    <p class="col-2"><?= $k['bless_name'] ?></p>
+                    <p class="col-1"><?= $k['bless_gender'] ?></p>
+                    <p class="col-2"><?= $k['bless_birth'] ?></p>
+                    <p class="col-2"><?= $k['bless_birth'] ?></p>
+                    <p class="col"><?= $k['bless_address'] ?></p>
                 </div>
-                <div class="member_tablehead d-flex col-12 marginauto pad00200">
-                    <p class="col-1">小李</p>
-                    <p class="col-1">男</p>
-                    <p class="col-2">1990/01/01</p>
-                    <p class="col-2">1990/01/01</p>
-
-                    <p class="col">100 台北市中正區中正路100號11111111111111111111樓</p>
-                </div>
-                <div class="member_tablehead d-flex col-12 marginauto pad00200">
-                    <p class="col-1">小李</p>
-                    <p class="col-1">男</p>
-                    <p class="col-2">1990/01/01</p>
-                    <p class="col-2">1990/01/01</p>
-
-                    <p class="col">100 台北市中正區中正路100號111111111111111111111111樓</p>
-                </div>
-
-
+                <?php endforeach; ?>
             </div>
         </div>
 
         <!-- 手機用  親友資料 -->
-        <div class=" maxwidth1400 marginauto padtp100 displayno col-11">
+        <div class=" maxwidth1400 marginauto padtp50 displayno col-11">
             <!-- 手機用  親友資料標題 -->
             <div class=" displayflex_md pad00150">
                 <h5 class="margin0">親友資料</h5>
@@ -1311,47 +1308,28 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             </div>
             <!-- 手機用 親友資料表 -->
             <div class="marginauto">
-
-                <div class="member_tablehead d-flex col-11 marginauto pad00200 borderbtline">
-                    <p class="col-3">姓名</p>
-                    <p class="col-3">性別</p>
+                <div class="member_tablehead d-flex col-12 marginauto borderbtline mb-4">
+                    <p class="col-4">姓名</p>
+                    <p class="col-2">性別</p>
                     <p class="col displayno_md">生日(國曆)</p>
                     <p class="col">生日(農曆)</p>
                     <p class="col displayno_md">生辰</p>
                     <p class="col displayno_md">地址</p>
-
                 </div>
-                <div class="member_tablehead d-flex col-11 marginauto pad200">
-                    <p class="col-3">小李</p>
-                    <p class="col-3">男</p>
-                    <p class="col displayno_md">1990/01/01</p>
-                    <p class="col">1990/01/01</p>
-                    <p class="col displayno_md">子時</p>
-                    <p class="col displayno_md">100 台北市中正區中正路100號1樓</p>
-
+                <?php foreach ($lit_rows as $k) : ?>
+                <div class="member_tablehead d-flex col-12 marginauto">
+                    <p class="col-4"><?= $k['bless_name'] ?></p>
+                    <p class="col-2"><?= $k['bless_gender'] ?></p>
+                    <p class="col displayno_md"><?= $k['bless_birth'] ?></p>
+                    <p class="col"><?= $k['bless_birth'] ?></p>
+                    <p class="col displayno_md"><?= $k['bless_address'] ?></p>
                 </div>
-                <div class="member_tablehead d-flex col-11 marginauto pad00200">
-                    <p class="col-3">小李</p>
-                    <p class="col-3">男</p>
-                    <p class="col displayno_md">1990/01/01</p>
-                    <p class="col ">1990/01/01</p>
-                    <p class="col displayno_md">子時</p>
-                    <p class="col displayno_md">100 台北市中正區中正路100號11111111111111111111樓</p>
-                </div>
-                <div class="member_tablehead d-flex col-11 marginauto pad00200">
-                    <p class="col-3">小李</p>
-                    <p class="col-3">男</p>
-                    <p class="col displayno_md">1990/01/01</p>
-                    <p class="col">1990/01/01</p>
-                    <p class="col displayno_md">子時</p>
-                    <p class="col displayno_md">100 台北市中正區中正路100號111111111111111111111111樓</p>
-                </div>
-
+                <?php endforeach; ?>                
             </div>
         </div>
 
     </div>
-    <section class="fav container-fluid animate__animated animate__slideInLeft d-none">
+    <section class="fav container-fluid animate__animated animate__fadeInUp animate__faster d-none">
         <div class="fav_product col-lg-8">
             <div class="d-flex justify-content-between">
                 <p>produc / 商品</p>
@@ -1360,7 +1338,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             <div class='d-flex align-items-center col-lg-12'>
                 <i class="fas fa-chevron-left control control_prod"></i>
                 <div id="fav_product_container" class="prow">
-                    <div  class="fav_product_container col-xs-12">
+                    <div class="fav_product_container col-xs-12">
                         <?php foreach ($pdc_rows as $p) : ?>
                         <div class="fav_product_card col-lg-3 p-0">
                         <a href="javascript:delete_fav_pdc(<?= $p['sid'] ?>)">
@@ -1419,7 +1397,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
                             <img src="<?= WEB_ROOT ?>/img/<?= $l['img'] ?>">
                             <div class="more"><button data-toggle="modal" data-target="#lucky_Modal">點擊查看</button>
                             </div>
-                            <p><?= $l['getdate'] ?></p>
+                            <p>求籤日期：<br><?= $l['getdate'] ?></p>
                         </div>
                         <?php endforeach; ?>
                     </div>
@@ -1428,7 +1406,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             </div>
         </div>
     </section>
-    <section class="ordertable container-fluid animate__animated animate__slideInLeft d-none">
+    <section class="ordertable container-fluid animate__animated animate__faster animate__fadeInUp d-none">
         <table class="table table-borderless fixrow abstract col-lg-7">
             <thead>
                 <tr>
@@ -1563,7 +1541,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             <img src="<?= WEB_ROOT ?>/img/deco_Incense.png">
         </div>
     </section>
-    <section class="order_mobile container-fluid animate__animated animate__slideInLeft">
+    <section class="order_mobile container-fluid animate__animated animate__faster animate__fadeInUp d-none">
         <table class="order_card col-12">
             <thead class="order_mobile_info">
                 <tr>
@@ -1737,9 +1715,6 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         </div>
     </div>
     </div>
-    <footer>
-        <p>Copyright© TempleTrip.tw</p>
-    </footer>
     <?php include __DIR__ . '/parts/ourscripts.php'; ?>
 
     <script>
@@ -1747,7 +1722,7 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
         function dynamicFooter(e) {
             let fixhead = document.querySelector('.member_head').offsetHeight
             let fixnav = document.querySelector('.nav_navbar_com_container').offsetHeight
-            $('footer').css('top', e + fixhead + fixnav + 'px')
+            $('footer').css('top', e + fixhead + fixnav + 80 + 'px')
             // $('.backdeco').css('bottom', e + fixhead + fixnav + 'px')
             $('body').css('height', e + 300 + 'px')
         }
@@ -1775,10 +1750,10 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             $('#Ellipse_5').attr('fill', '#cc543a')
             $('#Path_18').attr('fill', 'silver')
             $('#gratipay-brands').attr('fill', 'silver')
-            $('.member_profile').removeClass('animate__slideOutRight')
-            $('.fav').addClass('animate__slideOutRight')
-            $('.ordertable').addClass('animate__slideOutRight')
-            $('.order_mobile').addClass('animate__slideOutRight')
+            $('.member_profile').removeClass('d-none')
+            $('.fav').addClass('d-none')
+            $('.ordertable').addClass('d-none')
+            $('.order_mobile').addClass('d-none')
             let el = document.querySelector('.member_profile')
             let elh = el.offsetHeight
             dynamicFooter(elh)
@@ -1789,10 +1764,10 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             $('#gratipay-brands').attr('fill', '#cc543a')
             $('#Path_18').attr('fill', 'silver')
             $('#Ellipse_5').attr('fill', 'silver')
-            $('.fav').removeClass('animate__slideOutRight d-none')
-            $('.member_profile').addClass('animate__slideOutRight')
-            $('.ordertable').addClass('animate__slideOutRight')
-            $('.order_mobile').addClass('animate__slideOutRight')
+            $('.member_profile').addClass('d-none')
+            $('.fav').removeClass('d-none')
+            $('.ordertable').addClass('d-none')
+            $('.order_mobile').addClass('d-none')
             control1()
             control2()
             control3()
@@ -1806,10 +1781,10 @@ $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
             $('#gratipay-brands').attr('fill', 'silver')
             $('#Ellipse_5').attr('fill', 'silver')
             $('#Path_18').attr('fill', '#cc543a')
-            $('.ordertable').removeClass('animate__slideOutRight d-none')
-            $('.order_mobile').removeClass('animate__slideOutRight')
-            $('.fav').addClass('animate__slideOutRight')
-            $('.member_profile').addClass('animate__slideOutRight')
+            $('.ordertable').removeClass('d-none')
+            $('.order_mobile').removeClass('d-none')
+            $('.fav').addClass('d-none')
+            $('.member_profile').addClass('d-none')
             let el = document.querySelector('.ordertable')
             let elh = el.offsetHeight + 300
             console.log(elh)
