@@ -6,7 +6,7 @@ $_gdata = [
     // 頁面私有 css
     'styles' => '<link rel="stylesheet" href="'.WEB_ROOT.'/css/navbar2.css">',
     //頁面私有 scripts
-    '', 
+    'scripts' => '', 
 ];
 
 ?>
