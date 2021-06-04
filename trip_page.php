@@ -31,7 +31,7 @@ $_gdata = [
 ];
 
 // SELECT * FROM trip WHERE id = ''
-$member_sid = $_SESSION['user']['sid'];
+$member_sid = isset($_SESSION['user'])?$_SESSION['user']['sid']:0;
 $sql = "SELECT t.*, IFNULL(f.sid, 0) as fav 
 FROM trips as t 
 LEFT JOIN fav_trip as f ON t.id = f.trip_sid and f.member_sid = ? 

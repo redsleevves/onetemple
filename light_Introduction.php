@@ -68,6 +68,7 @@
 
         /* page_1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
         .light_Introduction_page_1_set {
+            position: relative;
             background-image: url(./img/lightIntro_banner.jpg);
             width: 100%;
             height: 100vh;
