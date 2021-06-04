@@ -1,4 +1,4 @@
-<div class="nav_burgurBar">
+<div id="nav_burgurBar" class="nav_burgurBar">
         <div class="nav_burgurBar_img">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20">
                 <g id="Group_135" data-name="Group 135" transform="translate(-341.5 -1313.5)">
@@ -35,7 +35,7 @@
                 <a href="<?= WEB_ROOT?>/news_main.php">
                     <li>最新消息</li>
                 </a>
-                <a href="<?= WEB_ROOT?>/discover.php">
+                <a href="">
                     <li>探索灣廟</li>
                 </a>
                 <li class="nav_ser_mobile">
@@ -52,7 +52,7 @@
                 <a href="">
                     <li>祈福商店</li>
                 </a>
-                <a href="<?= WEB_ROOT?>/cart.php">
+                <a href="">
                     <li>購物車</li>
                 </a>
                 <?php if(isset($_SESSION['user'])): ?>
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <div class="nav_index_navbar_com">
+    <div id="nav_index_navbar_com" class="nav_index_navbar_com">
         <div class="nav_index_navbarBox">
             <div class="nav_index_navbar_left">
                 <a href="<?= WEB_ROOT?>/temple_index.php" class="nav_navbar_item">
@@ -85,7 +85,7 @@
                     <div class="nav_hide_ch">最新消息</div>
                     <div class="nav_hide_en">NEWS</div>
                 </a>
-                <a href="<?= WEB_ROOT?>/discover.php" class="nav_navbar_item">
+                <a href="" class="nav_navbar_item">
                     <div class="nav_hide_ch">探索灣廟</div>
                     <div class="nav_hide_en">EXPLORE</div>
                 </a>
@@ -107,7 +107,7 @@
                     <div class="nav_hide_ch">祈福商店</div>
                     <div class="nav_hide_en">SHOP</div>
                 </a>
-                <a href="<?= WEB_ROOT?>/cart.php" class="nav_navbar_item">
+                <a href="" class="nav_navbar_item">
                     <div class="nav_hide_ch">購物車</div>
                     <div class="nav_hide_en">CART</div>
                 </a>
@@ -239,4 +239,3 @@
             </div>
         </div>
     </div>
-
