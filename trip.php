@@ -63,7 +63,7 @@ if($total_pages > 0) {
     $page = 1;
 }
 $limit = sprintf("LIMIT %s, %s", ($page - 1)*$per_page, $per_page);
-$member_sid = ($_SESSION['user'])?$_SESSION['user']['sid']:0;
+$member_sid = isset($_SESSION['user'])?$_SESSION['user']['sid']:0;
 //組合SQL
 $sql = "SELECT t.*, IFNULL(f.sid, 0) as fav 
 FROM trips as t 

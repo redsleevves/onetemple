@@ -42,8 +42,8 @@ if(isset($_POST['shipment_method']) ){
     //訂單總金額
     $order_totalPrice = $product_totalPrice + $shipment_fee;
 
-    //測試用
-    // $member_sid = 'abc111';
+    //member-sid
+    $member_sid = ($_SESSION['user']) ? $_SESSION['user']['sid'] : 0;
 
 //order_sum
 $o_sql = "INSERT INTO `order_sum`(
