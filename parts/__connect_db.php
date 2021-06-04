@@ -2,7 +2,7 @@
 $db_host = 'localhost';
 $db_name = 'onetemple';
 $db_user = 'root';
-$db_pass = 'Touji1231';
+$db_pass = '';
 
 // data source name
 $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', $db_host, $db_name);
