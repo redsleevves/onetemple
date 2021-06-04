@@ -1,0 +1,1042 @@
+body {
+    font-family: 'Faustina', serif,'Noto Serif TC';
+    background-image: url(../img/background/bcc.png);
+    font-size: 16px;
+   
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #707070;
+}
+
+@media only screen and (min-width: 1000px) {
+    /* 導覽列特效 */
+    /* .shop_nav_li:hover{
+        transform:scale(1.1);
+    }
+    .shop_nav_li:active{
+        color:#cc543a;
+    }
+    .shop_nav_li:visited{
+        color:#2219ce;
+    } */
+    /* 商品分類欄位特效 */
+    /* .shop_effect:hover{
+        transform:scale(1.1);
+    }
+    .shop_effect:active{
+        color:#cc543a;
+    } */
+    /* 換頁按鈕特效 */
+    /* .page-item:hover{
+        color:#fff;
+        background-color: #cc543a;
+    } */
+
+    /* -------------- */
+
+    .shop_body_outer{
+        position: relative;
+    }
+    .d-flex{
+        justify-content: space-between;
+    }
+    .shop_magnifier{
+        display: block;
+    }
+    .trip_item {
+
+        background-color: #FFF;
+    }
+
+    .trip_item_body {
+        font-size: 20px;
+    }
+
+    .trip_item_body_title {
+        color: #cc543a;
+        font-weight: bold;
+        font-size: 26px;
+    }
+
+    .trip_item_body_body {
+        color: #666;
+    }
+
+    .trip_item_body_body i {
+        width: 30px;
+        text-align: center;
+    }
+
+    .fake_img {
+        width: 100%;
+        height: 370px;
+        background-color: lightblue;
+    }
+    .shop_search01{
+        display: block;
+        border-bottom: 2px solid #c0c0c0;
+        font-size: 24px;
+    }
+    .shop_search02{
+        display: none;
+    }
+
+    .shop_search01 input {
+        font-size: 20px;
+    }
+
+    .shop_search01 i {
+        font-size: 24px;
+        color: #c0c0c0;
+        position: absolute;
+        right: 0px;
+        top: 15px;
+    }
+
+    .trip_category {
+        color: #707070;
+    }
+    .trip_category ul{
+        padding: 0;
+    }
+    .trip_category ul li {
+        font-size: 22px;
+        
+    }
+
+    .trip_item_body_more {
+        background-color: #cc543a;
+        border-radius: 40px;
+    }
+
+    .tripc_item_body_price span {
+        color: #cc543a;
+        font-weight: bold;
+        font-size: 26px;
+    }
+
+    .trip_select_area.collapsed i {
+        transform: rotate(180deg);
+        transition-property: transform;
+    }
+
+    .trip_select_area {
+        color: #707070;
+    }
+
+    .trip_select_area i {
+        color: #c0c0c0;
+    }
+
+    .trip_select_area:hover {
+        color: #707070;
+        text-decoration: none;
+    }
+
+    #trip_price_range .slider-selection {
+        background: #cc543a;
+    }
+
+    #trip_price_range .slider-handle {
+        border: 5px solid #cc543a;
+        background: #FFF;
+    }
+
+    #trip_price_range .arrow {
+        display: none;
+    }
+
+    #trip_price_range .tooltip-inner {
+        font-family: 'Sitka Display', NSimSun, 'sans-serif';
+        font-size: 20px;
+        padding: 0;
+        color: #000;
+        background-color: transparent;
+    }
+    /* ----------- */
+    #trip_price_range8 .slider-selection {
+        background: #cc543a;
+    }
+
+    #trip_price_range8 .slider-handle {
+        border: 5px solid #cc543a;
+        background: #FFF;
+    }
+
+    #trip_price_range8 .arrow {
+        display: none;
+    }
+
+    #trip_price_range8 .tooltip-inner {
+        font-family: 'Sitka Display', NSimSun, 'sans-serif';
+        font-size: 20px;
+        padding: 0;
+        color: #000;
+        background-color: transparent;
+    }
+    /* ------------ */
+    .shop_page {
+        display: flex;
+        flex-direction: row-reverse;
+        padding-top: 50px;
+    }
+    .pagination{
+      
+    }
+    .shop_page-item {
+        color: #707070;
+        font-size: 24px;
+    }
+    .shop_page-item:hover{
+        color: #fff;
+        background-color: #c0c0c0;
+    }
+    .fa-chevron-right {
+        padding: 0 12px 0 12px;
+
+    }
+
+    .card {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: none;
+        border-radius: 0rem;
+        width: 300px;
+        height: 380px;
+
+    }
+
+    .shop_card_img {
+        margin: 0;
+        padding: 0;
+        width: 220px;
+        height: 320px;
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    .shop_card_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: .5s;
+    }
+    .shop_m0{
+        margin: 0;
+        margin-bottom: 1rem;
+        padding: 0px 5px;
+        font-size: 19px;
+    }
+    .shop_Scaling{
+        opacity: 1;
+        transition: .5s;
+    }
+    .shop_Scaling:hover{
+        transform: scale(1.2);
+        transition: all .3s ease-out;
+        opacity: .5;
+        
+    }
+
+    .card {
+        background-color: transparent;
+        position: relative;
+        /* border: 1px solid #3a41cc; */
+    }
+
+    .icon {
+        position: absolute;
+        right: 70px;
+        top: 5px;
+        z-index: 2;
+        background-color: #FFF;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        border-style:1px solid #cc543a;
+
+    }
+
+    .shop_icon {
+        position: absolute;
+        right: 3%;
+        top: 2%;
+        z-index: 2;
+        background-color: #FFF;
+        border-radius: 50%;
+        width: 42px;
+        height: 42px;
+        border: 2px solid #cc543a;
+        
+    }
+
+    .shop_icon:hover i{
+        font-size: 26px;
+        /* font-weight: 900; */
+        color: #cc543a;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        /* transform: translateY(32%); */
+    }
+    .shop_icon.active{
+        font-size: 26px;
+        /* font-weight: 900; */
+        background-color:#cc543a;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        /* transform: translateY(32%); */
+    }
+    .shop_icon i{
+        font-size: 26px;
+        color: #cc543a;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateY(32%);
+    }
+    .shop_icon .fas{
+        font-size: 20px;
+        color: #fff;
+    }
+    .shop_icon.active i{
+        font-weight: 900;
+        font-size: 24px;
+        color: #fff;
+        transform: translateY(5%);
+    }
+
+    .fa-heart:hover{
+        color: #cc543a;
+        font-weight: 900;
+        font-size: 22px;
+    }
+
+    .card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1.25rem 0 1.25rem 0;
+        /* background-color: transparent; */
+    }
+
+    .card-deck {
+        margin-bottom: 50px;
+    }
+
+
+
+    .col-9 {
+        padding: 0;
+        margin: 0;
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    .breadcrumb {
+        align-items: center;
+        
+    }
+
+    .ml-10 {
+        padding-left: 775px;
+    }
+
+    .ml_120 {
+        margin-left: 150px;
+    }
+
+    .r0 {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 50%;
+        /* width: 60px;
+        height: 60px; */
+        width: 35px;
+        height: 35px;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 10px;
+        border: 1px solid #a2a2a2;
+        align-self: flex-end;
+        margin-bottom: 160px;
+        position: absolute;
+        right: 0%;
+        bottom: 3%;
+
+
+    }
+
+    .r0 img {
+        /* width: 35px;
+        height: 35px; */
+        width: 15px;
+        height: 15px;
+        transform: translate(-1px, 4px);
+    }
+
+    .top0 {
+
+        width: 30px;
+        right: 0;
+    }
+
+    .shop_top100 {
+        
+        padding-bottom: 120px;
+        width: 1400px;
+        
+    }
+
+    .shop_pl_120 {
+        /* padding-left: 120px; */
+    }
+    .shop_pr_100{
+        margin-right: 200px;
+        /* padding-right: 100px; */
+    }
+
+    .shop_pl_100 {
+        padding-left: 120px;
+    }
+    .shop_General{
+       width: 210px;
+    }
+    .shop_space_between {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        /* height: 100vh; */
+    }
+
+    .shop_body{
+        display: flex;
+        justify-content:space-between;
+        margin: 0;
+        padding: 0;
+        
+    }
+
+    .shop_center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* align-items: center; */
+    }
+
+
+
+    .mb-5,
+    .my-5 {
+        margin-bottom: 1.5rem !important;
+    }
+    .shop_Separate {
+        display: flex;
+        flex-direction: column;
+        
+    }
+    .shop_Displacement {
+        display: flex;
+        justify-content: space-between;
+        /* padding: 0 12% 0 12%; */
+        /* padding:上 右 下 左; */
+        /* width: 87.7%; */
+        /* padding-left: 46.15px; */
+    }
+    .left_54{
+        /* padding-left: 46.15px; */
+    }
+    .mr-45 {
+        margin-right: 45px;
+        margin-top: 80px;
+        margin-bottom: px;
+    }
+    .shop_fa_search{
+        display: none;
+    }
+    /* --------------------------------------- */
+    .container-flow {
+        /* overflow: hidden; */
+        margin: 0;
+        padding: 0;
+        /* width: 90%; */
+        /* padding: 100px; */
+        /* margin-right: 200px; */
+    }
+
+
+    .shop_card_img {
+        margin: 0;
+        padding: 0;
+        /* width: 320px;
+        height: 465px; */
+        /* width: 250px; */
+        width: 100%;
+        height: 364px;
+        border-radius: 10px 10px 0% 0%;
+    }
+
+    .shop_card_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .shop_card_body {
+        padding-bottom: 30px;
+        /* width: 320px;
+        height: 600px; */
+        /* width: 250px; */
+        width: 28%;
+        height: 494px;
+        position: relative;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 55px;
+        
+
+    }
+    .shop_fff{
+        background-color:#fff;
+        border-radius: 10px;
+        box-shadow:2px 1px 3px #33333364;
+    }
+    .shop_card02 {
+        display: none;
+    }
+
+
+    .shop_card-text_body{
+        width: 100%;
+        
+    }
+    .shop_card-title {
+        font-size: 22px;
+        margin-top: 10px;
+        padding: 0px 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 280px;
+        padding-bottom: 20px;
+    }
+
+    .shop_card-text {
+        font-size: 16px;
+        
+    }
+    .shop_txt{
+        padding: 0px 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 280px;
+        /* white-space: nowrap;如果還有空間,要不要換行 */
+        /* text-overflow: ellipsis;文字溢出的地方電城點點點 */
+         /* 單行,多出來的文字,縮起來變成點點點 */
+         
+    }
+  
+    /* 手機按鈕 */
+    .shop_phone_button{
+         display: none;
+    }
+    /* .collapse{
+        display: block;
+    } */
+    /* -------押花------------- */
+    .Pressed_flower{
+        position: absolute;
+        z-index: -50;
+        /* width: 300px; */
+        width: 15%;
+        /* bottom: 100px; */
+        top: 75%;
+        left: 200px;
+        display: block;
+    }
+    .Pressed_flower img{
+        width: 100%;
+        height: 100%;
+    }
+  
+}
+
+@media only screen and (max-width: 1000px) {
+  
+    .shop_pbtom{
+        
+        margin-bottom: 100px;
+    }
+    .shop_top100{
+        padding-top: 0px;
+    }
+    .shop_magnifier{
+        display:none;
+    }
+    .shop_Displacement {
+        display: flex;
+        justify-content: space-between;
+        /* padding: 0 12% 0 12%; */
+        /* padding:上 右 下 左; */
+        /* width: 100%; */
+    }
+    .display_none{
+        display: none;
+    }
+    /* --------放大鏡----- */
+    .shop_search01{
+        display: none;
+    }
+    .shop_search02{
+        display: block;
+        position: relative;
+        /* right: 10px; */
+    }
+    .shop_search02 i{
+        position: absolute;
+        right: 8px;
+        top: 12px;
+        font-size: 16px;
+        color:#a2a2a2 ;
+    }
+
+    .shop_search02 input{
+        
+    }
+    .shop_search {
+        /* border-bottom: 2px solid #c0c0c0; */
+        width: 100px;
+        height: 36px;
+        /* line-height: 30px; */
+        /* text-align: center; */
+        background-color: #c0c0c03d;
+        border-radius: 20px;
+        padding: 5px;
+    }
+    .d-flex{
+        padding: 15px;
+    }
+    /* 手機按鈕 */
+    /* .collapse{
+       position: absolute;
+       right: 30px;
+       top: 170px;
+       z-index: 50;
+       
+    } */
+    .shop_phone_btn option{
+        border-radius: 30px;
+        padding: 0px 5px;
+        height: 35px;
+        box-shadow:2px 1px 3px #33333364;
+    }
+   
+    .shop_phone_btn option:active,
+    .shop_phone_btn option:hover{
+        background-color: #cc543a;
+        color: #fff;
+        border-radius: 30px;
+        padding: 0px 5px;
+        height: 35px;
+        box-shadow:2px 1px 3px #33333364;
+    }
+
+      
+    .shop_phone_btn option[value="1"] {
+        background-color: #fff;
+        color: #000;
+      }
+      
+    .shop_phone_btn option[value="2"] {
+        background-color: #fff;
+        color: #000;
+      }
+    .shop_phone_btn option[value="2"]:hover {
+        background-color: #cc543a;
+        color: #fff;
+      }
+      
+    .shop_phone_btn option[value="3"] {
+        background-color: #fff;
+        color: #000;
+      }
+      
+    .shop_phone_btn option[value="4"] {
+        background-color: #fff;
+        color: #000;
+      }
+    .shop_phone_btn option[value="5"] {
+        background-color: #fff;
+        color: #000;
+      }
+    .shop_phone_btn option[value="6"] {
+        background-color: #fff;
+        color: #000;
+      }
+    .shop_phone_btn option[value="7"] {
+        background-color: #fff;
+        color: #000;
+      }
+    .shop_phone_button option{
+        /* background-color: #fff; */
+    }
+    .shop_phone_button{
+        position: relative;
+        display: block;
+        padding-bottom: 25px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 0px 15px 0px 15px;
+        /* padding:上 右 下 左; */
+        
+    }
+    button {
+        padding: 5px 6px;
+        background-color: #fff;
+        box-shadow:2px 1px 3px #33333364;
+        /* #cc543a */
+        color: #a2a2a2;
+        border-radius: 30px;
+        border: none;
+        font-family: 'Sitka Display', NSimSun, 'sans-serif';
+        font-weight: 600;
+        font-size: 14px;
+    }
+    .button:hover{
+        background-color: #a2a2a2;
+        color: #fff;
+    }
+    .btn-primary{
+        background-color: #fff;
+        color: #a2a2a2;
+        border-radius: 30px;
+        box-shadow:2px 1px 3px #33333364;
+        font-family: 'Sitka Display', NSimSun, 'sans-serif';
+        font-size: 14px;
+        padding: 7px 15px;
+        font-weight: 600;
+        
+    }
+    .btn-primary:hover{
+        background-color:#cc543a;
+        color: #fff;
+    }
+    /* ------------------ */
+    .slider-handle {
+        border: 5px solid #cc543a;
+        background: #FFF;
+    }
+    .slider-selection {
+        background: #cc543a;
+    }
+    .slider.slider-horizontal{
+        width: 100%;
+        height: 20px;
+    }
+    /* border-bottom-style: 1px solid #000; */
+    .shop_Separate{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-control{ 
+        
+    }
+   
+    .shop_mt_80{
+        margin: 0;
+        padding: 0;
+        margin-top: 40px;
+    }
+    .trip_category{
+    
+    }
+    .py-2{
+    
+    }
+    .trip_category ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .col-3{
+        padding-left: 0;
+    }
+
+
+
+    .p-5 {
+        padding: 2.3rem!important;
+    }
+
+
+    .shop_card_body {
+        padding-bottom: 30px;
+        width: 140px;
+        height: 270px;
+        /* position: relative; */
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        margin-bottom: 28px;
+        
+
+    }
+    .shop_card02 {
+        display: block;
+        padding-bottom: 30px;
+        width: 140px;
+        height: 270px;
+        /* position: relative; */
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        
+
+    }
+    .shop_card_img {
+        margin: 0;
+        padding: 0;
+        width: 140px;
+        height: 177px;
+        overflow: hidden;
+        background-color: #000;
+        border-radius: 10px 10px 0% 0%;
+    }
+
+    .shop_card_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: .5s;
+    }
+    .shop_fff{
+        background-color:#fff;
+        border-radius: 10px;
+        box-shadow:2px 1px 3px #33333364;
+    }
+    .shop_Scaling{
+        opacity: 1;
+        transition: .5s;
+    }
+    .shop_Scaling:hover{
+        transform: scale(1.2);
+        transition: all .3s ease-out;
+        opacity: .5;
+        
+    }
+    .shop_card-text_body{
+        padding: 10px 0;
+    }
+    .shop_card-title{
+        font-size: 10px;
+        padding: 0px 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-bottom: 10px;
+    }
+    .shop_card-title p {
+        margin: 0;
+    }
+    .shop_card-text{
+        font-size: 8px;
+        padding: 0 5px;
+    }
+    .shop_txt{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        /* white-space: nowrap;如果還有空間,要不要換行 */
+        /* text-overflow: ellipsis;文字溢出的地方電城點點點 */
+        /* width: 250px; */
+    }
+    .shop_card_img{
+        position: relative;
+    }
+    .shop_m0{
+        margin: 0;
+        padding: 0px 5px;
+    }
+    /* -------------------- */
+    
+    .shop_icon {
+        position: absolute;
+        right: 2%;
+        top: 1%;
+        z-index: 2;
+        background-color: #FFF;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #cc543a;
+    }
+
+    .shop_icon:hover{
+        background-color:#FFF;
+        border: 2px solid #cc543a;
+    }
+    .shop_icon:active{
+        font-size: 20px;
+        background-color:#cc543a;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .shop_icon.active{
+        background-color:#cc543a;
+    }
+    
+    .shop_icon:hover i{
+        font-size: 20px;
+        color: #cc543a;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateY(25%);
+    }
+    .shop_icon i{
+        font-size: 20px;
+        color: #cc543a;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        transform: translateY(25%);
+    }
+    .shop_icon .fas{
+        font-size: 20px;
+        color: #fff;
+    }
+    .shop_icon.active i{
+        font-weight: 900;
+        font-size: 18px;
+        color: #fff;
+        transform: translateY(25%);
+    }
+    .fa-heart:hover{
+        color: #cc543a;
+        font-weight: 900;
+        font-size: 18px;
+    }
+    
+    .shop_body01{
+        margin: 0;
+        padding: 0;
+    
+        
+    }
+    .shop_body{
+        margin: 0;
+        padding: 0;
+        justify-content: space-between;
+    }
+    .mb-5,
+    .my-5 {
+        margin-bottom: 0rem !important;
+    }
+    .breadcrumb{
+        margin: 0;
+        align-items: center;
+    }
+
+
+
+    .r0 {
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 10px;
+        border: 1px solid #a2a2a2;
+        align-self: flex-end;
+        margin-bottom: 160px;
+        display: none;
+
+
+    }
+
+    .r0 img {
+        width: 35px;
+        height: 35px;
+        transform: translate(-1px, 4px);
+    }
+
+    .top0 {
+
+        width: 30px;
+        right: 0;
+    }
+    /* 換頁按鈕 */
+    .pagination{
+        padding-top: 22px;
+    }
+    .page-link{
+        padding: 1rem 1.25rem;
+    }
+    .fa-chevron-right {
+        padding: 0 12px 0 12px;
+    }
+     /* ----------- */
+     #trip_price_range_phone .slider-selection {
+        background: #cc543a;
+    }
+
+    #trip_price_range_phone .slider-handle {
+        border: 5px solid #cc543a;
+        background: #FFF;
+    }
+
+    #trip_price_range_phone .arrow {
+        display: none;
+    }
+
+    #trip_price_range_phone .tooltip-inner {
+        font-family: 'Sitka Display', NSimSun, 'sans-serif';
+        font-size: 20px;
+        padding: 0;
+        color: #000;
+        background-color: transparent;
+    }
+    
+    /* -------押花------------- */
+    .Pressed_flower{
+        display: none;
+    }
+}
