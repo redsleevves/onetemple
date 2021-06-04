@@ -43,7 +43,7 @@ if(isset($_POST['shipment_method']) ){
     $order_totalPrice = $product_totalPrice + $shipment_fee;
 
     //member-sid
-    $member_sid = ($_SESSION['user']) ? $_SESSION['user']['sid'] : 0;
+    $member_sid = isset($_SESSION['user']) ? $_SESSION['user']['sid'] : 0;
 
 //order_sum
 $o_sql = "INSERT INTO `order_sum`(
