@@ -43,7 +43,7 @@ if(isset($_POST['shipment_method']) ){
     $order_totalPrice = $product_totalPrice + $shipment_fee;
 
     //測試用
-    $member_sid = 'abc111';
+    // $member_sid = 'abc111';
 
 //order_sum
 $o_sql = "INSERT INTO `order_sum`(
