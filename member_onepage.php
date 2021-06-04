@@ -14,7 +14,7 @@ $title = '灣廟 | 會員中心';
 $pageName = 'member';
 $member_sid = $_SESSION['user']['sid'];
 
-$pdc_sql = "SELECT fav_pdc.sid, member.sid AS member_id, fav_pdc.pdc_sid, product.img, product.name FROM fav_pdc JOIN member ON member.sid=fav_pdc.member_sid JOIN product ON fav_pdc.pdc_sid=product.sid where member.sid='$member_sid'";
+$pdc_sql = "SELECT fav_pdc.sid, member.sid AS member_id, fav_pdc.pdc_sid, product.img, product.name, product.price FROM fav_pdc JOIN member ON member.sid=fav_pdc.member_sid JOIN product ON fav_pdc.pdc_sid=product.sid where member.sid='$member_sid'";
 $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 
 $trip_sql = "SELECT fav_trip.sid, member.sid AS member_id, fav_trip.trip_sid, trip.img, trip.name, trip.location, trip.duration, trip.quote, trip.price FROM fav_trip JOIN member ON member.sid=fav_trip.member_sid JOIN trip ON fav_trip.trip_sid=trip.sid where member.sid='$member_sid'";
@@ -514,6 +514,60 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             margin: auto;
             margin-top:100px;
         }
+        .lucky_Poetry06{
+            display: flex;
+            justify-content: center
+        }
+        .breadcrumb_style {
+            background-image: url(./img/nav_background_1.png);
+            /* navbar多厚 就推多少paddding */
+         
+        }
+
+        .breadcrumb_style_1 {
+            padding: 20px 0;
+            align-items: center;
+            margin: auto;
+        }
+
+        .astlyep {
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #707070;
+            list-style-type: none;
+            text-decoration: none;
+
+        }
+
+        .breadcrumb_style_1 img {
+            height: 10px;
+            width: 10px;
+            margin: 0 10px;
+        }
+
+        /* 桌機用 */
+        @media (min-width:1400px) {
+            
+            .breadcrumb_style_1 {
+                width: 80%;
+            }
+        }
+
+        /* 手機用 */
+        @media (max-width:1399px) {
+          
+
+            .breadcrumb_style_1 {
+                /* 手機板寬 自行設定 */
+                width: 85%;
+            }
+
+            .breadcrumb_style_1 {
+                /* contanier架構專用 padding 0 15px  */
+                /* padding: 20px 15px; */
+                /* width: 100%; */
+            }
+        }
         @media screen and (min-width: 1000px) {
             .popwindow {
             width: 35%;
@@ -720,7 +774,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             }
 
             h4 {
-                font-size: 16px;
+                font-size: 18px !important;
             }
 
             .tab {
@@ -1024,7 +1078,11 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
     </div>
     <div class="cover"></div>
     <section class="member_head container-fluid">
-        <h4 class="root">會員中心>收藏清單</h4>
+    <div class="breadcrumb_style   backgroundimg_1">
+        <div class="d-flex flex-wrap breadcrumb_style_1 ">
+            <a href="" class="astlyep">會員中心</a>
+        </div>
+    </div>
         <div class="tab col-lg-9  col-12">
             <div class="profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
@@ -1345,6 +1403,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                             <i class="fas fa-times-circle delete d-none"></i></a>
                             <div class="prod_pic"><img src="<?= WEB_ROOT ?>/img/<?= $p['img'] ?>"></div>
                             <p><?= $p['name'] ?></p>
+                            <p>NTD <?= $p['price'] ?></p>
                         </div>
                         <?php endforeach; ?>
                     </div>

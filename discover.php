@@ -7,7 +7,7 @@ $_gdata = [
     // 頁面私有 css
     'styles' => '<link rel="stylesheet" href="'.WEB_ROOT.'/css/navbar1.css">',
     //頁面私有 scripts
-    'scripts' => '<script src="'.WEB_ROOT.'/js/result.js"></script>', 
+    // 'scripts' => '<script src="'.WEB_ROOT.'/js/result.js"></script>', 
 ];
 
 ?>
@@ -15,7 +15,7 @@ $_gdata = [
     <style>
         body {
             font-family: 'Faustina', serif;
-            background-image: url(./img/bcc.png);
+            background-image: url(<?= WEB_ROOT ?>/img/bcc.png);
             position: relative;
         }
 
@@ -51,6 +51,19 @@ $_gdata = [
         button:focus {
             outline: 0;
             box-shadow: 0 0 0 1pt rgb(77, 77, 77);
+        }
+
+
+        footer {
+            width: 100%;
+            height: 100px;
+            background-color: #cc543a;
+            color: white;
+            letter-spacing: 3px;
+            position: absolute;
+            bottom:0;
+            justify-content: center;
+            align-items: center;
         }
 
         .discover_head {
@@ -273,7 +286,7 @@ $_gdata = [
         }
 
         .discover_story {
-            background-image: url(./img/bcc2.png);
+            background-image: url(<?= WEB_ROOT ?>/img/bcc2.png);
             padding: 0;
             position: relative;
             display: flex;
@@ -654,7 +667,7 @@ $_gdata = [
                 height: 100vh;
                 bottom: 0;
                 left: 0;
-                background-image: url(./img/bcc2.png);
+                background-image: url(<?= WEB_ROOT ?>/img/bcc2.png);
                 padding: 50px 0;
                 border-radius: 20px;
                 /* box-shadow: 3px 0 3px 3px rgb(116, 116, 116); */
@@ -776,9 +789,7 @@ $_gdata = [
     </div>
     <div id="cover">
     </div>
-
     <?php include __DIR__ . '/parts/navbar1.php'; ?>
-    
     <section class="discover_search container col-lg-12">
         <img class="discover_footprint" src="<?= WEB_ROOT ?>/img/footprints.svg">
         <div class="discover_box col-lg-10">
@@ -895,7 +906,6 @@ $_gdata = [
     </div>
 
     <?php include __DIR__ . '/parts/ourscripts.php'; ?>
-
     <script>
         $('.arrows').click(function () {
             var pageBelow = document.getElementById("nav_index_navbar_com").offsetTop;
@@ -1032,7 +1042,71 @@ $_gdata = [
             $('.hot_feature').eq(i % picNum).css('opacity', '1').siblings('div').css('opacity', '0')
         })
         
-    </script>
 
-    
+        let arr = ["大智山玄空法寺", "壽山巖觀音寺", "麥寮拱範宮", "草屯雷藏寺", "佛光山寺", "松山慈惠堂", "台灣護聖宮", "北港朝天宮", "松山慈祐宮", "大甲鎮瀾宮", "法鼓山", "南鯤鯓代天府", "正統鹿耳門聖母廟", "鹿港天后宮", "臺東天后宮", "高雄代天宮", "松山奉天宮", "鹿港龍山寺", "日月潭文武廟"]
+
+let keyword = document.getElementById('keyword')
+keyword.addEventListener('input', updateResult);
+
+function updateResult() {
+    const query = keyword.value
+    let resultList = document.querySelector(".result");
+    let resultHead = document.querySelector("#secondHead");
+    resultList.innerHTML = "";
+    let isResult = false;
+    if (query) {
+        arr.map(function (bingo) {
+            query.split(" ").map(function (word) {
+                console.log(bingo, word)
+                if (bingo.indexOf(word) != -1) {
+                    isResult = true;
+                    resultList.innerHTML += `<li class="result_list">${bingo}</li>`;
+                }
+            })
+        })
+        if (!isResult) {
+                resultList.innerHTML = `<p>查無資料</p>`;
+            }
+    }
+    else {
+        resultList.innerHTML = `<div class="hot_feature col-lg-6">
+        <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
+        <p class="tempname">清水祖師廟1</p>
+    </div>
+    <div class="hot_feature col-lg-6">
+        <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
+        <p class="tempname">清水祖師廟2</p>
+    </div>
+    <div class="hot_feature col-lg-6">
+        <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
+        <p class="tempname">清水祖師廟3</p>
+    </div>
+    <div class="hot_feature col-lg-6">
+        <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
+        <p class="tempname">清水祖師廟4</p>
+    </div>
+    <div class="hot_feature col-lg-6">
+        <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
+        <p class="tempname">清水祖師廟5</p>
+    </div>
+    <div class="hot_feature col-lg-6">
+        <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
+        <p class="tempname">清水祖師廟6</p>
+    </div>
+    <div class="hot_feature col-lg-6">
+        <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
+        <p class="tempname">清水祖師廟7</p>
+    </div>
+    <div class="hot_feature col-lg-6">
+        <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
+        <p class="tempname">清水祖師廟8</p>
+    </div>
+    <i class="fas fa-angle-left prevPic"></i>
+    <i class="fas fa-angle-right nextPic"></i>`
+    }
+}
+
+// resultHead.innerHTML = `<p>搜尋結果</p>`
+
+    </script>
     <?php include __DIR__. '/parts/html-foot.php'; ?>
