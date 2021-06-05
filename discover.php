@@ -309,28 +309,14 @@ $_gdata = [
         }
 
         .result_list {
+            width:100%;
             text-decoration: none;
             list-style: none;
-            background-color: white;
-            border: 1px solid gray;
+            background-color: transparent;
+            border-bottom: 1px solid gray;
             padding: 3px 5px;
             margin: 5px;
             height: fit-content;
-
-        }
-
-        @keyframes wind {
-            0% {
-                opacity: 0.4;
-            }
-
-            40% {
-                opacity: 0.6;
-            }
-
-            100% {
-                opacity: 0.4;
-            }
         }
 
         .discover_card,
@@ -415,17 +401,17 @@ $_gdata = [
         }
 
         .discover_map .pin03 {
-            left: 35%;
+            left: 40%;
             top: 30%;
         }
 
         .discover_map .pin04 {
-            left: 25%;
-            top: 48%;
+            left: 30%;
+            top: 53%;
         }
 
         .discover_map .pin05 {
-            left: 20%;
+            left: 25%;
             top: 60%;
         }
 
@@ -489,8 +475,10 @@ $_gdata = [
 
             .discover_hot {
                 flex-wrap: wrap;
-                height: 40%;
+                height: 400px;
                 overflow: scroll;
+                justify-content:start;
+                align-items:start;
             }
 
             .tempname {
@@ -774,7 +762,7 @@ $_gdata = [
     </style>
 
     <div class="discover_head row col-12">
-        <video playsinline autoplay muted loop poster="/img/discover_catch.png" id="bgvid">
+        <video playsinline autoplay muted loop poster="<?= WEB_ROOT ?>/img/discover_catch.png" id="bgvid">
             <source src="<?= WEB_ROOT ?>/img/discover_catch.png" type="video/webm">
             <source src="<?= WEB_ROOT ?>/img/explore_banner_video.mp4" type="video/mp4">
         </video>
@@ -811,41 +799,40 @@ $_gdata = [
                     <!-- <input class="narrowSearch" type="image"
                         style="border-bottom:none; width: 30px; position:absolute; bottom: 0; margin: 0;" value="搜尋"
                         src="/SVG/search-solid.svg" alt="Submit Form" /> -->
-
                 </form>
                 <h3 id="secondHead">HOT</h3>
                 <div id='discover_hot' class="discover_hot d-flex result">
                     <div class="hot_feature col-lg-6">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
-                        <p class="tempname">清水祖師廟1</p>
+                        <p class="tempname">清水祖師廟</p>
                     </div>
                     <div class="hot_feature col-lg-6">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
-                        <p class="tempname">清水祖師廟2</p>
+                        <p class="tempname">北港朝天宮</p>
                     </div>
                     <div class="hot_feature col-lg-6">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
-                        <p class="tempname">清水祖師廟3</p>
+                        <p class="tempname">松山慈祐宮</p>
                     </div>
                     <div class="hot_feature col-lg-6">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
-                        <p class="tempname">清水祖師廟4</p>
+                        <p class="tempname">大甲鎮瀾宮</p>
                     </div>
                     <div class="hot_feature col-lg-6">
-                        <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
-                        <p class="tempname">清水祖師廟5</p>
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (5).jpg">
+                        <p class="tempname">南鯤鯓代天府</p>
                     </div>
                     <div class="hot_feature col-lg-6">
-                        <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
-                        <p class="tempname">清水祖師廟6</p>
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (6).jpg">
+                        <p class="tempname">法鼓山</p>
                     </div>
                     <div class="hot_feature col-lg-6">
-                        <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
-                        <p class="tempname">清水祖師廟7</p>
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (7).jpg">
+                        <p class="tempname">正統鹿耳門聖母廟</p>
                     </div>
                     <div class="hot_feature col-lg-6">
-                        <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
-                        <p class="tempname">清水祖師廟8</p>
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (8).jpg">
+                        <p class="tempname">鹿港天后宮</p>
                     </div>
                     <i class="fas fa-angle-left prevPic"></i>
                     <i class="fas fa-angle-right nextPic"></i>
@@ -868,13 +855,13 @@ $_gdata = [
             <div class="intro col-lg-10">
                 <i class="closeCard far fa-times-circle"></i>
                 <div class="pic col-lg-5 col-10 mb-4">
-                    <img src="<?= WEB_ROOT ?>/img/explore_storyImg.jpg">
-                    <h2 class="location">NEW<br> TAIPEI<br> CITY</h2>
+                    <img src="<?= WEB_ROOT ?>/img/discover_tiangon.jpg">
+                    <h2 class="location">TAIPEI<br> CITY</h2>
                 </div>
                 <p class="vertical col-1">It to make a type specimen book.</p>
                 <div class="text col-lg-5 col-10">
                     <h3>Sansia Tzushr Temple</h3>
-                    <h3 id='www'>清水祖師廟</h3>
+                    <h3 id='www'>台北行天宮</h3>
                     <p>他話路聲回比；後看西工馬什領過值圖戰選乎到洲校言</p>
                     <p>
                         的難了老的地一怕斷氣夫所而料部機黨多大登引爸就果？太快覺天代來父處強都最業資不包力突？了文中手、是當傳地去市女源考用業明製太院息調其如本裡以商合屋許先界得養起？車種這區學流，東學錢相團沒的都類會者天利他，車種這區車種這區車種這區車種這區今再一調！阿院和的到。車有的告這這母火
@@ -1041,70 +1028,72 @@ $_gdata = [
             i++
             $('.hot_feature').eq(i % picNum).css('opacity', '1').siblings('div').css('opacity', '0')
         })
-        
 
-        let arr = ["大智山玄空法寺", "壽山巖觀音寺", "麥寮拱範宮", "草屯雷藏寺", "佛光山寺", "松山慈惠堂", "台灣護聖宮", "北港朝天宮", "松山慈祐宮", "大甲鎮瀾宮", "法鼓山", "南鯤鯓代天府", "正統鹿耳門聖母廟", "鹿港天后宮", "臺東天后宮", "高雄代天宮", "松山奉天宮", "鹿港龍山寺", "日月潭文武廟"]
+        let arr = ["大智山玄空法寺", "壽山巖觀音寺", "麥寮拱範宮", "草屯雷藏寺", "佛光山寺", "松山慈惠堂", "台灣護聖宮", "北港朝天宮", "松山慈祐宮", "大甲鎮瀾宮", "法鼓山", "南鯤鯓代天府", "正統鹿耳門聖母廟", "鹿港天后宮", "臺東天后宮", "高雄代天宮", "松山奉天宮", "鹿港龍山寺", "日月潭文武廟","台北行天宮","高雄玉皇宮","萬華龍山寺","三峽清水祖師廟","長春路四面佛","霞海城隍廟","新竹都城隍廟"]
 
-let keyword = document.getElementById('keyword')
-keyword.addEventListener('input', updateResult);
+        let keyword = document.getElementById('keyword')
+        keyword.addEventListener('input', updateResult);
 
-function updateResult() {
-    const query = keyword.value
-    let resultList = document.querySelector(".result");
-    let resultHead = document.querySelector("#secondHead");
-    resultList.innerHTML = "";
-    let isResult = false;
-    if (query) {
-        arr.map(function (bingo) {
-            query.split(" ").map(function (word) {
-                console.log(bingo, word)
-                if (bingo.indexOf(word) != -1) {
-                    isResult = true;
-                    resultList.innerHTML += `<li class="result_list">${bingo}</li>`;
-                }
-            })
-        })
-        if (!isResult) {
-                resultList.innerHTML = `<p>查無資料</p>`;
+        function updateResult() {
+            const query = keyword.value
+            let resultList = document.querySelector(".result");
+            let resultHead = document.querySelector("#secondHead");
+            resultList.innerHTML = "";
+            let isResult = false;
+            if (query) {
+                arr.map(function (bingo) {
+                    query.split(" ").map(function (word) {
+                        console.log(bingo, word)
+                        if (bingo.indexOf(word) != -1) {
+                            isResult = true;
+                            resultList.innerHTML += `<li class="result_list">${bingo}</li>`;
+                        }
+                    })
+                    $("#secondHead").text("RESULT");
+                })
+
+                if (!isResult) {
+                        resultList.innerHTML = `<p>查無資料</p>`;
+                    }
             }
-    }
-    else {
-        resultList.innerHTML = `<div class="hot_feature col-lg-6">
-        <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
-        <p class="tempname">清水祖師廟1</p>
-    </div>
-    <div class="hot_feature col-lg-6">
-        <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
-        <p class="tempname">清水祖師廟2</p>
-    </div>
-    <div class="hot_feature col-lg-6">
-        <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
-        <p class="tempname">清水祖師廟3</p>
-    </div>
-    <div class="hot_feature col-lg-6">
-        <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
-        <p class="tempname">清水祖師廟4</p>
-    </div>
-    <div class="hot_feature col-lg-6">
-        <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
-        <p class="tempname">清水祖師廟5</p>
-    </div>
-    <div class="hot_feature col-lg-6">
-        <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
-        <p class="tempname">清水祖師廟6</p>
-    </div>
-    <div class="hot_feature col-lg-6">
-        <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
-        <p class="tempname">清水祖師廟7</p>
-    </div>
-    <div class="hot_feature col-lg-6">
-        <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
-        <p class="tempname">清水祖師廟8</p>
-    </div>
-    <i class="fas fa-angle-left prevPic"></i>
-    <i class="fas fa-angle-right nextPic"></i>`
-    }
-}
+            else {
+                $("#secondHead").text("HOT");
+                resultList.innerHTML = `                    <div class="hot_feature col-lg-6">
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
+                        <p class="tempname">清水祖師廟</p>
+                    </div>
+                    <div class="hot_feature col-lg-6">
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
+                        <p class="tempname">北港朝天宮</p>
+                    </div>
+                    <div class="hot_feature col-lg-6">
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
+                        <p class="tempname">松山慈祐宮</p>
+                    </div>
+                    <div class="hot_feature col-lg-6">
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
+                        <p class="tempname">大甲鎮瀾宮</p>
+                    </div>
+                    <div class="hot_feature col-lg-6">
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (5).jpg">
+                        <p class="tempname">南鯤鯓代天府</p>
+                    </div>
+                    <div class="hot_feature col-lg-6">
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (6).jpg">
+                        <p class="tempname">法鼓山</p>
+                    </div>
+                    <div class="hot_feature col-lg-6">
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (7).jpg">
+                        <p class="tempname">正統鹿耳門聖母廟</p>
+                    </div>
+                    <div class="hot_feature col-lg-6">
+                        <img src="<?= WEB_ROOT ?>/img/hotTemple (8).jpg">
+                        <p class="tempname">鹿港天后宮</p>
+                    </div>
+            <i class="fas fa-angle-left prevPic"></i>
+            <i class="fas fa-angle-right nextPic"></i>`
+            }
+        }
 
 // resultHead.innerHTML = `<p>搜尋結果</p>`
 
