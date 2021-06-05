@@ -120,39 +120,6 @@ $_gdata = [
 
 
 
-    /* 麵包屑 */
-    .breadcrumb_style {
-        background-image: url(./img/nav_background_1.png);
-        /* navbar多厚 就推多少paddding */
-
-    }
-
-    .breadcrumb_style_1 {
-        padding: 20px 0;
-        align-items: center;
-        margin: auto;
-    }
-
-    .astlyep {
-        font-size: 14px;
-        letter-spacing: 2px;
-        color: #707070;
-        list-style-type: none;
-        text-decoration: none;
-
-    }
-
-    .breadcrumb_style_1 img {
-        height: 10px;
-        width: 10px;
-        margin: 0 10px;
-    }
-
-
-
-
-
-
     /* 共用設定 微調 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 
@@ -256,7 +223,9 @@ $_gdata = [
 
     /* page_1_up */
 
-
+    .discover_temple_page_1{
+        margin-top: 40px;
+    }
 
 
 
@@ -959,7 +928,7 @@ $_gdata = [
 
 
                                     <div class="discover_temple_page_1_box_textdown padtp40_md ">
-                                        <h5 id="architecture" class="font-weight-bold redcolorh5 ">architecture | 建築
+                                        <h5 id="architecture" class="font-weight-bold redcolorh5 ">ARCHITECTURE | 建築
                                         </h5>
 
                                         <p class="discover_temple_page_1_rightpage_text  pcolumn pt-3">
@@ -1102,7 +1071,7 @@ $_gdata = [
                     <div class="discover_temple_page_3_left col-lg-3 page3box1pd pad0_md animat_5">
                         <!-- page_3左邊_標題 -->
                         <div class="discover_temple_page_3_left_title redcolorh5">
-                            <h5 id="GOD">GOD | 神明</h5>
+                            <h5 id="GOD" class="font-weight-bold">GOD | 神明</h5>
                         </div>
 
 
@@ -1176,7 +1145,7 @@ $_gdata = [
                         <div class="discover_temple_page_3_right_text col-lg-7 p-0 discover_temple_page_3_right_text_mg discover_temple_page_3_right_text_potabu">
                             <!-- page_3右邊_文字_標題 -->
                             <div class="discover_temple_page_3_right_title redcolorh5">
-                                <h5 id="TRAFFIC">TRAFFIC | 交通</h5>
+                                <h5 id="TRAFFIC" class="font-weight-bold">TRAFFIC | 交通</h5>
                             </div>
                             <!-- page_3右邊_文字_p -->
                             <div class="discover_temple_page_3_right_p ">
