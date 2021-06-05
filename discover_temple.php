@@ -224,7 +224,7 @@ $_gdata = [
     /* page_1_up */
 
     .discover_temple_page_1{
-        margin-top: 40px;
+        margin-top: 30px;
     }
 
 
