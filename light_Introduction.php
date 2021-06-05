@@ -491,6 +491,9 @@
                 text-align: center;
                 margin: 40px 0 0 0;
             }
+            .light_Introduction_btn:hover {
+            left: 0px;
+        }
 
         }
 </style>

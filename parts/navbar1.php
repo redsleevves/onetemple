@@ -35,7 +35,7 @@
                 <a href="<?= WEB_ROOT?>/news_main.php">
                     <li>最新消息</li>
                 </a>
-                <a href="">
+                <a href="<?= WEB_ROOT?>/discover.php">
                     <li>探索灣廟</li>
                 </a>
                 <li class="nav_ser_mobile">
@@ -44,12 +44,12 @@
                 </li>
                 <ul class="nav_dropDownMenu_mobile">
                     <a class="dropdown-item nav_ser_item_mob" href="<?= WEB_ROOT?>/light_Introduction.php">祈福點燈</a>
-                    <a class="dropdown-item nav_ser_item_mob" href="#">求神問卜</a>
+                    <a class="dropdown-item nav_ser_item_mob" href="<?= WEB_ROOT?>/sign.php">求神問卜</a>
                 </ul>
                 <a href="<?= WEB_ROOT?>/trip.php">
                     <li>聖地行旅</li>
                 </a>
-                <a href="">
+                <a href="<?= WEB_ROOT?>/product.php">
                     <li>祈福商店</li>
                 </a>
                 <a href="<?= WEB_ROOT?>/cart.php">
@@ -95,7 +95,7 @@
 
                     <ul class="nav_dropDownMenu">
                         <a class="dropdown-item nav_ser_item" href="<?= WEB_ROOT?>/light_Introduction.php">祈福點燈</a>
-                        <a class="dropdown-item nav_ser_item" href="#">求神問卜</a>
+                        <a class="dropdown-item nav_ser_item" href="<?= WEB_ROOT?>/sign.php">求神問卜</a>
                     </ul>
                 </a>
                 
@@ -103,7 +103,7 @@
                     <div class="nav_hide_ch">聖地行旅</div>
                     <div class="nav_hide_en">TRIP</div>
                 </a>
-                <a href="" class="nav_navbar_item">
+                <a href="<?= WEB_ROOT?>/product.php" class="nav_navbar_item">
                     <div class="nav_hide_ch">祈福商店</div>
                     <div class="nav_hide_en">SHOP</div>
                 </a>

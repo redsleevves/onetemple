@@ -2594,7 +2594,7 @@ $_gdata = [
 
     <div class="index_shopArea d-flex justify-content-end">
         <div class="index_shopWordBox col-sm-1">
-            <a href="">
+            <a href="<?= WEB_ROOT?>/product.php">
                 <div class="index_shopTitle">
                     <p class="index_title">SHOP</p>
                     <div class="longArrow">
