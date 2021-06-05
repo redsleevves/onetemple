@@ -6,27 +6,25 @@ $output = [
     'error' => '資料沒有修改'
 ];
 
-if(isset($_POST['sid']) and isset($_POST['member_name'])) {
-    $output['error'] = '資料沒有修修';
-
-    $sql = "UPDATE `member` SET 
-                        `mobile`=?,
-                        `address`=?
+if(isset($_POST['sid'])) {
+    $output['error'] = '資料沒有修';
+    $sql = "UPDATE `order_lit_details` SET
+                        `bless_birth`=?, 
+                        `bless_mobile`=?,
+                        `bless_address`=?
             WHERE `sid`=? ";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        $_POST['member_mobile'],
-        $_POST['member_address'],
-        $_POST['sid'],
+        $_POST['bless_mobile'],
+        $_POST['bless_address'],
+        $_POST['bless_birth'],
+        $_POST['bless_id'],
     ]);
-
 
     if($stmt->rowCount()){
         $output['success'] = true;
         $output['error'] = '';
-        // $row = $stmt->fetch();
-        // $_SESSION['user'] = $row;
     } else {
         $output['error'] = '資料沒有修改';
     }

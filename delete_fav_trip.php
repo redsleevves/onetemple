@@ -2,7 +2,7 @@
 
 $sid = intval($_GET['sid']);
 
-$come_from = $_SERVER['HTTP_REFERER'] ?? 'member_onepage.php';
+// $come_from = $_SERVER['HTTP_REFERER'] ?? 'member_onepage.php';
 
 
 if(! empty($sid)) {
@@ -11,7 +11,7 @@ if(! empty($sid)) {
 
 }
 
-header('Location: '. $come_from);
+// header('Location: '. $come_from);
 
 
 

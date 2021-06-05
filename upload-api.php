@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/parts/config.php'; ?>
 <?php
 $output = [
     'success' => false,
@@ -17,9 +18,19 @@ if(isset($_FILES['avatar'])){
     } else {
         $ext = $exts[$_FILES['avatar']['type']];  // 取得副檔名1
         $output['file'] = $_FILES['avatar'];
-        $dir = __DIR__. '/imgs/';  // 存放的路徑
+        $dir = __DIR__. '/upload/';  // 存放的路徑
         $fname =  uniqid(). rand(100, 999). $ext;  // 儲存的檔名
         $output['filename'] = $fname;
+
+        $sql = "UPDATE `member` SET
+        `profilepic`=?
+        WHERE `sid`=? ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+        $output['filename'],
+        $_POST['sid']]);
+        $_SESSION['user']['profilepic']=$fname;
+
         if( move_uploaded_file($_FILES['avatar']['tmp_name'], $dir. $fname) ){
             $output['success'] = true;
             $output['error'] = '';
