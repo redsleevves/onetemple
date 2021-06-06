@@ -23,8 +23,18 @@ $trip_rows = $pdo->query($trip_sql)->fetchAll();
 $lucky_sql = "SELECT fav_lucky.sid, member.sid AS member_id, fav_lucky.lucky_sid, fav_lucky.getdate, peom.img FROM fav_lucky JOIN member ON member.sid=fav_lucky.member_sid JOIN peom ON fav_lucky.lucky_sid=peom.sid where member.sid='$member_sid'";
 $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
-$lit_sql = "SELECT order_lit_details.bless_name, orders_lit.member_sid AS member_id, order_lit_details.sid AS bless_id, order_lit_details.bless_gender, order_lit_details.bless_birth, order_lit_details.bless_address FROM orders_lit JOIN order_lit_details ON orders_lit.sid=order_lit_details.order_lit_sid where member_sid='$member_sid'";
+$lit_sql = "SELECT member_family.bless_name, member.sid AS member_id, member_family.sid, member_family.bless_gender, member_family.bless_birth, member_family.bless_address FROM member_family JOIN member ON member.sid=member_family.member_sid where member.sid='$member_sid'";
 $lit_rows = $pdo->query($lit_sql)->fetchAll();
+
+$sum_sql = "SELECT * FROM order_sum where order_sum.member_sid='$member_sid'";
+$sum_rows = $pdo->query($sum_sql)->fetchAll();
+
+$sum_id = $sum_rows['sid'];
+$sum_trip_sql = "SELECT orders_trip.trip_qty,orders_trip.trip_price, orders_trip.sum_id, trips.title2, trips.photo1, orders_trip.member_sid FROM orders_trip JOIN trips ON orders_trip.trip_sid=trips.id where member_sid='$member_sid' AND sum_id='1'";
+$sum_trip_rows = $pdo->query($sum_trip_sql)->fetchAll();
+
+$sum_pdc_sql = "SELECT orders_pdc.pdc_qty,orders_pdc.pdc_price, product.name, product.img, orders_pdc.member_sid FROM orders_pdc JOIN product ON orders_pdc.pdc_sid=product.sid where member_sid='$member_sid'";
+$sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
 
 ?>
     <style>
@@ -334,8 +344,8 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         }
 
         .abstract {
-            background-color: #D1D2D5;
-            border: 2px solid #C0C0C0;
+            /* background-color: #D1D2D5;
+            border: 2px solid #C0C0C0; */
             margin-bottom: 0;
         }
 
@@ -355,11 +365,12 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         }
 
         .fixrow {
-            border: 2px solid #C0C0C0;
+            margin-bottom:0 !important;
         }
 
         .info {
-            background-color: white;
+            background-color: #D1D2D5;
+            border: 2px solid #C0C0C0;            
             margin-bottom: 0;
             margin-top: 1rem;
         }
@@ -605,6 +616,11 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 display: none;
             }
 
+            .detail h3{
+                text-align: start;
+                margin:15px 0 0 55px;
+            }
+
             .detail th {
                 height: 50px;
                 vertical-align: middle;
@@ -612,7 +628,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             }
 
             .detail td {
-                vertical-align: middle;
+                vertical-align: middle !important;
                 text-align: center;
             }
 
@@ -620,13 +636,13 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 position: relative;
             }
 
-            .detail thead::before {
+            .detail thead::after {
                 content: "";
                 display: block;
                 height: 2px;
                 width: 65%;
-                top: 50px;
-                left: 32%;
+                top: 100px;
+                left: 30%;
                 position: absolute;
                 background-color: #C0C0C0;
             }
@@ -1045,7 +1061,8 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         <div class="scrollbox">
             <form id="editFriendsData" class="editFriendsData" name="editFriendsData" onsubmit="checkEditFamily(); return false;">
             <?php foreach ($lit_rows as $k) : ?>
-                <input type="hidden" name="sid" value="<?= $k['bless_id'] ?>">
+                <div class="friends_unit">
+                <input type="hidden" name="sid" value="<?= $k['sid'] ?>">
                 <div class="form-group">
                     <label for="member_name">姓名</label>
                     <p>|</p>
@@ -1067,9 +1084,10 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                     <input type="text" name="friends_address" value="<?= $k['bless_address'] ?>">
                 </div>
                 <div style="display: flex; justify-content:center">
-                <button class="unfriends graybut" onclick="delete_friends(<?= $k['bless_id'] ?>)">刪除</button>
+                <a href="javascript:delete_friends(<?= $k['sid'] ?>)"><button type="button" class="unfriends graybut">刪除</button></a>
                 </div>
                 <hr>
+                </div>
                 <?php endforeach; ?>
             </form>
         </div>
@@ -1419,7 +1437,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                     <div  class="fav_plan_container col-xs-12">
                         <?php foreach ($trip_rows as $t) : ?>
                         <div class="fav_plan_card col-lg-5 col-10 p-0">
-                        <a href="javascript:delete_fav_trip(<?= $t['sid'] ?>)">
+                        <a href="javascript:delete_fav_trip(<?= $t['sid'] ?>,<?= $t['title2'] ?>)">
                             <i class="fas fa-times-circle delete d-none"></i></a>
                             <img src="<?= WEB_ROOT ?>/img/<?= $t['photo1'] ?>" class="col-6">
                             <div class="fav_plan_card_text col-6">
@@ -1475,19 +1493,21 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 </tr>
             </thead>
         </table>
+        <?php foreach ($sum_rows as $s) : ?>
         <table class="table table-borderless fixrow info col-lg-7">
             <thead>
                 <tr>
-                    <th>2020/01/01</th>
-                    <th>000154</th>
-                    <th>線上刷卡</th>
-                    <th>已出貨</th>
-                    <th>4,115</th>
-                    <th>已完成</th>
+                    <th><?= $s['orderdate'] ?></th>
+                    <th><?= $s['sid'] ?></th>
+                    <th><?= $s['payment'] ?></th>
+                    <th><?= $s['process'] ?></th>
+                    <th><?= $s['total'] ?></th>
+                    <th><?= $s['status'] ?></th>
                 </tr>
             </thead>
         </table>
         <div class="table detail table-light col-lg-7">
+            <h3>訂購明細</h3>
             <table class="table table-light">
                 <thead>
                     <tr>
@@ -1496,44 +1516,44 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                         <th scope="col">內容</th>
                         <th scope="col">數量</th>
                         <th scope="col">金額</th>
+                        <th scope="col">備註</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($sum_trip_rows as $a) : ?>
                     <tr>
                         <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['photo1'] ?>"></div>
                         </td>
-                        <td>蒐集離島媽祖</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
+                        <td><?= $a['title2'] ?></td>
+                        <td><?= $a['member_sid'] ?></td>
+                        <td><?= $a['trip_qty'] ?></td>
+                        <td><?= $a['trip_price'] ?></td>
+                        <td><a>寫下評論</a></td>
                     </tr>
+                    <?php endforeach; ?>
+                    <?php foreach ($sum_pdc_rows as $b) : ?>
                     <tr>
                         <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['img'] ?>"></div>
                         </td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
+                        <td><?= $b['name'] ?></td>
+                        <td><?= $b['member_sid'] ?></td>
+                        <td><?= $b['pdc_qty'] ?></td>
+                        <td><?= $b['pdc_price'] ?></td>
+                        <td><?= $a['trip_price'] ?></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                        </td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
-                    </tr>
+                    <?php endforeach; ?>
                     <tr>
                         <td colspan="5">
-                            <i class="fas fa-chevron-up"></i>
+                            <i class="fas less fa-chevron-up"></i>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <?php endforeach; ?>
+
         <table class="table table-borderless fixrow info col-lg-7">
             <thead>
                 <tr>
@@ -1587,7 +1607,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <i class="fas fa-chevron-up"></i>
+                            <i class="fas fa-chevron-up less"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -1779,7 +1799,6 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             let fixhead = document.querySelector('.member_head').offsetHeight
             let fixnav = document.querySelector('.nav_navbar_com_container').offsetHeight
             $('footer').css('top', e + fixhead + fixnav + 80 + 'px')
-            // $('.backdeco').css('bottom', e + fixhead + fixnav + 'px')
             $('body').css('height', e + 300 + 'px')
         }
         $(document).ready(function () {
@@ -1790,12 +1809,12 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
 
 
         $(".info").click(function () {
-            let absoluteBut = document.body.scrollHeight
+            let absoluteBut = document.body.scrollHeight + 300 + px
             dynamicFooter(absoluteBut)
             $(this).next(detail).slideToggle();
         });
         $(".less").click(function () {
-            $(".detail").slideUp();
+            $(this).parents('.detail').slideToggle();
         });
         $(".order_mobile_info").click(function () {
             $(this).siblings().slideToggle();
@@ -1951,6 +1970,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         $('button').click(function(){
             $('#cover').removeClass('d-none')
         })
+        
     $('.popeditmy').click(function () {
         $('.popwindow').css('display', 'flex')
         $('.popwindow').css('transform', 'translate(-50%, -50%)')
@@ -2044,8 +2064,6 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
 
     function checkEditFamily() {
         let isPass = true;
-        const data = new FormData(event.target);
-        const value = Object.fromEntries(data.entries());
         if(isPass){
             $.post(
                 'member_family_edit_api.php',
@@ -2073,7 +2091,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
           dataType: "json"
         });
     }}
-    function delete_fav_trip(sid){
+    function delete_fav_trip(sid,name){
     if(confirm(`確定要刪除 ${name} 嗎?`)){
         $('.selected').remove();
           $.ajax({
@@ -2092,11 +2110,15 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         });
     }}
 
-    function delete_fav_lucky(sid){
-    if(confirm(`確定要刪除 ${name} 嗎?`)){
-        $('.selected').remove();
+    $(document).on('click', '.unfriends', (function () {
+            $(this).parents('.friends_unit').toggleClass('delete_friends')
+        }))
+
+    function delete_friends(sid){
+    if(confirm(`確定要刪除 ${sid} 嗎?`)){
+        $('.delete_friends').remove();
           $.ajax({
-          url: 'delete_fav_lucky.php?sid=' + sid,
+          url: 'delete_friends.php?sid=' + sid,
           method: "DELETE",
           dataType: "json"
         });
