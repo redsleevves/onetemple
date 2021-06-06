@@ -22,19 +22,41 @@ $_gdata = [
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>', 
 ];
 
-$where = " WHERE cat = '熱門行程'";
-if (isset($_GET['cat']) && $_GET['cat']) {
-    $where = " WHERE cat = '".$_GET['cat']."'";
+$default_price = 10000;
+$default_cat = '熱門行程';
+
+$trip_order = isset($_GET['o'])?$_GET['o']:"";
+$cat_area = isset($_GET['cat_area'])?$_GET['cat_area']:"";
+if(!$cat_area) {
+    $cat = isset($_GET['cat'])?$_GET['cat']:$default_cat;
+} else {
+    $cat = "";
 }
-if (isset($_GET['cat_area']) && $_GET['cat_area']) {
-    $where = " WHERE cat_area = '".$_GET['cat_area']."'";
+$price = isset($_GET['price'])?$_GET['price']:$default_price;
+
+$wheres = [];
+//$where = " WHERE cat = '熱門行程' and price < 10000";
+
+if(!$cat_area) {
+    if (isset($_GET['cat']) && $_GET['cat']) {
+        $wheres[] = "cat = '".$_GET['cat']."'";
+    } else {
+        $wheres[] = "cat = '".$default_cat."'";
+    }
 }
 if (isset($_GET['price']) && $_GET['price']) {
-    $where = " WHERE price <= '".$_GET['price']."'";
+    $wheres[] = "price <= '".$_GET['price']."'";
+} else {
+    $wheres[] = "price <= '".$default_price."'";
+}
+if (isset($_GET['cat_area']) && $_GET['cat_area']) {
+    $wheres[] = "cat_area = '".$_GET['cat_area']."'";
 }
 if (isset($_GET['keyword']) && $_GET['keyword']) {
-    $where = " WHERE title2 like '%".$_GET['keyword']."%'";
+    $wheres[] = "title2 like '%".$_GET['keyword']."%'";
 }
+$where = " WHERE ". join(" AND ", $wheres);
+
 $orderby = "ORDER BY hot DESC, id ASC";
 //排序
 if (isset($_GET['o']) && $_GET['o'] == 'price') {
@@ -43,9 +65,6 @@ if (isset($_GET['o']) && $_GET['o'] == 'price') {
     $orderby = "ORDER BY ".$_GET['o']." DESC";
 }
 
-$trip_order = isset($_GET['o'])?$_GET['o']:"";
-$cat_area = isset($_GET['cat_area'])?$_GET['cat_area']:"";
-$cat = isset($_GET['cat'])?$_GET['cat']:"";
 
 //分頁算法
 $page = (isset($_GET['page']) && $_GET['page'])?$_GET['page']:1; 
@@ -547,14 +566,14 @@ function getPageLink($page) {
 
             </div>
             <div class="row">
-                <div class="collapse trip_price_mobile <?=isset($_GET['price'])?' show':''?>" id="collapseExample">
+                <div class="collapse trip_price_mobile <?=isset($price)?' show':''?>" id="collapseExample">
                     <div class="card card-body">
                         <ul>
                             <li class="py-1">
                                 <div class="trip_price_txt_mobile">價錢範圍</div>
                                 <div><input class="trip_price_range_mobile" id="ex8" data-slider-id='trip_price_range'
                                         type="text" data-slider-min="0" data-slider-max="10000" data-slider-step="500"
-                                        data-slider-value="5000" />
+                                        data-slider-value="<?=$price?>" />
                                 </div>
                             </li>
                         </ul>
@@ -646,16 +665,16 @@ if(count($trips) > 0) {
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="py-1"><a <?=(isset($_GET['cat']) && $_GET['cat'] == '人氣推薦')?'class="active"':''?> href="trip.php?cat=人氣推薦">人氣推薦</a></li>
-                                <li class="py-1"><a <?=(isset($_GET['cat']) && $_GET['cat'] =='熱門行程')?'class="active"':''?> href="trip.php?cat=熱門行程">熱門行程</a></li>
-                                <li class="py-1"><a <?=(isset($_GET['cat']) && $_GET['cat'] =='最新活動')?'class="active"':''?> href="trip.php?cat=最新活動">最新活動</a></li>
+                                <li class="py-1"><a <?=(isset($cat) && $cat == '人氣推薦')?'class="active"':''?> href="trip.php?cat=人氣推薦">人氣推薦</a></li>
+                                <li class="py-1"><a <?=(isset($cat) && $cat =='熱門行程')?'class="active"':''?> href="trip.php?cat=熱門行程">熱門行程</a></li>
+                                <li class="py-1"><a <?=(isset($cat) && $cat =='最新活動')?'class="active"':''?> href="trip.php?cat=最新活動">最新活動</a></li>
                             </ul>
                             <ul>
                                 <li class="py-1">
                                     <div class="trip_price_txt">價錢範圍 |</div>
                                     <div><input class="trip_price_range" id="ex8" data-slider-id='trip_price_range'
                                             type="text" data-slider-min="0" data-slider-max="10000"
-                                            data-slider-step="500" data-slider-value="5000" /></div>
+                                            data-slider-step="500" data-slider-value="<?=$price?>" /></div>
                                 </li>
                             </ul>
                         </div>
@@ -715,7 +734,7 @@ if(count($trips) > 0) {
                 </div>
             </div>
             <nav class="trip_page position-relative d-flex justify-content-end" aria-label="Page navigation example">
-                <ul class="pagination ">
+                <ul class="pagination mb-5 mt-3">
                 <?php
                 for($i=1;$i<=$total_pages;$i++) {
                 ?>
@@ -734,25 +753,33 @@ if(count($trips) > 0) {
     </div>
 
 
-
 <!-- 導航用代碼包含彈窗 -->
 <?php include __DIR__ . '/parts/ourscripts.php'; ?>
     <script>
         AOS.init();
         // With JQuery
         var urlParams = new URLSearchParams(window.location.search);
+        
+        function slider_change() {
+            let q = "?";
+            if(urlParams.get('cat')) {
+                q += "cat=" + urlParams.get('cat');
+            }
+            else if(urlParams.get('cat_area')) {
+                q += "cat_area=" + urlParams.get('cat_area');
+            }
+            location.href="trip.php" + q +"&price=" + $(this).val();
+        }
+
         $(".trip_price_range").slider({
             tooltip: 'always',
             tooltip_position: 'bottom',
-        }).slider('setValue', urlParams.get('price')?urlParams.get('price'):5000).on('slideStop', function(){
-            location.href="trip.php?price=" + $(this).val();
-        });
+        }).slider('setValue', urlParams.get('price')?urlParams.get('price'):10000).on('slideStop', slider_change);
+
         $(".trip_price_range_mobile").slider({
             tooltip: 'always',
             tooltip_position: 'bottom',
-        }).slider('setValue', urlParams.get('price')?urlParams.get('price'):5000).on('slideStop', function(){
-            location.href="trip.php?price=" + $(this).val();
-        });
+        }).slider('setValue', urlParams.get('price')?urlParams.get('price'):10000).on('slideStop', slider_change);
 
         $(".trip_like, .trip_like_mobile").click(function(){
             let btn = this;
