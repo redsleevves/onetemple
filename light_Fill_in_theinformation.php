@@ -2842,7 +2842,9 @@ $rows = $pdo->query($sql)->fetchAll();
                     <!-- 親友修改 返回 儲存按鈕 -->
                     <div class="modal-footer boxlineno marginauto col-9 jucse">
                         <div type="" class="aic btnss graycolor " data-dismiss="modal" aria-label="Close">返回</div>
+
                         <button type="submit" id="member_save" class="aic">送出</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -2953,13 +2955,20 @@ $rows = $pdo->query($sql)->fetchAll();
                 submit_data,
                 function(data) {
                     if (data.success) {
-                        location.reload();
+                        // 原畫面刷新
+                        // location.reload();
+                        
+                        // 成功送出 轉跳至index首頁
+                        window.location.replace("./index.php");
+                        
                     } else {
                         alert('error');
                     }
                 },
                 'json'
             )
+
+
         });
 
 
