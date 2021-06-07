@@ -29,7 +29,7 @@
         </div>
         <div class="nav_overlayNavBox">
             <ul>
-                <a href="<?= WEB_ROOT?>/temple_index.php">
+                <a href="<?= WEB_ROOT?>/index.php">
                     <li>灣廟首頁</li>
                 </a>
                 <a href="<?= WEB_ROOT?>/news_main.php">
@@ -77,7 +77,7 @@
     <div id="nav_index_navbar_com" class="nav_index_navbar_com">
         <div class="nav_index_navbarBox">
             <div class="nav_index_navbar_left">
-                <a href="<?= WEB_ROOT?>/temple_index.php" class="nav_navbar_item">
+                <a href="<?= WEB_ROOT?>/index.php" class="nav_navbar_item">
                     <div class="nav_hide_ch">灣廟首頁</div>
                     <div class="nav_hide_en">HOME</div>
                 </a>

@@ -30,7 +30,7 @@
         </div>
         <div class="nav_overlayNavBox">
             <ul>
-                <a href="<?= WEB_ROOT?>/temple_index.php">
+                <a href="<?= WEB_ROOT?>/index.php">
                     <li>灣廟首頁</li>
                 </a>
                 <a href="<?= WEB_ROOT?>/news_main.php">
@@ -79,7 +79,7 @@
     <nav class="nav_navbar_com">
         <div class="nav_navbar_com_container">
             <!-- 請依檔案位置修改logo路徑 -->
-            <a href="<?= WEB_ROOT?>/temple_index.php">
+            <a href="<?= WEB_ROOT?>/index.php">
                 <img src='<?= WEB_ROOT ?>/img/nav_logo.svg'>
             </a>
             
