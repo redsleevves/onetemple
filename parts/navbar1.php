@@ -113,15 +113,19 @@
                 </a>
             </div>
             <div class="nav_index_navbar_right">
+
             <?php if(isset($_SESSION['user'])): ?>
+
                     <li class="nav-item d-flex align-items-center">
                         <img src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
-                        <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
+                        <a href="<?= WEB_ROOT?>/member_onepage.php" class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">登出</a>
                     </li>
-                    <?php else: ?>
+
+            <?php else: ?>
+
                 <a href="login.php" data-toggle="modal" data-target="#loginCenter" class="nav_navbar_item <?= $pageName=='login' ? 'active' : '' ?>">
                     <div>登入</div>
                 </a>
@@ -129,7 +133,8 @@
                 <a href="register.php" data-toggle="modal" data-target="#registerCenter" class="nav_navbar_item <?= $pageName=='register' ? 'active' : '' ?>">
                     <div>註冊</div>
                 </a>
-                <?php endif; ?>
+            <?php endif; ?>
+
             </div>
         </div>
     </div>

@@ -148,6 +148,11 @@ body::-webkit-scrollbar {
     margin: 0;
 }
 
+.nav_nav_right a{
+    color: #000;
+}
+
+
 .nav_navbarBox div {
     font-family: 'Noto Serif TC', serif;
     font-size: 16px;
@@ -182,8 +187,14 @@ body::-webkit-scrollbar {
     margin: 0 auto;
 }
 
+/* logo大小 */
 nav img {
     width: 85px;
+}
+
+/* 登入頭像大小 */
+.nav-item img, .mobile_nav_profile img{
+    width: 40px;
 }
 
 

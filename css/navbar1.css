@@ -143,15 +143,20 @@ body::-webkit-scrollbar {
     width: 20%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     list-style-type: none;
     margin: 0;
 }
 
-.nav_index_navbar_right img{
-    width: 50px;
-    height: 50px;
+.nav_index_navbar_right img, .mobile_nav_profile img{
+    width: 40px;
+    height: 40px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.nav_index_navbar_right a {
+    color: #000;
 }
 
 .nav_index_navbarBox div {
@@ -307,13 +312,6 @@ body::-webkit-scrollbar {
 
 form .form-group small.error {
     color: red;
-}
-.nav_index_navbar_right {
-    align-items: center;
-}
-
-.nav_index_navbar_right img{
-    width: 50px;
 }
 
 .mobile_login{

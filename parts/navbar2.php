@@ -60,7 +60,7 @@
                     <div class="mobile_login d-flex">
                     <div class="mobile_nav_profile d-flex">
                         <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
-                        <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
+                        <a href="<?= WEB_ROOT?>/member_onepage.php" class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
                     </div>
                     <div class="nav-item">
                         <a class="nav-link" href="logout.php">登出</a>
@@ -121,7 +121,7 @@
                     <?php if(isset($_SESSION['user'])): ?>
                     <li class="nav-item d-flex align-items-center">
                         <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
-                        <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
+                        <a href="<?= WEB_ROOT?>/member_onepage.php" class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">登出</a>
