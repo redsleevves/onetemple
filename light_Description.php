@@ -249,6 +249,23 @@ $_gdata = [
         color: #fff;
     }
 
+/* index_goTop */
+.index_goTopImg {
+        width: 50px;
+        position: fixed;
+        bottom: -100px;
+        right: 20px;
+        transition: .5s;
+        z-index: 9;
+    }
+
+    .index_goTopImg svg {
+        width: 100%;
+    }
+
+    .index_goTopImg.show {
+        bottom: 20px;
+    }
     /* 手機在這邊~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     /* min-width 桌面板 */
     @media (min-width:1400px) {

@@ -442,6 +442,14 @@ $_gdata = [
         z-index: 9;
     }
 
+    .index_goTopImg svg {
+        width: 100%;
+    }
+
+    .index_goTopImg.show {
+        bottom: 20px;
+    }
+
 
 
     /* .animat_1{
