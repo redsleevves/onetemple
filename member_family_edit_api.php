@@ -6,6 +6,9 @@ $output = [
     'error' => '資料沒有修改'
 ];
 
+// echo json_encode($_POST);
+// exit;
+
 if(isset($_POST['sid'])) {
     $output['error'] = '資料沒有修';
     $sql = "UPDATE `order_lit_details` SET
@@ -14,7 +17,7 @@ if(isset($_POST['sid'])) {
                         `bless_address`=?
             WHERE `sid`=? ";
 
-    $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare($sql);    
     $stmt->execute([
         $_POST['bless_mobile'],
         $_POST['bless_address'],
