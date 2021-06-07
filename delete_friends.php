@@ -6,8 +6,9 @@ $sid = intval($_GET['sid']);
 
 
 if(! empty($sid)) {
-    $pdc_sql = "DELETE FROM `fav_pdc` WHERE `sid`=$sid ";
-    $pdo->query($pdc_sql);
+    $lit_sql = "DELETE FROM `member_family` WHERE `sid`=$sid ";
+    $pdo->query($lit_sql);
+
 }
 
 // header('Location: '. $come_from);

@@ -16,10 +16,23 @@ $_gdata = [
 
 <style>
 
+    .mouse_box{
+        width: 60px;
+        height: 60px;
+        background-color: transparent;
+        border-radius: 50%;
+        border: 1px solid #cc543a;
+
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 999;
+    }
+
     body {
         font-family: 'Faustina', serif;
         background-image: url(./img/nav_bcc.png);
-        cursor: url('./img/cursor.png') 15 15, auto;
+        /* cursor: url('./img/cursor.png') 15 15, auto; */
     }
     a:hover{
         text-decoration: none;
@@ -412,6 +425,10 @@ $_gdata = [
             background-image: url(./img/nav_bcc2.png);
 
             position: relative;
+        }
+
+        .index_exploreArea a{
+            color: #000;
         }
 
         .index_exploreBox {
@@ -1234,6 +1251,8 @@ $_gdata = [
 </head>
 
 <body>
+
+    <div class="mouse_box"></div>
     
     <div class="index_banner">
         <ul class="index_bannerBox">
@@ -2510,21 +2529,34 @@ $_gdata = [
     <div class="index_exploreArea d-flex align-items-center">
         <div class="index_exploreBox d-flex">
             <div class="index_explore index_ep1">
-                <div class="index_exImg exImg1"><img src="./img/indexExplore(1).jpg" alt=""></div>
-                <div class="index_epWordBox epWord1">
-                    <p>Story</p>
-                    <hr class="epLine1">
-                    <span>也得不眾動不一歷只片、港食化的要，雄體專結量腦戰像收天況百國影來……論將是春時花去視：年紀月大不英本別智加包男神。</span>
+
+                <div class="index_exImg exImg1">
+                    <img src="./img/indexExplore(1).jpg" alt="">
                 </div>
+                
+                
+                <a href="<?= WEB_ROOT?>/discover_temple.php">
+                    <div class="index_epWordBox epWord1">
+                        <p>Story</p>
+                        <hr class="epLine1">
+                        <span>也得不眾動不一歷只片、港食化的要，雄體專結量腦戰像收天況百國影來……論將是春時花去視：年紀月大不英本別智加包男神。</span>
+                    </div>
+                </a>
             </div>
 
             <div class="index_explore index_ep2">
-                <div class="index_exImg exImg2"><img src="./img/indexExplore(2).jpg" alt=""></div>
-                <div class="index_epWordBox epWord2">
-                    <p>Explore More +</p>
-                    <hr class="epLine2">
-                    <span>也得不眾動不一歷只片、港食化的要，雄體專結量腦戰像收天況百國影來……論將是春時花去視：年紀月大不英本別智加包男神。</span>
+                
+                <div class="index_exImg exImg2">
+                    <img src="./img/indexExplore(2).jpg" alt="">
                 </div>
+                
+                <a href="<?= WEB_ROOT?>/discover.php">
+                    <div class="index_epWordBox epWord2">
+                        <p>Explore More +</p>
+                        <hr class="epLine2">
+                        <span>也得不眾動不一歷只片、港食化的要，雄體專結量腦戰像收天況百國影來……論將是春時花去視：年紀月大不英本別智加包男神。</span>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -2688,6 +2720,17 @@ $_gdata = [
     <?php include __DIR__ . '/parts/ourscripts.php'; ?>
 
     <script>
+
+        //mouse-event
+        $(document).mousemove(function (event) {
+
+            var mouseSite = $('.mouse_box').width() / 2;
+
+        // setTimeout，計時用參數，延遲__秒，會去執行一次程式碼。
+        setTimeout(() => {
+            $('.mouse_box').css('left', event.clientX).css('top', event.clientY)
+        }, 100);
+        });
         
 
         //banner-carousel

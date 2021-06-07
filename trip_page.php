@@ -364,10 +364,10 @@ for($i=0;$i<count($hot_trips);$i++) {
 
             
         </div>
-    <div class="row pt-4">
+    <div class="row pt-5">
         <h3 class="pb-lg-4 pb-3 px-3 d-none d-lg-block">熱門推薦 |</h3>
     </div>
-    <div class="">
+    <div class="mb-3">
         <div id="carouselHotControls" class="carousel slide d-none d-lg-block" data-ride="carousel">
             <div class="carousel-inner container">
 <?php

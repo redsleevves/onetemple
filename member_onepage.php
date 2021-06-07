@@ -17,14 +17,24 @@ $member_sid = $_SESSION['user']['sid'];
 $pdc_sql = "SELECT fav_pdc.sid, member.sid AS member_id, fav_pdc.pdc_sid, product.img, product.name, product.price FROM fav_pdc JOIN member ON member.sid=fav_pdc.member_sid JOIN product ON fav_pdc.pdc_sid=product.sid where member.sid='$member_sid'";
 $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 
-$trip_sql = "SELECT fav_trip.sid, member.sid AS member_id, fav_trip.trip_sid, trip.img, trip.name, trip.location, trip.duration, trip.quote, trip.price FROM fav_trip JOIN member ON member.sid=fav_trip.member_sid JOIN trip ON fav_trip.trip_sid=trip.sid where member.sid='$member_sid'";
+$trip_sql = "SELECT fav_trip.sid, member.sid AS member_id, fav_trip.trip_sid, trips.photo1, trips.title2, trips.position, trips.days, trips.title3, trips.price FROM fav_trip JOIN member ON member.sid=fav_trip.member_sid JOIN trips ON fav_trip.trip_sid=trips.id where member.sid='$member_sid'";
 $trip_rows = $pdo->query($trip_sql)->fetchAll();
 
 $lucky_sql = "SELECT fav_lucky.sid, member.sid AS member_id, fav_lucky.lucky_sid, fav_lucky.getdate, peom.img FROM fav_lucky JOIN member ON member.sid=fav_lucky.member_sid JOIN peom ON fav_lucky.lucky_sid=peom.sid where member.sid='$member_sid'";
 $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
-$lit_sql = "SELECT order_lit_details.bless_name, orders_lit.member_sid AS member_id, order_lit_details.bless_gender, order_lit_details.bless_birth, order_lit_details.bless_address FROM orders_lit JOIN order_lit_details ON orders_lit.sid=order_lit_details.order_lit_sid where member_sid='$member_sid'";
+$lit_sql = "SELECT member_family.bless_name, member.sid AS member_id, member_family.sid, member_family.bless_gender, member_family.bless_birth, member_family.bless_address FROM member_family JOIN member ON member.sid=member_family.member_sid where member.sid='$member_sid'";
 $lit_rows = $pdo->query($lit_sql)->fetchAll();
+
+$sum_sql = "SELECT * FROM order_sum where order_sum.member_sid='$member_sid'";
+$sum_rows = $pdo->query($sum_sql)->fetchAll();
+
+$sum_id = $sum_rows['sid'];
+$sum_trip_sql = "SELECT orders_trip.trip_qty,orders_trip.trip_price, orders_trip.sum_id, trips.title2, trips.photo1, orders_trip.member_sid FROM orders_trip JOIN trips ON orders_trip.trip_sid=trips.id where member_sid='$member_sid' AND sum_id='1'";
+$sum_trip_rows = $pdo->query($sum_trip_sql)->fetchAll();
+
+$sum_pdc_sql = "SELECT orders_pdc.pdc_qty,orders_pdc.pdc_price, product.name, product.img, orders_pdc.member_sid FROM orders_pdc JOIN product ON orders_pdc.pdc_sid=product.sid where member_sid='$member_sid'";
+$sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
 
 ?>
     <style>
@@ -122,7 +132,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
 
         #pointer {
             height: 1px;
-            width: 100%;
+            width: 80%;
             background-color: #4D4B4B;
             position: relative;
             --myVar: 25%;
@@ -153,7 +163,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         }
 
         .member_head {
-            padding: 2% 8%;
+            padding-bottom: 2%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -201,7 +211,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
 
         .fav_product_card,
         .fav_plan_card,
-        .fav_lucky_box {
+        .fav_lucky_card {
             text-align: center;
             position: relative;
         }
@@ -231,7 +241,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             z-index: 2;
         }
 
-        .fav_lucky_box .delete {
+        .fav_lucky_card .delete {
             position: absolute;
             color: #cc543a;
         }
@@ -334,8 +344,8 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         }
 
         .abstract {
-            background-color: #D1D2D5;
-            border: 2px solid #C0C0C0;
+            /* background-color: #D1D2D5;
+            border: 2px solid #C0C0C0; */
             margin-bottom: 0;
         }
 
@@ -355,11 +365,12 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         }
 
         .fixrow {
-            border: 2px solid #C0C0C0;
+            margin-bottom:0 !important;
         }
 
         .info {
-            background-color: white;
+            background-color: #D1D2D5;
+            border: 2px solid #C0C0C0;            
             margin-bottom: 0;
             margin-top: 1rem;
         }
@@ -386,7 +397,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             align-items: center;
             justify-content:center;
             transition: 0.5s;
-            z-index: 99;
+            z-index: 101;
             border-radius:20px;
             padding: 50px 0;
         }
@@ -428,7 +439,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             justify-content: center;
             align-items: center;
             transition: 0.5s;
-            z-index: 99;
+            z-index: 101;
             border-radius: 20px;
             padding: 50px 0;
         }
@@ -471,11 +482,11 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             left: 0;
             top: 0;
             width: 100%;
-            height: 100%;
+            height: 120%;
             background-color: rgba(0, 0, 0, 0.432);
             opacity: 0;
             display:none;
-            z-index: 2;
+            z-index: 100;
             transition: 0.2s;
         }
         .member_profile{
@@ -511,8 +522,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         }
         .family{
             width: 50%;
-            margin: auto;
-            margin-top:100px;
+            margin: 100px auto;
         }
         .lucky_Poetry06{
             display: flex;
@@ -555,17 +565,9 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
 
         /* 手機用 */
         @media (max-width:1399px) {
-          
-
             .breadcrumb_style_1 {
                 /* 手機板寬 自行設定 */
                 width: 85%;
-            }
-
-            .breadcrumb_style_1 {
-                /* contanier架構專用 padding 0 15px  */
-                /* padding: 20px 15px; */
-                /* width: 100%; */
             }
         }
         @media screen and (min-width: 1000px) {
@@ -591,19 +593,19 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
 
             .fav_product_card .delete {
                 top: 3%;
-                right: 8%;
+                right: 5%;
                 font-size: 30px;
             }
 
             .fav_plan_card .delete {
                 top: 3%;
-                right: 0;
+                right: 1%;
                 font-size: 30px;
             }
 
-            .fav_lucky_box .delete {
-                top: 2%;
-                right: 12%;
+            .fav_lucky_card .delete {
+                top: -7%;
+                right: 2%;
                 font-size: 30px;
             }
 
@@ -614,6 +616,11 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 display: none;
             }
 
+            .detail h3{
+                text-align: start;
+                margin:15px 0 0 55px;
+            }
+
             .detail th {
                 height: 50px;
                 vertical-align: middle;
@@ -621,7 +628,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             }
 
             .detail td {
-                vertical-align: middle;
+                vertical-align: middle !important;
                 text-align: center;
             }
 
@@ -629,13 +636,13 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 position: relative;
             }
 
-            .detail thead::before {
+            .detail thead::after {
                 content: "";
                 display: block;
                 height: 2px;
                 width: 65%;
-                top: 50px;
-                left: 32%;
+                top: 100px;
+                left: 30%;
                 position: absolute;
                 background-color: #C0C0C0;
             }
@@ -888,9 +895,9 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 right: -1%;
             }
 
-            .fav_lucky_box .delete {
+            .fav_lucky_card .delete {
                 top: 3%;
-                right: 20%;
+                right: 8%;
             }
 
             .fav_plan_card img {
@@ -995,8 +1002,16 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         }
 
     </style>
+
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
 <?php include __DIR__ . '/parts/navbar2.php'; ?>
+    <div class="breadcrumb_style   backgroundimg_1">
+        <div class="d-flex flex-wrap breadcrumb_style_1 ">
+            <a href="" class="astlyep">首頁</a>
+            <img src="<?= WEB_ROOT ?>/img/nav_arrow_right.svg">
+            <a href="" class="astlyep">會員中心</a>
+        </div>
+    </div>
     <div class="popwindow">
             <h3>會員資料修改</h3>
         <form name="editMyData" class="editMyData" method="post" novalidate onsubmit="checkEdit(); return false;">
@@ -1044,45 +1059,45 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
     <div class="popwindow2">
         <h3>親友資料修改</h3>
         <div class="scrollbox">
-            <form class="editFriendsData">
+            <form id="editFriendsData" class="editFriendsData" name="editFriendsData" onsubmit="checkEditFamily(); return false;">
+            <?php foreach ($lit_rows as $k) : ?>
+                <div class="friends_unit">
+                <input type="hidden" name="sid" value="<?= $k['sid'] ?>">
                 <div class="form-group">
                     <label for="member_name">姓名</label>
                     <p>|</p>
-                    <input type="text" name="friends_name">
+                    <input type="text" name="friends_name" value="<?= $k['bless_name'] ?>" readonly>
                 </div>
                 <div class="form-group">
                     <label for="member_password">生日(國曆)</label>
                     <p>|</p>
-                    <input type="text" name="friends_birthday" placeholder="生日">
+                    <input type="text" name="friends_birth" value="<?= $k['bless_birth'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="member_mobile">連絡電話</label>
                     <p>|</p>
-                    <input type="text" name="friends_mobile" placeholder="聯絡電話">
+                    <input type="text" name="friends_mobile" value="<?= $k['bless_mobile'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="member_address">地址</label>
                     <p>|</p>
-                    <input type="text" name="friends_address" placeholder="地址">
+                    <input type="text" name="friends_address" value="<?= $k['bless_address'] ?>">
                 </div>
-                <div class="unfriends" style="display: flex;">
-                    <button class="graybut">刪除</button>
+                <div style="display: flex; justify-content:center">
+                <a href="javascript:delete_friends(<?= $k['sid'] ?>)"><button type="button" class="unfriends graybut">刪除</button></a>
                 </div>
                 <hr>
+                </div>
+                <?php endforeach; ?>
             </form>
         </div>
         <div>
             <button class="addfriends">新增</button>
-            <button>儲存</button>
+            <button type="submit" form="editFriendsData">儲存</button>
         </div>
     </div>
     <div class="cover"></div>
     <section class="member_head container-fluid">
-    <div class="breadcrumb_style   backgroundimg_1">
-        <div class="d-flex flex-wrap breadcrumb_style_1 ">
-            <a href="" class="astlyep">會員中心</a>
-        </div>
-    </div>
         <div class="tab col-lg-9  col-12">
             <div class="profile">
                 <svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
@@ -1422,14 +1437,14 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                     <div  class="fav_plan_container col-xs-12">
                         <?php foreach ($trip_rows as $t) : ?>
                         <div class="fav_plan_card col-lg-5 col-10 p-0">
-                        <a href="javascript:delete_fav_trip(<?= $t['sid'] ?>)">
+                        <a href="javascript:delete_fav_trip(<?= $t['sid'] ?>,<?= $t['title2'] ?>)">
                             <i class="fas fa-times-circle delete d-none"></i></a>
-                            <img src="<?= WEB_ROOT ?>/img/<?= $t['img'] ?>" class="col-6">
+                            <img src="<?= WEB_ROOT ?>/img/<?= $t['photo1'] ?>" class="col-6">
                             <div class="fav_plan_card_text col-6">
-                                <h3><?= $t['name'] ?></h3>
-                                <p><i class="fas fa-map-marker-alt"></i><?= $t['location'] ?></p>
-                                <p><i class="far fa-clock"></i><?= $t['duration'] ?></p>
-                                <P><i class="fas fa-quote-left"></i><?= $t['quote'] ?></P>
+                                <h3><?= $t['title2'] ?></h3>
+                                <p><i class="fas fa-map-marker-alt"></i><?= $t['position'] ?></p>
+                                <p><i class="far fa-clock"></i><?= $t['days'] ?></p>
+                                <P><i class="fas fa-quote-left"></i><?= $t['title3'] ?></P>
                                 <span>NTD<?= $t['price'] ?>元起</span>
                                 <button>查看詳情</button>
                             </div>
@@ -1478,19 +1493,21 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 </tr>
             </thead>
         </table>
+        <?php foreach ($sum_rows as $s) : ?>
         <table class="table table-borderless fixrow info col-lg-7">
             <thead>
                 <tr>
-                    <th>2020/01/01</th>
-                    <th>000154</th>
-                    <th>線上刷卡</th>
-                    <th>已出貨</th>
-                    <th>4,115</th>
-                    <th>已完成</th>
+                    <th><?= $s['orderdate'] ?></th>
+                    <th><?= $s['sid'] ?></th>
+                    <th><?= $s['payment'] ?></th>
+                    <th><?= $s['process'] ?></th>
+                    <th><?= $s['total'] ?></th>
+                    <th><?= $s['status'] ?></th>
                 </tr>
             </thead>
         </table>
         <div class="table detail table-light col-lg-7">
+            <h3>訂購明細</h3>
             <table class="table table-light">
                 <thead>
                     <tr>
@@ -1499,44 +1516,44 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                         <th scope="col">內容</th>
                         <th scope="col">數量</th>
                         <th scope="col">金額</th>
+                        <th scope="col">備註</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach ($sum_trip_rows as $a) : ?>
                     <tr>
                         <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['photo1'] ?>"></div>
                         </td>
-                        <td>蒐集離島媽祖</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
+                        <td><?= $a['title2'] ?></td>
+                        <td><?= $a['member_sid'] ?></td>
+                        <td><?= $a['trip_qty'] ?></td>
+                        <td><?= $a['trip_price'] ?></td>
+                        <td><a>寫下評論</a></td>
                     </tr>
+                    <?php endforeach; ?>
+                    <?php foreach ($sum_pdc_rows as $b) : ?>
                     <tr>
                         <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
+                            <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['img'] ?>"></div>
                         </td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
+                        <td><?= $b['name'] ?></td>
+                        <td><?= $b['member_sid'] ?></td>
+                        <td><?= $b['pdc_qty'] ?></td>
+                        <td><?= $b['pdc_price'] ?></td>
+                        <td><?= $a['trip_price'] ?></td>
                     </tr>
-                    <tr>
-                        <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                        </td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
-                    </tr>
+                    <?php endforeach; ?>
                     <tr>
                         <td colspan="5">
-                            <i class="fas fa-chevron-up"></i>
+                            <i class="fas less fa-chevron-up"></i>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        <?php endforeach; ?>
+
         <table class="table table-borderless fixrow info col-lg-7">
             <thead>
                 <tr>
@@ -1590,7 +1607,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <i class="fas fa-chevron-up"></i>
+                            <i class="fas fa-chevron-up less"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -1782,7 +1799,6 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
             let fixhead = document.querySelector('.member_head').offsetHeight
             let fixnav = document.querySelector('.nav_navbar_com_container').offsetHeight
             $('footer').css('top', e + fixhead + fixnav + 80 + 'px')
-            // $('.backdeco').css('bottom', e + fixhead + fixnav + 'px')
             $('body').css('height', e + 300 + 'px')
         }
         $(document).ready(function () {
@@ -1793,12 +1809,12 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
 
 
         $(".info").click(function () {
-            let absoluteBut = document.body.scrollHeight
+            let absoluteBut = document.body.scrollHeight + 300 + px
             dynamicFooter(absoluteBut)
             $(this).next(detail).slideToggle();
         });
         $(".less").click(function () {
-            $(".detail").slideUp();
+            $(this).parents('.detail').slideToggle();
         });
         $(".order_mobile_info").click(function () {
             $(this).siblings().slideToggle();
@@ -1927,6 +1943,8 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         }))
         $(document).on('click', '.delete', (function () {
             $(this).parents('.fav_lucky_card').toggleClass('selected')
+            $(this).parents('.fav_product_card').toggleClass('selected')
+            $(this).parents('.fav_plan_card').toggleClass('selected')
             control1()
             control2()
             control3()
@@ -1952,9 +1970,10 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         $('button').click(function(){
             $('#cover').removeClass('d-none')
         })
+        
     $('.popeditmy').click(function () {
         $('.popwindow').css('display', 'flex')
-        $('.popwindow').css('transform', 'translate(-50%, -100%)')
+        $('.popwindow').css('transform', 'translate(-50%, -50%)')
         $('.cover').css('opacity', '1').css('display','block')
     })
     $('.popeditfriends').click(function () {
@@ -1984,19 +2003,46 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         $('#changepw').html('')
     })
     // 親友修改 新增Buttom
-    let addfriends = document.querySelector(".scrollbox").innerHTML;
+
+    let addfriends = `<form class="editFriendsData">
+                <div class="form-group">
+                    <label for="member_name">姓名</label>
+                    <p>|</p>
+                    <input type="text" name="friends_name">
+                </div>
+                <div class="form-group">
+                    <label for="member_password">生日(國曆)</label>
+                    <p>|</p>
+                    <input type="text" name="friends_birthday" placeholder="生日">
+                </div>
+                <div class="form-group">
+                    <label for="member_mobile">連絡電話</label>
+                    <p>|</p>
+                    <input type="text" name="friends_mobile" placeholder="聯絡電話">
+                </div>
+                <div class="form-group">
+                    <label for="member_address">地址</label>
+                    <p>|</p>
+                    <input type="text" name="friends_address" placeholder="地址">
+                </div>
+                <div class="unfriends" style="display: flex;">
+                    <button class="graybut">刪除</button>
+                </div>
+                <hr>
+            </form>`;
     $('.addfriends').click(function () {
         $(".scrollbox").append(addfriends);
     })
 
     // 親友修改 刪除Buttom
+
+
     $(document).on('click', '.unfriends', (function () {
         $(this).parent('.editFriendsData').remove();
     }))
 
     function checkEdit() {
         let isPass = true;
-
         if(isPass){
             $.post(
                 'member_edit_api.php',
@@ -2012,23 +2058,51 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 'json'
             )
         }
+    }
+    
+    var formData = JSON.stringify($("#editFriendsData").serializeArray());
 
+    function checkEditFamily() {
+        let isPass = true;
+        if(isPass){
+            $.post(
+                'member_family_edit_api.php',
+                formData,
+                function(data){
+                    if(data.success){
+                        alert('資料修改成功');
+                        location.href = 'member_onepage.php';
+                    } else {
+                        alert(data.error);
+                    }
+                },
+                'json'
+            )
+        }
     }
 
 
     function delete_fav_pdc(sid){
-    if(confirm(`確定要刪除 ${fav_pdc.name} 嗎?`)){
-        $(this).parent().remove()
-        location.href = 'delete_fav_pdc.php?sid=' + sid;
+    if(confirm(`確定要刪除 ${name} 嗎?`)){
+        $('.selected').remove();
+          $.ajax({
+          url: 'delete_fav_pdc.php?sid=' + sid,
+          method: "DELETE",
+          dataType: "json"
+        });
     }}
-    function delete_fav_trip(sid){
-    if(confirm(`確定要刪除 ${fav_trip.name} 嗎?`)){
-        location.href = 'delete_fav_trip.php?sid=' + sid;
+    function delete_fav_trip(sid,name){
+    if(confirm(`確定要刪除 ${name} 嗎?`)){
+        $('.selected').remove();
+          $.ajax({
+          url: 'delete_fav_trip.php?sid=' + sid,
+          method: "DELETE",
+          dataType: "json"
+        });
     }}
     function delete_fav_lucky(sid){
-    if(confirm(`確定要刪除 ${sid} 嗎?`)){
-        $('.selected').remove()
-        // location.href = 'delete_fav_lucky.php?sid=' + sid;
+    if(confirm(`確定要刪除 ${name} 嗎?`)){
+        $('.selected').remove();
           $.ajax({
           url: 'delete_fav_lucky.php?sid=' + sid,
           method: "DELETE",
@@ -2036,10 +2110,20 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
         });
     }}
 
-    $(document).on('click', '.delete', (function () {
-            $(this).parents('.fav_lucky_card').remove()
-    }))
-    
+    $(document).on('click', '.unfriends', (function () {
+            $(this).parents('.friends_unit').toggleClass('delete_friends')
+        }))
+
+    function delete_friends(sid){
+    if(confirm(`確定要刪除 ${sid} 嗎?`)){
+        $('.delete_friends').remove();
+          $.ajax({
+          url: 'delete_friends.php?sid=' + sid,
+          method: "DELETE",
+          dataType: "json"
+        });
+    }}
+
     const avatar = document.querySelector('#avatar');
 
     avatar.addEventListener('change', function(){
@@ -2062,22 +2146,7 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
                 'profile_edit_api.php',
                 $(document.form_upload).serialize(),
                 )
-
     });
     
-    // var table = $('#example').DataTable();
-
-
-    //使用AJAX刪除資料庫的資料
-    // function DeleteSelectTable(){
-    //   for (var i = 0; i < table.rows('.selected').data().length; i++) {
-    //     var id = table.rows('.selected').data()[i][0]
-    //     $.ajax({
-    //       url: 'delete_fav_lucky.php?sid=' + sid,
-    //       method: "DELETE",
-    //       dataType: "json"
-    //     });
-    //   }
-    // }
     </script>
 <?php include __DIR__. '/parts/html-foot.php'; ?>
