@@ -4,7 +4,7 @@ require __DIR__ . "/parts/config.php";
 
 $_gdata = [
     // 網頁名稱
-    'title' => '聖地行旅',
+    'title' => '灣廟 | 探索行天宮',
     // 頁面私有 css
     'styles' => '
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
