@@ -75,18 +75,15 @@
     //     $(this).css('background-color', '#cc543a');
     // })
     //手機按鈕
-    // .toggleClass
-    // $('.shop_phone_btn option').hover(function() {
-    //     // console.log($('.shop_phone_btn option:selected'));
-
-    //     $(this).css('color', '#fff');
-    //     $(this).css('background-color', '#cc543a');
-    //     $(this).css('border', 'transparent');
-    // })
-    // $('.shop_phone_btn').mouseleave(function() {
-    //     $(this).css('color', '#a2a2a2');
-    //     $(this).css('background-color', '#fff');
-    // })
+    $('.shop_phone_btn').toggleClass(function() {
+        $(this).css('color', '#fff');
+        $(this).css('background-color', '#cc543a');
+        $(this).css('border', 'transparent');
+    })
+    $('.shop_phone_btn').mouseleave(function() {
+        $(this).css('color', '#a2a2a2');
+        $(this).css('background-color', '#fff');
+    })
     //加入我的最愛按鈕
     $(".shop_icon").click(function() {
         // console.log('hi');
@@ -117,10 +114,10 @@
             location.href = location.pathname + searchkey.join('&') + "&page=" + $(this).attr('value');
         }
     });
-    //收尋按鈕
-    $(".fa.fa-search.fa-lg").click(function() {
-        location.href = "?searchkey=" + $('#formGroupExampleInput').val();
-    });
+	//收尋按鈕
+	$(".fa.fa-search.fa-lg").click(function() {
+		location.href = "?searchkey=" + $('#formGroupExampleInput').val();
+		});
     // $("#exampleFormControlSelect1").change(function() {
     //    location.href = "?Sort_by=" + $(this).find("option:selected").html();
     // });

@@ -401,8 +401,8 @@ h3 {
     }
 
     .shop_top100 {
-        
-        padding-bottom: 120px;
+        /* padding-top: 110px; */
+        padding-bottom: 50px;
         width: 1400px;
         
     }
@@ -571,26 +571,23 @@ h3 {
     .Pressed_flower{
         position: absolute;
         z-index: -50;
-        /* width: 300px; */
-        width: 15%;
-        /* bottom: 100px; */
-        top: 75%;
+        width: 300px;
+        bottom: 100px;
         left: 200px;
-        display: block;
     }
     .Pressed_flower img{
+        /* padding-bottom: 100px;
+        padding-left: 200px; */
         width: 100%;
         height: 100%;
     }
-  
 }
 
 @media only screen and (max-width: 1000px) {
-  
-    .shop_pbtom{
-        
-        margin-bottom: 100px;
-    }
+    /* .collapse{
+        display: none;
+    } */
+
     .shop_top100{
         padding-top: 0px;
     }
@@ -648,59 +645,22 @@ h3 {
        z-index: 50;
        
     } */
-    .shop_phone_btn option{
+    .shop_phone_btn{
         border-radius: 30px;
         padding: 0px 5px;
         height: 35px;
         box-shadow:2px 1px 3px #33333364;
     }
    
-    .shop_phone_btn option:active,
-    .shop_phone_btn option:hover{
+    /* .shop_phone_btn:active,
+    .shop_phone_btn:hover{
         background-color: #cc543a;
         color: #fff;
         border-radius: 30px;
         padding: 0px 5px;
         height: 35px;
         box-shadow:2px 1px 3px #33333364;
-    }
-
-      
-    .shop_phone_btn option[value="1"] {
-        background-color: #fff;
-        color: #000;
-      }
-      
-    .shop_phone_btn option[value="2"] {
-        background-color: #fff;
-        color: #000;
-      }
-    .shop_phone_btn option[value="2"]:hover {
-        background-color: #cc543a;
-        color: #fff;
-      }
-      
-    .shop_phone_btn option[value="3"] {
-        background-color: #fff;
-        color: #000;
-      }
-      
-    .shop_phone_btn option[value="4"] {
-        background-color: #fff;
-        color: #000;
-      }
-    .shop_phone_btn option[value="5"] {
-        background-color: #fff;
-        color: #000;
-      }
-    .shop_phone_btn option[value="6"] {
-        background-color: #fff;
-        color: #000;
-      }
-    .shop_phone_btn option[value="7"] {
-        background-color: #fff;
-        color: #000;
-      }
+    } */
     .shop_phone_button option{
         /* background-color: #fff; */
     }
@@ -807,7 +767,6 @@ h3 {
         display: flex;
         flex-direction: column;
         /* align-items: center; */
-        margin-bottom: 28px;
         
 
     }
@@ -1005,7 +964,7 @@ h3 {
     }
     /* 換頁按鈕 */
     .pagination{
-        padding-top: 22px;
+        
     }
     .page-link{
         padding: 1rem 1.25rem;
@@ -1034,9 +993,5 @@ h3 {
         color: #000;
         background-color: transparent;
     }
-    
-    /* -------押花------------- */
-    .Pressed_flower{
-        display: none;
-    }
+    /* ------------ */
 }

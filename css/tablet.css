@@ -1,0 +1,73 @@
+@media only screen and (min-width: 768px){
+    /* 求籤-最外層 */
+.lucky_contianer{
+    margin: 50px 50px 0px 50px;
+    overflow: hidden;
+}
+    .item-group{
+        /* display: flex; */
+        /* position: none; */
+        overflow: hidden;
+    }
+    .lucky_w{
+        width: 100%;
+    }
+    .lucky_row{
+        /* display: flex; */
+    }
+    /* 跳轉按鈕 */
+    .lucky_button01{
+        border-radius: 30px;
+        color: #fff;
+        background-color: #cc543a;
+        border-style: none;
+        width: 25%;
+        height: 5vh;
+        font-size: 25px;
+    }
+    .lucky_Search-gods,
+    .lucky_Request-signature,
+    .lucky_button01{
+        /* left: 25%; */
+        /* transform: translateX(15%); */
+        margin-left: 15%;
+    }
+    /* 選擇神明 */
+    .lucky_row .lucky_Search-gods{
+    margin-bottom: 8vh;
+    margin-top: 10vh;
+    }
+    select{
+        border-style: none;
+        border-bottom: 1px solid rgb(66, 65, 65);
+        width: 40%;
+        font-size: 30px;
+    }
+    option{
+        font-size: 20px;
+    }
+    /* 固定背景神明圖 */
+    .lucky_GodImg{
+        width: 40%;
+        z-index: -1;
+        overflow: hidden;
+        /* transform: translateY(-100px); */
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        /* float: right;
+        right: -100px; */
+        /* transform: translateX(35%); */
+        /* border: 1px solid rgb(255, 0, 0); */
+        
+    }
+    .lucky_GodImg img{
+        width: 100%;
+        opacity: 0.5;
+        /* border: 1px solid rgb(255, 0, 0); */
+        /* object-fit: cover; */
+    }
+
+
+
+}

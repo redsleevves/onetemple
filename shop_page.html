@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/271f30e909.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css"
+        integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/4.3.0/jquery.bootstrap-touchspin.min.css"
+        integrity="sha512-0GlDFjxPsBIRh0ZGa2IMkNT54XGNaGqeJQLtMAw6EMEDQJ0WqpnU6COVA91cUS0CeVA5HtfBfzS9rlJR3bPMyw=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/nav_footer.css">
+    <link rel="stylesheet" href="./css/nav2.css">
+    <link rel="stylesheet" href="./css/breadcrumb.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/mybtn.css">
+
+
+
+</head>
+
+<body>
+    <div class="nav_burgurBar">
+        <div class="nav_burgurBar_img">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 25 20">
+                <g id="Group_135" data-name="Group 135" transform="translate(-341.5 -1313.5)">
+                    <line id="Line_50" data-name="Line 50" x2="23" transform="translate(342.5 1314.5)" fill="none"
+                        stroke="#707070" stroke-linecap="round" stroke-width="2" />
+                    <line id="Line_51" data-name="Line 51" x2="23" transform="translate(342.5 1323.5)" fill="none"
+                        stroke="#707070" stroke-linecap="round" stroke-width="2" />
+                    <line id="Line_52" data-name="Line 52" x2="23" transform="translate(342.5 1332.5)" fill="none"
+                        stroke="#707070" stroke-linecap="round" stroke-width="2" />
+                </g>
+            </svg>
+        </div>
+
+        <div class="nav_logo_mobile">
+            <img src="./img/nav_logo_mobile.svg" alt="">
+        </div>
+
+    </div>
+    <div class="nav_overlayNav">
+        <div class="nav_closeBtn mb-4">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20 20">
+                <title>close</title>
+                <path fill='#fff'
+                    d="M10 8.586l-7.071-7.071-1.414 1.414 7.071 7.071-7.071 7.071 1.414 1.414 7.071-7.071 7.071 7.071 1.414-1.414-7.071-7.071 7.071-7.071-1.414-1.414-7.071 7.071z">
+                </path>
+            </svg>
+        </div>
+        <div class="nav_overlayNavBox">
+            <ul>
+                <a href="">
+                    <li>最新消息</li>
+                </a>
+                <a href="">
+                    <li>探索灣廟</li>
+                </a>
+                <a href="">
+                    <li>線上服務</li>
+                </a>
+                <a href="">
+                    <li>聖地巡禮</li>
+                </a>
+                <a href="">
+                    <li>祈福商店</li>
+                </a>
+                <a href="">
+                    <li>購物車</li>
+                </a>
+                <a href="" data-toggle="modal" data-target="#loginCenter">
+                    <li>登入 | 註冊</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <!-- 電腦螢幕大小的navbar -->
+    <nav class="nav_navbar_com">
+        <div class="nav_navbar_com_container">
+            <!-- 請依檔案位置修改logo路徑 -->
+            <img src='./img/nav_logo.svg'>
+
+            <div class="nav_navbar">
+                <div class="nav_navbarBox">
+                    <ul class="nav_nav_left">
+                        <a href="">
+                            <li class="nav_news"></li>
+                        </a>
+                        <a href="">
+                            <li class="nav_explore"></li>
+                        </a>
+                        <a href="">
+                            <li class="nav_serv"></li>
+                        </a>
+                        <a href="">
+                            <li class="nav_trip"></li>
+                        </a>
+                        <a href="">
+                            <li class="nav_shop"></li>
+                        </a>
+                        <a href="">
+                            <li class="nav_cart"></li>
+                        </a>
+                    </ul>
+                    <ul class="nav_nav_right">
+                        <a href="" data-toggle="modal" data-target="#loginCenter">
+                            <li>登入</li>
+                        </a>
+                        <span>|</span>
+                        <a href="" data-toggle="modal" data-target="#registerCenter">
+                            <li>註冊</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <hr class="nav_navline">
+    </nav>
+    <div class="breadcrumb_style   backgroundimg_1">
+        <div class="d-flex flex-wrap breadcrumb_style_1 ">
+            <a href="" class="astlyep">Home</a>
+            <!-- 共用雲端找箭頭icon-->
+            <img src="./img/nav_arrow_right.svg">
+            祈福商店
+            <img src="./img/nav_arrow_right.svg">
+            <a href="" class="astlyep">聯名合作</a>
+
+        </div>
+    </div>
+    <div class="shop_container container-fluid px-lg-5 ">
+        <div class="row">
+            <div id="carouselExampleIndicators" class="carousel slide d-lg-none" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="img/028.png" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="img/292.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="img/293.jpg" alt="Third slide">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7 shop_title_img  d-lg-flex pl-0 d-none">
+                <div class="col-3  shop_imghover row justify-content-between no-gutters">
+                    <div class="col-12"><img src="img/028.png" width="100%"></div>
+                    <div class="col-12 d-flex align-items-center"><img src="img/292.jpg" width="100%"></div>
+                    <div class="col-12 d-flex align-items-end"><img src="img/293.jpg" width="100%"></div>
+                </div>
+                <div class="col-9 pl-2 ">
+                    <div><img id="shop_imgclick" src="img/028.png" width="100%"></div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div
+                    class="shop_like_mobile position-absolute d-flex justify-content-center align-items-center d-lg-none">
+                    <i class="far fa-heart"></i>
+                </div>
+                <h3 class="shop_titletext mt-lg-0 mt-4">大甲媽祖鎮瀾宮聯名款</h3>
+                <h3 class="shop_titletext pt-2">聯名款_睡睡平安記憶枕</h3>
+                <div class="shop_text1 py-4">2021年限定 Fulux x 大甲鎮瀾宮聯名款 </div>
+                <div class=" shop_text pb-5">枕芯添加大甲媽香灰， <br>以鎮瀾宮濟世為懷的精神為出發點，<br>結合專業寢具精品，<br> 願您擁有「睡睡平安」的每一天!
+                </div>
+                <div class="d-flex d-lg-block justify-content-between">
+                    <div class="shop_text2  py-lg-2">NTD 2,400元 </div>
+                    <div class=" d-flex justify-content-start align-items-center">
+                        <div class="shop_text3 px-3 py-lg-4 px-lg-0">數量</div>
+                        <div class="shop_input_qty pb-2 pb-lg-2 pl-lg-4">
+                            <input style="background-color: #fff;" id="demo3" type="text" value="" name="demo3">
+                        </div>
+                    </div>
+                </div>
+                <div class="shop_fixed_bottom w-100 d-flex justify-content-between py-2 px-2 fixed-bottom d-lg-none ">
+                    <div class="shop_fixed_bottom1 py-2"><i class="fas fa-shopping-cart px-2"
+                            style="color: #fff;"></i>加入購物車
+                    </div>
+                    <div class="shop_fixed_bottom_line"></div>
+                    <div class="shop_fixed_bottom1 py-2">前往結帳</div>
+                </div>
+                <div class="d-none d-lg-flex justify-content-end pt-3 ">
+                    <div class="mybtn_like mr-3" data-toggle="mybtn"></div>
+                    <div class="mybtn_cart_add" data-toggle="mybtn"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-lg-5 pt-2 px-lg-0">
+            <div class="shop_title col-lg-7 col-12 pt-5 pt-lg-0 ">Features / 商品特色
+                <div class="pt-4">冰島特選海藻纖維 x 倍涼適親水綿。人體工學設計，兼顧仰睡，側睡者需求。
+                    源自於醫療敷料的倍涼適材質在溫度上升時吸熱，溫度下降時分子放熱，冬暖夏涼。倍涼適Balance
+                    Formula一年四季皆可提供舒壓最適性（冬天不變硬）。海藻纖維SeaCell結合山寧泰Sanitized抗菌，有效防止細菌阻隔異味。透氣表布套可拆洗保養便利，洗滌後抗菌效果依舊持久。
+                </div>
+            </div>
+            <ul class="shop_title col-lg-5  col-12 pt-5 pt-lg-0">Description / 商品描述
+                <li class="pt-4">內容物 |</li>
+                <div class="pb-2">聯名包裝盒 x 1、睡睡平安枕 x 1、聯名防塵袋 x 1</div>
+                <li>尺寸 |</li>
+                <div class="pb-2">60(L) x 33(W) x 12(H) cm</div>
+                <li>材質 |</li>
+                <div class="pb-2">
+                    枕心 -倍涼適親水綿+大甲媽香灰<br>
+                    表布 -海藻纖維+山寧泰防蟲抗菌
+                </div>
+                <li>產地 |</li>
+                <div>100%台灣製造</div>
+            </ul>
+
+        </div>
+        <div class="row">
+            <div class="shop_title pt-5 col-lg-12 mx-lg-0 ">Related Product / 相關商品</div>
+        </div>
+        <div class="row pt-5 pb-5 shop_scrolling_wrapper flex-nowrap flex-row d-flex-block d-lg-none">
+            <div class="col-lg-3 col-5 mb-5">
+                <div class="shop_re_img mb-2">
+                    <img src="img/011.png" width="100%" />
+                    <div class="shop_re_more">
+                    </div>
+                </div>
+                <div class="shop_re_text">媽祖胸針</div>
+            </div>
+            <div class="col-lg-3 col-5 mb-5">
+                <div class="shop_re_img mb-2">
+                    <img src="img/013.png" width="100%" />
+                    <div class="shop_re_more">
+                    </div>
+                </div>
+                <div class="shop_re_text">藝術廟宇戒指</div>
+            </div>
+            <div class="col-lg-3 col-5 mb-5">
+                <div class="shop_re_img mb-2">
+                    <img src="img/011.png" width="100%" />
+                    <div class="shop_re_more">
+                    </div>
+                </div>
+                <div class="shop_re_text">媽祖胸針 by </div>
+            </div>
+            <div class="col-lg-3 col-5 mb-5">
+                <div class="shop_re_img mb-2">
+                    <img src="img/013.png" width="100%" />
+                    <div class="shop_re_more">
+                    </div>
+                </div>
+                <div class="shop_re_text">藝術廟宇戒指</div>
+            </div>
+        </div>
+        <div class="mb-5 mt-5 shop_scrolling_wrapper flex-nowrap flex-row d-none d-lg-block">
+            <div id="carouselHotControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner container-fluid px-0 ">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/011.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">媽祖胸針 by </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/013.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">藝術廟宇戒指</div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/011.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">媽祖胸針 </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/013.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">藝術廟宇戒指</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/011.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">媽祖胸針 by </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/013.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">藝術廟宇戒指</div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/011.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">媽祖胸針 </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/013.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">藝術廟宇戒指</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/011.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">媽祖胸針 by </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/013.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">藝術廟宇戒指</div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/011.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">媽祖胸針 </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="shop_re_img mb-2">
+                                    <img src="img/013.png" width="100%" />
+                                    <div class="shop_re_more">
+                                    </div>
+                                </div>
+                                <div class="shop_re_text pt-1">藝術廟宇戒指</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselHotControls" role="button" data-slide="prev">
+                    <i class="fas fa-chevron-left"></i>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselHotControls" role="button" data-slide="next">
+                    <i class="fas fa-chevron-right"></i>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- login -->
+    <div class="modal fade" id="loginCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-re">
+                <div class="modal-header modal-header-re">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">登入 | LOGIN</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control form-control-re" id="account-name"
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control form-control-re" id="password-text" placeholder="Password">
+                        </div>
+                        <input type="checkbox"> 記住帳號
+                    </form>
+                </div>
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn btn-primary btn-primary-re">登入</button>
+                </div>
+                <div class="modal-footer2-re mt-3">
+                    <a class="mr-5" data-toggle="modal" data-target="#lostPassword" id="passwordbtn">忘記密碼</a>
+                    <a data-toggle="modal" data-target="#registerCenter" id="registerbtn">註冊帳號</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- lost password -->
+    <div class="modal fade" id="lostPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-re">
+                <div class="modal-header modal-header-re">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">找回密碼</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3">
+                        <div class="form-group mb-3">
+                            <p>請輸入您註冊的電子郵件，您將會在電子郵件信箱中收到重設密碼的連結。</p>
+                            <input type="text" class="form-control form-control-re" id="account-name"
+                                placeholder="Email">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn btn-primary btn-primary-re">送出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- register -->
+    <div class="modal fade" id="registerCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-re">
+                <div class="modal-header modal-header-re">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">註冊 | REGISTER</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="mt-3">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control form-control-re" id="account-name"
+                                placeholder="User Name">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control form-control-re" id="account-name"
+                                placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control form-control-re" id="password-text" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control form-control-re" id="password-text"
+                                placeholder="Repeat Password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer modal-footer-re">
+                    <button type="button" class="btn btn-primary btn-primary-re">註冊</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"
+        integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-touchspin/4.3.0/jquery.bootstrap-touchspin.min.js"
+        integrity="sha512-0hFHNPMD0WpvGGNbOaTXP0pTO9NkUeVSqW5uFG2f5F9nKyDuHE3T4xnfKhAhnAZWZIO/gBLacwVvxxq0HuZNqw=="
+        crossorigin="anonymous"></script>
+    <script src="./js/mybtn.js"></script>
+
+    <script>
+        $("input[name='demo3']").TouchSpin({
+            initval: 1,
+            min: 1,
+            max: 99,
+            step: 1,
+            decimals: 0,
+            buttondown_class: 'btn btn-default',
+            buttonup_class: 'btn btn-default'
+        });
+
+        $(".shop_title_img .shop_imghover img").click(function () {
+            $("#shop_imgclick").attr("src", $(this).attr("src"))
+
+
+        });
+
+        $(".shop_btn").click(function () {
+            $(this).toggleClass("active");
+        });
+
+        $(".shop_like_mobile").click(function () {
+            $(this).toggleClass("active");
+        });
+
+
+
+
+        // overlayNav進場
+        $('.nav_burgurBar_img').click(function () {
+
+            let navPosition = {
+                transform: 'translateY(0)'
+            }
+
+            $(".nav_overlayNav").css(navPosition);
+        })
+
+        // overlayNav退場
+        $('.nav_closeBtn').click(function () {
+
+            let navPosition = {
+                transform: 'translateY(-2500px)',
+                transition: '.7s'
+            }
+
+            $(".nav_overlayNav").css(navPosition);
+        })
+
+
+        //Login hide
+        $('#registerbtn').click(function () {
+            $('#loginCenter').modal('hide');
+        })
+
+        $('#passwordbtn').click(function () {
+            $('#loginCenter').modal('hide');
+        })
+
+    </script>
+
+
+</body>
+
+</html>

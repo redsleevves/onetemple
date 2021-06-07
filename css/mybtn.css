@@ -1,4 +1,268 @@
 
+body {
+    font-family: 'Faustina', serif;
+    background-image: url(../img/bcc.png);
+    font-size: 16px;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #707070;
+}
+
+.shop-breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+    content: "\f054";
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    color: #707070;
+    font-size: 12px;
+}
+
+.shop_page_big img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* .shop_small_img{
+    height: 160.78px;
+    } */
+.shop_title_img img {
+    border-radius: 5px;
+
+}
+/* .shop_small_img img {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} */
+
+.shop_title_img .shop_imghover img:hover {
+    transform: scale(1.1, 1.1);
+    transition: all .3s ease-out;
+}
+
+.shop_like_mobile {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #cc543a;
+    border-radius: 50%;
+    top: 15px;
+    right: 15px;
+    font-size: 18px;
+    color: #cc543a;
+    background-color: #fff;
+}
+
+.shop_like_mobile .fas {
+    font-size: 18px;
+    color: #FFF;
+}
+
+.shop_like_mobile.active {
+    background-color: #cc543a;
+}
+
+
+.shop_like_mobile.active i {
+    font-weight: 900;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.shop_like_mobile.active {
+    background-color: #cc543a;
+}
+
+
+.shop_like_mobile.active i {
+    font-weight: 900;
+    font-size: 16px;
+    color: #FFF;
+}
+
+.breadcrumb-item {
+    font-size: 18px;
+
+}
+
+.breadcrumb-item a {
+    color: #707070;
+}
+
+.shop_btn {
+    color: #cc543a;
+    border: 1px solid #cc543a;
+    font-weight: bold;
+    border-radius: 50px;
+    font-size: 18px;
+    padding: 5px 15px;
+
+}
+
+.shop_btn.active,
+.shop_btn:hover {
+    background-color: #cc543a;
+    color: #fff;
+
+}
+
+
+
+.shop_text {
+    color: #707070;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.shop_text1 {
+    font-size: 20px;
+    color: #cc543a;
+    font-weight: bold;
+    text-decoration: underline;
+
+}
+
+.shop_text2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #cc543a;
+}
+
+.shop_text3 {
+    color: #707070;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+.shop_title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #707070;
+
+
+}
+
+.shop_title li {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 2;
+}
+
+.shop_title div {
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 1.8;
+}
+
+
+.shop_input_qty {
+    width: 140px;
+    font-size: 26px;
+}
+
+
+.shop_input_qty .form-control {
+    background: transparent;
+    text-align: center;
+    border: none;
+    font-weight: bold;
+    font-size: 18px;
+    color: #707070;
+}
+
+.shop_input_qty .input-group {
+    background-color: #fff;
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+}
+
+.shop_re_text {
+    font-size: 22px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 303px;
+}
+
+.shop_re_img {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+
+}
+
+.shop_fixed_bottom {
+    background-color: #CC543A;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+
+
+.shop_fixed_bottom1 {
+    width: 50%;
+
+}
+
+.shop_fixed_bottom_line {
+    width: 1px;
+    background-color: #fff;
+
+}
+
+.shop_re_more {
+    display: none;
+}
+
+.shop_re_img:hover .shop_re_more {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.shop_re_more div {
+    color: #fff;
+    border-bottom: 1px solid #AFAFAF;
+    width: 60%;
+    text-align: center;
+}
+
+.shop_scrolling_wrapper .shop_re_img:hover img {
+    transform: scale(1.1, 1.1);
+    transition: all .3s ease-out;
+}
+
+#carouselHotControls i {
+    font-size: 20px;
+    color: #707070;
+}
+
+.carousel-control-prev {
+    left: -110px;
+}
+
+.carousel-control-next {
+    right: -110px;
+}
+
+#carouselExampleIndicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    /* background-color: #c0c0c0; */
+
+}
+/* ----------------- */
 .mybtn_cart_add, .mybtn_like {
     color: #cc543a;
     border: 1px solid #cc543a;
@@ -43,11 +307,62 @@
 .mybtn_like.active::after {
     display: none;
 }
+.shop_Checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+.shop_dsply{
+    /* display: flex;
+    flex-direction:row; */
+}
+/* -------------------手機板----------------------- */
+@media (max-width: 991px) {
+    h3 {
+        font-size: 24px;
+    }
 
+
+    .shop_title li {
+        font-size: 18px;
+        line-height: 2;
+    }
+
+    .shop_title div {
+        font-size: 16px;
+        line-height: 2;
+    }
+
+    .shop_re_text {
+        font-size: 18px;
+    }
+
+    .shop_scrolling_wrapper {
+        overflow-x: auto;
+    }
+
+    footer {
+        display: none;
+    }
+    .shop_re_text {
+        font-size: 16px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 126px;
+    }
+    
+
+}
 
 @media (min-width: 992px) {
     .mybtn_cart_add:hover, .mybtn_like:hover {
         background-color: #cc543a;
         color: #fff;
+    }     
+    .shop_container {
+        width: 1400px;
     }
+
 }

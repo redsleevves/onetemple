@@ -1,12 +1,11 @@
 .breadcrumb_style {
-    /* background-image: url(./img/nav_background_1.png); */
+    background-image: url(./img/nav_background_1.png);
     /* navbar多厚 就推多少paddding */
  
 }
 
 .breadcrumb_style_1 {
-    font-size: 14px;
-    padding: 10px 0px;
+    padding: 20px 0;
     align-items: center;
     margin: auto;
 }
@@ -48,12 +47,12 @@
 
     .breadcrumb_style_1 {
         /* 手機板寬 自行設定 */
-        /* width: 85%; */
+        width: 85%;
     }
 
     .breadcrumb_style_1 {
         /* contanier架構專用 padding 0 15px  */
-        padding: 20px 30px;
+        /* padding: 20px 15px; */
         /* width: 100%; */
     }
 }

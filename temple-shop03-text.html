@@ -1,150 +1,99 @@
-<?php
-$title = "商品列表";
-$pageName = "product-list";
+<!DOCTYPE html>
+<html lang="en">
 
-
-require __DIR__ . '/product/__connect_db.php';
-// $qs = [];
-$searchString = "1 ";
-$page = isset($_GET['page']) ? intval($_GET['page']) : 0;
-if ($_GET != null) {
-    unset($_GET['page']);
-    foreach ($_GET as $key => $value) {
-        if (
-            strcmp($key, "key")    != 0 &&
-            strcmp($key, "value")  != 0 &&
-            strcmp($key, "sortBy") != 0 &&
-            strcmp($key, "priceMax") != 0
-        ) {
-            $searchString .= ' and ' . $key . '= "' . $value . '"';
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/271f30e909.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css"
+        integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ=="
+        crossorigin="anonymous" />
+    <!-- google字體 -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700;900&display=swap"
+        rel="stylesheet">
+    <!-- ------------- -->
+    <link rel="stylesheet" href="./css/nav_shop_footor.css">
+    <link rel="stylesheet" href="./css/temple-shop_css-text.css">
+    <style>
+        .collapsing {
+            /* position: absolute;
+            height: auto; */
+            transition: none;
         }
-    }
-}
 
-$priceMax = 5000;
-if (isset($_GET['priceMax'])) {
-    $priceMax = intval($_GET['priceMax']);
-    $searchString .= ' and price <= ' . $priceMax;
-}
-
-if (isset($_GET["searchkey"]) && strcmp($_GET["searchkey"], "") != 0) {
-    $searchString = " CommodityName_bigLabel like '%" . $_GET["searchkey"] . "%'";
-}
-
-// SELECT * FROM `shop` WHERE 1 ORDER BY Popularity_shop DESC LIMIT 12 OFFSET 2
-$perPage = 12;
-$c_sql = "SELECT * FROM shop WHERE " . $searchString . " ORDER BY Popularity_shop DESC LIMIT 12 OFFSET " . $page * $perPage;
-$cate_rows = $pdo->query($c_sql)->fetchAll();
-
-$cate = isset($_GET['cate']) ? intval($_GET['cate']) : 0;
-$qs = [];
-$where = ' WHERE 1 ';
-if (!empty($cate)) {
-    $where .= " AND category_sid=$cate ";
-    $qs['cate'] = $cate;
-}
-
-// if ($page < 1) $page = 1; //如果$page小於1,也顯示預設值在第一頁
-// if ($page > $totalPages) $page = $totalPages; //如果$page大於$totalPages,就會讓頁碼不會把所有的產品顯示出來
-
-// $p_sql = sprintf("SELECT * FROM shop $searchString LIMIT %s, %s ", ($page - 1) * $page, $page);
-
-// $rows = $pdo->query($c_sql)->fetchAll();
-
-// $sql01 = "SELECT * FROM shop ORDER BY Popularity_shop ASC";小到大
-$sql02 = "SELECT * FROM shop ORDER BY Popularity_shop DESC"; //大到小
-
-if (isset($_GET["key"]) && strcmp($_GET["key"], "") != 0) {
-    $searchString .= ' and ' . $_GET["key"] . '= "' . $_GET["value"] . '"';
-}
-
-$sortByyyyyy = "Popularity_shop";
-if (isset($_GET["sortBy"])) {
-    $sortByyyyyy = $_GET["sortBy"];
-}
-if (isset($_GET["searchkey"]) && strcmp($_GET["searchkey"], "") != 0) {
-    $searchString = " CommodityName_bigLabel like '%" . $_GET["searchkey"] . "%'";
-}
-$order = "DESC";
-if (strcmp($sortByyyyyy, "price") == 0) {
-    $order = "ASC";
-}
-
-//$sortBy = "Popularity_shop";
-$perPage = 12;
-$c_sql2 = "SELECT * FROM shop WHERE " . $searchString . " ORDER BY " . $sortByyyyyy . " " . $order . " LIMIT 12 OFFSET " . $page * $perPage;
-$product = $pdo->query($c_sql2)->fetchAll();
-
-$t_sql = "SELECT COUNT(1) FROM shop WHERE " . $searchString;
-$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0]; //把產品數量抓出來
-// PDO::FETCH_NUM 返回以數字作為索引鍵(key)的陣列(array)，由0開始編號
-$totalPages = ceil($totalRows / $perPage);
-
-$key = "";
-$val = "";
-
-if (
-    isset($_GET["Categories"]) ||
-    (isset($_GET["key"]) && strcmp($_GET["key"], "Categories") == 0)
-) {
-    $key = "Categories";
-    $val = isset($_GET["Categories"]) ?  $_GET["Categories"] : $_GET["value"];
-} else if (
-    isset($_GET["Joint_Popular"]) ||
-    (isset($_GET["key"]) && strcmp($_GET["key"], "Joint_Popular") == 0)
-) {
-    $key = "Joint_Popular";
-    $val = isset($_GET["Joint_Popular"]) ? $_GET["Joint_Popular"] : $_GET["value"];
-} else {
-    $key = "";
-    $val = "";
-}
-
-// $product = $pdo->query($sql02)->fetchAll();
-// SELECT * FROM shop ORDER BY Popularity_shop DESC
-
-// $data = mysql_query("SELECT * FROM DBNAME ORDER BY name ASC")
-// $data = mysql_query("SELECT * FROM DBNAME ORDER BY Popularity_shop");
-// $result = $pdo->query($sql)->fetchAll();
-// ORDER BY "?Popularity_shop=" [DESC];
-
-
-
-?>
-<?php include __DIR__ . '/product/head.php'; ?>
+        .btn-primary:not(:disabled):not(.disabled):active {
+            background-color: #cc543a;
+            border-color: #cc543a;
+        }
+    </style>
+</head>
 
 <body>
-    <?php include __DIR__ . '/product/navber.php'; ?>
+
+    <nav class="shop_nav">
+        <div class="navbar">
+            <!-- ---fa-search放大鏡-- -->
+            <div class="shop_search  shop_search02 position-relative mb-5 ">
+                <input type="text" class=" form-control border-0 bg-transparent px-1" id="formGroupExampleInput"
+                    placeholder="找商品">
+                <i class="fa fa-search fa-lg"></i>
+            </div>
+            <!-- 請依檔案位置修改logo路徑 -->
+            <div class="logo_img">
+                <img src='/img/logo.png'>
+            </div>
+
+
+            <ul>
+                <li class="shop_nav_li">Explore / 探索</li>
+                <li class="shop_nav_li">TRIP / 行旅</li>
+                <li class="shop_nav_li">SERVICE / 線上服務</li>
+                <li class="shop_nav_li">SHOP / 商店</li>
+                <li class="shop_nav_li">CART / 購物車</li>
+                <li class="shop_nav_li">MEMBER / 會員中心</li>
+            </ul>
+            <div class="ham"><i class="fas fa-bars"></i></div>
+        </div>
+        <hr class="navline">
+
+    </nav>
+
+
     <div class=" container-fluid shop_body_outer p-0">
         <div class="shop_top100 shop_container container-fluid">
             <nav aria-label="breadcrumb ">
-                <div class="breadcrumb_style   backgroundimg_1">
-                    <div class="breadcrumb_style_1 ">
-                        <a href="" class="astlyep">SHOP / 商店</a>
-                        <!-- 共用雲端找箭頭icon-->
-                        <img src="./img/nav_arrow_right.svg">
-                        配件飾品
-                        </a>
-
-                    </div>
-                </div>
+                <ol class="breadcrumb bg-transparent pl-1 ">
+                    <li class="breadcrumb-item"><a href="#">SHOP / 商店</a></li>
+                    <i class="fas fa-chevron-right"></i>配件飾品</li>
+                </ol>
             </nav>
             <div class="shop_phone_button">
                 <!-- <button class="shop_phone_btn">熱門商品</button>
                 <button class="shop_phone_btn">聯名合作</button> -->
                 <!-- <button class="shop_phone_btn">商品分類</button> -->
                 <select class="shop_phone_btn">
-                    <option value="">商品分類</option>
-                    <option data-p="Categories=線香">線香</option>
-                    <option data-p="Categories=飾品">飾品</option>
-                    <option data-p="Categories=擺飾">服飾</option>
-                    <option data-p="Categories=平安符">平安符</option>
-                    <option data-p="Joint_Popular=聯名合作">聯名合作</option>
-                    <option data-p="Joint_Popular=熱門商品">熱門商品</option>
+                    <option>商品分類</option>
+                    <option>線香</option>
+                    <option>飾品</option>
+                    <option>服飾</option>
+                    <option>平安符</option>
+                    <option>聯名合作</option>
+                    <option>熱門商品</option>
                 </select>
                 <!-- <button class="shop_phone_btn">價錢範圍</button> -->
 
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
                     價錢範圍
                 </button>
             </div>
@@ -152,7 +101,8 @@ if (
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <div>
-                        <input id="ex8" data-slider-id='trip_price_range8' type="text" data-slider-min="0" data-slider-max="5000" data-slider-step="100" data-slider-value="<?= $priceMax ?> " data-key="<?= $key ?>" data-val="<?= $val ?>" data-sort="<?= $sortByyyyyy ?>" />
+                        <input id="ex8" data-slider-id='trip_price_range8' type="text" data-slider-min="0"
+                            data-slider-max="10000" data-slider-step="100" data-slider-value="5000" />
                     </div>
                 </div>
             </div>
@@ -162,28 +112,32 @@ if (
                     <!-- shop_pl_120 -->
                     <div class="shop_magnifier">
                         <div class="shop_search01 position-relative mb-5 ">
-                            <input type="text" class=" form-control border-0 bg-transparent px-1" id="formGroupExampleInput" placeholder="找商品...">
+                            <input type="text" class=" form-control border-0 bg-transparent px-1"
+                                id="formGroupExampleInput" placeholder="找商品...">
                             <i class="fa fa-search fa-lg"></i>
                         </div>
                         <div class="d-none ">
-                            <div class="rounded-circle"><i class="far fa-heart rounded-circle p-2" style="background-color: #FFF; color:red;"></i></div>
+                            <div class="rounded-circle"><i class="far fa-heart rounded-circle p-2"
+                                    style="background-color: #FFF; color:red;"></i></div>
                         </div>
                         <div class="trip_category ">
                             <h3 class="py-2">商品分類 |</h3>
                             <ul>
-                                <li class="py-1 shop_effect" data-p="Categories=線香">線香</li>
-                                <li class="py-1 shop_effect" data-p="Categories=飾品">飾品</li>
-                                <li class="py-1 shop_effect" data-p="Categories=擺飾">擺飾</li>
-                                <li class="py-1 shop_effect" data-p="Categories=平安符">平安符</li>
-                                <li class="py-1 shop_effect" data-p="Joint_Popular=聯名合作">聯名合作</li>
-                                <li class="py-1 shop_effect" data-p="Joint_Popular=熱門商品">熱門商品</li>
+                                <li class="py-1 shop_effect">線香</li>
+                                <li class="py-1 shop_effect">飾品</li>
+                                <li class="py-1 shop_effect">服飾</li>
+                                <li class="py-1 shop_effect">平安符</li>
+                                <li class="py-1 shop_effect">聯名合作</li>
+                                <li class="py-1 shop_effect">熱門商品</li>
                             </ul>
                             <ul>
                                 <li class="py-1 ">
                                     <!-- mt-5 -->
                                     <h3 class='mb-2'>價錢範圍 |</h3>
                                     <div>
-                                        <input id="ex9" data-slider-id='trip_price_range8' type="text" data-slider-min="0" data-slider-max="5000" data-slider-step="100" data-slider-value="<?= $priceMax ?>" data-key="<?= $key ?>" data-val="<?= $val ?>" data-sort="<?= $sortByyyyyy ?>" />
+                                        <input id="ex9" data-slider-id='trip_price_range8' type="text"
+                                            data-slider-min="0" data-slider-max="10000" data-slider-step="100"
+                                            data-slider-value="5000" />
                                     </div>
                                 </li>
                             </ul>
@@ -191,60 +145,28 @@ if (
                     </div>
                 </div>
                 <div class="shop_body01 col-lg-8 p-0">
-
                     <div class="row shop_Separate ">
-
+                        <!-- col-lg-9 -->
                         <div class="shop_Displacement d-flex mb-5 display_none  col p-0">
                             <div class="shop_h3 display_none">
-                                <h4></h4>
+                                <h4>配件飾品 | Accessories</h4>
                             </div>
                             <div class="form-inline display_none">
                                 <label class="pr-3" for="exampleFormControlSelect1">排序方式</label>
-                                <select class="form-control bg-transparent" id="exampleFormControlSelect1" onchange="onSelect(this)">
-                                    <option>請選擇</option>
-                                    <option value="?key=<?= $key ?>&value=<?= $val ?>&priceMax=<?= $priceMax ?>&sortBy=Popularity_shop">人氣推薦</option>
-                                    <!-- <option value="{'key':'<?= $key ?>','value':'<?= $val ?>'}">人氣推薦</option> -->
-                                    <option value="?key=<?= $key ?>&value=<?= $val ?>&priceMax=<?= $priceMax ?>&sortBy=Evaluation_shop">評價最高</option>
-                                    <option value="?key=<?= $key ?>&value=<?= $val ?>&priceMax=<?= $priceMax ?>&sortBy=price">價格(從低到高)</option>
+                                <select class="form-control bg-transparent" id="exampleFormControlSelect1">
+                                    <option>人氣推薦</option>
+                                    <option>評價最高</option>
+                                    <option>價格(從低到高)</option>
                                 </select>
                             </div>
                         </div>
                         <div class="container-flow ">
                             <div class="row col shop_body">
-							<?php if(count($product)>0){?>
-                                <?php foreach ($product as $value) : ?>
-
-                                    <div class=" shop_card_body p-0" data-sid="<?= $value['sid'] ?>">
-
-                                        <div class="shop_fff">
-                                            <div class="  shop_card_img  ">
-                                                <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                                <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/<?= $value['img1'] ?>" alt="">
-                                            </div>
-                                            <a href="./shop_page.php?sid=<?= $value['sid'] ?>">
-                                                <div class="shop_card-text_body" id="shop_card_text_body">
-                                                    <h5 class="shop_card-title" id="shop_cad_title"><?= $value['CommodityName_bigLabel'] ?></h5>
-                                                    <div class="shop_card-text">
-                                                        <p class="m-0 shop_txt"><?= $value['Commodity_name_smallLabel'] ?></p>
-                                                        <p class="shop_m0">NTD <?= $value['price'] ?></p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-
-                                    </div>
-
-                                <?php endforeach; ?>
-							<?php }else{?>
-								<div class=" shop_card_body p-0">
-                                            不好意思,我們沒有找到相關的商品
-								</div>
-							<?php }?>
-                                <!-- <div class=" shop_card_body p-0">
+                                <div class=" shop_card_body p-0">
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0101.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0101.jfif" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">大甲鎮瀾宮 錢龜</h5>
@@ -259,7 +181,7 @@ if (
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0201.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0201.jfif" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">大甲鎮瀾宮 錢龜</h5>
@@ -274,7 +196,7 @@ if (
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0301.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0301.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">牛轉錢坤</h5>
@@ -286,12 +208,12 @@ if (
                                     </div>
                                 </div>
 
-                                <!-- ----------------------------------------- -/->
+                                <!-- ----------------------------------------- -->
                                 <div class=" shop_card_body p-0">
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0401.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0401.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">大甲鎮瀾宮 錢龜</h5>
@@ -307,7 +229,7 @@ if (
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0501.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0501.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">福壽安康</h5>
@@ -323,7 +245,7 @@ if (
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0601.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0601.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">百子圖開</h5>
@@ -335,12 +257,12 @@ if (
                                     </div>
                                 </div>
 
-                                <!-- ----------------------------------------- -/->
+                                <!-- ----------------------------------------- -->
                                 <div class="shop_card_body p-0">
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0701.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0701.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">鴻圖大展</h5>
@@ -355,7 +277,7 @@ if (
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0801.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0801.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">桃紅柳綠</h5>
@@ -370,7 +292,7 @@ if (
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_0901.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_0901.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">路隨福行</h5>
@@ -381,12 +303,11 @@ if (
                                         </div>
                                     </div>
                                 </div>
-                                <!-- ------------------------------ -/->
-                                <div class=" shop_card_body p-0">
+                                <div class="shop_card02 p-0">
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_1001.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_1101.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">奎星高照</h5>
@@ -397,39 +318,36 @@ if (
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" shop_card_body p-0">
+                                <div class="shop_card02 p-0">
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_1101.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_1201.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">開運祈福</h5>
                                             <div class="shop_card-text">
                                                 <p class="m-0 shop_txt">開運祈福貔貅系列_彩色碧璽手鍊</p>
-                                                <p class="shop_m0">NTD 1280</p>
+                                                <p class="shop_m0">NTD 1,280</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class=" shop_card_body p-0">
+                                <div class="shop_card02 p-0">
                                     <div class="shop_fff">
                                         <div class="  shop_card_img  ">
                                             <div class="shop_icon"><i class="far fa-heart"></i></div>
-                                            <img class="shop_Scaling" src="./img/shop/shop_new/shop_1~25_new/sh_1201.png" alt="">
+                                            <img class="shop_Scaling" src="./img/shop/shop_1~25/sh_1301.jpg" alt="">
                                         </div>
                                         <div class="shop_card-text_body">
                                             <h5 class="shop_card-title">開運祈福</h5>
                                             <div class="shop_card-text">
                                                 <p class="m-0 shop_txt">開運祈福貔貅系列_黑曜石手鍊</p>
-                                                <p class="shop_m0">NTD 1380</p>
+                                                <p class="shop_m0">NTD 1,380</p>
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
-
-
-
+                                </div>
 
 
 
@@ -437,26 +355,14 @@ if (
 
                         </div>
                         <nav class="shop_page " aria-label="Page navigation example">
+                            <!-- ml-10 -->
                             <ul class="pagination">
-                                <?php for ($i = 0; $i < $totalPages; $i++) :
-                                    $qs['page'] = $i;
-                                    $qs['key'] = $key;
-                                    $qs['value'] = $val;
-                                    $qs['sortBy'] = $sortByyyyyy;
-                                    $qs['priceMax'] = $priceMax;
-                                ?>
-                                    <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-                                        <a class="page-link" href="?<?= http_build_query($qs) ?>"><?= $i + 1 ?></a>
-                                    </li>
-                                <?php endfor; ?>
+                                <li class="page-item"><a class="page-link shop_page-item" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link shop_page-item" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link shop_page-item" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link shop_page-item" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link shop_page-item" href="#">></a></li>
                             </ul>
-                            <!-- <ul class="pagination">
-                                <li class="page-item"><a class="page-link shop_page-item" value="1">1</a></li>
-                                <li class="page-item"><a class="page-link shop_page-item" value="2">2</a></li>
-                                <li class="page-item"><a class="page-link shop_page-item" value="3">3</a></li>
-                                <li class="page-item"><a class="page-link shop_page-item" value="4">4</a></li>
-                                <li class="page-item"><a class="page-link shop_page-item" value="5">5</a></li>
-                            </ul> -->
                         </nav>
                     </div>
 
@@ -467,10 +373,83 @@ if (
         <!-- <div class="r0 ">
             <a href="javascript:top0();"><img class="top0" src="./img/arrow-top01.svg" alt=""></a>
         </div> -->
-        <div class="Pressed_flower">
-            <img src="./img/nav_left_g_shop.png" alt="">
-        </div>
     </div>
-    <?php include __DIR__ . '/product/footer.php'; ?>
-    <?php include __DIR__ . '/product/script.php'; ?>
+    <footer>
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"
+        integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA=="
+        crossorigin="anonymous"></script>
+
+    <script>
+        // With JQuery
+        $("#ex8").slider({
+            tooltip: 'always',
+            tooltip_position: 'bottom'
+        });
+        $("#ex9").slider({
+            tooltip: 'always',
+            tooltip_position: 'bottom'
+        });
+        // 火箭推
+        // function top0() {
+        //     window.scrollTo({
+        //         top: 0,
+        //         behavior: "smooth"
+        //     })
+        // }
+        //導覽列特效
+        $(document).ready(function () {
+            $('.shop_nav_li').hover(function () {
+                $(this).css('transform', 'scale(1.1)')
+            });
+            $('.shop_nav_li').click(function () {
+                $(this).css('color', '#cc543a')
+            });
+        });
+        $('.shop_nav_li').mouseleave(function () {
+            $('.shop_effect').css('transform', 'scale(1)');
+            $('.shop_effect').css('color', '#000');
+        });
+        //商品分類欄位特效
+        $(document).ready(function () {
+            $('.shop_effect').hover(function () {
+                // $(this).css('transform', 'scale(1.1)');
+
+            });
+            $('.shop_effect').click(function () {
+                $(this).css('color', '#cc543a');
+
+            });
+        });
+        $('.shop_effect').mouseleave(function () {
+            $('.shop_effect').css('transform', 'scale(1)');
+            $('.shop_effect').css('color', '#000');
+        });
+        //換頁按鈕特效
+        // $('.page-item').hover(function () {
+        //     $(this).css('color', '#fff');
+        //     $(this).css('background-color', '#cc543a');
+        // })
+        //手機按鈕
+        $('.shop_phone_btn').hover(function () {
+            $(this).css('color', '#fff');
+            $(this).css('background-color', '#cc543a');
+            $(this).css('border', 'transparent');
+        })
+        $('.shop_phone_btn').mouseleave(function () {
+            $(this).css('color', '#a2a2a2');
+            $(this).css('background-color', '#fff');
+        })
+    </script>
 </body>
+
+</html>
