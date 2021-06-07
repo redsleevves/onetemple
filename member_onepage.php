@@ -1068,22 +1068,22 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                 <div class="form-group">
                     <label for="member_name">姓名</label>
                     <p>|</p>
-                    <input type="text" name="friends_name[]" value="<?= $k['bless_name'] ?>" readonly>
+                    <input type="text" name="friends_name[]" value="<?= $k['name_'] ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="member_password">生日(國曆)</label>
+                    <label for="member_password">生日</label>
                     <p>|</p>
-                    <input type="text" name="friends_birth[]" value="<?= $k['bless_birth'] ?>">
+                    <input type="text" name="friends_birth[]" value="<?= $k['birthday_'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="member_mobile">連絡電話</label>
                     <p>|</p>
-                    <input type="text" name="friends_mobile[]" value="<?= $k['bless_mobile'] ?>">
+                    <input type="text" name="friends_mobile[]" value="<?= $k['mobile_'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="member_address">地址</label>
                     <p>|</p>
-                    <input type="text" name="friends_address[]" value="<?= $k['bless_address'] ?>">
+                    <input type="text" name="friends_address[]" value="<?= $k['address_'] ?>">
                 </div>
                 <div style="display: flex; justify-content:center">
                 <a href="javascript:delete_friends(<?= $k['sid'] ?>)"><button type="button" class="unfriends graybut">刪除</button></a>
