@@ -223,7 +223,7 @@ $_gdata = [
 
     /* page_1_up */
 
-    .discover_temple_page_1{
+    .discover_temple_page_1 {
         margin-top: 30px;
     }
 
@@ -431,6 +431,18 @@ $_gdata = [
         transition-duration: 2s;
         transition-delay: 0.5s;
     }
+
+    /* index_goTop */
+    .index_goTopImg {
+        width: 50px;
+        position: fixed;
+        bottom: -100px;
+        right: 20px;
+        transition: .5s;
+        z-index: 9;
+    }
+
+
 
     /* .animat_1{
     transform: translateX(-200px);
@@ -1195,7 +1207,7 @@ $_gdata = [
 
 
 
-
+<?php include __DIR__ . '/parts/go-top.php' ?>
 <!-- Js  相關設定~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 <!-- jquery -->
 <!-- 導航用代碼包含彈窗 -->
@@ -1207,45 +1219,24 @@ $_gdata = [
 
 
 <script>
-    // navbar
-    // overlayNav進場
-    $('.nav_burgurBar_img').click(function() {
+    // Go-Top
 
-        let navPosition = {
-            transform: 'translateY(0)'
+    $(window).scroll(function(event) {
+        let scrollTop = $(window).scrollTop();
+        console.log(scrollTop);
+
+        if (scrollTop >= 500) {
+
+            $(".index_goTopImg").addClass('show');
+        } else {
+            $(".index_goTopImg").removeClass('show');
         }
+    });
 
-        $(".nav_overlayNav").css(navPosition);
-    })
-
-    // overlayNav退場
-    $('.nav_closeBtn').click(function() {
-
-        let navPosition = {
-            transform: 'translateY(-2500px)',
-            transition: '.7s'
-        }
-
-        $(".nav_overlayNav").css(navPosition);
-    })
-
-
-    //Login hide
-    $('#registerbtn').click(function() {
-        $('#loginCenter').modal('hide');
-    })
-
-    $('#passwordbtn').click(function() {
-        $('#loginCenter').modal('hide');
-    })
-
-    //overlay sub-menu
-    $(document).ready(function() {
-        $('.nav_ser_mobile').click(function() {
-
-            $('.nav_dropDownMenu_mobile').toggle('slow');
-
-        })
+    $('.index_goTopImg').click(function() {
+        $("html,body").animate({
+            scrollTop: 0
+        }, 700);
     });
 
 
