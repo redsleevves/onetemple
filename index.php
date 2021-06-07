@@ -2789,7 +2789,7 @@ $_gdata = [
 
             if (windowWidth > 1400) {
                 $("html,body").animate({
-                    scrollTop: 937,
+                    scrollTop: 950,
                 }, 1000);
             };
             if (windowWidth < 400) {
