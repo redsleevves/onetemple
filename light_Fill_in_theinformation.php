@@ -1,13 +1,13 @@
 <?php
-error_reporting(E_ALL & ~E_NOTICE);  # 設定輸出錯誤類型
+
 include __DIR__ . '/parts/config.php';
-var_dump($_SESSION); # 印出變數在銀幕上
+
 
 
 
 $_gdata = [
     // 網頁名稱
-    'title' => '灣廟 | 聖地行旅',
+    'title' => '灣廟 | 點燈填寫表',
     // 頁面私有 css
     'styles' => '
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -433,6 +433,23 @@ $rows = $pdo->query($sql)->fetchAll();
         width: 1rem;
     }
 
+    /* index_goTop */
+    .index_goTopImg {
+        width: 50px;
+        position: fixed;
+        bottom: -100px;
+        right: 20px;
+        transition: .5s;
+        z-index: 9;
+    }
+
+    .index_goTopImg svg {
+        width: 100%;
+    }
+
+    .index_goTopImg.show {
+        bottom: 20px;
+    }
 
 
     /* 手機在這邊~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -2853,13 +2870,34 @@ $rows = $pdo->query($sql)->fetchAll();
 
 
 
-
+    <?php include __DIR__ . '/parts/go-top.php' ?>
 
     <!-- 導航用代碼包含彈窗 -->
     <?php include __DIR__ . '/parts/ourscripts.php'; ?>
 
 
     <script>
+        // Go-Top
+
+        $(window).scroll(function(event) {
+            let scrollTop = $(window).scrollTop();
+            console.log(scrollTop);
+
+            if (scrollTop >= 500) {
+
+                $(".index_goTopImg").addClass('show');
+            } else {
+                $(".index_goTopImg").removeClass('show');
+            }
+        });
+
+        $('.index_goTopImg').click(function() {
+            $("html,body").animate({
+                scrollTop: 0
+            }, 700);
+        });
+
+
         // 測試 同會員資料匯入輸入
         $(document).on('click', '.form-check-label', (function() {
             console.log('click')
@@ -2957,10 +2995,10 @@ $rows = $pdo->query($sql)->fetchAll();
                     if (data.success) {
                         // 原畫面刷新
                         // location.reload();
-                        
+
                         // 成功送出 轉跳至index首頁
                         window.location.replace("./index.php");
-                        
+
                     } else {
                         alert('error');
                     }

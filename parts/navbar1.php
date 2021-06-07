@@ -89,7 +89,7 @@
                     <div class="nav_hide_ch">探索灣廟</div>
                     <div class="nav_hide_en">EXPLORE</div>
                 </a>
-                <a href="#" class="nav_navbar_item nav_ser">
+                <a href="<?= WEB_ROOT?>/light_Introduction.php" class="nav_navbar_item nav_ser">
                     <div class="nav_hide_ch">線上服務</div>
                     <div class="nav_hide_en">SERVICE</div>
 

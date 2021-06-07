@@ -94,7 +94,7 @@ $_gdata = [
         padding: 40px 15px;
         border: 1px solid rgb(168, 168, 168);
         position: sticky;
-        top:10%
+        top:30%
     }
 
     .bill hr {
@@ -383,12 +383,12 @@ $_gdata = [
                 <li>
                     <h4>總計</h4>
                 </li>
-                <li class="totalSum">1235</li>
+                <li class="totalSum"></li>
             </ul>
         </div>
         <button>確認結帳</button>
     </section>
-    <section class="carttable container-fluid col-8">
+    <section class="carttable container-fluid col-7">
         <h4>購物車</h4>
         <div class="each_table cart_product mt-5">
             <h4 class="cartName">商品</h4>
@@ -471,7 +471,7 @@ $_gdata = [
                 </thead>
                 <tbody>
                 <?php foreach($_SESSION['cart']['plan'] as $j): ?>
-                        <tr>
+                        <tr data-sid="<?= $j['id'] ?>">
                             <td>
                                 <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $j['img'] ?>"></div>
                             </td>
@@ -480,7 +480,8 @@ $_gdata = [
                             <td>
                                 <div class="input-group">
                                     <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
-                                    <input type="text" class="form-control input-number" value="<?= $j['qty'] ?>" />
+                                    <input type="number" class="form-control input-number quantity" onchange="changeQty(event)"
+                                        value="<?= $j['qty'] ?>">
                                     <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
                                 </div>
                             </td>
@@ -724,6 +725,29 @@ $_gdata = [
         $('.cart_light .subsum').html('<p>' + sum + '</p>')
     })
 
+    const changeQty = function(event) {
+        const el = $(event.currentTarget);
+        const qty = el.val();
+        const pid = el.closest('tr').attr('data-sid');
+
+        $.get('cart_plan_api.php', {action:'add', plan_id, plan_qty}, function(data){
+            showCartCount(data);
+            // calPrices();
+        }, 'json');
+    };
+
+    const quantity = $('input.quantity');
+    $(function(){
+        // 呈現數量
+        quantity.each(function(){
+            const qty = $(this).attr('value') * 1;
+            $(this).val(qty);
+        });
+
+        // calPrices();
+
+    });
+
     // $(document).on('click', '.fa-trash-alt', function() {
     //     var elem = $('.cart_product .price')
     //     $(this).parentsUntil('tbody').remove()
@@ -738,12 +762,14 @@ $_gdata = [
     }}
     function delete_it_pln(sid){
     if(confirm(`確定要刪除 ${name} 嗎?`)){
-        location.href = 'delete_plan.php?sid=' + sid;
+        location.href = 'cart_plan_api.php?sid=' + sid;
     }}
     function delete_it_lit(sid){
     if(confirm(`確定要刪除 ${name} 嗎?`)){
         location.href = 'delete_light.php?sid=' + sid;
     }}
+
+
     
 </script>
 <?php include __DIR__ . '/parts/html-foot.php'; ?>

@@ -22,7 +22,7 @@ $_gdata = [
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>', 
 ];
 
-$default_price = 10000;
+$default_price = 6500;
 $default_cat = '熱門行程';
 
 $trip_order = isset($_GET['o'])?$_GET['o']:"";
@@ -35,7 +35,7 @@ if(!$cat_area) {
 $price = isset($_GET['price'])?$_GET['price']:$default_price;
 
 $wheres = [];
-//$where = " WHERE cat = '熱門行程' and price < 10000";
+//$where = " WHERE cat = '熱門行程' and price < 6500";
 
 if(!$cat_area) {
     if (isset($_GET['cat']) && $_GET['cat']) {
@@ -535,7 +535,7 @@ function getPageLink($page) {
 
     <div class="breadcrumb_style   backgroundimg_1">
         <div class="d-flex flex-wrap breadcrumb_style_1 ">
-            <a href="temple_index.php" class="astlyep">首頁</a>
+            <a href="index.php" class="astlyep">首頁</a>
             <!-- 共用雲端找箭頭icon-->
             <img src="./img/nav_arrow_right.svg">
             聖地行旅
@@ -759,7 +759,7 @@ if(count($trips) > 0) {
         AOS.init();
         // With JQuery
         var urlParams = new URLSearchParams(window.location.search);
-        
+
         function slider_change() {
             let q = "?";
             if(urlParams.get('cat')) {
@@ -774,12 +774,12 @@ if(count($trips) > 0) {
         $(".trip_price_range").slider({
             tooltip: 'always',
             tooltip_position: 'bottom',
-        }).slider('setValue', urlParams.get('price')?urlParams.get('price'):10000).on('slideStop', slider_change);
+        }).slider('setValue', urlParams.get('price')?urlParams.get('price'):6500).on('slideStop', slider_change);
 
         $(".trip_price_range_mobile").slider({
             tooltip: 'always',
             tooltip_position: 'bottom',
-        }).slider('setValue', urlParams.get('price')?urlParams.get('price'):10000).on('slideStop', slider_change);
+        }).slider('setValue', urlParams.get('price')?urlParams.get('price'):6500).on('slideStop', slider_change);
 
         $(".trip_like, .trip_like_mobile").click(function(){
             let btn = this;
