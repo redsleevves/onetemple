@@ -508,7 +508,7 @@ a:hover{
 
             <div class="light_Description_page_1_button buttonstyle padding_bottom150 ">
 
-                <a href="./light_Introduction.html" class="whitecolor btnhovw">
+                <a href="./light_Introduction.php" class="whitecolor btnhovw">
                     <button class="graycolor ">
                         <p>不同意</p>
                     </button>
@@ -517,7 +517,7 @@ a:hover{
 
 
 
-                <a href="./light_Fill_in_theinformation.html" class="whitecolor btnhovw">
+                <a href="./light_Fill_in_theinformation.php" class="whitecolor btnhovw">
                     <button>
                         <p>同意</p>
                     </button>
