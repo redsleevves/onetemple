@@ -7,7 +7,7 @@ var_dump($_SESSION); # 印出變數在銀幕上
 
 $_gdata = [
     // 網頁名稱
-    'title' => '灣廟 | 聖地行旅',
+    'title' => '灣廟 | 點燈填寫表',
     // 頁面私有 css
     'styles' => '
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
