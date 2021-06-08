@@ -6,37 +6,29 @@ $output = [
     'error' => '資料沒有修改'
 ];
 
-if(isset($_POST['sid'])) {
-    $output['error'] = '資料沒有修';
-    $sql = "UPDATE `order_lit_details` SET
-                        `bless_birth`=?, 
-                        `bless_mobile`=?,
-                        `bless_address`=?
-            WHERE `sid`=? ";
+// echo json_encode($_POST);
+// exit;
+// foreach($_POST as $key => $value){    
 
+
+if(isset($_POST['sid'])) {
+    for($i=0;$i<count($_POST['sid']);$i++){
+    $sql = "UPDATE `member_friend` SET
+                        `birthday_`=?, 
+                        `mobile_`=?,
+                        `address_`=?
+            WHERE `sid`=? ";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        $_POST['bless_mobile'],
-        $_POST['bless_address'],
-        $_POST['bless_birth'],
-        $_POST['bless_id'],
+        $_POST['friends_birth'][$i],
+        $_POST['friends_mobile'][$i],
+        $_POST['friends_address'][$i],
+        $_POST['sid'][$i],
     ]);
+    $output['success'] = true;
 
-    if($stmt->rowCount()){
-        $output['success'] = true;
-        $output['error'] = '';
-    } else {
-        $output['error'] = '資料沒有修改';
-    }
+}
 }
 
 
 echo json_encode($output, JSON_UNESCAPED_UNICODE);
-
-
-
-
-
-
-
-

@@ -10,6 +10,10 @@
         //頁面私有 scripts
         'scripts' => '', 
     ];
+
+    
+
+
 ?>
 
 <!-- 整個頁面的頭 -->
@@ -862,6 +866,9 @@
             }, 500);
 
         });
+
+
+
 
         // Go-Top
         $(window).scroll(function (event) {

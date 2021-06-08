@@ -23,17 +23,18 @@ $trip_rows = $pdo->query($trip_sql)->fetchAll();
 $lucky_sql = "SELECT fav_lucky.sid, member.sid AS member_id, fav_lucky.lucky_sid, fav_lucky.getdate, peom.img FROM fav_lucky JOIN member ON member.sid=fav_lucky.member_sid JOIN peom ON fav_lucky.lucky_sid=peom.sid where member.sid='$member_sid'";
 $lucky_rows = $pdo->query($lucky_sql)->fetchAll();
 
-$lit_sql = "SELECT member_family.bless_name, member.sid AS member_id, member_family.sid, member_family.bless_gender, member_family.bless_birth, member_family.bless_address FROM member_family JOIN member ON member.sid=member_family.member_sid where member.sid='$member_sid'";
+$lit_sql = "SELECT member_friend.name_, member.sid AS member_id, member_friend.sid, member_friend.mobile_, member_friend.birthday_, member_friend.address_ FROM member_friend JOIN member ON member.sid=member_friend.f_sid where member.sid='$member_sid'";
 $lit_rows = $pdo->query($lit_sql)->fetchAll();
 
 $sum_sql = "SELECT * FROM order_sum where order_sum.member_sid='$member_sid'";
 $sum_rows = $pdo->query($sum_sql)->fetchAll();
 
 $sum_id = $sum_rows['sid'];
-$sum_trip_sql = "SELECT orders_trip.trip_qty,orders_trip.trip_price, orders_trip.sum_id, trips.title2, trips.photo1, orders_trip.member_sid FROM orders_trip JOIN trips ON orders_trip.trip_sid=trips.id where member_sid='$member_sid' AND sum_id='1'";
+
+$sum_trip_sql = "SELECT orders_trip.trip_qty,orders_trip.trip_price, orders_trip.sum_id, trips.title2, trips.photo1, orders_trip.member_sid FROM orders_trip JOIN trips ON orders_trip.trip_sid=trips.id where member_sid='$member_sid'";
 $sum_trip_rows = $pdo->query($sum_trip_sql)->fetchAll();
 
-$sum_pdc_sql = "SELECT orders_pdc.pdc_qty,orders_pdc.pdc_price, product.name, product.img, orders_pdc.member_sid FROM orders_pdc JOIN product ON orders_pdc.pdc_sid=product.sid where member_sid='$member_sid'";
+$sum_pdc_sql = "SELECT orders_pdc.pdc_qty,orders_pdc.pdc_price, orders_pdc.sum_id,product.name, product.img, orders_pdc.member_sid FROM orders_pdc JOIN product ON orders_pdc.pdc_sid=product.sid where member_sid='$member_sid'";
 $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
 
 ?>
@@ -159,6 +160,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
 
         footer {
             width: 100%;
+            position:absolute;
 
         }
 
@@ -1062,26 +1064,26 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
             <form id="editFriendsData" class="editFriendsData" name="editFriendsData" onsubmit="checkEditFamily(); return false;">
             <?php foreach ($lit_rows as $k) : ?>
                 <div class="friends_unit">
-                <input type="hidden" name="sid" value="<?= $k['sid'] ?>">
+                <input type="hidden" name="sid[]" value="<?= $k['sid'] ?>">
                 <div class="form-group">
                     <label for="member_name">姓名</label>
                     <p>|</p>
-                    <input type="text" name="friends_name" value="<?= $k['bless_name'] ?>" readonly>
+                    <input type="text" name="friends_name[]" value="<?= $k['name_'] ?>" readonly>
                 </div>
                 <div class="form-group">
-                    <label for="member_password">生日(國曆)</label>
+                    <label for="member_password">生日</label>
                     <p>|</p>
-                    <input type="text" name="friends_birth" value="<?= $k['bless_birth'] ?>">
+                    <input type="text" name="friends_birth[]" value="<?= $k['birthday_'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="member_mobile">連絡電話</label>
                     <p>|</p>
-                    <input type="text" name="friends_mobile" value="<?= $k['bless_mobile'] ?>">
+                    <input type="text" name="friends_mobile[]" value="<?= $k['mobile_'] ?>">
                 </div>
                 <div class="form-group">
                     <label for="member_address">地址</label>
                     <p>|</p>
-                    <input type="text" name="friends_address" value="<?= $k['bless_address'] ?>">
+                    <input type="text" name="friends_address[]" value="<?= $k['address_'] ?>">
                 </div>
                 <div style="display: flex; justify-content:center">
                 <a href="javascript:delete_friends(<?= $k['sid'] ?>)"><button type="button" class="unfriends graybut">刪除</button></a>
@@ -1350,19 +1352,17 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
             <div class="displayno_md col-12">
                 <div class="member_tablehead d-flex col-12 marginauto borderbtline">
                     <p class="col-2">姓名</p>
-                    <p class="col-1">性別</p>
-                    <p class="col-2">生日(國曆)</p>
-                    <p class="col-2">生日(農曆)</p>
+                    <p class="col-2">生日</p>
+                    <p class="col-2">手機</p>
                     <p class="col">地址</p>
 
                 </div>
                 <?php foreach ($lit_rows as $k) : ?>
                 <div class="member_tablehead d-flex col-12 marginauto">
-                    <p class="col-2"><?= $k['bless_name'] ?></p>
-                    <p class="col-1"><?= $k['bless_gender'] ?></p>
-                    <p class="col-2"><?= $k['bless_birth'] ?></p>
-                    <p class="col-2"><?= $k['bless_birth'] ?></p>
-                    <p class="col"><?= $k['bless_address'] ?></p>
+                    <p class="col-2"><?= $k['name_'] ?></p>
+                    <p class="col-2"><?= $k['birthday_'] ?></p>
+                    <p class="col-2"><?= $k['mobile_'] ?></p>
+                    <p class="col"><?= $k['address_'] ?></p>
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -1391,11 +1391,10 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                 </div>
                 <?php foreach ($lit_rows as $k) : ?>
                 <div class="member_tablehead d-flex col-12 marginauto">
-                    <p class="col-4"><?= $k['bless_name'] ?></p>
-                    <p class="col-2"><?= $k['bless_gender'] ?></p>
-                    <p class="col displayno_md"><?= $k['bless_birth'] ?></p>
-                    <p class="col"><?= $k['bless_birth'] ?></p>
-                    <p class="col displayno_md"><?= $k['bless_address'] ?></p>
+                    <p class="col-4"><?= $k['name_'] ?></p>
+                    <p class="col-2"><?= $k['birthday_'] ?></p>
+                    <p class="col"><?= $k['mobile_'] ?></p>
+                    <p class="col displayno_md"><?= $k['address_'] ?></p>
                 </div>
                 <?php endforeach; ?>                
             </div>
@@ -1520,7 +1519,8 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($sum_trip_rows as $a) : ?>
+                    <?php foreach ($sum_trip_rows as $a)
+                        if($s['sid']==$a['sum_id']): ?>
                     <tr>
                         <td>
                             <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['photo1'] ?>"></div>
@@ -1531,8 +1531,9 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                         <td><?= $a['trip_price'] ?></td>
                         <td><a>寫下評論</a></td>
                     </tr>
-                    <?php endforeach; ?>
-                    <?php foreach ($sum_pdc_rows as $b) : ?>
+                    <?php endif; ?>
+                    <?php foreach ($sum_pdc_rows as $b)
+                         if($s['sid']==$b['sum_id']): ?>
                     <tr>
                         <td>
                             <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['img'] ?>"></div>
@@ -1543,7 +1544,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                         <td><?= $b['pdc_price'] ?></td>
                         <td><?= $a['trip_price'] ?></td>
                     </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
                     <tr>
                         <td colspan="5">
                             <i class="fas less fa-chevron-up"></i>
@@ -1809,7 +1810,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
 
 
         $(".info").click(function () {
-            let absoluteBut = document.body.scrollHeight + 300 + px
+            let absoluteBut = document.body.scrollHeight
             dynamicFooter(absoluteBut)
             $(this).next(detail).slideToggle();
         });
@@ -2060,14 +2061,12 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
         }
     }
     
-    var formData = JSON.stringify($("#editFriendsData").serializeArray());
-
     function checkEditFamily() {
         let isPass = true;
         if(isPass){
             $.post(
                 'member_family_edit_api.php',
-                formData,
+                $("#editFriendsData").serialize(),
                 function(data){
                     if(data.success){
                         alert('資料修改成功');

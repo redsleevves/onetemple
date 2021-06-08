@@ -224,7 +224,7 @@ $v = $pdo->query($sql)->fetchAll();
     <?php foreach($v as $vBC ): ?>
         <div class="breadcrumb_style   backgroundimg_1">
             <div class="d-flex flex-wrap breadcrumb_style_1 ">
-                <a href="<?= WEB_ROOT?>/temple_index.php" class="astlyep">首頁</a>
+                <a href="<?= WEB_ROOT?>/index.php" class="astlyep">首頁</a>
                 <!-- 共用雲端找箭頭icon-->
                 <img src="./img/nav_arrow_right.svg">
                 <a href="<?= WEB_ROOT ?>/news_main.php" class="astlyep">最新消息</a>

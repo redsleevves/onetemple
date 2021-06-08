@@ -3,7 +3,7 @@ $title = "商品列表";
 $pageName = "product-list";
 
 
-require __DIR__ . '/product/__connect_db.php';
+require __DIR__ . '/parts/__connect_db.php';
 // $qs = [];
 $searchString = "1 ";
 $page = isset($_GET['page']) ? intval($_GET['page']) : 0;

@@ -30,7 +30,7 @@
         </div>
         <div class="nav_overlayNavBox">
             <ul>
-                <a href="<?= WEB_ROOT?>/temple_index.php">
+                <a href="<?= WEB_ROOT?>/index.php">
                     <li>灣廟首頁</li>
                 </a>
                 <a href="<?= WEB_ROOT?>/news_main.php">
@@ -60,7 +60,7 @@
                     <div class="mobile_login d-flex">
                     <div class="mobile_nav_profile d-flex">
                         <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
-                        <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
+                        <a href="<?= WEB_ROOT?>/member_onepage.php" class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
                     </div>
                     <div class="nav-item">
                         <a class="nav-link" href="logout.php">登出</a>
@@ -79,7 +79,7 @@
     <nav class="nav_navbar_com">
         <div class="nav_navbar_com_container">
             <!-- 請依檔案位置修改logo路徑 -->
-            <a href="<?= WEB_ROOT?>/temple_index.php">
+            <a href="<?= WEB_ROOT?>/index.php">
                 <img src='<?= WEB_ROOT ?>/img/nav_logo.svg'>
             </a>
             
@@ -121,7 +121,7 @@
                     <?php if(isset($_SESSION['user'])): ?>
                     <li class="nav-item d-flex align-items-center">
                         <img src="<?= WEB_ROOT ?>/img/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
-                        <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
+                        <a href="<?= WEB_ROOT?>/member_onepage.php" class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">登出</a>
