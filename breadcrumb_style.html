@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+    <style>
+        .breadcrumb_style {
+            background-image: url(./img/nav_background_1.png);
+            /* navbar多厚 就推多少paddding */
+         
+        }
+
+        .breadcrumb_style_1 {
+            padding: 20px 0;
+            align-items: center;
+            margin: auto;
+        }
+
+        .astlyep {
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #707070;
+            list-style-type: none;
+            text-decoration: none;
+
+        }
+
+        .breadcrumb_style_1 img {
+            height: 10px;
+            width: 10px;
+            margin: 0 10px;
+        }
+
+        /* 桌機用 */
+        @media (min-width:1400px) {
+            .breadcrumb_style {
+                /* navbar多厚 就推多少paddding */
+                /* 玳禎navbar桌機版 無填滿 這邊請填滿105px */
+                padding-top: 105px;
+            }
+            .breadcrumb_style_1 {
+                width: 80%;
+            }
+        }
+
+        /* 手機用 */
+        @media (max-width:1399px) {
+            .breadcrumb_style {
+                /* navbar多厚 就推多少paddding */
+                /* 玳禎navbar手機版 有填滿 這邊請註解掉 */
+                /* padding-top: 80px; */
+            }
+
+            .breadcrumb_style_1 {
+                /* 手機板寬 自行設定 */
+                width: 85%;
+            }
+
+            .breadcrumb_style_1 {
+                /* contanier架構專用 padding 0 15px  */
+                /* padding: 20px 15px; */
+                /* width: 100%; */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 我是麵包屑-->
+    <div class="breadcrumb_style   backgroundimg_1">
+        <div class="d-flex flex-wrap breadcrumb_style_1 ">
+            <a href="" class="astlyep">自己編輯路徑</a>
+            <!-- 共用雲端找箭頭icon-->
+            <img src="./img/nav_arrow_right.svg">
+            <a href="" class="astlyep">自己編輯路徑2</a>
+            <img src="./img/nav_arrow_right.svg">
+            <a href="" class="astlyep">自己編輯路徑3</a>
+        </div>
+    </div>
+</body>
+
+</html>
