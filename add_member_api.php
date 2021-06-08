@@ -6,19 +6,18 @@ $output = [
     'error' => '資料沒有新增'
 ];
 
-if(isset($_POST['name'])) {
+if(isset($_POST['email'])) {
     // TODO: 欄位資料檢查
 
-    // 檢查手機號碼格式
-    $mobile_re = "/^09\d{2}-?\d{3}-?\d{3}$/";
-    if(empty(preg_grep($mobile_re, [ $_POST['mobile']]))){
-        $output['error'] = '手機號碼格式不符';
-        echo json_encode($output, JSON_UNESCAPED_UNICODE);
-        exit;  
-        // 結束, 後面的程式不會執行, die()
-    }
+    $b_sql = "SELECT `email` FROM `member` WHERE `email`=?";
+    $b_stmt = $pdo->prepare($b_sql);
+    $b_stmt->execute([ $_POST['email'] ]);
 
-    $hash = sha1( $_POST['email']. uniqid() );
+    if($b_stmt->rowCount()) {
+        $output['error'] = '此 email 已經註冊過';
+        echo json_encode($output, JSON_UNESCAPED_UNICODE);
+        exit;  // 程式結束
+    }
 
     $sql = "INSERT INTO `member`(
                            `name`, `email`,`mobile`, `password`
@@ -34,7 +33,15 @@ if(isset($_POST['name'])) {
         password_hash($_POST['password'], PASSWORD_DEFAULT),
     ]);
 
+    $a_sql = "SELECT * FROM `member` WHERE `email`=?";
+    $a_stmt = $pdo->prepare($a_sql);
+    $a_stmt->execute([ $_POST['email'] ]);
+    $row = $a_stmt->fetch();
+
     if($stmt->rowCount()){
+        unset($row['password']);
+        unset($row['repassword']);
+        $_SESSION['user'] = $row;
         $output['success'] = true;
         $output['error'] = '';
     } else {
