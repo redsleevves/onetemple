@@ -1,4 +1,4 @@
-<?php include __DIR__ . '/shop_page/shop_page_hend.php'; ?>
+
 <?php
 // require __DIR__ . '/product/__connect_db.php';
 require __DIR__ . "/parts/config.php";
@@ -14,9 +14,7 @@ $_gdata = [
     integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ=="
     crossorigin="anonymous" />
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">
-    <link rel="stylesheet" href="' . WEB_ROOT . '/css/mybtn.css">
-    <link rel="stylesheet" href="' . WEB_ROOT . '/css/nav_footer.css">
-   
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/mybtn.css">   
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">',
     //頁面私有 scripts
     'scripts' => '

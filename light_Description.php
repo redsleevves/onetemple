@@ -421,12 +421,12 @@ $_gdata = [
 <!-- 我是麵包屑-->
 <div class="breadcrumb_style   backgroundimg_1">
     <div class="d-flex flex-wrap breadcrumb_style_1 ">
-        <a href="./index" class="astlyep">灣廟</a>
+        <a href="<?= WEB_ROOT?>/index.php" class="astlyep">首頁</a>
         <!-- 共用雲端找箭頭icon-->
         <img src="./img/nav_arrow_right.svg">
-        <a href="./light_Introduction.php" class="astlyep">燈種介紹</a>
+        <a href="<?= WEB_ROOT?>/light_Introduction.php" class="astlyep">燈種介紹</a>
         <img src="./img/nav_arrow_right.svg">
-        <a href="./light_Description.php" class="astlyep">服務說明</a>
+        <a href="<?= WEB_ROOT?>/light_Description.php" class="astlyep">服務說明</a>
     </div>
 </div>
 

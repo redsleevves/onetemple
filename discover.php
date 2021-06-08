@@ -7,7 +7,7 @@ $_gdata = [
     // 頁面私有 css
     'styles' => '<link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar1.css">',
     //頁面私有 scripts
-    // 'scripts' => '<script src="'.WEB_ROOT.'/js/result.js"></script>', 
+    'scripts' => '', 
 ];
 
 ?>
@@ -54,7 +54,7 @@ $_gdata = [
     }
 
 
-    footer {
+    /* footer {
         width: 100%;
         height: 100px;
         background-color: #cc543a;
@@ -64,7 +64,7 @@ $_gdata = [
         bottom: 0;
         justify-content: center;
         align-items: center;
-    }
+    } */
 
     .discover_head {
         height: 100vh;
@@ -469,7 +469,7 @@ $_gdata = [
         }
 
         .discover_box {
-            margin: 0 auto;
+            margin: 40px auto 0 auto;
             transform: translateY(-140px);
         }
 
@@ -759,6 +759,23 @@ $_gdata = [
         opacity: 1;
         visibility: visible;
     }
+
+    /* discoverBox_scroll */
+    .scrollStyle::-webkit-scrollbar {
+    width: 5px;
+    }
+    .scrollStyle::-webkit-scrollbar-button{
+    background: #f5f4f1;
+    display: none;
+    }
+    .scrollStyle::-webkit-scrollbar-track-piece{
+    background: #f5f4f1;
+    }
+    
+    .scrollStyle::-webkit-scrollbar-thumb {
+    background-color: #cc543a;
+    border-radius: 10px;
+    }
 </style>
 
 <div class="discover_head row col-12">
@@ -801,7 +818,7 @@ $_gdata = [
                         src="/SVG/search-solid.svg" alt="Submit Form" /> -->
             </form>
             <h3 id="secondHead">HOT</h3>
-            <div id='discover_hot' class="discover_hot d-flex result">
+            <div id='discover_hot' class="discover_hot d-flex result scrollStyle">
                 <div class="hot_feature col-lg-6">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
                     <p class="tempname">清水祖師廟</p>

@@ -37,7 +37,7 @@ $_gdata = [
           font-weight: 200;
           text-transform: uppercase;
           /* font-family: test; */
-          color: #fff;
+          color: #000;
           z-index: 10;
           padding-top: 570px;
           font-family: 'Raleway', sans-serif;
@@ -53,22 +53,12 @@ $_gdata = [
           background-size: cover;
           border-radius: 50%;
         }
-        .check-out {
-          z-index: 100;
-          position: absolute;
-          bottom: 1rem;
-          left: 50%;
-          transform: translateX(-50%);
-          font-size: 2rem;
-          color: #fff;
-          font-family: test;
-        }
 
         a {
-            color: #fff;
+            color: #000;
           }
         a:hover{
-            color: #fff;
+            color: #000;
             text-decoration: none;
         }
 
@@ -97,7 +87,7 @@ $_gdata = [
           top: 50%;
           transform: translate(-50%, -50%);
           /* border-radius: 5px; */
-          background-image: linear-gradient(to top, rgba(8, 25, 45, 0.85) 0%, rgba(8, 25, 45, 1) 100%);
+          background-image: url(./img/nav_bcc2.png);
           overflow: hidden;
         }
 
@@ -110,7 +100,7 @@ $_gdata = [
           margin-left: -50px;
           margin-top: -100px;
           border-radius: 50%;
-          background: rgba(46, 92, 110, 0.5);
+          background: rgba(204, 84, 58, 0.5);
           animation: wave 10s ease infinite;
 
           /* border: 1px solid red; */
@@ -124,7 +114,7 @@ $_gdata = [
           margin-left: -50px;
           margin-top: -100px;
           border-radius: 50%;
-          background: rgba(46, 92, 110, 0.3);
+          background: rgba(204, 84, 58, 0.3);
           animation: wave2 15s ease infinite;
 
           /* border: 1px solid red; */

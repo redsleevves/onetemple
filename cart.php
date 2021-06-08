@@ -386,7 +386,7 @@ $_gdata = [
                 <li class="totalSum"></li>
             </ul>
         </div>
-        <button>確認結帳</button>
+        <button><a href="<?= WEB_ROOT?>/checkList.php">確認結帳</a></button>
     </section>
     <section class="carttable container-fluid col-7">
         <h4>購物車</h4>

@@ -360,6 +360,7 @@ h3 {
     .shop_container {
         width: 1400px;
         padding-bottom: 70px;
+        padding-top: 40px;
     }
     .shop_Checkout{
         display: flex;

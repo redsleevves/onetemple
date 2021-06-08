@@ -14,68 +14,74 @@ $_gdata = [
 
 // $title = '灣廟 | 結帳確認';
 $pageName = 'check_list & payment method';
+$member_sid = isset($_SESSION['user'])?$_SESSION['user']['sid']:0;
+
+if ( ! isset($_SESSION['user'])){
+    header('Location: index.php');
+    exit;
+}
 
 //測試用
 $_SESSION = [
     'cart' => [
         'order_id' => date("YmdHis").substr(microtime(),2,4),
 
-        'products' => [
-            [
-                'sid' => '1',
-                'name' => '平安茶',
-                'attr' => '一組24包',
-                'price' => '240',
-                'qty' => '1'
-            ],
-            [
-                'sid' => '8',
-                'name' => '皮革平安符',
-                'attr' => '藍色',
-                'price' => '200',
-                'qty' => '3'
-            ]
-        ],
+        // 'products' => [
+        //     [
+        //         'sid' => '1',
+        //         'name' => '平安茶',
+        //         'attr' => '一組24包',
+        //         'price' => '240',
+        //         'qty' => '1'
+        //     ],
+        //     [
+        //         'sid' => '8',
+        //         'name' => '皮革平安符',
+        //         'attr' => '藍色',
+        //         'price' => '200',
+        //         'qty' => '3'
+        //     ]
+        // ],
 
-        'trip' => [
-            [
-                'sid' => '3',
-                'name' => '北港媽祖廟一日遊',
-                'attr' => '一日遊，含午餐',
-                'date' => '6/30',
-                'price' => '888',
-                'qty' => '1'
-            ]
-        ],
+        // 'trip' => [
+        //     [
+        //         'sid' => '3',
+        //         'name' => '北港媽祖廟一日遊',
+        //         'attr' => '一日遊，含午餐',
+        //         'date' => '6/30',
+        //         'price' => '888',
+        //         'qty' => '1'
+        //     ]
+        // ],
 
-        'light' => [
-            [
-                'sid' => '1',
-                'name' => '悠仁',
-                'attr' => '光明燈',
-                'price' => '600',
-                'qty' => '1',
-                'note' => [
-                    'name' => '悠仁',
-                    'gender' => '男',
-                    'birth' => '3月20日',
-                    'address' => '宮城縣仙台市'
-                ]
-            ],
-            [
-                'sid' => '6',
-                'name' => '憂太',
-                'attr' => '平安燈',
-                'price' => '600',
-                'qty' => '1',
-                'note' => [
-                    'name' => '憂太',
-                    'gender' => '男',
-                    'birth' => '3月7日',
-                    'address' => '宫城县仙台市'
-                ]
-            ]
-        ]
+        // 'light' => [
+        //     [
+        //         'sid' => '1',
+        //         'name' => '悠仁',
+        //         'attr' => '光明燈',
+        //         'price' => '600',
+        //         'qty' => '1',
+        //         'note' => [
+        //             'name' => '悠仁',
+        //             'gender' => '男',
+        //             'birth' => '3月20日',
+        //             'address' => '宮城縣仙台市'
+        //         ]
+        //     ],
+        //     [
+        //         'sid' => '6',
+        //         'name' => '憂太',
+        //         'attr' => '平安燈',
+        //         'price' => '600',
+        //         'qty' => '1',
+        //         'note' => [
+        //             'name' => '憂太',
+        //             'gender' => '男',
+        //             'birth' => '3月7日',
+        //             'address' => '宫城县仙台市'
+        //         ]
+        //     ]
+        // ]
     ]
 
     ];
