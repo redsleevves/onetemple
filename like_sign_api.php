@@ -1,5 +1,7 @@
 <?php
-require __DIR__ . '/product/__connect_db.php';
+
+require __DIR__ . '/parts/__connect_db.php';
+
 
 if (!isset($_SESSION)) {
     session_start();

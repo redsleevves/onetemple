@@ -24,25 +24,21 @@ h3 {
     height: 100%;
     object-fit: cover;
 }
-/* .shop_small_img{
-    height: 160.78px;
-    } */
+
 .shop_title_img img {
     border-radius: 5px;
 
 }
-/* .shop_small_img img {
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-} */
 
 .shop_title_img .shop_imghover img:hover {
     transform: scale(1.1, 1.1);
     transition: all .3s ease-out;
 }
-
+.shop_Checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .shop_like_mobile {
     width: 32px;
     height: 32px;
@@ -114,6 +110,7 @@ h3 {
     color: #707070;
     font-size: 18px;
     line-height: 2;
+    /* padding-top: 50px; */
 }
 
 .shop_text1 {
@@ -290,8 +287,11 @@ h3 {
 }
 
 .mybtn_like {
-    width:68px;
+    width: 70px;
     text-align: center;
+    /* flex-direction:row;
+    justify-content:center;
+    align-items:center; */
 }
 
 .mybtn_like::after {
@@ -307,16 +307,8 @@ h3 {
 .mybtn_like.active::after {
     display: none;
 }
-.shop_Checkout{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-}
-.shop_dsply{
-    /* display: flex;
-    flex-direction:row; */
-}
+
+
 /* -------------------手機板----------------------- */
 @media (max-width: 991px) {
     h3 {
@@ -352,7 +344,11 @@ h3 {
         text-overflow: ellipsis;
         width: 126px;
     }
-    
+    .shop_Checkout{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 
 }
 
@@ -363,6 +359,11 @@ h3 {
     }     
     .shop_container {
         width: 1400px;
+        padding-bottom: 70px;
     }
-
+    .shop_Checkout{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }
