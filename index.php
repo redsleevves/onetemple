@@ -1224,6 +1224,7 @@ $_gdata = [
 
         .index_shopArea {
             flex-direction: column;
+            align-items: center;
             padding: 80px 0;
 
         }

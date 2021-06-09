@@ -112,15 +112,19 @@ $op_sql = "INSERT INTO `orders_pdc`(
 
 $op_stmt = $pdo->prepare($op_sql);
 
-foreach($_SESSION['cart']['product'] as $p) {
-$op_stmt->execute([
+if(empty($_SESSION['cart']['product'])){
+}else{
+    foreach($_SESSION['cart']['product'] as $p) {
+    $op_stmt->execute([
 
-$member_sid,
-$p['sid'], 
-$p['qty'],
-$p['price'],
-$sum_id_p
-]);
+    $member_sid,
+    $p['sid'], 
+    $p['qty'],
+    $p['price'],
+    $sum_id_p
+    ]);
+    };
+
 };
 
 
@@ -134,26 +138,30 @@ $ot_sql = "INSERT INTO `orders_trip`(
                 ?, ?, ?,
                 ?, ?
         )";
+        
 
 $ot_stmt = $pdo->prepare($ot_sql);
 
-foreach($_SESSION['cart']['plan'] as $t) {
-$ot_stmt->execute([
+if(empty($_SESSION['cart']['plan'])){
+}else{
+    foreach($_SESSION['cart']['plan'] as $t) {
+    $ot_stmt->execute([
 
-$member_sid,
-$t['sid'], 
-$t['qty'],
-$t['price'],
-$t['content'],
-$t['note'],
-$sum_id_p
-]);
+    $member_sid,
+    $t['id'], 
+    $t['qty'],
+    $t['price'],
+    $t['content'],
+    $t['note'],
+    $sum_id_p
+    ]);
+    };
 };
 
 
 //orders_light
 $ol_sql = "INSERT INTO `orders_lit`(
-            `member_sid`, `lit_sid`, 
+            `member_sid`, `lit_cate`, 
             `lit_qty`, `lit_price`, `sum_id`
             ) VALUES (
             ?, ?,
@@ -162,45 +170,52 @@ $ol_sql = "INSERT INTO `orders_lit`(
 
 $ol_stmt = $pdo->prepare($ol_sql);
 
-foreach($_SESSION['cart']['light'] as $l) {
-$ol_stmt->execute([
+if(empty($_SESSION['cart']['light'])){
+}else{
+    foreach($_SESSION['cart']['light'] as $l) {
+    $ol_stmt->execute([
 
-$member_sid,
-$l['sid'], 
-$l['qty'],
-$l['price'],
-$sum_id_p
-]);
+    $member_sid,
+    $l['content'], 
+    $l['qty'],
+    $l['price'],
+    $sum_id_p
+    ]);
+    };
 };
 
 //orders_light_detail
 // $oldt_sid = $pdo->lastInsertId();
 
 $oldt_sql = "INSERT INTO `order_lit_details`(
-                    `lit_sid`, `bless_name`, 
-                    `bless_gender`, `bless_birth`, `bless_address`, 
-                    `sum_id`
-                    ) VALUES (
-                ?, ?,
+            `lit_cate`, `bless_name`, `bless_mobile`, 
+            `bless_birth`, `bless_stime`, `bless_address`, 
+            `bless_gender`, `sum_id`
+            ) VALUES (
                 ?, ?, ?,
-                ?
+                ?, ?, ?,
+                ?, ?
             )";
 
 $oldt_stmt = $pdo->prepare($oldt_sql);
 
-foreach($_SESSION['cart']['light'] as $l) {
-$oldt_stmt->execute([
+if(empty($_SESSION['cart']['light'])){
+}else{
+    foreach($_SESSION['cart']['light'] as $l) {
+    $oldt_stmt->execute([
 
-$l['sid'],
-$l['name'], 
-$l['note']['gender'],
-$l['note']['birth'],
-$l['note']['address'],
-$sum_id_p
-]);
+    $l['content'],
+    $l['name'], 
+    $l['note']['mobile'],
+    $l['note']['birthday'],
+    $l['note']['stime'],
+    $l['note']['address'], 
+    $l['note']['gender'],
+    $sum_id_p
+    ]);
+    };
+
 };
-
-
 
 }
 

@@ -330,6 +330,8 @@
         #clickToLight {
             font-family: 'Noto Serif TC', serif;
             letter-spacing: 0.2rem;
+            position: relative;
+            z-index: 10;
         }
 
         .light_Introduction_btn:hover {
