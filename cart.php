@@ -450,6 +450,7 @@ $_gdata = [
             </table>
             <?php endif; ?>
         </div>
+        
         <div class="each_table cart_plan mt-5">
             <h4 class="cartName">行旅</h4>
             <?php if(empty($_SESSION['cart']['plan'])): ?>
@@ -473,7 +474,7 @@ $_gdata = [
                 <?php foreach($_SESSION['cart']['plan'] as $j): ?>
                         <tr data-sid="<?= $j['id'] ?>">
                             <td>
-                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $j['img'] ?>"></div>
+                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $j['photo1'] ?>"></div>
                             </td>
                             <td><?= $j['name'] ?></td>
                             <td><?= $j['content'] ?></td>

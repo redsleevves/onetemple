@@ -22,69 +22,9 @@ if ( ! isset($_SESSION['user'])){
 }
 
 //測試用
-$_SESSION = [
-    'cart' => [
-        'order_id' => date("YmdHis").substr(microtime(),2,4),
-
-        // 'products' => [
-        //     [
-        //         'sid' => '1',
-        //         'name' => '平安茶',
-        //         'attr' => '一組24包',
-        //         'price' => '240',
-        //         'qty' => '1'
-        //     ],
-        //     [
-        //         'sid' => '8',
-        //         'name' => '皮革平安符',
-        //         'attr' => '藍色',
-        //         'price' => '200',
-        //         'qty' => '3'
-        //     ]
-        // ],
-
-        // 'trip' => [
-        //     [
-        //         'sid' => '3',
-        //         'name' => '北港媽祖廟一日遊',
-        //         'attr' => '一日遊，含午餐',
-        //         'date' => '6/30',
-        //         'price' => '888',
-        //         'qty' => '1'
-        //     ]
-        // ],
-
-        // 'light' => [
-        //     [
-        //         'sid' => '1',
-        //         'name' => '悠仁',
-        //         'attr' => '光明燈',
-        //         'price' => '600',
-        //         'qty' => '1',
-        //         'note' => [
-        //             'name' => '悠仁',
-        //             'gender' => '男',
-        //             'birth' => '3月20日',
-        //             'address' => '宮城縣仙台市'
-        //         ]
-        //     ],
-        //     [
-        //         'sid' => '6',
-        //         'name' => '憂太',
-        //         'attr' => '平安燈',
-        //         'price' => '600',
-        //         'qty' => '1',
-        //         'note' => [
-        //             'name' => '憂太',
-        //             'gender' => '男',
-        //             'birth' => '3月7日',
-        //             'address' => '宫城县仙台市'
-        //         ]
-        //     ]
-        // ]
-    ]
-
-    ];
+// $_SESSION = [
+//         'order_id' => date("YmdHis").substr(microtime(),2,4)
+//      ];
 
 
 ?>
@@ -546,14 +486,16 @@ $_SESSION = [
 
         <!-- product -->
         <!-- PHP變數待調整 -->
-        <?php foreach ($_SESSION['cart']['products'] as $i) : ?>
+        <?php if(empty($_SESSION['cart']['product'])): ?>       
+        <?php else: ?>
+        <?php foreach ($_SESSION['cart']['product'] as $i) : ?>
             <div class="checkList_item checkList_product">
                 <div class="checkList_itemImgBox ">
                     <img src="./img/indexproduct(2).jpg" alt="">
                 </div>
                 <div class="checkList_itemWordBox">
                     <p class="checkList_itemName"><?= $i['name'] ?></p>
-                    <p class="checkList_itemAttr"><?= $i['attr'] ?></p>
+                    <p class="checkList_itemAttr"><?= $i['content'] ?></p>
                     <p class="checkList_itemPrice" data-price="<?= $i['price'] ?>"></p>
                     <p class="checkList_itemNum" data-qty="<?= $i['qty'] ?>"></p>
                     <p class="checkList_itemTotalP"></p>
@@ -561,17 +503,20 @@ $_SESSION = [
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php endif; ?>
 
         <!-- Trip -->
         <!-- PHP變數待調整 -->
-        <?php foreach ($_SESSION['cart']['trip'] as $j) : ?>
+        <?php if(empty($_SESSION['cart']['plan'])): ?>       
+        <?php else: ?>
+        <?php foreach ($_SESSION['cart']['plan'] as $j) : ?>
             <div class="checkList_item checkList_trip">
                 <div class="checkList_itemImgBox">
                     <img src="./img/indexproduct(2).jpg" alt="">
                 </div>
                 <div class="checkList_itemWordBox">
                     <p class="checkList_itemName"><?= $j['name'] ?></p>
-                    <p class="checkList_itemAttr"><?= $j['attr'] ?></p>
+                    <p class="checkList_itemAttr"><?= $j['content'] ?></p>
                     <p class="checkList_itemPrice" data-price="<?= $j['price'] ?>"></p>
                     <p class="checkList_itemNum" data-qty="<?= $j['qty'] ?>"></p>
                     <p class="checkList_itemTotalP"></p>
@@ -579,9 +524,12 @@ $_SESSION = [
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php endif; ?>
 
         <!-- light -->
         <!-- PHP變數待調整 -->
+        <?php if(empty($_SESSION['cart']['light'])): ?>       
+        <?php else: ?>
         <?php foreach ($_SESSION['cart']['light'] as $k) : ?>
             <div class="checkList_item checkList_light">
                 <div class="checkList_itemImgBox">
@@ -589,7 +537,7 @@ $_SESSION = [
                 </div>
                 <div class="checkList_itemWordBox">
                     <p class="checkList_itemName"><?= $k['name'] ?></p>
-                    <p class="checkList_itemAttr"><?= $k['attr'] ?></p>
+                    <p class="checkList_itemAttr"><?= $k['content'] ?></p>
                     <p class="checkList_itemPrice" data-price="<?= $k['price'] ?>"></p>
                     <p class="checkList_itemNum" data-qty="<?= $k['qty'] ?>"></p>
                     <p class="checkList_itemTotalP"></p>
@@ -598,10 +546,7 @@ $_SESSION = [
                     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
                         data-content="
                         
-                        點燈者: <?= $k['note']['name']?></br>
-                        性別: <?= $k['note']['gender']?></br>
-                        生辰: <?= $k['note']['birth']?></br>
-                        住址: <?= $k['note']['address']?>
+                        <?= $k['note'] ?>
                         
                         " data-html='true'>查看詳情</button>
 
@@ -609,6 +554,7 @@ $_SESSION = [
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php endif; ?>
 
     </div>
 
@@ -820,7 +766,7 @@ $_SESSION = [
                 </div>
                 <div class="modal-orderNum">
                     <span>訂單編號:</span>
-                    <span name="order_id" id="orderID"><?= $_SESSION['cart']['order_id'] ?></span>
+                    <span name="order_id" id="orderID"><?= date("YmdHis").substr(microtime(),2,4) ?></span>
                 </div>
             </div>
             <div class="modal-footer modal-footer-re">

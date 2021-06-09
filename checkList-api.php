@@ -12,20 +12,34 @@ $output = [
 if(isset($_POST['shipment_method']) ){
 
     //訂單編號
-    $_POST['order_id'] = $_SESSION['cart']['order_id'];
+    $orderID = 111;
 
     //商品總金額
     $pdc_total = 0;
-    foreach($_SESSION['cart']['products'] as $i) {
-        $pdc_total += $i['price'] * $i['qty'];
-    }
+    if(empty($_SESSION['cart']['product'])){
+        $pdc_total = 0;
+    }else{
+        foreach($_SESSION['cart']['product'] as $i) {
+            $pdc_total += $i['price'] * $i['qty'];
+        }
+    };
+    
     $trip_total = 0;
-    foreach($_SESSION['cart']['trip'] as $j) {
-        $trip_total += $j['price'] * $j['qty'];
-    }
+    if(empty($_SESSION['cart']['plan'])){
+        $trip_total = 0;
+    }else{
+        foreach($_SESSION['cart']['plan'] as $j) {
+            $trip_total += $j['price'] * $j['qty'];
+        }
+    };
+
     $lit_total = 0;
-    foreach($_SESSION['cart']['light'] as $k) {
-        $lit_total += $k['price'] * $k['qty'];
+    if(empty($_SESSION['cart']['light'])){
+        $lit_total = 0;
+    }else{
+        foreach($_SESSION['cart']['light'] as $k) {
+            $lit_total += $k['price'] * $k['qty'];
+        }
     }
     
     $product_totalPrice = $pdc_total + $trip_total + $lit_total;
@@ -61,7 +75,7 @@ $o_sql = "INSERT INTO `order_sum`(
 $o_stmt = $pdo->prepare($o_sql);
 $o_stmt->execute([
 
-$_POST['order_id'], //order_id
+$orderID, //order_id
 $member_sid,
 $_POST['shipment_method'],
 $_POST['shipment_shipName'],
@@ -98,7 +112,7 @@ $op_sql = "INSERT INTO `orders_pdc`(
 
 $op_stmt = $pdo->prepare($op_sql);
 
-foreach($_SESSION['cart']['products'] as $p) {
+foreach($_SESSION['cart']['product'] as $p) {
 $op_stmt->execute([
 
 $member_sid,
@@ -123,15 +137,15 @@ $ot_sql = "INSERT INTO `orders_trip`(
 
 $ot_stmt = $pdo->prepare($ot_sql);
 
-foreach($_SESSION['cart']['trip'] as $t) {
+foreach($_SESSION['cart']['plan'] as $t) {
 $ot_stmt->execute([
 
 $member_sid,
 $t['sid'], 
 $t['qty'],
 $t['price'],
-$t['attr'],
-$t['date'],
+$t['content'],
+$t['note'],
 $sum_id_p
 ]);
 };
@@ -178,7 +192,7 @@ foreach($_SESSION['cart']['light'] as $l) {
 $oldt_stmt->execute([
 
 $l['sid'],
-$l['note']['name'], 
+$l['name'], 
 $l['note']['gender'],
 $l['note']['birth'],
 $l['note']['address'],

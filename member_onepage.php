@@ -29,8 +29,6 @@ $lit_rows = $pdo->query($lit_sql)->fetchAll();
 $sum_sql = "SELECT * FROM order_sum where order_sum.member_sid='$member_sid'";
 $sum_rows = $pdo->query($sum_sql)->fetchAll();
 
-$sum_id = $sum_rows['sid'];
-
 $sum_trip_sql = "SELECT orders_trip.trip_qty,orders_trip.trip_price, orders_trip.sum_id, trips.title2, trips.photo1, orders_trip.member_sid FROM orders_trip JOIN trips ON orders_trip.trip_sid=trips.id where member_sid='$member_sid'";
 $sum_trip_rows = $pdo->query($sum_trip_sql)->fetchAll();
 
