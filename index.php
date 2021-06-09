@@ -1351,17 +1351,17 @@ $_gdata = [
                 </a>
             </div>
             <div class="index_news_container02 d-flex justify-content-between">
-                <div class="NEWS02">
+                <div class="NEWS02 btnCursor">
                     <img class="mb-3" src="./img/indexNews(1).jpg" alt="">
                     <p>Mar 01, 2021</p>
                     <span>理成了兩所好畫隊，下也去何不醫況</span>
                 </div>
-                <div class="NEWS02">
+                <div class="NEWS02 btnCursor">
                     <img class="mb-3" src="./img/indexNews(2).jpg" alt="">
                     <p>Feb 22, 2021</p>
                     <span>理成了兩所好畫隊，下也去何</span>
                 </div>
-                <div class="NEWS02">
+                <div class="NEWS02 btnCursor">
                     <img class="mb-3" src="./img/indexNews(3).jpg" alt="">
                     <p>Feb 03, 2021</p>
                     <span>理成了兩所好畫隊，下也去何不醫</span>
@@ -1807,7 +1807,7 @@ $_gdata = [
                     <div class="index_epWordBox epWord1">
                         <p>Story</p>
                         <hr class="epLine1">
-                        <span>也得不眾動不一歷只片、港食化的要，雄體專結量腦戰像收天況百國影來……論將是春時花去視：年紀月大不英本別智加包男神。</span>
+                        <span></span>
                     </div>
                 </a>
             </div>
@@ -1914,32 +1914,32 @@ $_gdata = [
             </div>
         </div>
         <div class="index_productBox">
-            <div class="index_productImgBox">
+            <div class="index_productImgBox btnCursor">
                 <img src="./img/indexproduct(1).jpg" alt="">
                 <p class="index_productName">皮革平安符</p>
             </div>
-            <div class="index_productImgBox">
+            <div class="index_productImgBox btnCursor">
                 <img src="./img/indexproduct(2).jpg" alt="">
                 <p class="index_productName">廟宇手繪明信片</p>
             </div>
-            <div class="index_productImgBox">
+            <div class="index_productImgBox btnCursor">
                 <img src="./img/indexproduct(3).jpg" alt="">
                 <p class="index_productName">好運養生茶</p>
             </div>
-            <div class="index_productImgBox">
+            <div class="index_productImgBox btnCursor">
                 <img src="./img/indexproduct(4).jpg" alt="">
                 <p class="index_productName">開運符餅乾</p>
             </div>
-            <div class="index_productImgBox">
+            <div class="index_productImgBox btnCursor">
                 <img src="./img/indexproduct(5).jpg" alt="">
                 <p class="index_productName">羊毛氈手縫鑰匙套</p>
             </div>
-            <div class="index_productImgBox">
+            <div class="index_productImgBox btnCursor">
                 <img src="./img/indexproduct(6).jpg" alt="">
                 <p class="index_productName">檜木陶瓷杯</p>
             </div>
         </div>
-        <div class="index_shopLink"><a href="">看更多...</a></div>
+        <div class="index_shopLink"><a href="<?= WEB_ROOT ?>/product.php">看更多...</a></div>
 
     </div>
 
