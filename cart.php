@@ -479,11 +479,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         if($j['id']==$b['id']): ?> 
                         <tr data-sid="<?= $j['id'] ?>">
                             <td>
-<<<<<<< HEAD
-                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $j['photo1'] ?>"></div>
-=======
                                 <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['photo1'] ?>"></div>
->>>>>>> 0f724461dd5936449f4deeba9455961682290ee6
                             </td>
                             <td><?= $j['name'] ?></td>
                             <td><?= $j['content'] ?></td>
