@@ -1807,7 +1807,7 @@ $_gdata = [
                     <div class="index_epWordBox epWord1">
                         <p>Story</p>
                         <hr class="epLine1">
-                        <span></span>
+                        <span>也得不眾動不一歷只片、港食化的要，雄體專結量腦戰像收天況百國影來……論將是春時花去視：年紀月大不英本別智加包男神。</span>
                     </div>
                 </a>
             </div>
