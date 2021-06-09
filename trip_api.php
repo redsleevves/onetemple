@@ -6,6 +6,7 @@ if (!isset($_SESSION['user']['sid'])) {
     $result['code'] = 500;
     $result['info'] = '請先登入會員';
     echo json_encode($result, JSON_UNESCAPED_UNICODE);
+    return;
 }
 if ($_POST['op'] == 'add_cart') {
     $trip = [
@@ -54,10 +55,6 @@ if ($_POST['op'] == 'add_cart') {
         $result['success'] = true;
         $result['code'] = 200;
         $result['info'] = '資料處理完成';
-    } else if(!$member_sid) {
-        $result['success'] = false;
-        $result['code'] = 500;
-        $result['info'] = '請先登入會員';
     } else {
         $result['success'] = false;
         $result['code'] = 500;

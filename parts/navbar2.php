@@ -108,7 +108,7 @@
                             <div class="nav_hide_ch">聖地行旅</div>
                             <div class="nav_hide_en">TRIP</div>
                         </a>
-                        <a href="<?= WEB_ROOT?>/product.php" class="nav_navbar_item">
+                        <a href="<?= WEB_ROOT?>/shop.php" class="nav_navbar_item">
                             <div class="nav_hide_ch">祈福商店</div>
                             <div class="nav_hide_en">SHOP</div>
                         </a>
