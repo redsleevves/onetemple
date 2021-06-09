@@ -55,6 +55,17 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         border-radius: 30px;
         border: none;
     }
+    button:hover{
+        background-color: #DD745E;
+    }
+
+    button a {
+        color: #fff;
+    }
+    button a:hover{
+        color: #fff;
+        text-decoration: none;
+    }
 
     button:focus {
         outline: 0;

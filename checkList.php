@@ -26,9 +26,6 @@ if ( ! isset($_SESSION['user'])){
 //         'order_id' => date("YmdHis").substr(microtime(),2,4)
 //      ];
 
-
-print_r($_SESSION['cart']['light']);
-
 ?>
 
 <!-- 整個頁面的頭 -->

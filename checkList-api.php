@@ -217,7 +217,5 @@ if(empty($_SESSION['cart']['light'])){
 
 };
 
-print_r($_SESSION['cart']['light']);
-
 }
 
