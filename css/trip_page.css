@@ -418,14 +418,14 @@ h3 {
     .trip_hot{
         width: 1400px;
     }
-    .trip_left {
+    /* .trip_left {
         width: auto;
         left: 50px;
     }
     .trip_right {
         width: auto;
         right: 50px;
-    }
+    } */
     .trip_btn1 a:hover {
         background-color: #dd745e;
     }

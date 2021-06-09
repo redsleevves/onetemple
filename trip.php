@@ -108,6 +108,9 @@ function getPageLink($page) {
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
 <!-- 導航用代碼包含彈窗 -->
 <?php include __DIR__ . '/parts/navbar2.php'; ?>
+
+
+
 <style>
         body {
             font-family: 'Faustina', serif;
@@ -533,7 +536,7 @@ function getPageLink($page) {
 
 </style>
 
-    <div class="breadcrumb_style   backgroundimg_1">
+    <div class="breadcrumb_style backgroundimg_1">
         <div class="d-flex flex-wrap breadcrumb_style_1 ">
             <a href="index.php" class="astlyep">首頁</a>
             <!-- 共用雲端找箭頭icon-->
@@ -572,7 +575,7 @@ function getPageLink($page) {
                             <li class="py-1">
                                 <div class="trip_price_txt_mobile">價錢範圍</div>
                                 <div><input class="trip_price_range_mobile" id="ex8" data-slider-id='trip_price_range'
-                                        type="text" data-slider-min="0" data-slider-max="10000" data-slider-step="500"
+                                        type="text" data-slider-min="500" data-slider-max="10000" data-slider-step="500"
                                         data-slider-value="<?=$price?>" />
                                 </div>
                             </li>
@@ -673,7 +676,7 @@ if(count($trips) > 0) {
                                 <li class="py-1">
                                     <div class="trip_price_txt">價錢範圍 |</div>
                                     <div><input class="trip_price_range" id="ex8" data-slider-id='trip_price_range'
-                                            type="text" data-slider-min="0" data-slider-max="10000"
+                                            type="text" data-slider-min="500" data-slider-max="10000"
                                             data-slider-step="500" data-slider-value="<?=$price?>" /></div>
                                 </li>
                             </ul>

@@ -9,16 +9,16 @@ if (!isset($_SESSION['user']['sid'])) {
     return;
 }
 if ($_POST['op'] == 'add_cart') {
-    $trip = [
+    $shop = [
         'id' => $_POST['id'],
         'name' => $_POST['name'],
-        'content' => $_POST['solution'],
+        'content' => $_POST['name1'],
         'qty' => $_POST['qty'],
         'price' => $_POST['price'],
-        'note' => $_POST['date'],
+        'image' => $_POST['image'],
     ];
     
-    $_SESSION['cart']['plan'][] = $trip; // append to $_SESSION['cart']['plan']
+    $_SESSION['cart']['product'][] = $shop; // append to $_SESSION['cart']['shop']
     
     $result['success'] = true;
     $result['code'] = 200;
@@ -26,28 +26,28 @@ if ($_POST['op'] == 'add_cart') {
     echo json_encode($result, JSON_UNESCAPED_UNICODE);
 } else if ($_POST['op'] == 'toggle_fav') {
     $member_sid = $_SESSION['user']['sid'];
-    $trip_id = intval($_POST['id']);
+    $shop_id = intval($_POST['id']);
 
-    if($member_sid && $trip_id) {
-        $sql = "SELECT COUNT(0) FROM fav_trip WHERE trip_sid = ? AND member_sid = ?";
+    if($member_sid && $shop_id) {
+        $sql = "SELECT COUNT(0) FROM fav_pdc WHERE pdc_sid = ? AND member_sid = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            $trip_id,
+            $shop_id,
             $member_sid
         ]);
         $cnt = $stmt->fetch(PDO::FETCH_NUM)[0];
         if($cnt) {
-            $sql = "DELETE FROM fav_trip WHERE trip_sid = ? AND member_sid = ?";
+            $sql = "DELETE FROM fav_pdc WHERE pdc_sid = ? AND member_sid = ?";
             $stmt = $pdo->prepare($sql);
             $cnt = $stmt->execute([
-                $trip_id,
+                $shop_id,
                 $member_sid
             ]);
         } else {
-            $sql = "INSERT INTO fav_trip (trip_sid, member_sid) VALUES (?, ?)";
+            $sql = "INSERT INTO fav_pdc (pdc_sid, member_sid) VALUES (?, ?)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
-                $trip_id,
+                $shop_id,
                 $member_sid
             ]);
         }
@@ -58,7 +58,7 @@ if ($_POST['op'] == 'add_cart') {
     } else {
         $result['success'] = false;
         $result['code'] = 500;
-        $result['info'] = '未知的行程id';
+        $result['info'] = '未知的商品id';
     }
     echo json_encode($result, JSON_UNESCAPED_UNICODE);
 }

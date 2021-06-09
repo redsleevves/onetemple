@@ -69,7 +69,7 @@ for($i=0;$i<count($hot_trips);$i++) {
     
     <div class="breadcrumb_style   backgroundimg_1">
         <div class="d-flex flex-wrap breadcrumb_style_1 ">
-            <a href="temple_index.php" class="astlyep">首頁</a>
+            <a href="index.php" class="astlyep">首頁</a>
             <!-- 共用雲端找箭頭icon-->
             <img src="./img/nav_arrow_right.svg">
             <a href="trip.php" class="astlyep">聖地行旅</a>
@@ -973,6 +973,8 @@ foreach($pc_hot_trips as $key => $group) {
                     success: function(data){
                         if(data.code == 200) {
                             $(btn).toggleClass("active");
+                        } else {
+                            alert(data.info);
                         }
                     },
                     dataType: 'json'
@@ -1025,6 +1027,8 @@ foreach($pc_hot_trips as $key => $group) {
                     success: function(data){
                         if(data.code == 200) {
                             $(btn).toggleClass("active");
+                        } else {
+                            alert(data.info);
                         }
                     },
                     dataType: 'json'
@@ -1033,36 +1037,6 @@ foreach($pc_hot_trips as $key => $group) {
             }
         });
 
-        // overlayNav進場
-        $('.nav_burgurBar_img').click(function () {
-
-            let navPosition = {
-                transform: 'translateY(0)'
-            }
-
-            $(".nav_overlayNav").css(navPosition);
-        })
-
-        // overlayNav退場
-        $('.nav_closeBtn').click(function () {
-
-            let navPosition = {
-                transform: 'translateY(-2500px)',
-                transition: '.7s'
-            }
-
-            $(".nav_overlayNav").css(navPosition);
-        })
-
-
-        //Login hide
-        $('#registerbtn').click(function () {
-            $('#loginCenter').modal('hide');
-        })
-
-        $('#passwordbtn').click(function () {
-            $('#loginCenter').modal('hide');
-        })
 
 
         $(".trip_btn1").click(function () {
