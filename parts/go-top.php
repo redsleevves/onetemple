@@ -1,5 +1,5 @@
 <!-- go-Top -->
-<div class="index_goTop d-flex justify-content-end">
+<div class="index_goTop d-flex justify-content-end btnCursor">
         <div class="index_goTopImg">
             <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
                 <g id="Group_81" data-name="Group 81" transform="translate(-1810 -2767)">

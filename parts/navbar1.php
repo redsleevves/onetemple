@@ -167,8 +167,8 @@
                     </form>
                 </div>
                 <div class="modal-footer2-re mt-3">
-                    <a class="mr-5" data-toggle="modal" data-target="#lostPassword" id="passwordbtn">忘記密碼</a>
-                    <a data-toggle="modal" data-target="#registerCenter" id="registerbtn">註冊帳號</a>
+                    <a class="mr-5 btnCursor" data-toggle="modal" data-target="#lostPassword" id="passwordbtn">忘記密碼</a>
+                    <a class="btnCursor" data-toggle="modal" data-target="#registerCenter" id="registerbtn">註冊帳號</a>
                 </div>
             </div>
         </div>

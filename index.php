@@ -1309,7 +1309,7 @@ $_gdata = [
             <li class="slider_num">01</li>
         </ul>
 
-        <div class="index_slideDown">
+        <div class="index_slideDown btnCursor">
             <svg class="arrows">
                 <path class="a1" d="M0 0 L30 32 L60 0"></path>
                 <path class="a2" d="M0 20 L30 52 L60 20"></path>
