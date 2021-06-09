@@ -101,7 +101,7 @@ body::-webkit-scrollbar {
     padding: 10px 0 0 0;
     position: sticky;
     top: 0;
-    z-index: 99;
+    z-index: 9999;
 
     animation: focus-in-expand 1.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
