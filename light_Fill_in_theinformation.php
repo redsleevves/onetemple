@@ -25,16 +25,19 @@ $_gdata = [
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>',
 ];
 
-
+$member_sid = isset($_SESSION['user'])?$_SESSION['user']['sid']:0;
 $sql = "SELECT * FROM member o  
 JOIN member_friend d ON o.sid= d.f_sid
-WHERE o.sid=15";
+WHERE o.sid =?";
 
 $stmt = $pdo->prepare($sql);
-$stmt->execute();
+$stmt->execute([$member_sid]);
 $f_test = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$member_sid]);
+$rows = $stmt->fetchAll();
 
-$rows = $pdo->query($sql)->fetchAll();
+
 
 ?>
 <!-- 整個頁面的頭 -->
@@ -431,7 +434,7 @@ $rows = $pdo->query($sql)->fetchAll();
             padding-bottom: 40px;
         }
 
-        .padtop40{
+        .padtop40 {
             padding-top: 40px;
         }
 
@@ -3119,7 +3122,7 @@ $rows = $pdo->query($sql)->fetchAll();
                         content: light.join(","),
                         qty: light.length,
                         price: 600,
-                        
+
                         mobile: mobile,
                         address: address,
                         stime: stime,
