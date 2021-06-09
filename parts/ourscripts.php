@@ -54,11 +54,6 @@
     // const smalls = [$name.next(), $email.next(), $mobile.next()];
 
     function checkForm() {
-        // 回復原來的狀態
-        fileds.forEach(el => {
-            el.css('border', '1px solid #CCCCCC');
-            el.next().text('');
-        });
 
         let isPass = true;
 
@@ -91,6 +86,8 @@
                     if (data.success) {
                         alert('註冊成功');
                         location.reload();
+                    } else {
+                        alert(data.error);
                     }
                 },
                 'json'
@@ -99,6 +96,11 @@
 
     }
     function checkLogin() {
+        fileds.forEach(el => {
+            el.css('border', '1px solid #CCCCCC');
+            el.next().text('');
+        });
+
         let isLogin = true;
 
         if ($('#login_email').val().length < 1) {

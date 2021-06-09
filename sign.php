@@ -306,8 +306,8 @@ $row = $pdo->query($sql)->fetch();
                         </p>
                     </div>
                     <div class="lucky_btn06">
-                        <button class="lucky_button06 lucky_Favorites">收藏此籤</button>
-                        <button class="lucky_button06">拜訪神明</button>
+                        <button class="lucky_button06 lucky_Favorites lucky_btn_add" data-toggle="mybtn">收藏此籤</button>
+                        <button class="lucky_button06 lucky_btn_add" data-toggle="mybtn">拜訪神明</button>
                     </div>
                 </div>
             </section>

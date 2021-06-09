@@ -14,6 +14,11 @@ $title = '灣廟 | 會員中心';
 $pageName = 'member';
 $member_sid = $_SESSION['user']['sid'];
 
+
+
+$member_sql = "SELECT * FROM `member` where member.sid='$member_sid'";
+$member_rows = $pdo->query($member_sql)->fetchAll();
+
 $pdc_sql = "SELECT fav_pdc.sid, member.sid AS member_id, fav_pdc.pdc_sid, product.img, product.name, product.price FROM fav_pdc JOIN member ON member.sid=fav_pdc.member_sid JOIN product ON fav_pdc.pdc_sid=product.sid where member.sid='$member_sid'";
 $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 
@@ -41,8 +46,8 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
             font-family: 'Faustina', serif;
             background-image: url(<?= WEB_ROOT ?>/img/bcc.png);
             position: relative;
+            overflow-x:hidden;
             width: 100vw;
-            overflow-x: hidden;
         }
 
         h2 {
@@ -95,10 +100,6 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
             right: 5%;
             border-bottom: 1px solid rgb(165, 165, 165);
             z-index: 1;
-        }
-
-        nav img {
-            height: 80%;
         }
 
         .head {
@@ -193,6 +194,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
             align-items: center;
             flex-wrap: wrap;
             justify-content: center;
+            min-height:700px;
         }
 
         .fav_product_container {
@@ -353,8 +355,10 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
             width: 100%;
             display: flex;
             justify-content: center;
+            align-content:start;
             flex-wrap: wrap;
             position: absolute;
+            min-height:500px;
         }
 
 
@@ -1034,15 +1038,16 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                 <small class="form-text error"></small>
             </div>
             <div class="form-group">
-                <label for="member_password">密碼</label>
+                <label for="password">密碼</label>
                 <p>|</p>
-                <input type="password" id="member_password" value="<?= htmlentities($_SESSION['user']['password']) ?>">
-                <small id="changepw" class="form-text">修改密碼</small>
+                <input type="password" class="password" value="">
+                <small id="changepw" class="form-text" >修改密碼</small>
             </div>
             <div class="form-group d-none old_password">
                 <label for="member_password">舊密碼</label>
                 <p>|</p>
-                <input type="password" id="old_password" placeholder="請輸入舊密碼">
+                <input type="password" class="repassword" placeholder="請輸入舊密碼">
+                <small class="form-text"></small>
             </div>
             <div class="form-group d-none new_password">
                 <label for="member_password">新密碼</label>
@@ -1286,8 +1291,6 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                                 </div>
                                 <P class="col"><?= htmlentities($_SESSION['user']['name']) ?></P>
                             </div>
-
-
                             <div class=" displayflex_md">
                                 <div class="text_p displayflex_md jcsb col-4 p-0">
                                     <p class="">生日</p>
@@ -1406,7 +1409,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                 <p class="fav_edit">編輯</p>
             </div>
             <div class='d-flex align-items-center col-lg-12'>
-                <i class="fas fa-chevron-left control control_prod"></i>
+                <i class="fas fa-chevron-left control d-none control_prod"></i>
                 <div id="fav_product_container" class="prow">
                     <div class="fav_product_container col-xs-12">
                         <?php foreach ($pdc_rows as $p) : ?>
@@ -1420,7 +1423,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <i class="control control_prod fas fa-chevron-right"></i>
+                <i class="control d-none control_prod fas fa-chevron-right"></i>
             </div>
         </div>
         <div class="fav_plan col-lg-8">
@@ -1429,7 +1432,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                 <p class="fav_edit">編輯</p>
             </div>
             <div class='d-flex align-items-center col-lg-12'>
-                <i class="fas fa-chevron-left control control_plan"></i>
+                <i class="fas fa-chevron-left control d-none control_plan"></i>
                 <div id="fav_plan_container" class="prow">
                     <div  class="fav_plan_container col-xs-12">
                         <?php foreach ($trip_rows as $t) : ?>
@@ -1449,7 +1452,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <i class="control control_plan fas fa-chevron-right"></i>
+                <i class="control d-none control_plan fas fa-chevron-right"></i>
             </div>
         </div>
         <div class="fav_lucky col-lg-8">
@@ -1458,7 +1461,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                 <p class="fav_edit">編輯</p>
             </div>
             <div class='d-flex align-items-center col-lg-12'>
-                <i class="fas fa-chevron-left control control_luck"></i>
+                <i class="fas fa-chevron-left control d-none control_luck"></i>
                 <div id="fav_lucky_container" class="prow">
                     <div class="fav_lucky_container col-xs-12">
                         <?php foreach ($lucky_rows as $l) : ?>
@@ -1473,7 +1476,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                         <?php endforeach; ?>
                     </div>
                 </div>
-                <i class="control control_luck fas fa-chevron-right"></i>
+                <i class="control d-none control_luck fas fa-chevron-right"></i>
             </div>
         </div>
     </section>
@@ -1490,6 +1493,7 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
                 </tr>
             </thead>
         </table>
+        <div class="notice col-lg-7 text-center pt-5"></div>
         <?php foreach ($sum_rows as $s) : ?>
         <table class="table table-borderless fixrow info col-lg-7">
             <thead>
@@ -1552,66 +1556,6 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
             </table>
         </div>
         <?php endforeach; ?>
-
-        <table class="table table-borderless fixrow info col-lg-7">
-            <thead>
-                <tr>
-                    <th>2020/01/01</th>
-                    <th>000154</th>
-                    <th>線上刷卡</th>
-                    <th>已出貨</th>
-                    <th>4,115</th>
-                    <th>已完成</th>
-                </tr>
-            </thead>
-        </table>
-        <div class="table detail table-light col-lg-7">
-            <table class="table table-light">
-                <thead>
-                    <tr>
-                        <th scope="col" style="color: white;">商品圖</th>
-                        <th scope="col">商品名稱</th>
-                        <th scope="col">內容</th>
-                        <th scope="col">數量</th>
-                        <th scope="col">金額</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                        </td>
-                        <td>蒐集離島媽祖</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                        </td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="thumbnail"><img src="/img/hotTemple (1).jpg"></div>
-                        </td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>1</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td colspan="5">
-                            <i class="fas fa-chevron-up less"></i>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
         <div class="order_backdeco">
             <img src="<?= WEB_ROOT ?>/img/deco_Incense.png">
         </div>
@@ -1866,15 +1810,13 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
         })
 
         let move = $('.fav_product_card').width();
-        console.log($('.fav_product_card').position().left - move)
-        console.log('move', move)
 
         let containerLucky = document.querySelector('#fav_lucky_container')
         let containerPlan = document.querySelector('#fav_plan_container')
         let containerProduct = document.querySelector('#fav_product_container')
-        let productCardW = document.querySelector('.fav_product_card').offsetWidth
-        let planCardW = document.querySelector('.fav_plan_card').offsetWidth
-        let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
+        // let productCardW = document.querySelector('.fav_product_card').offsetWidth
+        // let planCardW = document.querySelector('.fav_plan_card').offsetWidth
+        // let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
 
         $('.control').click(function () {
             let move = $('.fav_product_card').width();
@@ -1899,37 +1841,34 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
 
 
         function control1() {
-
+            if ($('.fav_product_card').length > 0) {
             let containerProduct = document.querySelector('#fav_product_container')
             let productCardW = document.querySelector('.fav_product_card').offsetWidth
             if ((productCardW * $('.fav_product_card').length > containerProduct.offsetWidth) && (document.body.clientWidth > 1000)) {
-                $('.control_prod').css('display', 'block')
-            }
-            else {
-                $('.control_prod').css('display', 'none')
+                $('.control_prod').removeClass('d-none')
             }
             console.log('c1', productCardW, $('.fav_product_card').length, containerProduct.offsetWidth)
+            }
         }
         function control2() {
+            if ($('.fav_plan_card').length > 0) {
             let planCardW = document.querySelector('.fav_plan_card').offsetWidth
             let containerPlan = document.querySelector('#fav_plan_container')
             if ((planCardW * $('.fav_plan_card').length > containerPlan.offsetWidth) && (document.body.clientWidth > 1000)) {
-                $('.control_plan').css('display', 'block')
+                $('.control_plan').removeClass('d-none')
             }
-            else {
-                $('.control_plan').css('display', 'none')
             }
         }
         function control3() {
+            if ($('.fav_lucky_card').length > 0) {
             let containerLucky = document.querySelector('#fav_lucky_container')
             let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
             if ((luckyCardW * $('.fav_lucky_card').length > containerLucky.offsetWidth) && (document.body.clientWidth > 1000)) {
-                $('.control_luck').css('display', 'block')
+                $('.control_luck').removeClass('d-none')
             }
-            else {
-                $('.control_luck').css('display', 'none')
-            }
+
             console.log('erfae', luckyCardW, $('.fav_lucky_card').length, containerLucky.offsetWidth)
+            }
 
         }
         control1()
@@ -1948,23 +1887,30 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
             control2()
             control3()
             setTimeout(() => {
-                if ($('.fav_lucky_card').hasClass('fav_lucky_card') == false) {
+                if ($('.fav_lucky_card').length == 0) {
                     $(containerLucky).html('無收藏資料')
                 }
-                if ($('.fav_plan_card').hasClass('fav_plan_card') == false) {
+                if ($('.fav_plan_card').length == 0) {
                     $(containerPlan).html('無收藏資料')
                 }
-                if ($('.fav_product_card').hasClass('fav_product_card') == false) {
+                if ($('.fav_product_card').length == 0) {
                     $(containerProduct).html('無收藏資料')
                 }
             }, 100);
         }))
 
-        console.log('has',$('.fav_lucky_card').hasClass('fav_lucky_card'))
-
-        $(window).resize(function () {
-        });
-
+        if ($('.fav_lucky_card').length == 0) {
+                    $(containerLucky).html('無收藏資料')
+                }
+        if ($('.fav_plan_card').length == 0) {
+                    $(containerPlan).html('無收藏資料')
+                }
+        if ($('.fav_product_card').length == 0) {
+                    $(containerProduct).html('無收藏資料')
+                }
+        if ($('.info').length == 0) {
+                    $(".notice").html('無訂單紀錄')
+                }
 
         $('button').click(function(){
             $('#cover').removeClass('d-none')
@@ -2041,7 +1987,19 @@ $sum_pdc_rows = $pdo->query($sum_pdc_sql)->fetchAll();
     }))
 
     function checkEdit() {
-        let isPass = true;
+        // $password.css('border', 'none');
+        // $repassword.next().text('');
+
+        // $password = $('.password');
+        // $repassword = $('.repassword');
+        // let isPass = true;
+
+        // if ($repassword.val() !== $password.val()) {
+        //     isPass = false;
+        //     $repassword.css('border', '1px solid red');
+        //     $repassword.next().text('請輸入相同的密碼');
+        // }
+
         if(isPass){
             $.post(
                 'member_edit_api.php',

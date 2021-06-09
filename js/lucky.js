@@ -274,6 +274,10 @@ btn05[1].addEventListener('click', () => {
     $('.lucky_Sign_order').html($('.lucky_Sign_order').html() + `<i class="fas fa-chevron-right"></i> 籤詩涵義`)
 });
 
+// ------------
+$("[data-toggle=mybtn]").click(function () {
+    $(this).toggleClass("active");
+});
 
 // ----------收藏詩籤--------------
 const addToCartBtn = $('.lucky_Favorites'); //換成愛心
@@ -281,12 +285,11 @@ const addToCartBtn = $('.lucky_Favorites'); //換成愛心
 addToCartBtn.click(function () {
     const card = $(this).closest('.lucky_p6'); //產品卡片父層
     const signId = card.attr('data-sid'); //pid改成shop_id
-    console.log('signId: ' + signId);
-
-    // console.log({pid, qty}, card.find('.card-title').text());
+    console.log('lucky_sid: ' + signId);
+    // console.log('signId: ' + signId);
 
     $.get('like_sign_api.php', { //改成判斷式php
-        sign_id: signId, //$shop_id
+        lucky_sid: signId, //$shop_id
 
     }, function (data) { //data代表json的$output
         console.log(data);
