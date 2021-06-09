@@ -206,11 +206,11 @@ if(empty($_SESSION['cart']['light'])){
 
     $l['content'],
     $l['name'], 
-    $l['note']['mobile'],
-    $l['note']['birthday'],
-    $l['note']['stime'],
-    $l['note']['address'], 
-    $l['note']['gender'],
+    $l['mobile'],
+    $l['birthday'],
+    $l['stime'],
+    $l['address'], 
+    $l['gender'],
     $sum_id_p
     ]);
     };

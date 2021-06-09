@@ -548,8 +548,11 @@ print_r($_SESSION['cart']['light']);
                     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
                         data-content="
                         
-                        <?= $k['note'] ?>
-                        
+                        手機: <?= $k['mobile']?><br>
+                        生辰: <?= $k['birthday']?><br>
+                        出生時間: <?= $k['stime']?><br>
+                        地址: <?= $k['address']?>
+
                         " data-html='true'>查看詳情</button>
 
                     </p>
