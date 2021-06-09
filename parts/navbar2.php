@@ -50,7 +50,7 @@
                 <a href="<?= WEB_ROOT?>/trip.php">
                     <li>聖地行旅</li>
                 </a>
-                <a href="<?= WEB_ROOT?>/product.php">
+                <a href="<?= WEB_ROOT?>/shop.php">
                     <li>祈福商店</li>
                 </a>
                 <a href="<?= WEB_ROOT?>/cart.php">
