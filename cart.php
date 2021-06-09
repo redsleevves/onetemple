@@ -55,6 +55,17 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         border-radius: 30px;
         border: none;
     }
+    button:hover{
+        background-color: #DD745E;
+    }
+
+    button a {
+        color: #fff;
+    }
+    button a:hover{
+        color: #fff;
+        text-decoration: none;
+    }
 
     button:focus {
         outline: 0;
@@ -391,7 +402,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 <li class="totalSum"></li>
             </ul>
         </div>
-        <button>確認結帳</button>
+        <button><a href="<?= WEB_ROOT?>/checkList.php" >確認結帳</a></button>
     </section>
     <section class="carttable container-fluid col-7">
         <h4>購物車</h4>
@@ -452,6 +463,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             </table>
             <?php endif; ?>
         </div>
+        
         <div class="each_table cart_plan mt-5">
             <h4 class="cartName">行旅</h4>
             <?php if(empty($_SESSION['cart']['plan'])): ?>
@@ -539,7 +551,19 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             <td><?= $k['content'] ?></td>
                             <td><?= $k['qty'] ?></td>
                             <td class="price"><?= $k['price'] ?></td>
-                            <td><?= $k['note'] ?></td>
+                            <td>
+                                
+                            <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                        data-content="
+                        
+                        手機: <?= $k['mobile']?><br>
+                        生辰: <?= $k['birthday']?><br>
+                        出生時間: <?= $k['stime']?><br>
+                        地址: <?= $k['address']?>
+
+                        " data-html='true'>查看詳情</button>
+                        
+                            </td>
                             <td class="trash">
                                 <a href="javascript:delete_it_pdc(<?= $k['sid'] ?>)">
                                 <i class="fas fa-trash-alt"></i>
@@ -664,6 +688,13 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
 
 <script>
+
+    //bs-查看詳情按鈕
+    $(function () {
+    $('[data-toggle="popover"]').popover();
+    });
+
+
     $('.up').click(function() {
         $(this).prev().val(+$(this).prev().val() + 1);
     });
