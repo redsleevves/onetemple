@@ -27,7 +27,8 @@ $default_cat = '熱門行程';
 
 $trip_order = isset($_GET['o'])?$_GET['o']:"";
 $cat_area = isset($_GET['cat_area'])?$_GET['cat_area']:"";
-if(!$cat_area) {
+$keyword = isset($_GET['keyword'])?$_GET['keyword']:"";
+if(!$cat_area && !$keyword) {
     $cat = isset($_GET['cat'])?$_GET['cat']:$default_cat;
 } else {
     $cat = "";
@@ -37,7 +38,7 @@ $price = isset($_GET['price'])?$_GET['price']:$default_price;
 $wheres = [];
 //$where = " WHERE cat = '熱門行程' and price < 6500";
 
-if(!$cat_area) {
+if(!$cat_area && !$keyword) {
     if (isset($_GET['cat']) && $_GET['cat']) {
         $wheres[] = "cat = '".$_GET['cat']."'";
     } else {
