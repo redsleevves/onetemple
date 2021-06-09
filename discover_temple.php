@@ -831,10 +831,10 @@ $_gdata = [
 
 <div class="breadcrumb_style   backgroundimg_1">
     <div class="d-flex flex-wrap breadcrumb_style_1 ">
-        <a href="" class="astlyep">灣廟</a>
+        <a href="<?= WEB_ROOT?>/index.php" class="astlyep">首頁</a>
         <!-- 共用雲端找箭頭icon-->
         <img src="./img/nav_arrow_right.svg">
-        <a href="" class="astlyep">探索灣廟</a>
+        <a href="<?= WEB_ROOT?>/discover.php" class="astlyep">探索灣廟</a>
         <img src="./img/nav_arrow_right.svg">
         <a href="" class="astlyep">行天宮</a>
 

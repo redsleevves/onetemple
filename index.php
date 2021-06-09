@@ -1854,7 +1854,7 @@ $_gdata = [
             </div>
 
             <div class="index_serviceBox index_lots d-flex justify-content-end">
-                <a class="d-flex bcolor" href="<?= WEB_ROOT ?>/___.php">
+                <a class="d-flex bcolor" href="<?= WEB_ROOT ?>/sign.php">
                     <div class="index_serviceWordBox index_lotsBox">
                         <p>求神問卜</p>
                         <span>Online Draw Lots</span>

@@ -195,7 +195,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
             bottom: 20px;
         }
 
-        footer {
+        /* footer {
             width: 100%;
             height: 70px;
             background-color: #cc543a;
@@ -204,7 +204,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
             display: flex;
             justify-content: center;
             align-items: center;
-        }
+        } */
 
 
         @media (max-width: 770px) {
@@ -266,10 +266,10 @@ $rows = $pdo->query($p_sql)->fetchAll();
     <!-- 我是麵包屑-->
     <div class="breadcrumb_style   backgroundimg_1">
             <div class="d-flex flex-wrap breadcrumb_style_1 ">
-                <a href="" class="astlyep">首頁</a>
+                <a href="<?= WEB_ROOT?>/index.php" class="astlyep">首頁</a>
                 <!-- 共用雲端找箭頭icon-->
                 <img src="./img/nav_arrow_right.svg">
-                <a href="#" class="astlyep">最新消息</a>
+                <a href="<?= WEB_ROOT?>/news_main.php" class="astlyep">最新消息</a>
             </div>
     </div>
 

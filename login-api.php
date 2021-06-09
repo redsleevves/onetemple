@@ -21,7 +21,7 @@ if(isset($_POST['email'])) {
         exit;  // 程式結束
     }
 
-    if(password_verify($_POST['password'], $row['password'])){
+    if(password_verify($_POST['password'], $row['password']) && $_POST['password'] != ""){
         unset($row['password']);
         $_SESSION['user'] = $row;
         $output['success'] = true;

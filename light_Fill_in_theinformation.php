@@ -130,46 +130,6 @@ $rows = $pdo->query($sql)->fetchAll();
     }
 
 
-
-    /* 麵包屑 */
-    .breadcrumb_style {
-        background-image: url(./img/nav_background_1.png);
-        /* navbar多厚 就推多少paddding */
-
-    }
-
-    .breadcrumb_style_1 {
-        padding: 20px 0;
-        align-items: center;
-        margin: auto;
-    }
-
-    .astlyep {
-        font-size: 14px;
-        letter-spacing: 2px;
-        color: #707070;
-        list-style-type: none;
-        text-decoration: none;
-
-    }
-
-    .breadcrumb_style_1 img {
-        height: 10px;
-        width: 10px;
-        margin: 0 10px;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
     .graycolor:hover {
 
         box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .15);
@@ -471,8 +431,8 @@ $rows = $pdo->query($sql)->fetchAll();
             padding-bottom: 40px;
         }
 
-        .padtop100 {
-            padding-top: 100px;
+        .padtop40{
+            padding-top: 40px;
         }
 
         .padbut {
@@ -535,7 +495,7 @@ $rows = $pdo->query($sql)->fetchAll();
             padding-bottom: 40px;
         }
 
-        .padtop100 {
+        .padtop40 {
             padding-top: 5%;
         }
 
@@ -586,7 +546,7 @@ $rows = $pdo->query($sql)->fetchAll();
 
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-<div class="light_Fill_in_theinformation_ padtop100">
+<div class="light_Fill_in_theinformation_ padtop40">
 
     <!--  _燈種介紹 區塊-->
     <div class="light_Fill_in_theinformation_text_1 borderbottom container">
