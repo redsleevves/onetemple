@@ -782,8 +782,8 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 </div>
             </div>
             <div class="modal-footer modal-footer-re">
-                <button type="button" class="btn-primary-re"><a href="index.html">回到首頁</a></button>
-                <button type="button" class="btn-primary-re"><a href="">查看訂單</a></button>
+                <button type="button" class="btn-primary-re"><a href="<?=WEB_ROOT?>/index.php">回到首頁</a></button>
+                <button type="button" class="btn-primary-re"><a href="<?=WEB_ROOT?>/member_onepage.php">查看訂單</a></button>
             </div>
         </div>
     </div>
