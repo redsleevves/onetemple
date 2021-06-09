@@ -27,6 +27,8 @@ if ( ! isset($_SESSION['user'])){
 //      ];
 
 
+print_r($_SESSION['cart']['light']);
+
 ?>
 
 <!-- 整個頁面的頭 -->

@@ -184,9 +184,8 @@ if(empty($_SESSION['cart']['light'])){
     };
 };
 
-//orders_light_detail
-// $oldt_sid = $pdo->lastInsertId();
 
+//orders_light_detail
 $oldt_sql = "INSERT INTO `order_lit_details`(
             `lit_cate`, `bless_name`, `bless_mobile`, 
             `bless_birth`, `bless_stime`, `bless_address`, 
@@ -202,6 +201,7 @@ $oldt_stmt = $pdo->prepare($oldt_sql);
 if(empty($_SESSION['cart']['light'])){
 }else{
     foreach($_SESSION['cart']['light'] as $l) {
+
     $oldt_stmt->execute([
 
     $l['content'],
@@ -216,6 +216,8 @@ if(empty($_SESSION['cart']['light'])){
     };
 
 };
+
+print_r($_SESSION['cart']['light']);
 
 }
 

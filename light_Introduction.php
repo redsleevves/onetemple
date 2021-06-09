@@ -548,7 +548,7 @@
                 <!-- 燈種選擇  -->
                 <div class="light_Introduction_page_2_lightchoose_set jusbt padbotm80">
 
-                    <div id="light_G-light" class="light_Introduction_page_2_light_card d-flex aic">
+                    <div id="light_G-light" class="light_Introduction_page_2_light_card d-flex aic btnCursor">
 
                         <div class="light_Introduction_page_2_light_img">
                             <img src="" alt="">
@@ -559,7 +559,7 @@
                         </div>
                     </div>
 
-                    <div id="light_W-light" class="light_Introduction_page_2_light_card d-flex aic">
+                    <div id="light_W-light" class="light_Introduction_page_2_light_card d-flex aic btnCursor">
 
                         <div class="light_Introduction_page_2_light_img">
                             <img src="./img/lightintro_lamp_white.svg" alt="">
@@ -570,7 +570,7 @@
                         </div>
                     </div>
 
-                    <div id="light_A-light" class="light_Introduction_page_2_light_card d-flex aic">
+                    <div id="light_A-light" class="light_Introduction_page_2_light_card d-flex aic btnCursor">
 
                         <div class="light_Introduction_page_2_light_img">
                             <img src="./img/lightintro_lamp_white.svg" alt="">
@@ -581,7 +581,7 @@
                         </div>
                     </div>
 
-                    <div id="light_Y-light" class="light_Introduction_page_2_light_card d-flex aic">
+                    <div id="light_Y-light" class="light_Introduction_page_2_light_card d-flex aic btnCursor">
 
                         <div class="light_Introduction_page_2_light_img">
                             <img src="./img/lightintro_lamp_white.svg" alt="">
@@ -592,7 +592,7 @@
                         </div>
                     </div>
 
-                    <div id="light_F-light" class="light_Introduction_page_2_light_card d-flex aic">
+                    <div id="light_F-light" class="light_Introduction_page_2_light_card d-flex aic btnCursor">
 
                         <div class="light_Introduction_page_2_light_img">
                             <img src="./img/lightintro_lamp_white.svg" alt="">
@@ -603,7 +603,7 @@
                         </div>
                     </div>
 
-                    <div id="light_YU-light" class="light_Introduction_page_2_light_card d-flex aic">
+                    <div id="light_YU-light" class="light_Introduction_page_2_light_card d-flex aic btnCursor">
 
                         <div class="light_Introduction_page_2_light_img">
                             <img src="./img/lightintro_lamp_white.svg" alt="">
