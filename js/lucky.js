@@ -278,22 +278,3 @@ btn05[1].addEventListener('click', () => {
 $("[data-toggle=mybtn]").click(function () {
     $(this).toggleClass("active");
 });
-
-// ----------收藏詩籤--------------
-const addToCartBtn = $('.lucky_Favorites'); //換成愛心
-
-addToCartBtn.click(function () {
-    const card = $(this).closest('.lucky_p6'); //產品卡片父層
-    const signId = card.attr('data-sid'); //pid改成shop_id
-    console.log('lucky_sid: ' + signId);
-    // console.log('signId: ' + signId);
-
-    $.get('like_sign_api.php', { //改成判斷式php
-        lucky_sid: signId, //$shop_id
-
-    }, function (data) { //data代表json的$output
-        console.log(data);
-        // showCartCount(data); // 更新選單上數量的提示 //計算購物車的商品數量
-    }, 'json');
-
-})
