@@ -55,17 +55,6 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         border-radius: 30px;
         border: none;
     }
-    button:hover{
-        background-color: #DD745E;
-    }
-
-    button a {
-        color: #fff;
-    }
-    button a:hover{
-        color: #fff;
-        text-decoration: none;
-    }
 
     button:focus {
         outline: 0;
@@ -373,24 +362,33 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     您並未選購任何商品。
                 </div>
             <?php else: ?>
+                <?php if(empty($_SESSION['cart']['product'])): ?>
+                    <?php else: ?>
             <?php foreach($_SESSION['cart']['product'] as $i): ?>
             <ul>
                 <li><?= $i['name'] ?></li>
                 <li><?= $i['price'] ?></li>
             </ul>
             <?php endforeach; ?>
+            <?php endif; ?>
+            <?php if(empty($_SESSION['cart']['plan'])): ?>
+                    <?php else: ?>
             <?php foreach($_SESSION['cart']['plan'] as $j) : ?>
             <ul>
                 <li><?= $j['name'] ?></li>
                 <li><?= $j['price'] ?></li>
             </ul>
             <?php endforeach; ?>
+            <?php endif; ?>
+            <?php if(empty($_SESSION['cart']['light'])): ?>
+                    <?php else: ?>
             <?php foreach($_SESSION['cart']['light'] as $k) : ?>
             <ul>
                 <li><?= $k['name'] ?></li>
                 <li><?= $k['price'] ?></li>
             </ul>
             <?php endforeach; ?>
+            <?php endif; ?>
             <?php endif; ?>
         </div>
         <hr>
@@ -484,11 +482,10 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     </tr>
                 </thead>
                 <tbody>
- 
                 <?php foreach($_SESSION['cart']['plan'] as $j): ?>
                     <?php foreach ($plan_rows as $b)
                         if($j['id']==$b['id']): ?> 
-                        <tr data-sid="<?= $j['id'] ?>">
+                        <tr data-id="<?= $j['id'] ?>">
                             <td>
                                 <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['photo1'] ?>"></div>
                             </td>
@@ -498,7 +495,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             <td class="price"><?= $j['price'] ?></td>
                             <td><?= $j['note'] ?></td>
                             <td class="trash">
-                                <a href="javascript:delete_it_pdc(<?= $j['sid'] ?>)">
+                            <a href="javascript:" onclick="deleteItem(event)">
                                 <i class="fas fa-trash-alt"></i>
                                 </a>
                             </td>                      
@@ -600,8 +597,8 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <?php foreach($_SESSION['cart']['product'] as $i) : ?>
+            <?php foreach($_SESSION['cart']['product'] as $i) : ?>
+                <tr data-id="<?= $i['id'] ?>" data-name="<?= $i['name'] ?>">
                     <td>
                         <div class="mobile_thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $i['img'] ?>"></div>
                     </td>
@@ -619,11 +616,11 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             </div>
                         </div>
                     </td>
-                    <td><a href="javascript:delete_it_pdc(<?= $i['sid'] ?>)">
+                    <td><a href="javascript:" onclick="deleteItem(event)">
                                 <i class="fas fa-trash-alt"></i>
                                 </a></td>
-                    <?php endforeach; ?>
                 </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
         <table class="cart_card col-12 mb-5">
@@ -654,7 +651,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             </div>
                         </div>
                     </td>
-                    <td><a href="javascript:delete_it_pln(<?= $j['sid'] ?>)">
+                    <td><a href="javascript:" onclick="deleteItem(event)">
                                 <i class="fas fa-trash-alt"></i>
                                 </a></td>
                     <?php endforeach; ?>
@@ -749,38 +746,33 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         $('.cart_light .subsum').html('<p>' + sum + '</p>')
     })
 
-    const changeQty = function(event) {
-        const el = $(event.currentTarget);
-        const qty = el.val();
-        const pid = el.closest('tr').attr('data-sid');
-
-        $.get('cart_plan_api.php', {action:'add', plan_id, plan_qty}, function(data){
-            showCartCount(data);
-            // calPrices();
+    const deleteItem = function(event) {
+        let me = $(event.currentTarget);
+        let id = me.closest('tr').attr('data-id');
+        // let name = me.closest('tr').attr('data-name');
+        if(confirm(`確定要刪除 ${id} 嗎?`)){
+        $.get('cart_api.php', foreach($_SESSION['cart']['plan'] as $j => $assign), 
+        function(data){
+            me.closest('tr').remove();
+            if($('tbody>tr').length < 1){
+                location.reload(); 
+            }
         }, 'json');
+        }
     };
 
-
-    // $(document).on('click', '.fa-trash-alt', function() {
-    //     var elem = $('.cart_product .price')
-    //     $(this).parentsUntil('tbody').remove()
-    //     $('.cart_product .price').each(function() {
-    //         sum += parseFloat(this.innerHTML); // Or this.innerHTML, this.innerText
-    //     });
-    //     $('.cart_product .subsum').html('<p>' + sum + '</p>')
-    // })
-    function delete_it_pdc(sid){
-    if(confirm(`確定要刪除 ${name} 嗎?`)){
-        location.href = 'delete_product.php?sid=' + sid;
-    }}
-    function delete_it_pln(sid){
-    if(confirm(`確定要刪除 ${name} 嗎?`)){
-        location.href = 'cart_plan_api.php?sid=' + sid;
-    }}
-    function delete_it_lit(sid){
-    if(confirm(`確定要刪除 ${name} 嗎?`)){
-        location.href = 'delete_light.php?sid=' + sid;
-    }}
+    // function delete_it_pdc(sid){
+    // if(confirm(`確定要刪除 ${name} 嗎?`)){
+    //     location.href = 'delete_product.php?sid=' + sid;
+    // }}
+    // function delete_it_pln(sid){
+    // if(confirm(`確定要刪除 ${name} 嗎?`)){
+    //     location.href = 'cart_plan_api.php?sid=' + sid;
+    // }}
+    // function delete_it_lit(sid){
+    // if(confirm(`確定要刪除 ${name} 嗎?`)){
+    //     location.href = 'delete_light.php?sid=' + sid;
+    // }}
 
 
     

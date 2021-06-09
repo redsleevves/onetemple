@@ -1,6 +1,5 @@
 <?php include __DIR__. '/parts/config.php';
 
-
 $output = [
     'success' => false,
     'code' => 0,

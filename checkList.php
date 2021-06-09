@@ -21,6 +21,12 @@ if ( ! isset($_SESSION['user'])){
     exit;
 }
 
+$pdc_sql = "SELECT * FROM `product`";
+$pdc_rows = $pdo->query($pdc_sql)->fetchAll();
+
+$plan_sql = "SELECT * FROM `trips`";
+$plan_rows = $pdo->query($plan_sql)->fetchAll();
+
 //測試用
 // $_SESSION = [
 //         'order_id' => date("YmdHis").substr(microtime(),2,4)
@@ -488,19 +494,21 @@ if ( ! isset($_SESSION['user'])){
         <?php if(empty($_SESSION['cart']['product'])): ?>       
         <?php else: ?>
         <?php foreach ($_SESSION['cart']['product'] as $i) : ?>
-            <div class="checkList_item checkList_product">
-                <div class="checkList_itemImgBox ">
-                    <img src="./img/indexproduct(2).jpg" alt="">
+            <?php foreach ($pdc_rows as $a) if($i['id']==$a['id']): ?>
+                <div class="checkList_item checkList_product">
+                    <div class="checkList_itemImgBox ">
+                        <img src="<?= WEB_ROOT ?>/img/<?= $a['img'] ?>" alt="">
+                    </div>
+                    <div class="checkList_itemWordBox">
+                        <p class="checkList_itemName"><?= $i['name'] ?></p>
+                        <p class="checkList_itemAttr"><?= $i['content'] ?></p>
+                        <p class="checkList_itemPrice" data-price="<?= $i['price'] ?>"></p>
+                        <p class="checkList_itemNum" data-qty="<?= $i['qty'] ?>"></p>
+                        <p class="checkList_itemTotalP"></p>
+                        <p class="checkList_itemNote"></p>
+                    </div>
                 </div>
-                <div class="checkList_itemWordBox">
-                    <p class="checkList_itemName"><?= $i['name'] ?></p>
-                    <p class="checkList_itemAttr"><?= $i['content'] ?></p>
-                    <p class="checkList_itemPrice" data-price="<?= $i['price'] ?>"></p>
-                    <p class="checkList_itemNum" data-qty="<?= $i['qty'] ?>"></p>
-                    <p class="checkList_itemTotalP"></p>
-                    <p class="checkList_itemNote"></p>
-                </div>
-            </div>
+            <?php endif; ?>
         <?php endforeach; ?>
         <?php endif; ?>
 
@@ -509,19 +517,21 @@ if ( ! isset($_SESSION['user'])){
         <?php if(empty($_SESSION['cart']['plan'])): ?>       
         <?php else: ?>
         <?php foreach ($_SESSION['cart']['plan'] as $j) : ?>
-            <div class="checkList_item checkList_trip">
-                <div class="checkList_itemImgBox">
-                    <img src="./img/indexproduct(2).jpg" alt="">
+            <?php foreach ($plan_rows as $b) if($j['id']==$b['id']): ?>
+                <div class="checkList_item checkList_trip" data-sid="<?= $j['id'] ?>">
+                    <div class="checkList_itemImgBox">
+                        <img src="<?= WEB_ROOT ?>/img/<?= $b['photo1'] ?>" alt="">
+                    </div>
+                    <div class="checkList_itemWordBox">
+                        <p class="checkList_itemName"><?= $j['name'] ?></p>
+                        <p class="checkList_itemAttr"><?= $j['content'] ?></p>
+                        <p class="checkList_itemPrice" data-price="<?= $j['price'] ?>"></p>
+                        <p class="checkList_itemNum" data-qty="<?= $j['qty'] ?>"></p>
+                        <p class="checkList_itemTotalP"></p>
+                        <p class="checkList_itemNote"></p>
+                    </div>
                 </div>
-                <div class="checkList_itemWordBox">
-                    <p class="checkList_itemName"><?= $j['name'] ?></p>
-                    <p class="checkList_itemAttr"><?= $j['content'] ?></p>
-                    <p class="checkList_itemPrice" data-price="<?= $j['price'] ?>"></p>
-                    <p class="checkList_itemNum" data-qty="<?= $j['qty'] ?>"></p>
-                    <p class="checkList_itemTotalP"></p>
-                    <p class="checkList_itemNote"></p>
-                </div>
-            </div>
+            <?php endif; ?>
         <?php endforeach; ?>
         <?php endif; ?>
 
@@ -532,7 +542,7 @@ if ( ! isset($_SESSION['user'])){
         <?php foreach ($_SESSION['cart']['light'] as $k) : ?>
             <div class="checkList_item checkList_light">
                 <div class="checkList_itemImgBox">
-                    <img src="./img/indexproduct(2).jpg" alt="">
+                    <img src="<?= WEB_ROOT ?>/img/light.jpg" alt="">
                 </div>
                 <div class="checkList_itemWordBox">
                     <p class="checkList_itemName"><?= $k['name'] ?></p>

@@ -4,51 +4,25 @@ if(! isset($_SESSION['cart'])){
     $_SESSION['cart'] = [];
 }
 
-//1.列表 2.加入 3.變更 4.刪除
-$action = isset($_GET['action']) ? $_GET['action'] : 'list'; 
-$plan_id = isset($_GET['plan']['id']) ? intval($_GET['plan']['id']) : 0; 
-$plan_qty = isset($_GET['plan']['qty']) ? intval($_GET['plan']['qty']) : 0; 
+$type = isset($_GET['type']) ? intval($_GET['type']) : 0;  // 哪一台車
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;  // 商品
 
-switch($action){
-    case 'update':
-    case 'add':
-        if(! empty($plan_id)){
-            if($plan_qty > 0) {
-
-                if(! empty($_SESSION['cart'][$plan_id])){
-                    $_SESSION['cart'][$plan_id]['qty'] = $plan_qty;
-                } else {
-
-                    $sql = "SELECT * FROM trips WHERE sid=$plan_id ";
-                    $row = $pdo->query($sql)->fetch();
-
-                    if(! empty($row)){
-                        $row['qty'] = $plan_qty;  
-                        $_SESSION['cart'][$row['id']] = $row; 
-                    }
-                }
-
-
-            } else {
-                unset($_SESSION['cart'][$plan_id]); 
-            }
+switch($type){
+    case 'pdc':
+        if(! empty($id)){
+            unset($_SESSION['cart']['product'][$id]);
         }
         break;
-    case 'delete':
-        if(! empty($plan_id)){
-            unset($_SESSION['cart'][$plan_id]);
+    case 'plan':
+        if(! empty($id)){
+            unset($_SESSION['cart']['plan'][$id]);
         }
         break;
-    default:
-    case 'list':
+    case 'light':
+        if(! empty($id)){
+            unset($_SESSION['cart']['light'][$id]);
+        }
+        break;
 }
 
 echo json_encode($_SESSION['cart'], JSON_UNESCAPED_UNICODE);
-
-
-
-
-
-
-
-

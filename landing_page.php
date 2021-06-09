@@ -149,6 +149,14 @@ $_gdata = [
           }
         }
 
+        @media (max-width: 770px) {
+
+          .wordTitle{
+            width: 350px;
+          }
+
+        }
+
 </style>
 
 </head>
