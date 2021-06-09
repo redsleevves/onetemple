@@ -1,6 +1,7 @@
 
 <?php
-require __DIR__ . '/product/__connect_db.php';
+
+require __DIR__ . '/parts/__connect_db.php';
 $sql = "SELECT * FROM `poetry` ORDER BY RAND() LIMIT 1";
 $row = $pdo->query($sql)->fetch();
 

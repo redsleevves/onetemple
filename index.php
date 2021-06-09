@@ -15,7 +15,7 @@ $_gdata = [
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
 
 <style>
-    .mouse_box {
+    /* .mouse_box {
         width: 60px;
         height: 60px;
         background-color: transparent;
@@ -26,7 +26,7 @@ $_gdata = [
         top: 0px;
         left: 0px;
         z-index: 999;
-    }
+    } */
 
     body {
         font-family: 'Faustina', serif;
@@ -1224,6 +1224,7 @@ $_gdata = [
 
         .index_shopArea {
             flex-direction: column;
+            align-items: center;
             padding: 80px 0;
 
         }
@@ -1266,7 +1267,7 @@ $_gdata = [
 
 <body>
 
-    <div class="mouse_box"></div>
+    <!-- <div class="mouse_box"></div> -->
 
     <div class="index_banner">
         <ul class="index_bannerBox">
@@ -1308,7 +1309,7 @@ $_gdata = [
             <li class="slider_num">01</li>
         </ul>
 
-        <div class="index_slideDown">
+        <div class="index_slideDown btnCursor">
             <svg class="arrows">
                 <path class="a1" d="M0 0 L30 32 L60 0"></path>
                 <path class="a2" d="M0 20 L30 52 L60 20"></path>
@@ -1976,16 +1977,16 @@ $_gdata = [
     <?php include __DIR__ . '/parts/ourscripts.php'; ?>
 
     <script>
-        //mouse-event
-        $(document).mousemove(function(event) {
+        // //mouse-event
+        // $(document).mousemove(function(event) {
 
-            var mouseSite = $('.mouse_box').width() / 2;
+        //     var mouseSite = $('.mouse_box').width() / 2;
 
-            // setTimeout，計時用參數，延遲__秒，會去執行一次程式碼。
-            setTimeout(() => {
-                $('.mouse_box').css('left', event.clientX).css('top', event.clientY)
-            }, 100);
-        });
+        //     // setTimeout，計時用參數，延遲__秒，會去執行一次程式碼。
+        //     setTimeout(() => {
+        //         $('.mouse_box').css('left', event.clientX).css('top', event.clientY)
+        //     }, 100);
+        // });
 
 
         //banner-carousel

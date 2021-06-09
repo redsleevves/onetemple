@@ -12,20 +12,34 @@ $output = [
 if(isset($_POST['shipment_method']) ){
 
     //訂單編號
-    $_POST['order_id'] = $_SESSION['cart']['order_id'];
+    $orderID = 111;
 
     //商品總金額
     $pdc_total = 0;
-    foreach($_SESSION['cart']['products'] as $i) {
-        $pdc_total += $i['price'] * $i['qty'];
-    }
+    if(empty($_SESSION['cart']['product'])){
+        $pdc_total = 0;
+    }else{
+        foreach($_SESSION['cart']['product'] as $i) {
+            $pdc_total += $i['price'] * $i['qty'];
+        }
+    };
+    
     $trip_total = 0;
-    foreach($_SESSION['cart']['trip'] as $j) {
-        $trip_total += $j['price'] * $j['qty'];
-    }
+    if(empty($_SESSION['cart']['plan'])){
+        $trip_total = 0;
+    }else{
+        foreach($_SESSION['cart']['plan'] as $j) {
+            $trip_total += $j['price'] * $j['qty'];
+        }
+    };
+
     $lit_total = 0;
-    foreach($_SESSION['cart']['light'] as $k) {
-        $lit_total += $k['price'] * $k['qty'];
+    if(empty($_SESSION['cart']['light'])){
+        $lit_total = 0;
+    }else{
+        foreach($_SESSION['cart']['light'] as $k) {
+            $lit_total += $k['price'] * $k['qty'];
+        }
     }
     
     $product_totalPrice = $pdc_total + $trip_total + $lit_total;
@@ -61,7 +75,7 @@ $o_sql = "INSERT INTO `order_sum`(
 $o_stmt = $pdo->prepare($o_sql);
 $o_stmt->execute([
 
-$_POST['order_id'], //order_id
+$orderID, //order_id
 $member_sid,
 $_POST['shipment_method'],
 $_POST['shipment_shipName'],
@@ -98,15 +112,19 @@ $op_sql = "INSERT INTO `orders_pdc`(
 
 $op_stmt = $pdo->prepare($op_sql);
 
-foreach($_SESSION['cart']['products'] as $p) {
-$op_stmt->execute([
+if(empty($_SESSION['cart']['product'])){
+}else{
+    foreach($_SESSION['cart']['product'] as $p) {
+    $op_stmt->execute([
 
-$member_sid,
-$p['sid'], 
-$p['qty'],
-$p['price'],
-$sum_id_p
-]);
+    $member_sid,
+    $p['sid'], 
+    $p['qty'],
+    $p['price'],
+    $sum_id_p
+    ]);
+    };
+
 };
 
 
@@ -120,26 +138,30 @@ $ot_sql = "INSERT INTO `orders_trip`(
                 ?, ?, ?,
                 ?, ?
         )";
+        
 
 $ot_stmt = $pdo->prepare($ot_sql);
 
-foreach($_SESSION['cart']['trip'] as $t) {
-$ot_stmt->execute([
+if(empty($_SESSION['cart']['plan'])){
+}else{
+    foreach($_SESSION['cart']['plan'] as $t) {
+    $ot_stmt->execute([
 
-$member_sid,
-$t['sid'], 
-$t['qty'],
-$t['price'],
-$t['attr'],
-$t['date'],
-$sum_id_p
-]);
+    $member_sid,
+    $t['id'], 
+    $t['qty'],
+    $t['price'],
+    $t['content'],
+    $t['note'],
+    $sum_id_p
+    ]);
+    };
 };
 
 
 //orders_light
 $ol_sql = "INSERT INTO `orders_lit`(
-            `member_sid`, `lit_sid`, 
+            `member_sid`, `lit_cate`, 
             `lit_qty`, `lit_price`, `sum_id`
             ) VALUES (
             ?, ?,
@@ -148,45 +170,52 @@ $ol_sql = "INSERT INTO `orders_lit`(
 
 $ol_stmt = $pdo->prepare($ol_sql);
 
-foreach($_SESSION['cart']['light'] as $l) {
-$ol_stmt->execute([
+if(empty($_SESSION['cart']['light'])){
+}else{
+    foreach($_SESSION['cart']['light'] as $l) {
+    $ol_stmt->execute([
 
-$member_sid,
-$l['sid'], 
-$l['qty'],
-$l['price'],
-$sum_id_p
-]);
+    $member_sid,
+    $l['content'], 
+    $l['qty'],
+    $l['price'],
+    $sum_id_p
+    ]);
+    };
 };
 
-//orders_light_detail
-// $oldt_sid = $pdo->lastInsertId();
 
+//orders_light_detail
 $oldt_sql = "INSERT INTO `order_lit_details`(
-                    `lit_sid`, `bless_name`, 
-                    `bless_gender`, `bless_birth`, `bless_address`, 
-                    `sum_id`
-                    ) VALUES (
-                ?, ?,
+            `lit_cate`, `bless_name`, `bless_mobile`, 
+            `bless_birth`, `bless_stime`, `bless_address`, 
+            `bless_gender`, `sum_id`
+            ) VALUES (
                 ?, ?, ?,
-                ?
+                ?, ?, ?,
+                ?, ?
             )";
 
 $oldt_stmt = $pdo->prepare($oldt_sql);
 
-foreach($_SESSION['cart']['light'] as $l) {
-$oldt_stmt->execute([
+if(empty($_SESSION['cart']['light'])){
+}else{
+    foreach($_SESSION['cart']['light'] as $l) {
 
-$l['sid'],
-$l['note']['name'], 
-$l['note']['gender'],
-$l['note']['birth'],
-$l['note']['address'],
-$sum_id_p
-]);
+    $oldt_stmt->execute([
+
+    $l['content'],
+    $l['name'], 
+    $l['mobile'],
+    $l['birthday'],
+    $l['stime'],
+    $l['address'], 
+    $l['gender'],
+    $sum_id_p
+    ]);
+    };
+
 };
-
-
 
 }
 

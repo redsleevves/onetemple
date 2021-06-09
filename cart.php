@@ -8,6 +8,11 @@ $_gdata = [
     //頁面私有 scripts
     'scripts' => '', 
 ];
+$pdc_sql = "SELECT * FROM `product`";
+$pdc_rows = $pdo->query($pdc_sql)->fetchAll();
+
+$plan_sql = "SELECT * FROM `trips`";
+$plan_rows = $pdo->query($plan_sql)->fetchAll();
 
 ?>
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
@@ -49,6 +54,17 @@ $_gdata = [
         color: white;
         border-radius: 30px;
         border: none;
+    }
+    button:hover{
+        background-color: #DD745E;
+    }
+
+    button a {
+        color: #fff;
+    }
+    button a:hover{
+        color: #fff;
+        text-decoration: none;
     }
 
     button:focus {
@@ -352,15 +368,15 @@ $_gdata = [
         <h3>訂單明細</h3>
         <hr>
         <div class="summary">
-        <?php if(empty($_SESSION['cart']['product'])): ?>
+        <?php if(empty($_SESSION['cart'])): ?>
                 <div class="alert" role="alert">
-                    您並未選購任何商品，請至祈福商店選購。
+                    您並未選購任何商品。
                 </div>
             <?php else: ?>
-            <?php foreach($_SESSION['cart']['product'] as $i) : ?>
+            <?php foreach($_SESSION['cart']['product'] as $i): ?>
             <ul>
-                <li><?= $r['name'] ?></li>
-                <li><?= $r['price'] ?></li>
+                <li><?= $i['name'] ?></li>
+                <li><?= $i['price'] ?></li>
             </ul>
             <?php endforeach; ?>
             <?php foreach($_SESSION['cart']['plan'] as $j) : ?>
@@ -386,7 +402,7 @@ $_gdata = [
                 <li class="totalSum"></li>
             </ul>
         </div>
-        <button><a href="<?= WEB_ROOT?>/checkList.php">確認結帳</a></button>
+        <button><a href="<?= WEB_ROOT?>/checkList.php" >確認結帳</a></button>
     </section>
     <section class="carttable container-fluid col-7">
         <h4>購物車</h4>
@@ -409,21 +425,17 @@ $_gdata = [
                         <th scope="col">刪除</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php foreach($_SESSION['cart']['product'] as $i): ?>
+                <tbody>              
+                        <?php foreach($_SESSION['cart']['product'] as $i): ?>
+                            <?php foreach ($product_rows as $a)
+                        if($i['id']==$a['id']): ?>   
                         <tr>
                             <td>
-                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $i['img'] ?>"></div>
+                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img'] ?>"></div>
                             </td>
                             <td><?= $i['name'] ?></td>
                             <td><?= $i['content'] ?></td>
-                            <td>
-                                <div class="input-group">
-                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
-                                    <input type="text" class="form-control input-number" value="<?= $i['qty'] ?>" />
-                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
-                                </div>
-                            </td>
+                            <td><?= $i['qty'] ?></td>
                             <td class="price"><?= $i['price'] ?></td>
                             <td><?= $i['note'] ?></td>
                             <td class="trash">
@@ -432,6 +444,7 @@ $_gdata = [
                                 </a>
                             </td>                      
                         </tr>
+                        <?php endif; ?>
                         <?php endforeach; ?>
                         <tr>
                             <td colspan="6">
@@ -450,6 +463,7 @@ $_gdata = [
             </table>
             <?php endif; ?>
         </div>
+        
         <div class="each_table cart_plan mt-5">
             <h4 class="cartName">行旅</h4>
             <?php if(empty($_SESSION['cart']['plan'])): ?>
@@ -470,21 +484,17 @@ $_gdata = [
                     </tr>
                 </thead>
                 <tbody>
+ 
                 <?php foreach($_SESSION['cart']['plan'] as $j): ?>
+                    <?php foreach ($plan_rows as $b)
+                        if($j['id']==$b['id']): ?> 
                         <tr data-sid="<?= $j['id'] ?>">
                             <td>
-                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $j['img'] ?>"></div>
+                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['photo1'] ?>"></div>
                             </td>
                             <td><?= $j['name'] ?></td>
                             <td><?= $j['content'] ?></td>
-                            <td>
-                                <div class="input-group">
-                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
-                                    <input type="number" class="form-control input-number quantity" onchange="changeQty(event)"
-                                        value="<?= $j['qty'] ?>">
-                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
-                                </div>
-                            </td>
+                            <td><?= $j['qty'] ?></td>
                             <td class="price"><?= $j['price'] ?></td>
                             <td><?= $j['note'] ?></td>
                             <td class="trash">
@@ -493,6 +503,7 @@ $_gdata = [
                                 </a>
                             </td>                      
                         </tr>
+                        <?php endif; ?>
                 <?php endforeach; ?>
                     <tr>
                         <td colspan="6">
@@ -534,19 +545,25 @@ $_gdata = [
                     <?php foreach($_SESSION['cart']['light'] as $k): ?>
                         <tr>
                             <td>
-                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $k['img'] ?>"></div>
+                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/light.jpg"></div>
                             </td>
                             <td><?= $k['name'] ?></td>
                             <td><?= $k['content'] ?></td>
-                            <td>
-                                <div class="input-group">
-                                    <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
-                                    <input type="text" class="form-control input-number" value="<?= $k['qty'] ?>" />
-                                    <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
-                                </div>
-                            </td>
+                            <td><?= $k['qty'] ?></td>
                             <td class="price"><?= $k['price'] ?></td>
-                            <td><?= $k['note'] ?></td>
+                            <td>
+                                
+                            <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
+                        data-content="
+                        
+                        手機: <?= $k['mobile']?><br>
+                        生辰: <?= $k['birthday']?><br>
+                        出生時間: <?= $k['stime']?><br>
+                        地址: <?= $k['address']?>
+
+                        " data-html='true'>查看詳情</button>
+                        
+                            </td>
                             <td class="trash">
                                 <a href="javascript:delete_it_pdc(<?= $k['sid'] ?>)">
                                 <i class="fas fa-trash-alt"></i>
@@ -671,6 +688,13 @@ $_gdata = [
 
 
 <script>
+
+    //bs-查看詳情按鈕
+    $(function () {
+    $('[data-toggle="popover"]').popover();
+    });
+
+
     $('.up').click(function() {
         $(this).prev().val(+$(this).prev().val() + 1);
     });
@@ -688,9 +712,9 @@ $_gdata = [
         });
         return sum
     }
+
     
     $(document).ready(function() {
-        console.log('price')
         var sum = 0;
         $('.cart_product .price').each(function() {
             sum += parseFloat(this.innerHTML);
@@ -736,17 +760,6 @@ $_gdata = [
         }, 'json');
     };
 
-    const quantity = $('input.quantity');
-    $(function(){
-        // 呈現數量
-        quantity.each(function(){
-            const qty = $(this).attr('value') * 1;
-            $(this).val(qty);
-        });
-
-        // calPrices();
-
-    });
 
     // $(document).on('click', '.fa-trash-alt', function() {
     //     var elem = $('.cart_product .price')

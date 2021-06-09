@@ -664,7 +664,7 @@ $_gdata = [
 
             <!-- <p class="fontp_md">已詳細閱讀上述說明並同意「隱私權政策」</p> -->
             <div class="form-check ">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+              
                 <label class="form-check-label" for="defaultCheck1">
                     已詳細閱讀上述說明並同意「隱私權政策」
                 </label>

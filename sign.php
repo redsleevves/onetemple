@@ -111,7 +111,7 @@ $row = $pdo->query($sql)->fetch();
                 </div>
                 <div class="wishes">
                     <div class="unit">
-                        <button class="pic" id="pic01">
+                        <button class="btnCursor pic" id="pic01">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.02 289.11">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -127,7 +127,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>偉業名聲</p>
                     </div>
                     <div class="unit">
-                        <button class="pic" id="pic02">
+                        <button class="btnCursor pic" id="pic02">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 271.3 261.74">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -143,7 +143,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>尋人找人</p>
                     </div>
                     <div class="unit">
-                        <button class="pic" id="pic03">
+                        <button class="btnCursor pic" id="pic03">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 249.66 205.27">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -155,7 +155,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>未婚求姻緣</p>
                     </div>
                     <div class="unit">
-                        <button class="pic" id="pic04">
+                        <button class="btnCursor pic" id="pic04">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.84 214.92">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -167,7 +167,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>訴訟之事</p>
                     </div>
                     <div class="unit">
-                        <button class="pic" id="pic05">
+                        <button class="btnCursor pic" id="pic05">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 269.2 265.61">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -183,7 +183,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>買賣、交易</p>
                     </div>
                     <div class="unit">
-                        <button class="pic" id="pic06">
+                        <button class="btnCursor pic" id="pic06">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205.62 232.7">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -203,7 +203,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>詢問病症</p>
                     </div>
                     <div class="unit">
-                        <button class="pic" id="pic07">
+                        <button class="btnCursor pic" id="pic07">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184.5 288">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -215,7 +215,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>外出遠行</p>
                     </div>
                     <div class="unit">
-                        <button class="pic" id="pic08">
+                        <button class="btnCursor pic" id="pic08">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 218.5 228">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -230,7 +230,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>遺失的東西</p>
                     </div>
                     <div class="unit">
-                        <button class="pic" id="pic09">
+                        <button class="btnCursor pic" id="pic09">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 315.6 198.39">
                                 <g id="圖層_2" data-name="圖層 2">
                                     <g id="圖層_1-2" data-name="圖層 1">
@@ -253,7 +253,7 @@ $row = $pdo->query($sql)->fetch();
                         <p>種植畜養之物</p>
                     </div>
                     <div class="unit btn_09">
-                        <button class="pic" id="pic10"><i class="fas fa-arrow-down" style="color:#cc543a; font-size: 30px;"></i>
+                        <button class="btnCursor pic" id="pic10"><i class="fas fa-arrow-down" style="color:#cc543a; font-size: 30px;"></i>
                         </button>
                         <h4>下一步</h4>
                     </div>
@@ -306,19 +306,19 @@ $row = $pdo->query($sql)->fetch();
                         </p>
                     </div>
                     <div class="lucky_btn06">
-                        <button class="lucky_button06 lucky_Favorites">收藏此籤</button>
-                        <button class="lucky_button06">拜訪神明</button>
+                        <button class="btnCursor lucky_button06 lucky_Favorites lucky_btn_add" data-toggle="mybtn">收藏此籤</button>
+                        <button class="btnCursor lucky_button06 lucky_btn_add" data-toggle="mybtn">拜訪神明</button>
                     </div>
                 </div>
             </section>
         </div>
         <div class="lucky_button01">
-            <button class="lucky_p1">下一步</button>
-            <button class="lucky_p2 nextstep">下一步</button>
-            <button class="lucky_p3 nextstep">下一步</button>
-            <button class="lucky_p4 nextstep">下一步</button>
-            <button class="lucky_p5 nextstep">下一步</button>
-            <!-- <button class="lucky_p6 nextstep">下51步</button> -->
+            <button class="btnCursor lucky_p1">下一步</button>
+            <button class="btnCursor lucky_p2 nextstep">下一步</button>
+            <button class="btnCursor lucky_p3 nextstep">下一步</button>
+            <button class="btnCursor lucky_p4 nextstep">下一步</button>
+            <button class="btnCursor lucky_p5 nextstep">下一步</button>
+            <!-- <button class="btnCursor lucky_p6 nextstep">下51步</button> -->
         </div>
         <div class="lucky_GodImg">
             <img src="./img/god01.png" alt="">
@@ -328,7 +328,40 @@ $row = $pdo->query($sql)->fetch();
 
 
 <?php include __DIR__ . '/parts/ourscripts.php'; ?>
+<script>
+    // ----------收藏詩籤--------------
+    const addToCartBtn = $('.lucky_Favorites'); //換成愛心
+    const mData = <?= isset($_SESSION['user']) ? json_encode($_SESSION['user']) : 'false' ?>;
 
+    addToCartBtn.click(function() {
+        if (!mData) {
+            alert('請先登入會員')
+            return;
+        }
+
+        const card = $(this).closest('.lucky_p6'); //產品卡片父層
+        const signId = card.attr('data-sid'); //pid改成shop_id
+        // const me = $(e.currentTarget); //現在的目標
+        console.log('lucky_sid: ' + signId);
+        // console.log('signId: ' + signId);
+
+        $.get('like_sign_api.php', { //改成判斷式php
+            // action: 'add',
+            lucky_sid: signId //$shop_id
+
+        }, function(data) { //data代表json的$output
+            console.log(data);
+
+            // if (data.addOrDel === 'add') {
+            //     me.addClass('active');
+            // } else {
+            //     me.removeClass('active');
+            // }
+            // showCartCount(data); // 更新選單上數量的提示 //計算購物車的商品數量
+        }, 'json');
+
+    })
+</script>
 
 <?php include __DIR__ . '/parts/html-foot.php'; ?>
 <!-- </body> -->

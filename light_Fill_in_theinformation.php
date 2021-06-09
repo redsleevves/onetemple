@@ -2858,6 +2858,8 @@ $rows = $pdo->query($sql)->fetchAll();
         });
 
 
+
+
         // 測試 同會員資料匯入輸入
         $(document).on('click', '.form-check-label', (function() {
             console.log('click')
@@ -3117,8 +3119,14 @@ $rows = $pdo->query($sql)->fetchAll();
                         content: light.join(","),
                         qty: light.length,
                         price: 600,
+                        
+                        mobile: mobile,
+                        address: address,
+                        stime: stime,
+                        birthday: birthday,
+
                         // note : 合併mobile address stime birthday  join成 一個字串+ "," 
-                        note: [mobile, address, stime, birthday].join(",")
+                        // note: [mobile, address, stime, birthday].join(",")
 
                     });
 

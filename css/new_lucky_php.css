@@ -264,7 +264,7 @@ p {
     position: absolute;
     top: 0;
     width: 100%;
-    padding-top: 4vh;
+    /* padding-top: 4vh; */
     display: flex;
     flex-direction: row;
     text-align: justify;
@@ -502,7 +502,7 @@ option {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
 .lucky_button06 {
@@ -615,10 +615,32 @@ option {
 .wishes .btn_09{
     display: none;
 }
+/* --------收藏此籤----------- */
+.mybtn_cart_add::after {
+    content: "收藏此籤";
+}
+.lucky_btn_add {
+    color: #fff;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 15px;
+}
+
+.lucky_btn_add.active.active {
+    background-color: #cc543a;
+    color: #fff;
+}
+.lucky_btn_add.active::before {
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 900;
+    content: "\f00c";
+    padding-right: 5px;
+}
 @media screen and (min-width: 1000px) {
 
 .lucky_contianer {
-    padding: 30px 0 0 80px;
+    padding: 20px 0 0 80px;
 }
 #quest h4 {
     margin-bottom: 30px;

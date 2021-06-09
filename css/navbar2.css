@@ -15,6 +15,10 @@ body::-webkit-scrollbar {
     border-radius: 10px;
     }
 
+.btnCursor{
+    cursor: pointer;
+}
+
 
 /* burgurBar */
 .nav_burgurBar{
