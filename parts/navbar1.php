@@ -58,7 +58,7 @@
                 <?php if(isset($_SESSION['user'])): ?>
                     <div class="mobile_login d-flex">
                     <div class="mobile_nav_profile d-flex">
-                        <img src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
+                    <img src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
                         <a class="nav-link"><?= htmlentities($_SESSION['user']['name']) ?></a>
                     </div>
                     <div class="nav-item">
