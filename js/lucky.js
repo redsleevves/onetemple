@@ -148,14 +148,19 @@ $('.lucky_button01 .lucky_p5').click(function () {
         $.get(
             'sign-api.php',
             function (data) {
+                const img1 = `./img/sign/${data.img1}`;
+
                 console.log('data.sid: ' + data.sid);
                 console.log('data', data);
                 console.log(`你抽到 第${data.sid}籤<br>
                     請擲筊向神明確認賜籤`);
                 console.log(`${data.Lot_number}&emsp;${data.signature}`);
+                console.log(img1);
                 $('.lucky_p6').attr('data-sid', data.sid);
+                $('.lucky_Poetry06 img').prop("src", `${img1}`);
+                // prop改屬性
                 $('.lucky_result p').html(`你抽到 第${data.sid}籤<br>
-                   請擲筊向神明確認賜籤`);
+                       請擲筊向神明確認賜籤`);
                 $('.lucky_Sign_animation03 p').html(`${data.sid}`);
                 $('.lucky_title06_1 h4').html(`${data.Lot_number}&emsp;${data.signature}`);
                 $('.lucky_title06_2 h5').html(`${data.grade}`);
@@ -172,6 +177,8 @@ $('.lucky_button01 .lucky_p5').click(function () {
     }
 
 })
+
+
 
 // $('.lucky_btn06 .lucky_Favorites').click(function (data) {
 //     if (please[luckyNum].name == '聖筊') {

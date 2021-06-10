@@ -35,6 +35,10 @@ if (isset($_SESSION['user'])) {
         }
     }
 }
+
+
+
+echo json_encode($output, JSON_UNESCAPED_UNICODE);
 // $sign_id = isset($_GET['sign_id']) ? intval($_GET['sign_id']) : 0;
 
 // if (isset($_SESSION['user'])) {
@@ -53,6 +57,3 @@ if (isset($_SESSION['user'])) {
 //         }
 //     }
 // }
-
-
-echo json_encode($output, JSON_UNESCAPED_UNICODE);

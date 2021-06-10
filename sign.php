@@ -22,7 +22,7 @@ $_gdata = [
         integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA=="
         crossorigin="anonymous"></script>
     
-    <script src="./js/lucky.js"></script>
+    <script src="./js/lucky.js?t=1"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>',
 
 ];
@@ -290,9 +290,12 @@ $row = $pdo->query($sql)->fetch();
             </section>
             <section class="lucky_p6 nextstep" data-sid="<?= $row['sid'] ?>">
                 <div class="lucky_Poetry06">
-                    <img src="./img/sign/<?= $row['img1'] ?>" alt="">
+                    <!-- <?= $num = rand(1, $row['Lot_number']); ?> -->
+                    <img src="./img/sign/<?= $row['img1'] ?>" alt="" <?= $row['Lot_number'] ?>>
                 </div>
-                <div class="lucky_content06">
+
+
+                <div class=" lucky_content06">
                     <div class="lucky_result06">
                         <div class="lucky_title06_1">
                             <h4><?= $row['Lot_number'] ?>&emsp;<?= $row['signature'] ?></h4>
@@ -352,12 +355,6 @@ $row = $pdo->query($sql)->fetch();
         }, function(data) { //data代表json的$output
             console.log(data);
 
-            // if (data.addOrDel === 'add') {
-            //     me.addClass('active');
-            // } else {
-            //     me.removeClass('active');
-            // }
-            // showCartCount(data); // 更新選單上數量的提示 //計算購物車的商品數量
         }, 'json');
 
     })
