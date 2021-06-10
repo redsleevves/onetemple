@@ -1476,7 +1476,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                             <p class='pl-1 pr-1 short-name'><?= $p['CommodityName_bigLabel'] ?></p>
                             <div class="d-flex" style="justify-content:space-around">
                                 <p>NTD <?= $p['price'] ?></p>
-                                <a class="check_pdc" href="/onetemple/shop_page.php?id=<?= $p['sid'] ?>"><button>查看商品</button></a>
+                                <a class="check_pdc" href="/onetemple/shop_page.php?id=<?= $p['pdc_sid'] ?>"><button>查看商品</button></a>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -1506,7 +1506,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                                 <p><i class="far fa-clock"></i><?= $t['days'] ?></p>
                                 <P><i class="fas fa-quote-left"></i><?= $t['title3'] ?></P>
                                 <span>NTD<?= $t['price'] ?>元起</span>
-                                <a style='align-self: flex-end' href="/onetemple/trip_page.php?id=<?= $t['sid'] ?>"><button>查看詳情</button></a>
+                                <a style='align-self: flex-end' href="/onetemple/trip_page.php?id=<?= $t['trip_sid'] ?>"><button>查看詳情</button></a>
                             </div>
                         </div>
                     <?php endforeach; ?>

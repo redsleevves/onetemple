@@ -1083,10 +1083,11 @@ $rows = $stmt->fetchAll();
                                                 </div>
                                             </div>
                                             <div class="col-5 d-flex aic p-0">
-                                                <div class="col p-0">
+                                                <div class="col p-0 d-flex">
                                                     <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
                                                         <option selected value="">選擇廟宇</option>
                                                     </select>
+                                                    <!-- <i class="far fa-trash-alt marginauto removebut_far_md"></i> -->
                                                 </div>
                                             </div>
 
@@ -3804,6 +3805,7 @@ $rows = $stmt->fetchAll();
                                                     <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
                                                         <option selected value="">選擇廟宇</option>
                                                     </select>
+                                                    
                                                 </div>
                                             </div>
 
@@ -3940,10 +3942,11 @@ $rows = $stmt->fetchAll();
                                             </div>
                                         </div>
                                         <div class="col-5 d-flex aic p-0">
-                                            <div class="col p-0">
+                                            <div class="col p-0 d-flex">
                                                 <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
                                                     <option selected value="">選擇廟宇</option>
                                                 </select>
+                                           
                                             </div>
                                         </div>
 
