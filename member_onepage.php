@@ -1496,7 +1496,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                 <div class="fav_plan_container col-xs-12">
                     <?php foreach ($trip_rows as $t) : ?>
                         <div class="fav_plan_card col-lg-5 col-10 p-0">
-                            <a href="javascript:delete_fav_trip(<?= $t['sid'] ?>,<?= $t['title2'] ?>)">
+                            <a href="javascript:delete_fav_trip(<?= $t['sid'] ?>)">
                                 <i class="fas fa-times-circle delete d-none"></i></a>
 
                             <img src="<?= WEB_ROOT ?>/img/<?= $t['photo1'] ?>" class="col-6">
@@ -1885,8 +1885,10 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 
     $('.control').click(function() {
         let move = $('.fav_product_card').width();
-        let containerProduct = document.querySelector('#fav_product_container')
-        let containerPlan = document.querySelector('#fav_plan_container')
+        let containerProduct = document.querySelector('.fav_product_container')
+        let containerPlan = document.querySelector('.fav_plan_container')
+        let containerLucky = document.querySelector('.fav_lucky_container')
+        console.log('control clicked')
         let current = $(containerProduct).position().left
         if ($(this).hasClass("fa-chevron-left")) {
             current -= move * 2
@@ -2100,7 +2102,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 
 
     function delete_fav_pdc(sid) {
-        if (confirm(`確定要刪除 ${name} 嗎?`)) {
+        if (confirm(`確定要刪除嗎?`)) {
             $('.selected').remove();
             $.ajax({
                 url: 'delete_fav_pdc.php?sid=' + sid,
@@ -2111,7 +2113,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     }
 
     function delete_fav_trip(sid, name) {
-        if (confirm(`確定要刪除 ${name} 嗎?`)) {
+        if (confirm(`確定要刪除嗎?`)) {
             $('.selected').remove();
             $.ajax({
                 url: 'delete_fav_trip.php?sid=' + sid,
@@ -2122,7 +2124,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     }
 
     function delete_fav_lucky(sid) {
-        if (confirm(`確定要刪除 ${name} 嗎?`)) {
+        if (confirm(`確定要刪除嗎?`)) {
             $('.selected').remove();
             $.ajax({
                 url: 'delete_fav_lucky.php?sid=' + sid,
