@@ -533,6 +533,9 @@ function getPageLink($page) {
             
 
         }
+        .slider .tooltip {
+            z-index: 8;
+        }
 
 
 </style>
@@ -570,7 +573,7 @@ function getPageLink($page) {
 
             </div>
             <div class="row">
-                <div class="collapse trip_price_mobile <?=isset($price)?' show':''?>" id="collapseExample">
+                <div class="collapse trip_price_mobile" id="collapseExample">
                     <div class="card card-body">
                         <ul>
                             <li class="py-1">

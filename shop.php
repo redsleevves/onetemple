@@ -430,6 +430,9 @@ function getPageLink($page) {
             }
         }
 
+        .slider .tooltip {
+            z-index: 8;
+        }
 
 
         @media (max-width: 991px) {
@@ -502,7 +505,7 @@ function getPageLink($page) {
                 </div>
             </div>
             <div class="row d-block d-lg-none">
-                <div class="collapse shop_price_mobile <?=isset($price)?' show':''?>" id="collapseExample">
+                <div class="collapse shop_price_mobile" id="collapseExample">
                     <div class="card card-body">
                         <ul>
                             <li class="py-1">
