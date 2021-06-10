@@ -248,7 +248,7 @@ for($i=0;$i<count($hot_trips);$i++) {
                             <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
                             <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
                         </div>
-                        <div class="pt-2 ">62則評價</div>
+                        <div class="pt-2 ">28則評價</div>
                     </div>
                     <div class="trip_sort ">
                         <div class="form-inline">
@@ -268,7 +268,7 @@ for($i=0;$i<count($hot_trips);$i++) {
                         </div>
                         <div class="col-10">
                             <div>
-                                <div class="py-2">WAN CHEN</div>
+                                <div class="py-2">You Jhen</div>
                                 <div class="d-flex justify-content-start pb-4">
                                     <div class="d-flex justify-content-start pr-3">
                                         <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
@@ -280,19 +280,17 @@ for($i=0;$i<count($hot_trips);$i++) {
                                     <div>超讚</div>
                                 </div>
                             </div>
-                            <div class="trip_gbtext pb-5">先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），
-                                建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，很好拍超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            <div class="trip_gbtext pb-5">光彩奪目的外觀，夜晚搭配五顏六色的燈光真的是極美，讓人驚艷怎麼有那麼漂亮的玻璃廟，很好拍照，推推！建議安排一整天的活動漫遊，可以細細品味～</div>
                             <hr>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <div class="trip_gb">W</div>
+                            <div class="trip_gb">K</div>
                         </div>
                         <div class="col-10">
                             <div>
-                                <div class="py-2">WAN CHEN</div>
+                                <div class="py-2">Kuo桑</div>
                                 <div class="d-flex justify-content-start pb-4">
                                     <div class="d-flex justify-content-start pr-3">
                                         <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
@@ -304,19 +302,17 @@ for($i=0;$i<count($hot_trips);$i++) {
                                     <div>超讚</div>
                                 </div>
                             </div>
-                            <div class="trip_gbtext pb-5">先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），
-                                建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，很好拍超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            <div class="trip_gbtext pb-5">內部有水池，外圍有小水河，黃昏觀看搭配燈光爆炸美，適合全家大小或情侶，超級美 超值得到此一遊</div>
                             <hr>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <div class="trip_gb">W</div>
+                            <div class="trip_gb">M</div>
                         </div>
                         <div class="col-10">
                             <div>
-                                <div class="py-2">WAN CHEN</div>
+                                <div class="py-2">Momo Lee</div>
                                 <div class="d-flex justify-content-start pb-4">
                                     <div class="d-flex justify-content-start pr-3">
                                         <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
@@ -328,19 +324,17 @@ for($i=0;$i<count($hot_trips);$i++) {
                                     <div>超讚</div>
                                 </div>
                             </div>
-                            <div class="trip_gbtext pb-5">先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），
-                                建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，很好拍超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            <div class="trip_gbtext pb-5">《玻璃媽祖廟一台灣護聖宮》全台唯一媽祖，仁慈天后，是用琉璃彫塑金身！打上燈光，如同顯靈，晚上可以來欣賞！打上燈光的廟宇！閃閃發光！領了錢母發財金！一仠萬金！香爐也是琉璃制成！非常特別！</div>
                             <hr>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-2">
-                            <div class="trip_gb">W</div>
+                            <div class="trip_gb">J</div>
                         </div>
                         <div class="col-10">
                             <div>
-                                <div class="py-2">WAN CHEN</div>
+                                <div class="py-2">james chen</div>
                                 <div class="d-flex justify-content-start pb-4">
                                     <div class="d-flex justify-content-start pr-3">
                                         <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
@@ -352,9 +346,7 @@ for($i=0;$i<count($hot_trips);$i++) {
                                     <div>超讚</div>
                                 </div>
                             </div>
-                            <div class="trip_gbtext pb-5">先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），
-                                建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，很好拍超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            <div class="trip_gbtext pb-5">第一次好奇這好多漂亮顏色的媽祖廟，今日到這ㄧ遊，真的好漂亮！廟裡還撥放放鬆的音樂，池裡中央還可以許願！我是比較愛拍照的😁就多照了幾張😍</div>
                             <hr>
                         </div>
                     </div>
@@ -442,9 +434,7 @@ foreach($pc_hot_trips as $key => $group) {
                     <div>超讚</div>
                 </div>
             </div>
-            <div class="trip_gbtext pb-4">先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），
-                建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，很好拍超
-                好拍照；古裝體驗，有很多服飾，</div>
+            <div class="trip_gbtext pb-4">沒想到媽祖廟也可以這麼美，而且還越晚越浪漫，吸引了好多專業攝影師前來美拍，我們來訪當天還碰到了攝影團！距離鹿港老街不遠，可以安排順遊逛老街吃鹿港小吃！</div>
         </div>
     </div>
 
@@ -470,7 +460,7 @@ foreach($pc_hot_trips as $key => $group) {
                         </div>
                         <div class="col-9 pl-1">
                             <div class="pl-1">
-                                <div class="py-2">WAN CHEN</div>
+                                <div class="py-2">You Jhen</div>
                                 <div class="d-flex justify-content-start pb-2">
                                     <div class="d-flex justify-content-start pr-3">
                                         <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
@@ -483,8 +473,29 @@ foreach($pc_hot_trips as $key => $group) {
                                 </div>
                             </div>
                             <div class="trip_gbtext pb-4">
-                                先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            光彩奪目的外觀，夜晚搭配五顏六色的燈光真的是極美，讓人驚艷怎麼有那麼漂亮的玻璃廟，很好拍照，推推！建議安排一整天的活動漫遊，可以細細品味～</div>
+                        </div>
+                    </div>
+                    <div class="row d-flex trip_modal border shadow mb-4 bg-white pt-3 d-lg-none d-block">
+                        <div class="col-3 mt-3">
+                            <div class="trip_gb ml-2">W</div>
+                        </div>
+                        <div class="col-9 pl-1">
+                            <div class="pl-1">
+                                <div class="py-2">Wei Gao</div>
+                                <div class="d-flex justify-content-start pb-2">
+                                    <div class="d-flex justify-content-start pr-3">
+                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
+                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
+                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
+                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
+                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
+                                    </div>
+                                    <div>超讚</div>
+                                </div>
+                            </div>
+                            <div class="trip_gbtext pb-4">
+                            我們當天雖然見到很多顏色的玻璃廟，但都是單一顏色的版本，會一直變換顏色唷，很美很浪漫!非常推薦這個一日遊。</div>
                         </div>
                     </div>
                     <div class="row d-flex trip_modal border shadow mb-4 bg-white pt-3 d-lg-none d-block">
@@ -506,8 +517,7 @@ foreach($pc_hot_trips as $key => $group) {
                                 </div>
                             </div>
                             <div class="trip_gbtext pb-4">
-                                先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            超級療癒的玻璃珠廣場，滿滿都是五顏六色小顆玻璃珠，撲滿著廟前廣場，大人小朋友都喜歡，蹲著或是坐在這裡邊撿邊玩，童年的心這時浮現，在這炎炎的夏季心境讓人溶化，溫暖整個心靈，洗滌內心的煩悶，</div>
                         </div>
                     </div>
                     <div class="row d-flex trip_modal border shadow mb-4 bg-white pt-3 d-lg-none d-block">
@@ -516,7 +526,7 @@ foreach($pc_hot_trips as $key => $group) {
                         </div>
                         <div class="col-9 pl-1">
                             <div class="pl-1">
-                                <div class="py-2">WAN CHEN</div>
+                                <div class="py-2">Kuo桑</div>
                                 <div class="d-flex justify-content-start pb-2">
                                     <div class="d-flex justify-content-start pr-3">
                                         <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
@@ -529,17 +539,16 @@ foreach($pc_hot_trips as $key => $group) {
                                 </div>
                             </div>
                             <div class="trip_gbtext pb-4">
-                                先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            內部有水池，外圍有小水河，黃昏觀看搭配燈光爆炸美，適合全家大小或情侶，超級美 超值得到此一遊。</div>
                         </div>
                     </div>
                     <div class="row d-flex trip_modal border shadow mb-4 bg-white pt-3 d-lg-none d-block">
                         <div class="col-3 mt-3">
-                            <div class="trip_gb ml-2">W</div>
+                            <div class="trip_gb ml-2">M</div>
                         </div>
                         <div class="col-9 pl-1">
                             <div class="pl-1">
-                                <div class="py-2">WAN CHEN</div>
+                                <div class="py-2">Momo Lee</div>
                                 <div class="d-flex justify-content-start pb-2">
                                     <div class="d-flex justify-content-start pr-3">
                                         <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
@@ -552,17 +561,16 @@ foreach($pc_hot_trips as $key => $group) {
                                 </div>
                             </div>
                             <div class="trip_gbtext pb-4">
-                                先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            《玻璃媽祖廟一台灣護聖宮》全台唯一媽祖，仁慈天后，是用琉璃彫塑金身！打上燈光，如同顯靈，晚上可以來欣賞！打上燈光的廟宇！閃閃發光！領了錢母發財金！一仠萬金！香爐也是琉璃制成！非常特別！</div>
                         </div>
                     </div>
                     <div class="row d-flex trip_modal border shadow mb-4 bg-white pt-3 d-lg-none d-block">
                         <div class="col-3 mt-3">
-                            <div class="trip_gb ml-2">W</div>
+                            <div class="trip_gb ml-2">J</div>
                         </div>
                         <div class="col-9 pl-1">
                             <div class="pl-1">
-                                <div class="py-2">WAN CHEN</div>
+                                <div class="py-2">james chen</div>
                                 <div class="d-flex justify-content-start pb-2">
                                     <div class="d-flex justify-content-start pr-3">
                                         <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
@@ -575,31 +583,7 @@ foreach($pc_hot_trips as $key => $group) {
                                 </div>
                             </div>
                             <div class="trip_gbtext pb-4">
-                                先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，超
-                                好拍照；古裝體驗，有很多服飾，</div>
-                        </div>
-                    </div>
-                    <div class="row d-flex trip_modal border shadow mb-4 bg-white pt-3 d-lg-none d-block">
-                        <div class="col-3 mt-3">
-                            <div class="trip_gb ml-2">W</div>
-                        </div>
-                        <div class="col-9 pl-1">
-                            <div class="pl-1">
-                                <div class="py-2">WAN CHEN</div>
-                                <div class="d-flex justify-content-start pb-2">
-                                    <div class="d-flex justify-content-start pr-3">
-                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
-                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
-                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
-                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
-                                        <div><i class="fas fa-star" style="color: #cc543a;"></i></div>
-                                    </div>
-                                    <div>超讚</div>
-                                </div>
-                            </div>
-                            <div class="trip_gbtext pb-4">
-                                先上林家宮保第官網預約導覽時間，再上KLOOK購買套票（導覽+古裝體驗），建議可以挑不要太晚的導覽，因為導覽結束後還能好好再到處拍照，超
-                                好拍照；古裝體驗，有很多服飾，</div>
+                            第一次好奇這好多漂亮顏色的媽祖廟，今日到這ㄧ遊，真的好漂亮！廟裡還撥放放鬆的音樂，池裡中央還可以許願！我是比較愛拍照的😁就多照了幾張😍</div>
                         </div>
                     </div>
 
