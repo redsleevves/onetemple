@@ -686,9 +686,11 @@ $rows = $stmt->fetchAll();
                             </div>
                             <!--  預設祈福者  小提示 同會員資料 -->
                             <div class="light_Fill_in_theinformation_text_star_right    aic d-flex">
-                                <input type="checkbox" id="exampleCheck2" class="radius0">
-                                <label class="form-check-label padleft10" for="exampleCheck2" type="submit">
-                                    <p>同會員資料</p>
+                                <label>
+                                    <input type="checkbox" id="exampleCheck2" class="radius0 checkbox_link">
+                                    <label class="form-check-label padleft10 checkbox_link" for="exampleCheck2" type="submit">
+                                        <p>同會員資料</p>
+                                    </label>
                                 </label>
                             </div>
                         </div>
@@ -1702,9 +1704,11 @@ $rows = $stmt->fetchAll();
                             </div>
                             <!--  預設祈福者  小提示 同會員資料 -->
                             <div class="light_Fill_in_theinformation_text_star_right    aic d-flex">
-                                <input type="checkbox" id="exampleCheck1" class="radius0">
-                                <label class="form-check-label padleft10" for="exampleCheck2" type="submit">
-                                    <p>同會員資料</p>
+                                <label>
+                                    <input type="checkbox" id="exampleCheck1" class="radius0 checkbox_link">
+                                    <label class="form-check-label padleft10 checkbox_link" for="exampleCheck1" type="submit">
+                                        <p>同會員資料</p>
+                                    </label>
                                 </label>
                             </div>
                         </div>
@@ -2866,7 +2870,7 @@ $rows = $stmt->fetchAll();
 
 
         // 測試 同會員資料匯入輸入
-        $(document).on('click', '.form-check-label', (function() {
+        $(document).on('click', '.checkbox_link', (function() {
             console.log('click')
 
             // 宣告k 為 資料庫當中 birth欄位 值為XXXX-XX-XX
