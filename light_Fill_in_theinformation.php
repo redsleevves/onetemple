@@ -2963,7 +2963,7 @@ $rows = $stmt->fetchAll();
                         // location.reload();
 
                         // 成功送出 轉跳至index首頁
-                        window.location.replace("./index.php");
+                        window.location.replace("./cart.php");
 
                     } else {
                         alert('error');
