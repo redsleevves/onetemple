@@ -1949,7 +1949,7 @@ $_gdata = [
                 <p class="index_productName">檜木陶瓷杯</p>
             </div>
         </div>
-        <div class="index_shopLink"><a href="<?= WEB_ROOT ?>/product.php">看更多...</a></div>
+        <div class="index_shopLink"><a href="<?= WEB_ROOT ?>/shop.php">看更多...</a></div>
 
     </div>
 
