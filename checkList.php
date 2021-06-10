@@ -21,7 +21,7 @@ if ( ! isset($_SESSION['user'])){
     exit;
 }
 
-$pdc_sql = "SELECT * FROM `product`";
+$pdc_sql = "SELECT * FROM `shops`";
 $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 
 $plan_sql = "SELECT * FROM `trips`";
@@ -497,7 +497,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             <?php foreach ($pdc_rows as $a) if($i['id']==$a['id']): ?>
                 <div class="checkList_item checkList_product">
                     <div class="checkList_itemImgBox ">
-                        <img src="<?= WEB_ROOT ?>/img/<?= $a['img'] ?>" alt="">
+                        <img src="<?= WEB_ROOT ?>/img/<?= $a['img2'] ?>" alt="">
                     </div>
                     <div class="checkList_itemWordBox">
                         <p class="checkList_itemName"><?= $i['name'] ?></p>
