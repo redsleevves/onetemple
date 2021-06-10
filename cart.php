@@ -9,7 +9,7 @@ $_gdata = [
     //頁面私有 scripts
     'scripts' => '', 
 ];
-$pdc_sql = "SELECT * FROM `product`";
+$pdc_sql = "SELECT * FROM `shops`";
 $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 
 $plan_sql = "SELECT * FROM `trips`";
@@ -458,11 +458,11 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 </thead>
                 <tbody>              
                         <?php foreach($_SESSION['cart']['product'] as $i): ?>
-                            <?php foreach ($product_rows as $a)
+                            <?php foreach ($pdc_rows as $a)
                         if($i['id']==$a['id']): ?>   
                         <tr>
                             <td>
-                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img'] ?>"></div>
+                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img2'] ?>"></div>
                             </td>
                             <td><?= $i['name'] ?></td>
                             <td><?= $i['content'] ?></td>
