@@ -14,7 +14,7 @@ $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 
 $plan_sql = "SELECT * FROM `trips`";
 $plan_rows = $pdo->query($plan_sql)->fetchAll();
-var_dump($_SESSION);
+
 ?>
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
 
