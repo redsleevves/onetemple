@@ -42,13 +42,19 @@ $_gdata = [
           padding-top: 570px;
           font-family: 'Raleway', sans-serif;
         }
-        .magic {
+
+        .magBox{
+          width: 300px;
+          height: 300px;
           z-index: 5;
           position: absolute;
           top: calc(50% - 10rem);
           left: calc(50% - 10rem);
-          width: 300px;
-          height: 300px;
+        }
+        .magic {
+         
+          width: 100%;
+          height: 100%;
           background: url('./img/index_bannerImg\(1\).jpg') 50% 50% no-repeat fixed;
           background-size: cover;
           border-radius: 50%;
@@ -170,7 +176,7 @@ $_gdata = [
 
         <h1><a href="./index.php">Taiwan Temple</a></h1>
 
-        <div class="magic"></div>
+        <div class="magBox"><div class="magic"></div></div>
 
         <div class="wrapper">
           <div class="wave1"></div>
@@ -184,12 +190,22 @@ $_gdata = [
 
     <script>
         $(document).ready(function() {
-        var $magic = $(".magic"),
+        var $magic = $(".magBox"),
             magicWHalf = $magic.width() / 2;
         $(document).on("mousemove", function(e) {
             $magic.css({"left": e.pageX - magicWHalf, "top": e.pageY - magicWHalf});
         });
         });
+
+        $('a').mouseenter(function(){
+          $('.magic').css({'width': '450px','height':'450px','transition':'.6s','opacity':'.6'})
+        });
+
+        $('a').mouseleave(function(){
+        $('.magic').css({'width': '300px','height':'300px','transition':'.6s','opacity':'1'})
+        })
+
+
     </script>
 
 </body>
