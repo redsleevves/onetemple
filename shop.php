@@ -537,8 +537,8 @@ function getPageLink($page) {
                                 <li class="py-1"><a <?=(isset($_GET['cat1']) && $_GET['cat1'] == '飾品')?'class="active"':''?>href="shop.php?cat1=飾品">飾品</a></li>
                                 <li class="py-1"><a <?=(isset($_GET['cat1']) && $_GET['cat1'] == '擺飾')?'class="active"':''?>href="shop.php?cat1=擺飾">擺飾</a></li>
                                 <li class="py-1"><a <?=(isset($_GET['cat1']) && $_GET['cat1'] == '平安符')?'class="active"':''?>href="shop.php?cat1=平安符">平安符</a></li>
-                                <li class="py-1"><a <?=(isset($_GET['cat2']) && $_GET['cat2'] == '聯名合作')?'class="active"':''?>href="shop.php?cat2=聯名合作">聯名合作</a></li>
-                                <li class="py-1"><a <?=(isset($_GET['cat2']) && $_GET['cat2'] == '熱門商品')?'class="active"':''?>href="shop.php?cat2=熱門商品">熱門商品</a></li>
+                                <li class="py-1"><a <?=($cat2 == '聯名合作')?'class="active"':''?>href="shop.php?cat2=聯名合作">聯名合作</a></li>
+                                <li class="py-1"><a <?=($cat2 == '熱門商品')?'class="active"':''?>href="shop.php?cat2=熱門商品">熱門商品</a></li>
                             </ul>
                             <ul>
                                 <li class="py-1">
@@ -577,10 +577,10 @@ if(count($shops) > 0) {
                                     <a href="shop_page.php?id=<?=$shop['id']?>"><div class="shop_re_more"></div></a>
                                 </div>
                                 <div class="shop_re_card mb-lg-5 mb-0">
-                                    <div class="shop_re_text pt-2 pl-3"><?=$shop['title1']?>
+                                    <div class="shop_re_text pt-lg-2 pl-lg-3 p-2"><?=$shop['title1']?>
                                     </div>
-                                    <div class="shop_re_text1 pl-3"><?=$shop['title2']?></div>
-                                    <div class="pb-3 shop_re_price pl-3"><span>NTD <?=number_format($shop['price'],0,".",",")?></span>元</div>
+                                    <div class="shop_re_text1 pl-lg-3 px-2"><?=$shop['title2']?></div>
+                                    <div class="shop_re_price pl-lg-3 pb-lg-2 pb-2 px-2"><span>NTD <?=number_format($shop['price'],0,".",",")?></span>元</div>
                                 </div>
                             </div>
                             <div
