@@ -467,7 +467,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             <td><?= $i['name'] ?></td>
                             <td><?= $i['content'] ?></td>
                             <td><?= $i['qty'] ?></td>
-                            <td class="price"><?= $i['price'] ?></td>
+                            <td class="price"><?= $i['price']*$i['qty'] ?></td>
                             <td><?= $i['note'] ?></td>
                             <td class="trash">
                                 <a href="javascript:delete_it_pdc(<?= $i['sid'] ?>)">
@@ -525,7 +525,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             <td><?= $j['name'] ?></td>
                             <td><?= $j['content'] ?></td>
                             <td><?= $j['qty'] ?></td>
-                            <td class="price"><?= $j['price'] ?></td>
+                            <td class="price"><?= $j['price']*$j['qty'] ?></td>
                             <td><?= $j['note'] ?></td>
                             <td class="trash">
                             <a href="javascript:" onclick="deleteItem(event)">
@@ -580,7 +580,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             <td><?= $k['name'] ?></td>
                             <td><?= $k['content'] ?></td>
                             <td><?= $k['qty'] ?></td>
-                            <td class="price"><?= $k['price'] ?></td>
+                            <td class="price"><?= $k['price']*$k['qty'] ?></td>
                             <td>
                                 
                             <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
