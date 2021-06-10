@@ -686,9 +686,11 @@ $rows = $stmt->fetchAll();
                             </div>
                             <!--  預設祈福者  小提示 同會員資料 -->
                             <div class="light_Fill_in_theinformation_text_star_right    aic d-flex">
-                                <input type="checkbox" id="exampleCheck2" class="radius0">
-                                <label class="form-check-label padleft10" for="exampleCheck2" type="submit">
-                                    <p>同會員資料</p>
+                                <label>
+                                    <input type="checkbox" id="exampleCheck2" class="radius0 checkbox_link">
+                                    <label class="form-check-label padleft10 checkbox_link" for="exampleCheck2" type="submit">
+                                        <p>同會員資料</p>
+                                    </label>
                                 </label>
                             </div>
                         </div>
@@ -1702,9 +1704,11 @@ $rows = $stmt->fetchAll();
                             </div>
                             <!--  預設祈福者  小提示 同會員資料 -->
                             <div class="light_Fill_in_theinformation_text_star_right    aic d-flex">
-                                <input type="checkbox" id="exampleCheck1" class="radius0">
-                                <label class="form-check-label padleft10" for="exampleCheck2" type="submit">
-                                    <p>同會員資料</p>
+                                <label>
+                                    <input type="checkbox" id="exampleCheck1" class="radius0 checkbox_link">
+                                    <label class="form-check-label padleft10 checkbox_link" for="exampleCheck1" type="submit">
+                                        <p>同會員資料</p>
+                                    </label>
                                 </label>
                             </div>
                         </div>
@@ -2220,7 +2224,7 @@ $rows = $stmt->fetchAll();
                         <div class="light_Fill_in_theinformation_title paddingbottom40 postre">
                             <h3 class="postre">祈福者
                                 <!--  手機用 祈福者卡(none) _標題_刪除按鈕 -->
-                                <button class="graycolor postab padbut dipay">
+                                <button class="graycolor postab padbut removebut_md">
                                     <p>刪除</p>
                                 </button>
                             </h3>
@@ -2866,7 +2870,7 @@ $rows = $stmt->fetchAll();
 
 
         // 測試 同會員資料匯入輸入
-        $(document).on('click', '.form-check-label', (function() {
+        $(document).on('click', '.checkbox_link', (function() {
             console.log('click')
 
             // 宣告k 為 資料庫當中 birth欄位 值為XXXX-XX-XX
@@ -3335,7 +3339,7 @@ $rows = $stmt->fetchAll();
 
 
 
-        // 通用 刪除祈福者 on版本
+        // 桌機 刪除祈福者 on版本
         $(document).on('click', '.removebut', (function() {
             console.log('click')
             $(this).parentsUntil('.removeset').remove();
@@ -3345,6 +3349,13 @@ $rows = $stmt->fetchAll();
         $(document).on('click', '.removebut_far', (function() {
             console.log('click')
             $(this).parentsUntil('.light_add_set').remove();
+        }))
+
+
+        // 手機 刪除祈福者 on版本
+        $(document).on('click', '.removebut_md', (function() {
+            console.log('click')
+            $(this).parentsUntil('.removeset_1').remove();
         }))
 
         // 手機 刪除燈種垃圾桶 on版本
@@ -4069,7 +4080,7 @@ $rows = $stmt->fetchAll();
                                 <div class="light_Fill_in_theinformation_title paddingbottom40 postre">
                                     <h3 class="postre">祈福者
                                         <!--  手機用 祈福者卡(none) _標題_刪除按鈕 -->
-                                        <button class="graycolor postab padbut dipay">
+                                        <button class="graycolor postab padbut removebut_md">
                                             <p>刪除</p>
                                         </button>
                                     </h3>
