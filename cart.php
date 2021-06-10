@@ -4,11 +4,12 @@ $_gdata = [
     // 網頁名稱
     'title' => '灣廟 | 購物車', 
     // 頁面私有 css
-    'styles' => '<link rel="stylesheet" href="'.WEB_ROOT.'/css/navbar2.css">',
+    'styles' => '<link rel="stylesheet" href="'.WEB_ROOT.'/css/navbar2.css">
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">',
     //頁面私有 scripts
     'scripts' => '', 
 ];
-$pdc_sql = "SELECT * FROM `product`";
+$pdc_sql = "SELECT * FROM `shops`";
 $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 
 $plan_sql = "SELECT * FROM `trips`";
@@ -23,7 +24,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         background-image: url(<?= WEB_ROOT ?>/img/bcc.png);
         position: relative;
         min-height: 100vh;
-        padding-bottom: 150px;
+        /* padding-bottom: 150px; */
     }
 
     h2 {
@@ -55,10 +56,19 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         border-radius: 30px;
         border: none;
     }
-
+    button:hover{
+        background-color:#DD745E;
+    }
     button:focus {
         outline: 0;
         box-shadow: 0 0 0 1pt rgb(77, 77, 77);
+    }
+    button a{
+        color: #fff;
+    }
+    button a:hover{
+        color: #fff;
+        text-decoration: none;
     }
 
     i {
@@ -69,7 +79,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         margin: 300px;
     }
 
-    footer {
+    /* footer {
         width: 100%;
         height: 100px;
         background-color: #cc543a;
@@ -80,6 +90,11 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         align-items: center;
         position: absolute;
         bottom: 0;
+    } */
+
+    .cart_title{
+        font-size: 26px;
+        font-weight: 700;
     }
 
     .cart {
@@ -87,6 +102,12 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         flex-direction: row-reverse;
         justify-content: space-evenly;
         position: relative;
+        /* margin-top: 70px; */
+        margin-bottom: 162px ;
+    }
+
+    .carttable{
+        margin-top: 70px;
     }
 
     .bill {
@@ -224,10 +245,10 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
         .cart_backdeco {
             position: absolute;
-            bottom: 0;
+            bottom: 0px;
             right: 0;
             z-index: -1;
-            opacity: 0.7;
+            opacity: 0.5;
             transform: scale(0.7);
             transform-origin: right bottom;
         }
@@ -352,6 +373,18 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 </style>
 <?php include __DIR__ . '/parts/navbar2.php'; ?>
 
+<!-- 我是麵包屑-->
+<div class="breadcrumb_style   backgroundimg_1">
+            <div class="d-flex flex-wrap breadcrumb_style_1 ">
+                <a href="" class="astlyep">首頁</a>
+                <!-- 共用雲端找箭頭icon-->
+                <img src="./img/nav_arrow_right.svg">
+                <a href="" class="astlyep">祈福商店</a>
+                <img src="./img/nav_arrow_right.svg">
+                <a href="<?= WEB_ROOT ?>/cart.php" class="astlyep">購物車</a>
+            </div>
+        </div>
+
 <div class="container cart col-lg-10 col-12">
     <section class="bill container-fluid col-3">
         <h3>訂單明細</h3>
@@ -403,7 +436,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         <button><a href="<?= WEB_ROOT?>/checkList.php" >確認結帳</a></button>
     </section>
     <section class="carttable container-fluid col-7">
-        <h4>購物車</h4>
+        <p class="cart_title">購物車</p>
         <div class="each_table cart_product mt-5">
             <h4 class="cartName">商品</h4>
             <?php if(empty($_SESSION['cart']['product'])): ?>
@@ -425,16 +458,16 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 </thead>
                 <tbody>              
                         <?php foreach($_SESSION['cart']['product'] as $i): ?>
-                            <?php foreach ($product_rows as $a)
+                            <?php foreach ($pdc_rows as $a)
                         if($i['id']==$a['id']): ?>   
                         <tr>
                             <td>
-                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img'] ?>"></div>
+                                <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img2'] ?>"></div>
                             </td>
                             <td><?= $i['name'] ?></td>
                             <td><?= $i['content'] ?></td>
                             <td><?= $i['qty'] ?></td>
-                            <td class="price"><?= $i['price'] ?></td>
+                            <td class="price"><?= $i['price']*$i['qty'] ?></td>
                             <td><?= $i['note'] ?></td>
                             <td class="trash">
                                 <a href="javascript:delete_it_pdc(<?= $i['sid'] ?>)">
@@ -492,7 +525,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             <td><?= $j['name'] ?></td>
                             <td><?= $j['content'] ?></td>
                             <td><?= $j['qty'] ?></td>
-                            <td class="price"><?= $j['price'] ?></td>
+                            <td class="price"><?= $j['price']*$j['qty'] ?></td>
                             <td><?= $j['note'] ?></td>
                             <td class="trash">
                             <a href="javascript:" onclick="deleteItem(event)">
@@ -511,7 +544,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     <tr>
                         <td></td>
                         <td colspan="5" class="subsum">
-                            <p>1,200</p>
+                            <p></p>
                         </td>
                         <td></td>
                     </tr>
@@ -547,7 +580,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                             <td><?= $k['name'] ?></td>
                             <td><?= $k['content'] ?></td>
                             <td><?= $k['qty'] ?></td>
-                            <td class="price"><?= $k['price'] ?></td>
+                            <td class="price"><?= $k['price']*$k['qty'] ?></td>
                             <td>
                                 
                             <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" 
@@ -677,9 +710,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     <img src="<?= WEB_ROOT ?>/img/cart_Incense.png">
 </div>
 
-<footer>
-    <p>Copyright© TempleTrip.tw</p>
-</footer>
+
 
 <?php include __DIR__ . '/parts/ourscripts.php'; ?>
 
@@ -702,6 +733,10 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     // console.log(discountV)
     // $('#entered').html(discountV.val())
 
+    const dallorCommas = function(n){
+            return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    };
+
     function getSubSum(element) {
         var sum = 0;
         $(element).each(function() {
@@ -712,22 +747,31 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
     
     $(document).ready(function() {
-        var sum = 0;
+        var pdc_sum = 0;
         $('.cart_product .price').each(function() {
-            sum += parseFloat(this.innerHTML);
+            pdc_sum += parseFloat(this.innerHTML);
         });
-        $('.cart_product .subsum').html('<p>' + sum + '</p>')
-        var sum = 0;
+        $('.cart_product .subsum').html('<p>' + 'NTD. ' + dallorCommas(pdc_sum) + '</p>')
+
+        var plan_sum = 0;
         $('.cart_plan .price').each(function() {
-            sum += parseFloat(this.innerHTML);
+            plan_sum += parseFloat(this.innerHTML);
         });
-        $('.cart_plan .subsum').html('<p>' + sum + '</p>')
-        var sum = 0;
+        $('.cart_plan .subsum').html('<p>' + 'NTD. ' + dallorCommas(plan_sum) + '</p>')
+        
+        var lit_sum = 0;
         $('.cart_light .price').each(function() {
-            sum += parseFloat(this.innerHTML);
+            lit_sum += parseFloat(this.innerHTML);
         });
-        $('.cart_light .subsum').html('<p>' + sum + '</p>')
+        $('.cart_light .subsum').html('<p>' + 'NTD. ' + dallorCommas(lit_sum) + '</p>')
+
+        //最後的商品總金額
+        $('.totalSum').text('NTD. ' + dallorCommas(pdc_sum + plan_sum + lit_sum));
+
+
     });
+
+    
 
 
     $(document).on('click', '.fa-trash-alt', function() {
@@ -746,20 +790,21 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         $('.cart_light .subsum').html('<p>' + sum + '</p>')
     })
 
-    const deleteItem = function(event) {
-        let me = $(event.currentTarget);
-        let id = me.closest('tr').attr('data-id');
-        // let name = me.closest('tr').attr('data-name');
-        if(confirm(`確定要刪除 ${id} 嗎?`)){
-        $.get('cart_api.php', foreach($_SESSION['cart']['plan'] as $j => $assign), 
-        function(data){
-            me.closest('tr').remove();
-            if($('tbody>tr').length < 1){
-                location.reload(); 
-            }
-        }, 'json');
-        }
-    };
+    //這段報錯，先註解了~
+    // const deleteItem = function(event) {
+    //     let me = $(event.currentTarget);
+    //     let id = me.closest('tr').attr('data-id');
+    //     // let name = me.closest('tr').attr('data-name');
+    //     if(confirm(`確定要刪除 ${id} 嗎?`)){
+    //     $.get('cart_api.php', foreach($_SESSION['cart']['plan'] as $j => $assign), 
+    //     function(data){
+    //         me.closest('tr').remove();
+    //         if($('tbody>tr').length < 1){
+    //             location.reload(); 
+    //         }
+    //     }, 'json');
+    //     }
+    // };
 
     // function delete_it_pdc(sid){
     // if(confirm(`確定要刪除 ${name} 嗎?`)){

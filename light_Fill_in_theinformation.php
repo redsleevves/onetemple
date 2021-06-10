@@ -25,16 +25,20 @@ $_gdata = [
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>',
 ];
 
-
+$member_sid = isset($_SESSION['user']) ? $_SESSION['user']['sid'] : 0;
 $sql = "SELECT * FROM member o  
 JOIN member_friend d ON o.sid= d.f_sid
-WHERE o.sid=15";
+WHERE o.sid =?";
 
 $stmt = $pdo->prepare($sql);
-$stmt->execute();
+$stmt->execute([$member_sid]);
 $f_test = $stmt->fetch(PDO::FETCH_ASSOC);
+// 有未知的變數狀況下(member_sid) 需重複宣告 $stmt = $pdo->prepare($sql);
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$member_sid]);
+$rows = $stmt->fetchAll();
 
-$rows = $pdo->query($sql)->fetchAll();
+
 
 ?>
 <!-- 整個頁面的頭 -->
@@ -431,7 +435,7 @@ $rows = $pdo->query($sql)->fetchAll();
             padding-bottom: 40px;
         }
 
-        .padtop40{
+        .padtop40 {
             padding-top: 40px;
         }
 
@@ -671,7 +675,7 @@ $rows = $pdo->query($sql)->fetchAll();
 
                     <!--  預設祈福者 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-                    <div class="light_Fill_in_theinformation_text_3 padddingtop40 displayno_md">
+                    <div class="light_Fill_in_theinformation_text_3 padddingtop40">
                         <!--  預設祈福者  小提示 -->
                         <div class="light_Fill_in_theinformation_text_star d-flex juscsb paddingbottom40">
                             <!--  預設祈福者  小提示 必填資料 -->
@@ -1155,490 +1159,490 @@ $rows = $pdo->query($sql)->fetchAll();
 
 
 
-                    <div class="memberadd  " id="memberadd">
-                        <div class="light_Fill_in_theinformation_text_3 padddingtop40">
-                            <!--  祈福者卡(none)  小提示 -->
-                            <div class="light_Fill_in_theinformation_text_star d-flex juscsb paddingbottom40">
-                                <!--  祈福者卡(none)  小提示 必填資料 -->
-                                <div class="light_Fill_in_theinformation_text_star_left">
-                                    <!-- *的 ICON -->
-                                    <!-- <img src=""> -->
-                                    <p class="redcolorh5">*為必填資料</p>
+                    <!-- 祈福者卡(none) -->
+                    <div class="light_Fill_in_theinformation_text_3 padddingtop40">
+                        <!--  祈福者卡(none)  小提示 -->
+                        <div class="light_Fill_in_theinformation_text_star d-flex juscsb paddingbottom40">
+                            <!--  祈福者卡(none)  小提示 必填資料 -->
+                            <div class="light_Fill_in_theinformation_text_star_left">
+                                <!-- *的 ICON -->
+                                <!-- <img src=""> -->
+                                <p class="redcolorh5">*為必填資料</p>
+                            </div>
+
+                            <!-- 祈福者卡(none) boostarp 下拉選單 -->
+                            <div class=" d-flex aic p-0">
+                                <div class="col p-0">
+                                    <select class="form-control radius0 exampleInputfriend" id="exampleInputfriend">
+
+                                        <option value="">同親友資料</option>
+                                        <?php foreach ($rows as $p) : ?>
+                                            <option value="<?= $p['sid'] ?>" data-sid="<?= $p['sid'] ?>" data-address="<?= $p['address_'] ?>" data-mobile="<?= $p['mobile_'] ?>" data-birthday="<?= $p['birthday_'] ?>">
+
+
+                                                <?= $p['name_'] ?>
+                                            </option>
+
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--  祈福者卡(none) _標題 -->
+                        <div class="light_Fill_in_theinformation_title tac paddingbottom40 postre">
+                            <h3 class="postre">祈福者
+                                <!--  祈福者卡(none) _標題_刪除按鈕 -->
+                                <button class="graycolor postab padbut removebut">
+                                    <p>刪除</p>
+                                </button>
+                            </h3>
+
+                        </div>
+
+
+                        <!--  祈福者卡(none) input集合 桌機用-->
+                        <div class="light_Fill_in_theinformation_inputset borderbottom displayno_md">
+                            <!--  祈福者卡(none) input_1_姓名-->
+                            <div class="paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <!-- 祈福者卡(none) *姓名 -->
+                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>姓名</p>
+                                    </div>
+                                    <!-- 祈福者卡(none) boostarp input -->
+                                    <div class="col-8 p-0">
+                                        <input type="text" class="form-control  radius0 exampleInputName name" placeholder="請輸入姓名" id="name" name="name">
+
+                                    </div>
+                                </div>
+                                <!-- 空值警告用 地址-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    </div>
+                                    <div class="col-8 p-0">
+                                        <div class="name vishidden"></div>
+                                        <small class="form-text error"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  祈福者卡(none) input_1_生日-->
+                            <div class="paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <!--祈福者卡(none) *出生日期 -->
+                                    <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                        <p class="redcolorh5">*</p>
+                                        <p>出生日期</p>
+                                    </div>
+                                    <!--祈福者卡(none) boostarp 下拉選單 -->
+                                    <div class="col-lg-11 displayflex aic p-0">
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize_2 d-flex aic p-0 ">
+                                                <select class="form-control col radius0 exampleInputYear year" id="exampleInputTime_2">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2010">2010</option>
+                                                    <option value="2009">2009</option>
+                                                    <option value="2008">2008</option>
+                                                    <option value="2007">2007</option>
+                                                    <option value="2006">2006</option>
+                                                    <option value="2005">2005</option>
+                                                    <option value="2004">2004</option>
+                                                    <option value="2003">2003</option>
+                                                    <option value="2002">2002</option>
+                                                    <option value="2001">2001</option>
+                                                    <option value="2000">2000</option>
+                                                    <option value="1999">1999</option>
+                                                    <option value="1998">1998</option>
+                                                    <option value="1997">1997</option>
+                                                    <option value="1996">1996</option>
+                                                    <option value="1995">1995</option>
+                                                    <option value="1994">1994</option>
+                                                    <option value="1993">1993</option>
+                                                    <option value="1992">1992</option>
+                                                    <option value="1991">1991</option>
+                                                    <option value="1990">1990</option>
+                                                    <option value="1989">1989</option>
+                                                    <option value="1988">1988</option>
+                                                    <option value="1987">1987</option>
+                                                    <option value="1986">1986</option>
+                                                    <option value="1985">1985</option>
+                                                    <option value="1984">1984</option>
+                                                    <option value="1983">1983</option>
+                                                    <option value="1982">1982</option>
+                                                    <option value="1981">1981</option>
+                                                    <option value="1980">1980</option>
+                                                    <option value="1979">1979</option>
+                                                    <option value="1978">1978</option>
+                                                    <option value="1977">1977</option>
+                                                    <option value="1976">1976</option>
+                                                    <option value="1975">1975</option>
+                                                    <option value="1974">1974</option>
+                                                    <option value="1973">1973</option>
+                                                    <option value="1972">1972</option>
+                                                    <option value="1971">1971</option>
+                                                    <option value="1970">1970</option>
+                                                    <option value="1969">1969</option>
+                                                    <option value="1968">1968</option>
+                                                    <option value="1967">1967</option>
+                                                    <option value="1966">1966</option>
+                                                    <option value="1965">1965</option>
+                                                    <option value="1964">1964</option>
+                                                    <option value="1963">1963</option>
+                                                    <option value="1962">1962</option>
+                                                    <option value="1961">1961</option>
+                                                    <option value="1960">1960</option>
+                                                    <option value="1959">1959</option>
+                                                    <option value="1958">1958</option>
+                                                    <option value="1957">1957</option>
+                                                    <option value="1956">1956</option>
+                                                    <option value="1955">1955</option>
+                                                    <option value="1954">1954</option>
+                                                    <option value="1953">1953</option>
+                                                    <option value="1952">1952</option>
+                                                    <option value="1951">1951</option>
+                                                    <option value="1950">1950</option>
+                                                    <option value="1949">1949</option>
+                                                    <option value="1948">1948</option>
+                                                    <option value="1947">1947</option>
+                                                    <option value="1946">1946</option>
+                                                    <option value="1945">1945</option>
+                                                    <option value="1944">1944</option>
+                                                    <option value="1943">1943</option>
+                                                    <option value="1942">1942</option>
+                                                    <option value="1941">1941</option>
+                                                    <option value="1940">1940</option>
+                                                    <option value="1939">1939</option>
+                                                    <option value="1938">1938</option>
+                                                    <option value="1937">1937</option>
+                                                    <option value="1936">1936</option>
+                                                    <option value="1935">1935</option>
+                                                    <option value="1934">1934</option>
+                                                    <option value="1933">1933</option>
+                                                    <option value="1932">1932</option>
+                                                    <option value="1931">1931</option>
+                                                    <option value="1930">1930</option>
+                                                    <option value="1929">1929</option>
+                                                    <option value="1928">1928</option>
+                                                    <option value="1927">1927</option>
+                                                    <option value="1926">1926</option>
+                                                    <option value="1925">1925</option>
+                                                    <option value="1924">1924</option>
+                                                    <option value="1923">1923</option>
+                                                    <option value="1922">1922</option>
+                                                    <option value="1921">1921</option>
+                                                    <option value="1920">1920</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="fake_year"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0">
+                                                <select class="form-control col radius0 exampleInputMonth month" id="exampleInputTime_3">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="fake_month"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0 ">
+                                                <select class="form-control col radius0 exampleInputDay day " id="exampleInputTime_4">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                </select>
+                                            </div>
+                                            <div class="fake_day"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 空值警告用 年月日-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                    </div>
+                                    <div class="col-lg-11 displayflex aic p-0">
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize_2 d-flex aic p-0 ">
+                                                <div class="year vishidden"></div>
+                                                <small class="form-text error"></small>
+
+                                            </div>
+                                            <div class="fake_year vishidden"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0">
+                                                <div class="month vishidden"></div>
+                                                <small class="form-text error"></small>
+
+                                            </div>
+                                            <div class="fake_month vishidden"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0 ">
+                                                <div class="day vishidden"></div>
+                                                <small class="form-text error"></small>
+                                            </div>
+                                            <div class="fake_day vishidden"></div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <!-- 祈福者卡(none) boostarp 下拉選單 -->
-                                <div class=" d-flex aic p-0">
-                                    <div class="col p-0">
-                                        <select class="form-control radius0 exampleInputfriend" id="exampleInputfriend">
-
-                                            <option value="">同親友資料</option>
-                                            <?php foreach ($rows as $p) : ?>
-                                                <option value="<?= $p['sid'] ?>" data-sid="<?= $p['sid'] ?>" data-address="<?= $p['address_'] ?>" data-mobile="<?= $p['mobile_'] ?>" data-year="<?= $p['year'] ?>" data-month="<?= $p['month'] ?>" data-day="<?= $p['day'] ?>" data-birthday="<?= $p['birthday_'] ?>">
+                            </div>
 
 
-                                                    <?= $p['name_'] ?>
-                                                </option>
+                            <!--  祈福者卡(none) input_1_時辰-->
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+                                <!-- 祈福者卡(none)*時辰 -->
+                                <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                    <p class="redcolorh5 opac">*</p>
+                                    <p>出生時辰</p>
+                                </div>
+                                <!--祈福者卡(none) boostarp 下拉選單 -->
+                                <div class="col-11 d-flex aic p-0">
+                                    <div class="col-3 p-0">
+                                        <select class="form-control col-10 radius0 text_time_2">
+                                            <option selected>吉時</option>
+                                            <option value="子時 23~0">子時 23~01</option>
+                                            <option value="丑時 01~03">丑時 01~03</option>
+                                            <option value="寅時 03~05">寅時 03~05</option>
+                                            <option value="卯時 05~07">卯時 05~07</option>
+                                            <option value="辰時 07~09">辰時 07~09</option>
+                                            <option value="巳時 09~11">巳時 09~11</option>
+                                            <option value="午時 11~13">午時 11~13</option>
+                                            <option value="未時 13~15">未時 13~15</option>
+                                            <option value="申時 15~17">申時 15~17</option>
+                                            <option value="酉時 17~19">酉時 17~19</option>
+                                            <option value="戌時 19~21">戌時 19~21</option>
+                                            <option value="亥時 21~23">亥時 21~23</option>
 
-                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <!--  祈福者卡(none) _標題 -->
-                            <div class="light_Fill_in_theinformation_title tac paddingbottom40 postre">
-                                <h3 class="postre">祈福者
-                                    <!--  祈福者卡(none) _標題_刪除按鈕 -->
-                                    <button class="graycolor postab padbut removebut">
-                                        <p>刪除</p>
-                                    </button>
-                                </h3>
 
+                            <!--  祈福者卡(none) input_1_性別-->
+
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+
+                                <div class="light_Fill_in_theinformation_input_text col-4 d-flex">
+                                    <p class="redcolorh5 opac">*</p>
+                                    <p>性別</p>
+                                </div>
+
+                                <div class="col-11 d-flex aic p-0">
+                                    <div class="col-2 p-0">
+                                        <select class="form-control col-7 radius0 text_xxxx_2">
+                                            <option value="男">男</option>
+                                            <option value="女">女</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
 
-                            <!--  祈福者卡(none) input集合 桌機用-->
-                            <div class="light_Fill_in_theinformation_inputset borderbottom displayno_md">
-                                <!--  祈福者卡(none) input_1_姓名-->
-                                <div class="paddingbottom40">
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                        <!-- 祈福者卡(none) *姓名 -->
-                                        <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                            <p class="redcolorh5">*</p>
-                                            <p>姓名</p>
-                                        </div>
-                                        <!-- 祈福者卡(none) boostarp input -->
-                                        <div class="col-8 p-0">
-                                            <input type="text" class="form-control  radius0 exampleInputName name" placeholder="請輸入姓名" id="name" name="name">
 
-                                        </div>
-                                    </div>
-                                    <!-- 空值警告用 地址-->
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                        <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                        </div>
-                                        <div class="col-8 p-0">
-                                            <div class="name vishidden"></div>
-                                            <small class="form-text error"></small>
-                                        </div>
-                                    </div>
+
+                            <!--  祈福者卡(none) input_1_電話-->
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+                                <!--祈福者卡(none) *連絡電話 -->
+                                <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    <p class="redcolorh5 opac">*</p>
+                                    <p>連絡電話</p>
                                 </div>
-                                <!--  祈福者卡(none) input_1_生日-->
-                                <div class="paddingbottom40">
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                        <!--祈福者卡(none) *出生日期 -->
-                                        <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
-                                            <p class="redcolorh5">*</p>
-                                            <p>出生日期</p>
-                                        </div>
-                                        <!--祈福者卡(none) boostarp 下拉選單 -->
-                                        <div class="col-lg-11 displayflex aic p-0">
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize_2 d-flex aic p-0 ">
-                                                    <select class="form-control col radius0 exampleInputYear year" id="exampleInputTime_2">
-                                                        <option selected value="">選擇</option>
-                                                        <option value="2021">2021</option>
-                                                        <option value="2020">2020</option>
-                                                        <option value="2019">2019</option>
-                                                        <option value="2018">2018</option>
-                                                        <option value="2017">2017</option>
-                                                        <option value="2016">2016</option>
-                                                        <option value="2015">2015</option>
-                                                        <option value="2014">2014</option>
-                                                        <option value="2013">2013</option>
-                                                        <option value="2012">2012</option>
-                                                        <option value="2011">2011</option>
-                                                        <option value="2010">2010</option>
-                                                        <option value="2009">2009</option>
-                                                        <option value="2008">2008</option>
-                                                        <option value="2007">2007</option>
-                                                        <option value="2006">2006</option>
-                                                        <option value="2005">2005</option>
-                                                        <option value="2004">2004</option>
-                                                        <option value="2003">2003</option>
-                                                        <option value="2002">2002</option>
-                                                        <option value="2001">2001</option>
-                                                        <option value="2000">2000</option>
-                                                        <option value="1999">1999</option>
-                                                        <option value="1998">1998</option>
-                                                        <option value="1997">1997</option>
-                                                        <option value="1996">1996</option>
-                                                        <option value="1995">1995</option>
-                                                        <option value="1994">1994</option>
-                                                        <option value="1993">1993</option>
-                                                        <option value="1992">1992</option>
-                                                        <option value="1991">1991</option>
-                                                        <option value="1990">1990</option>
-                                                        <option value="1989">1989</option>
-                                                        <option value="1988">1988</option>
-                                                        <option value="1987">1987</option>
-                                                        <option value="1986">1986</option>
-                                                        <option value="1985">1985</option>
-                                                        <option value="1984">1984</option>
-                                                        <option value="1983">1983</option>
-                                                        <option value="1982">1982</option>
-                                                        <option value="1981">1981</option>
-                                                        <option value="1980">1980</option>
-                                                        <option value="1979">1979</option>
-                                                        <option value="1978">1978</option>
-                                                        <option value="1977">1977</option>
-                                                        <option value="1976">1976</option>
-                                                        <option value="1975">1975</option>
-                                                        <option value="1974">1974</option>
-                                                        <option value="1973">1973</option>
-                                                        <option value="1972">1972</option>
-                                                        <option value="1971">1971</option>
-                                                        <option value="1970">1970</option>
-                                                        <option value="1969">1969</option>
-                                                        <option value="1968">1968</option>
-                                                        <option value="1967">1967</option>
-                                                        <option value="1966">1966</option>
-                                                        <option value="1965">1965</option>
-                                                        <option value="1964">1964</option>
-                                                        <option value="1963">1963</option>
-                                                        <option value="1962">1962</option>
-                                                        <option value="1961">1961</option>
-                                                        <option value="1960">1960</option>
-                                                        <option value="1959">1959</option>
-                                                        <option value="1958">1958</option>
-                                                        <option value="1957">1957</option>
-                                                        <option value="1956">1956</option>
-                                                        <option value="1955">1955</option>
-                                                        <option value="1954">1954</option>
-                                                        <option value="1953">1953</option>
-                                                        <option value="1952">1952</option>
-                                                        <option value="1951">1951</option>
-                                                        <option value="1950">1950</option>
-                                                        <option value="1949">1949</option>
-                                                        <option value="1948">1948</option>
-                                                        <option value="1947">1947</option>
-                                                        <option value="1946">1946</option>
-                                                        <option value="1945">1945</option>
-                                                        <option value="1944">1944</option>
-                                                        <option value="1943">1943</option>
-                                                        <option value="1942">1942</option>
-                                                        <option value="1941">1941</option>
-                                                        <option value="1940">1940</option>
-                                                        <option value="1939">1939</option>
-                                                        <option value="1938">1938</option>
-                                                        <option value="1937">1937</option>
-                                                        <option value="1936">1936</option>
-                                                        <option value="1935">1935</option>
-                                                        <option value="1934">1934</option>
-                                                        <option value="1933">1933</option>
-                                                        <option value="1932">1932</option>
-                                                        <option value="1931">1931</option>
-                                                        <option value="1930">1930</option>
-                                                        <option value="1929">1929</option>
-                                                        <option value="1928">1928</option>
-                                                        <option value="1927">1927</option>
-                                                        <option value="1926">1926</option>
-                                                        <option value="1925">1925</option>
-                                                        <option value="1924">1924</option>
-                                                        <option value="1923">1923</option>
-                                                        <option value="1922">1922</option>
-                                                        <option value="1921">1921</option>
-                                                        <option value="1920">1920</option>
-                                                    </select>
+                                <!--祈福者卡(none) boostarp input -->
+                                <input type="text" class="form-control col-8 radius0  exampleInputPhoneNumber text_mobile_2 mobile" placeholder="請輸入連絡電話" id="exampleInputPhoneNumber" pattern="09\d{2}-?\d{3}-?\d{3}">
+                            </div>
 
-                                                </div>
-                                                <div class="fake_year"></div>
-                                            </div>
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize d-flex aic p-0">
-                                                    <select class="form-control col radius0 exampleInputMonth month" id="exampleInputTime_3">
-                                                        <option selected value="">選擇</option>
-                                                        <option value="01">1</option>
-                                                        <option value="02">2</option>
-                                                        <option value="03">3</option>
-                                                        <option value="04">4</option>
-                                                        <option value="05">5</option>
-                                                        <option value="06">6</option>
-                                                        <option value="07">7</option>
-                                                        <option value="08">8</option>
-                                                        <option value="09">9</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="fake_month"></div>
-                                            </div>
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize d-flex aic p-0 ">
-                                                    <select class="form-control col radius0 exampleInputDay day " id="exampleInputTime_4">
-                                                        <option selected value="">選擇</option>
-                                                        <option value="01">1</option>
-                                                        <option value="02">2</option>
-                                                        <option value="03">3</option>
-                                                        <option value="04">4</option>
-                                                        <option value="05">5</option>
-                                                        <option value="06">6</option>
-                                                        <option value="07">7</option>
-                                                        <option value="08">8</option>
-                                                        <option value="09">9</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
-                                                        <option value="13">13</option>
-                                                        <option value="14">14</option>
-                                                        <option value="15">15</option>
-                                                        <option value="16">16</option>
-                                                        <option value="17">17</option>
-                                                        <option value="18">18</option>
-                                                        <option value="19">19</option>
-                                                        <option value="20">20</option>
-                                                        <option value="21">21</option>
-                                                        <option value="22">22</option>
-                                                        <option value="23">23</option>
-                                                        <option value="24">24</option>
-                                                        <option value="25">25</option>
-                                                        <option value="26">26</option>
-                                                        <option value="27">27</option>
-                                                        <option value="28">28</option>
-                                                        <option value="29">29</option>
-                                                        <option value="30">30</option>
-                                                        <option value="31">31</option>
-                                                    </select>
-                                                </div>
-                                                <div class="fake_day"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- 空值警告用 年月日-->
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                        <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
-                                        </div>
-                                        <div class="col-lg-11 displayflex aic p-0">
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize_2 d-flex aic p-0 ">
-                                                    <div class="year vishidden"></div>
-                                                    <small class="form-text error"></small>
-
-                                                </div>
-                                                <div class="fake_year vishidden"></div>
-                                            </div>
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize d-flex aic p-0">
-                                                    <div class="month vishidden"></div>
-                                                    <small class="form-text error"></small>
-
-                                                </div>
-                                                <div class="fake_month vishidden"></div>
-                                            </div>
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize d-flex aic p-0 ">
-                                                    <div class="day vishidden"></div>
-                                                    <small class="form-text error"></small>
-                                                </div>
-                                                <div class="fake_day vishidden"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-                                <!--  祈福者卡(none) input_1_時辰-->
-                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-                                    <!-- 祈福者卡(none)*時辰 -->
-                                    <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
-                                        <p class="redcolorh5 opac">*</p>
-                                        <p>出生時辰</p>
-                                    </div>
-                                    <!--祈福者卡(none) boostarp 下拉選單 -->
-                                    <div class="col-11 d-flex aic p-0">
-                                        <div class="col-3 p-0">
-                                            <select class="form-control col-10 radius0 text_time_2">
-                                                <option selected>吉時</option>
-                                                <option value="子時 23~0">子時 23~01</option>
-                                                <option value="丑時 01~03">丑時 01~03</option>
-                                                <option value="寅時 03~05">寅時 03~05</option>
-                                                <option value="卯時 05~07">卯時 05~07</option>
-                                                <option value="辰時 07~09">辰時 07~09</option>
-                                                <option value="巳時 09~11">巳時 09~11</option>
-                                                <option value="午時 11~13">午時 11~13</option>
-                                                <option value="未時 13~15">未時 13~15</option>
-                                                <option value="申時 15~17">申時 15~17</option>
-                                                <option value="酉時 17~19">酉時 17~19</option>
-                                                <option value="戌時 19~21">戌時 19~21</option>
-                                                <option value="亥時 21~23">亥時 21~23</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!--  祈福者卡(none) input_1_性別-->
-
-                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-
-                                    <div class="light_Fill_in_theinformation_input_text col-4 d-flex">
-                                        <p class="redcolorh5 opac">*</p>
-                                        <p>性別</p>
-                                    </div>
-
-                                    <div class="col-11 d-flex aic p-0">
-                                        <div class="col-2 p-0">
-                                            <select class="form-control col-7 radius0 text_xxxx_2">
-                                                <option value="男">男</option>
-                                                <option value="女">女</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <!--  祈福者卡(none) input_1_電話-->
-                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-                                    <!--祈福者卡(none) *連絡電話 -->
+                            <!--  祈福者卡(none)input_1_地址  測試版本新增空值警告-->
+                            <div class="all paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <!--祈福者卡(none) *地址 -->
                                     <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                        <p class="redcolorh5 opac">*</p>
-                                        <p>連絡電話</p>
+                                        <p class="redcolorh5">*</p>
+                                        <p>地址</p>
                                     </div>
-                                    <!--祈福者卡(none) boostarp input -->
-                                    <input type="text" class="form-control col-8 radius0  exampleInputPhoneNumber text_mobile_2 mobile" placeholder="請輸入連絡電話" id="exampleInputPhoneNumber" pattern="09\d{2}-?\d{3}-?\d{3}">
-                                </div>
+                                    <!-- 祈福者卡(none)boostarp input -->
+                                    <div class="col-8 p-0">
+                                        <input type="text" class="form-control  radius0 exampleInputaddress address text_address_2" placeholder="請輸入地址" cols="30" rows="3" name="address" id="address">
 
-                                <!--  祈福者卡(none)input_1_地址  測試版本新增空值警告-->
-                                <div class="all paddingbottom40">
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                        <!--祈福者卡(none) *地址 -->
-                                        <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                            <p class="redcolorh5">*</p>
-                                            <p>地址</p>
-                                        </div>
-                                        <!-- 祈福者卡(none)boostarp input -->
-                                        <div class="col-8 p-0">
-                                            <input type="text" class="form-control  radius0 exampleInputaddress address text_address_2" placeholder="請輸入地址" cols="30" rows="3" name="address" id="address">
-
-                                        </div>
-                                    </div>
-                                    <!-- 空值警告用 地址-->
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                        <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                        </div>
-                                        <div class="col-8 p-0">
-                                            <div class="address vishidden"></div>
-                                            <small class="form-text error"></small>
-                                        </div>
                                     </div>
                                 </div>
+                                <!-- 空值警告用 地址-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    </div>
+                                    <div class="col-8 p-0">
+                                        <div class="address vishidden"></div>
+                                        <small class="form-text error"></small>
+                                    </div>
+                                </div>
+                            </div>
 
 
-                                <!-- 祈福者卡(none) 改 -->
-                                <div class="light_add_set lightadd_this ">
-                                    <div class="paddingbottom40 myselector_group">
-                                        <!-- 三層篩選 救救我QQ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                        <div class="light_Fill_in_theinformation_input_set d-flex col-8  marginauto chained-selects" data-selector="myselector">
-                                            <!--  input_1_選擇燈種 -->
-                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-7 marginauto p-0 ">
-                                                <!-- *燈種 -->
-                                                <div class="light_Fill_in_theinformation_input_text col-7 padright0 d-flex aic">
-                                                    <p class="redcolorh5">*</p>
-                                                    <p>選擇燈種</p>
-                                                </div>
-                                                <!-- boostarp 下拉選單 -->
-                                                <div class="col-4 d-flex aic p-0">
-                                                    <div class="col p-0">
-                                                        <select name="light_type" class="form-control col-11 radius0 lightarray light_type" id="select-1" required>
-                                                            <option selected value="">選擇燈種</option>
-                                                            <option>光明燈</option>
-                                                            <option>文昌燈</option>
-                                                            <option>安太歲</option>
-                                                            <option>藥師燈</option>
-                                                            <option>發財燈</option>
-                                                            <option>姻緣燈</option>
-                                                        </select>
+                            <!-- 祈福者卡(none) 改 -->
+                            <div class="light_add_set lightadd_this ">
+                                <div class="paddingbottom40 myselector_group">
+                                    <!-- 三層篩選 救救我QQ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                    <div class="light_Fill_in_theinformation_input_set d-flex col-8  marginauto chained-selects" data-selector="myselector">
+                                        <!--  input_1_選擇燈種 -->
+                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-7 marginauto p-0 ">
+                                            <!-- *燈種 -->
+                                            <div class="light_Fill_in_theinformation_input_text col-7 padright0 d-flex aic">
+                                                <p class="redcolorh5">*</p>
+                                                <p>選擇燈種</p>
+                                            </div>
+                                            <!-- boostarp 下拉選單 -->
+                                            <div class="col-4 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <select name="light_type" class="form-control col-11 radius0 lightarray light_type" id="select-1" required>
+                                                        <option selected value="">選擇燈種</option>
+                                                        <option>光明燈</option>
+                                                        <option>文昌燈</option>
+                                                        <option>安太歲</option>
+                                                        <option>藥師燈</option>
+                                                        <option>發財燈</option>
+                                                        <option>姻緣燈</option>
+                                                    </select>
 
-                                                        <!-- <small class="form-text error"></small> -->
-                                                    </div>
+                                                    <!-- <small class="form-text error"></small> -->
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!-- 祈福者卡(none)input_1_ 選擇廟宇-->
-                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto p-0 flex-wrap">
-                                                <!-- 祈福者卡(none) *廟宇 -->
-                                                <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
-                                                    <p class="redcolorh5">*</p>
-                                                    <p>選擇廟宇</p>
-                                                </div>
-                                                <!--祈福者卡(none) boostarp 下拉選單 -->
-                                                <div class="col-3 d-flex aic p-0">
-                                                    <div class="col p-0">
-                                                        <select name="light_area" class="form-control col-11 radius0 areaarray light_area" id="select-2" disabled>
-                                                            <option selected value="">選擇地區</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-5 d-flex aic p-0">
-                                                    <div class="col p-0">
-                                                        <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
-                                                            <option selected value="">選擇廟宇</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
+                                        <!-- 祈福者卡(none)input_1_ 選擇廟宇-->
+                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto p-0 flex-wrap">
+                                            <!-- 祈福者卡(none) *廟宇 -->
+                                            <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                                <p class="redcolorh5">*</p>
+                                                <p>選擇廟宇</p>
                                             </div>
-
+                                            <!--祈福者卡(none) boostarp 下拉選單 -->
+                                            <div class="col-3 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <select name="light_area" class="form-control col-11 radius0 areaarray light_area" id="select-2" disabled>
+                                                        <option selected value="">選擇地區</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-5 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
+                                                        <option selected value="">選擇廟宇</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
                                         </div>
-                                        <!-- 空值警告用  -->
-                                        <div class="light_Fill_in_theinformation_input_set d-flex col-8  marginauto chained-selects">
-                                            <!-- 空值警告用  選燈種-->
-                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-7 marginauto p-0 ">
-                                                <div class="light_Fill_in_theinformation_input_text col-7 padright0 d-flex aic">
-                                                </div>
-                                                <div class="col-4 d-flex aic p-0">
-                                                    <div class="col p-0">
-                                                        <div class="light_type vishidden"></div>
-                                                        <small class="form-text error"></small>
-                                                    </div>
+
+
+                                    </div>
+                                    <!-- 空值警告用  -->
+                                    <div class="light_Fill_in_theinformation_input_set d-flex col-8  marginauto chained-selects">
+                                        <!-- 空值警告用  選燈種-->
+                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-7 marginauto p-0 ">
+                                            <div class="light_Fill_in_theinformation_input_text col-7 padright0 d-flex aic">
+                                            </div>
+                                            <div class="col-4 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <div class="light_type vishidden"></div>
+                                                    <small class="form-text error"></small>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!-- 空值警告用  選地區 廟宇-->
-                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto p-0 flex-wrap">
-                                                <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                        <!-- 空值警告用  選地區 廟宇-->
+                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto p-0 flex-wrap">
+                                            <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                            </div>
+                                            <div class="col-3 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <div class="light_area vishidden"></div>
+                                                    <small class="form-text error"></small>
                                                 </div>
-                                                <div class="col-3 d-flex aic p-0">
-                                                    <div class="col p-0">
-                                                        <div class="light_area vishidden"></div>
-                                                        <small class="form-text error"></small>
-                                                    </div>
-                                                </div>
-                                                <div class="col-5 d-flex aic p-0">
-                                                    <div class="col p-0">
-                                                        <div class="light_temple vishidden"></div>
-                                                        <small class="form-text error"></small>
-                                                    </div>
+                                            </div>
+                                            <div class="col-5 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <div class="light_temple vishidden"></div>
+                                                    <small class="form-text error"></small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                <!--  預設祈福者_按鈕_新增廟宇 -->
-                                <div class="button_add_set d-flex juscsb  marginauto paddingbottom40 col-8">
-                                    <div class="button_add ">
-                                        <div class="btnss graycolor butomcolor light_add">
-                                            <p>+ 新增燈種與廟宇</p>
-                                        </div>
+                            <!--  預設祈福者_按鈕_新增廟宇 -->
+                            <div class="button_add_set d-flex juscsb  marginauto paddingbottom40 col-8">
+                                <div class="button_add ">
+                                    <div class="btnss graycolor butomcolor light_add">
+                                        <p>+ 新增燈種與廟宇</p>
                                     </div>
-                                    <!-- <div class="button_add vishidden ">
+                                </div>
+                                <!-- <div class="button_add vishidden ">
                                         <button class="graycolor">
                                             <p>+ 新增燈種與廟宇</p>
                                         </button>
                                     </div> -->
-                                </div>
                             </div>
-
                         </div>
+
                     </div>
+
 
 
 
@@ -1682,7 +1686,7 @@ $rows = $pdo->query($sql)->fetchAll();
         <div class="light_Fill_in_theinformation_directory">
             <form name="form1" method="post">
                 <!--   -->
-                <div class="light_Fill_in_theinformation_text  removeset">
+                <div class="light_Fill_in_theinformation_text  removeset_1">
 
 
                     <!-- 手機用 預設祈福者 text_3-->
@@ -2180,512 +2184,512 @@ $rows = $pdo->query($sql)->fetchAll();
 
 
 
-                    <div class="memberadd  " id="memberadd">
-                        <!-- 手機用 祈福者卡(none) text_3-->
-                        <div class="light_Fill_in_theinformation_text_4 padddingtop40">
-                            <!-- 手機用 祈福者卡(none)  小提示 -->
-                            <div class="light_Fill_in_theinformation_text_star d-flex juscsb paddingbottom40">
-                                <!-- 手機用 祈福者卡(none)  小提示 必填資料 -->
-                                <div class="light_Fill_in_theinformation_text_star_left">
-                                    <!-- *的 ICON -->
-                                    <!-- <img src=""> -->
-                                    <p class="redcolorh5">*為必填資料</p>
+
+                    <!-- 手機用 祈福者卡(none) text_3-->
+                    <div class="light_Fill_in_theinformation_text_4 padddingtop40">
+                        <!-- 手機用 祈福者卡(none)  小提示 -->
+                        <div class="light_Fill_in_theinformation_text_star d-flex juscsb paddingbottom40">
+                            <!-- 手機用 祈福者卡(none)  小提示 必填資料 -->
+                            <div class="light_Fill_in_theinformation_text_star_left">
+                                <!-- *的 ICON -->
+                                <!-- <img src=""> -->
+                                <p class="redcolorh5">*為必填資料</p>
+                            </div>
+
+                            <!-- 祈福者卡(none) boostarp 下拉選單 -->
+                            <div class=" d-flex aic p-0">
+                                <div class="col p-0">
+                                    <select class="form-control radius0 exampleInputfriend" id="exampleInputfriend">
+
+                                        <option value="">同親友資料</option>
+                                        <?php foreach ($rows as $p) : ?>
+                                            <option value="<?= $p['sid'] ?>" data-sid="<?= $p['sid'] ?>" data-address="<?= $p['address_'] ?>" data-mobile="<?= $p['mobile_'] ?>" data-year="<?= $p['year'] ?>" data-month="<?= $p['month'] ?>" data-day="<?= $p['day'] ?>" data-birthday="<?= $p['birthday_'] ?>">
+
+
+                                                <?= $p['name_'] ?>
+                                            </option>
+
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--  手機用 祈福者卡(none) _標題 -->
+                        <div class="light_Fill_in_theinformation_title paddingbottom40 postre">
+                            <h3 class="postre">祈福者
+                                <!--  手機用 祈福者卡(none) _標題_刪除按鈕 -->
+                                <button class="graycolor postab padbut dipay">
+                                    <p>刪除</p>
+                                </button>
+                            </h3>
+
+                        </div>
+
+
+                        <!--  手機用 祈福者卡(none) input集合 -->
+                        <div class="light_Fill_in_theinformation_inputset borderbottom  displayno">
+                            <!--  手機用 祈福者卡(none) input_1_姓名-->
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+                                <!--手機用 祈福者卡(none) *姓名 -->
+                                <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    <p class="redcolorh5">*</p>
+                                    <p>姓名</p>
+                                </div>
+                                <!--手機用 祈福者卡(none) boostarp input -->
+                                <div class="col-7 p-0">
+                                    <input type="text" class="form-control  radius0 exampleInputName name" placeholder="請輸入姓名" id="name" name="name">
+                                    <small class="form-text error"></small>
+                                </div>
+                            </div>
+
+                            <!-- 手機用 祈福者卡(none) 預設祈福者 input_1_生日-->
+                            <div class="paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                    <!--手機用 祈福者卡(none) *出生日期 -->
+                                    <div class="light_Fill_in_theinformation_input_text col  d-flex aic">
+                                        <p class="redcolorh5">*</p>
+                                        <p>出生日期</p>
+                                    </div>
+                                    <!--手機用 祈福者卡(none) boostarp 下拉選單 -->
+                                    <div class="col-7 displayflex aic p-0">
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize_2 d-flex aic p-0 ">
+                                                <select class="form-control col radius0 exampleInputYear year" id="exampleInputTime_2">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2010">2010</option>
+                                                    <option value="2009">2009</option>
+                                                    <option value="2008">2008</option>
+                                                    <option value="2007">2007</option>
+                                                    <option value="2006">2006</option>
+                                                    <option value="2005">2005</option>
+                                                    <option value="2004">2004</option>
+                                                    <option value="2003">2003</option>
+                                                    <option value="2002">2002</option>
+                                                    <option value="2001">2001</option>
+                                                    <option value="2000">2000</option>
+                                                    <option value="1999">1999</option>
+                                                    <option value="1998">1998</option>
+                                                    <option value="1997">1997</option>
+                                                    <option value="1996">1996</option>
+                                                    <option value="1995">1995</option>
+                                                    <option value="1994">1994</option>
+                                                    <option value="1993">1993</option>
+                                                    <option value="1992">1992</option>
+                                                    <option value="1991">1991</option>
+                                                    <option value="1990">1990</option>
+                                                    <option value="1989">1989</option>
+                                                    <option value="1988">1988</option>
+                                                    <option value="1987">1987</option>
+                                                    <option value="1986">1986</option>
+                                                    <option value="1985">1985</option>
+                                                    <option value="1984">1984</option>
+                                                    <option value="1983">1983</option>
+                                                    <option value="1982">1982</option>
+                                                    <option value="1981">1981</option>
+                                                    <option value="1980">1980</option>
+                                                    <option value="1979">1979</option>
+                                                    <option value="1978">1978</option>
+                                                    <option value="1977">1977</option>
+                                                    <option value="1976">1976</option>
+                                                    <option value="1975">1975</option>
+                                                    <option value="1974">1974</option>
+                                                    <option value="1973">1973</option>
+                                                    <option value="1972">1972</option>
+                                                    <option value="1971">1971</option>
+                                                    <option value="1970">1970</option>
+                                                    <option value="1969">1969</option>
+                                                    <option value="1968">1968</option>
+                                                    <option value="1967">1967</option>
+                                                    <option value="1966">1966</option>
+                                                    <option value="1965">1965</option>
+                                                    <option value="1964">1964</option>
+                                                    <option value="1963">1963</option>
+                                                    <option value="1962">1962</option>
+                                                    <option value="1961">1961</option>
+                                                    <option value="1960">1960</option>
+                                                    <option value="1959">1959</option>
+                                                    <option value="1958">1958</option>
+                                                    <option value="1957">1957</option>
+                                                    <option value="1956">1956</option>
+                                                    <option value="1955">1955</option>
+                                                    <option value="1954">1954</option>
+                                                    <option value="1953">1953</option>
+                                                    <option value="1952">1952</option>
+                                                    <option value="1951">1951</option>
+                                                    <option value="1950">1950</option>
+                                                    <option value="1949">1949</option>
+                                                    <option value="1948">1948</option>
+                                                    <option value="1947">1947</option>
+                                                    <option value="1946">1946</option>
+                                                    <option value="1945">1945</option>
+                                                    <option value="1944">1944</option>
+                                                    <option value="1943">1943</option>
+                                                    <option value="1942">1942</option>
+                                                    <option value="1941">1941</option>
+                                                    <option value="1940">1940</option>
+                                                    <option value="1939">1939</option>
+                                                    <option value="1938">1938</option>
+                                                    <option value="1937">1937</option>
+                                                    <option value="1936">1936</option>
+                                                    <option value="1935">1935</option>
+                                                    <option value="1934">1934</option>
+                                                    <option value="1933">1933</option>
+                                                    <option value="1932">1932</option>
+                                                    <option value="1931">1931</option>
+                                                    <option value="1930">1930</option>
+                                                    <option value="1929">1929</option>
+                                                    <option value="1928">1928</option>
+                                                    <option value="1927">1927</option>
+                                                    <option value="1926">1926</option>
+                                                    <option value="1925">1925</option>
+                                                    <option value="1924">1924</option>
+                                                    <option value="1923">1923</option>
+                                                    <option value="1922">1922</option>
+                                                    <option value="1921">1921</option>
+                                                    <option value="1920">1920</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="fake_year"></div>
+                                        </div>
+
+                                    </div>
                                 </div>
 
-                                <!-- 祈福者卡(none) boostarp 下拉選單 -->
-                                <div class=" d-flex aic p-0">
+
+                                <!--手機用 祈福者卡(none) 空值警告用 年-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col padright0 d-flex aic">
+                                    </div>
+                                    <div class="col-7  aic p-0">
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize_2 d-flex aic p-0 ">
+                                                <div class="year vishidden"></div>
+                                                <small class="form-text error"></small>
+
+                                            </div>
+                                            <div class="fake_width vishidden"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                    <!--手機用 祈福者卡(none) *出生日期 -->
+                                    <div class="light_Fill_in_theinformation_input_text col  d-flex aic">
+                                        <p class="redcolorh5 vishidden">*</p>
+                                        <p class="vishidden">出生日期</p>
+                                    </div>
+                                    <!--手機用 祈福者卡(none) boostarp 下拉選單 -->
+                                    <div class="col-7 d-flex aic p-0">
+
+
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize_2 d-flex aic p-0">
+                                                <select class="form-control col radius0 exampleInputMonth month" id="exampleInputTime_3">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
+
+                                            </div>
+                                            <div class="fake_month"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize_2 d-flex aic p-0 ">
+                                                <select class="form-control col radius0 exampleInputDay day " id="exampleInputTime_4">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                </select>
+                                            </div>
+                                            <div class="fake_day"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--手機用 祈福者卡(none) 空值警告用 月日-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col padright0 d-flex aic">
+                                    </div>
+                                    <div class="col-7 d-flex aic p-0">
+
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0">
+                                                <div class="month vishidden"></div>
+                                                <small class="form-text error"></small>
+
+                                            </div>
+                                            <div class="fake_width vishidden"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0 ">
+                                                <div class="day vishidden"></div>
+                                                <small class="form-text error"></small>
+                                            </div>
+                                            <div class="fake_width vishidden"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <!--  手機用 祈福者卡(none) input_1_時辰-->
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+                                <!--手機用 祈福者卡(none) *時辰 -->
+                                <div class="light_Fill_in_theinformation_input_text col padright0 d-flex aic">
+                                    <p class="redcolorh5 opac">*</p>
+                                    <p>出生時辰</p>
+                                </div>
+                                <!--手機用 祈福者卡(none) 預設祈福者 boostarp 下拉選單 -->
+                                <div class="col-7 d-flex aic p-0">
                                     <div class="col p-0">
-                                        <select class="form-control radius0 exampleInputfriend" id="exampleInputfriend">
+                                        <select class="form-control col radius0 text_time_2">
+                                            <option selected>吉時</option>
+                                            <option value="子時 23~0">子時 23~01</option>
+                                            <option value="丑時 01~03">丑時 01~03</option>
+                                            <option value="寅時 03~05">寅時 03~05</option>
+                                            <option value="卯時 05~07">卯時 05~07</option>
+                                            <option value="辰時 07~09">辰時 07~09</option>
+                                            <option value="巳時 09~11">巳時 09~11</option>
+                                            <option value="午時 11~13">午時 11~13</option>
+                                            <option value="未時 13~15">未時 13~15</option>
+                                            <option value="申時 15~17">申時 15~17</option>
+                                            <option value="酉時 17~19">酉時 17~19</option>
+                                            <option value="戌時 19~21">戌時 19~21</option>
+                                            <option value="亥時 21~23">亥時 21~23</option>
 
-                                            <option value="">同親友資料</option>
-                                            <?php foreach ($rows as $p) : ?>
-                                                <option value="<?= $p['sid'] ?>" data-sid="<?= $p['sid'] ?>" data-address="<?= $p['address_'] ?>" data-mobile="<?= $p['mobile_'] ?>" data-year="<?= $p['year'] ?>" data-month="<?= $p['month'] ?>" data-day="<?= $p['day'] ?>" data-birthday="<?= $p['birthday_'] ?>">
-
-
-                                                    <?= $p['name_'] ?>
-                                                </option>
-
-                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <!--  手機用 祈福者卡(none) _標題 -->
-                            <div class="light_Fill_in_theinformation_title paddingbottom40 postre">
-                                <h3 class="postre">祈福者
-                                    <!--  手機用 祈福者卡(none) _標題_刪除按鈕 -->
-                                    <button class="graycolor postab padbut dipay">
-                                        <p>刪除</p>
-                                    </button>
-                                </h3>
 
+                            <!--  手機用 祈福者卡(none) input_1_性別-->
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+
+                                <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    <p class="redcolorh5 vishidden">*</p>
+                                    <p>性別</p>
+                                </div>
+
+                                <div class="col-7 d-flex aic p-0">
+                                    <div class="col p-0">
+                                        <select class="form-control col radius0 text_xxxx_2">
+                                            <option value="男">男</option>
+                                            <option value="女">女</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
 
+                            <!--  手機用 祈福者卡(none) input_1_電話-->
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto paddingbottom40">
+                                <!--預設祈福者 *連絡電話 -->
+                                <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    <p class="redcolorh5 opac">*</p>
+                                    <p>連絡電話</p>
+                                </div>
+                                <!--手機用 祈福者卡(none) boostarp input -->
+                                <input type="text" class="form-control col-7 radius0  exampleInputPhoneNumber text_mobile_2 mobile" placeholder="請輸入連絡電話" id="exampleInputPhoneNumber" pattern="09\d{2}-?\d{3}-?\d{3}">
+                            </div>
 
-                            <!--  手機用 祈福者卡(none) input集合 -->
-                            <div class="light_Fill_in_theinformation_inputset borderbottom  displayno">
-                                <!--  手機用 祈福者卡(none) input_1_姓名-->
-                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-                                    <!--手機用 祈福者卡(none) *姓名 -->
+                            <!-- 手機用 祈福者卡(none) input_1_地址-->
+                            <div class="all paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                    <!--手機用 祈福者卡(none) *地址 -->
                                     <div class="light_Fill_in_theinformation_input_text col d-flex">
                                         <p class="redcolorh5">*</p>
-                                        <p>姓名</p>
+                                        <p>地址</p>
                                     </div>
-                                    <!--手機用 祈福者卡(none) boostarp input -->
+                                    <!-- 手機用 祈福者卡(none) boostarp input -->
                                     <div class="col-7 p-0">
-                                        <input type="text" class="form-control  radius0 exampleInputName name" placeholder="請輸入姓名" id="name" name="name">
+                                        <input type="text" class="form-control  radius0 exampleInputaddress address text_address_2" placeholder="請輸入地址" cols="30" rows="3" name="address" id="address">
+
+                                    </div>
+                                </div>
+                                <!--手機用 祈福者卡(none) 空值警告用 地址-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    </div>
+                                    <div class="col-7 p-0">
+                                        <div class="address vishidden"></div>
                                         <small class="form-text error"></small>
                                     </div>
                                 </div>
-
-                                <!-- 手機用 祈福者卡(none) 預設祈福者 input_1_生日-->
-                                <div class="paddingbottom40">
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                        <!--手機用 祈福者卡(none) *出生日期 -->
-                                        <div class="light_Fill_in_theinformation_input_text col  d-flex aic">
-                                            <p class="redcolorh5">*</p>
-                                            <p>出生日期</p>
-                                        </div>
-                                        <!--手機用 祈福者卡(none) boostarp 下拉選單 -->
-                                        <div class="col-7 displayflex aic p-0">
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize_2 d-flex aic p-0 ">
-                                                    <select class="form-control col radius0 exampleInputYear year" id="exampleInputTime_2">
-                                                        <option selected value="">選擇</option>
-                                                        <option value="2021">2021</option>
-                                                        <option value="2020">2020</option>
-                                                        <option value="2019">2019</option>
-                                                        <option value="2018">2018</option>
-                                                        <option value="2017">2017</option>
-                                                        <option value="2016">2016</option>
-                                                        <option value="2015">2015</option>
-                                                        <option value="2014">2014</option>
-                                                        <option value="2013">2013</option>
-                                                        <option value="2012">2012</option>
-                                                        <option value="2011">2011</option>
-                                                        <option value="2010">2010</option>
-                                                        <option value="2009">2009</option>
-                                                        <option value="2008">2008</option>
-                                                        <option value="2007">2007</option>
-                                                        <option value="2006">2006</option>
-                                                        <option value="2005">2005</option>
-                                                        <option value="2004">2004</option>
-                                                        <option value="2003">2003</option>
-                                                        <option value="2002">2002</option>
-                                                        <option value="2001">2001</option>
-                                                        <option value="2000">2000</option>
-                                                        <option value="1999">1999</option>
-                                                        <option value="1998">1998</option>
-                                                        <option value="1997">1997</option>
-                                                        <option value="1996">1996</option>
-                                                        <option value="1995">1995</option>
-                                                        <option value="1994">1994</option>
-                                                        <option value="1993">1993</option>
-                                                        <option value="1992">1992</option>
-                                                        <option value="1991">1991</option>
-                                                        <option value="1990">1990</option>
-                                                        <option value="1989">1989</option>
-                                                        <option value="1988">1988</option>
-                                                        <option value="1987">1987</option>
-                                                        <option value="1986">1986</option>
-                                                        <option value="1985">1985</option>
-                                                        <option value="1984">1984</option>
-                                                        <option value="1983">1983</option>
-                                                        <option value="1982">1982</option>
-                                                        <option value="1981">1981</option>
-                                                        <option value="1980">1980</option>
-                                                        <option value="1979">1979</option>
-                                                        <option value="1978">1978</option>
-                                                        <option value="1977">1977</option>
-                                                        <option value="1976">1976</option>
-                                                        <option value="1975">1975</option>
-                                                        <option value="1974">1974</option>
-                                                        <option value="1973">1973</option>
-                                                        <option value="1972">1972</option>
-                                                        <option value="1971">1971</option>
-                                                        <option value="1970">1970</option>
-                                                        <option value="1969">1969</option>
-                                                        <option value="1968">1968</option>
-                                                        <option value="1967">1967</option>
-                                                        <option value="1966">1966</option>
-                                                        <option value="1965">1965</option>
-                                                        <option value="1964">1964</option>
-                                                        <option value="1963">1963</option>
-                                                        <option value="1962">1962</option>
-                                                        <option value="1961">1961</option>
-                                                        <option value="1960">1960</option>
-                                                        <option value="1959">1959</option>
-                                                        <option value="1958">1958</option>
-                                                        <option value="1957">1957</option>
-                                                        <option value="1956">1956</option>
-                                                        <option value="1955">1955</option>
-                                                        <option value="1954">1954</option>
-                                                        <option value="1953">1953</option>
-                                                        <option value="1952">1952</option>
-                                                        <option value="1951">1951</option>
-                                                        <option value="1950">1950</option>
-                                                        <option value="1949">1949</option>
-                                                        <option value="1948">1948</option>
-                                                        <option value="1947">1947</option>
-                                                        <option value="1946">1946</option>
-                                                        <option value="1945">1945</option>
-                                                        <option value="1944">1944</option>
-                                                        <option value="1943">1943</option>
-                                                        <option value="1942">1942</option>
-                                                        <option value="1941">1941</option>
-                                                        <option value="1940">1940</option>
-                                                        <option value="1939">1939</option>
-                                                        <option value="1938">1938</option>
-                                                        <option value="1937">1937</option>
-                                                        <option value="1936">1936</option>
-                                                        <option value="1935">1935</option>
-                                                        <option value="1934">1934</option>
-                                                        <option value="1933">1933</option>
-                                                        <option value="1932">1932</option>
-                                                        <option value="1931">1931</option>
-                                                        <option value="1930">1930</option>
-                                                        <option value="1929">1929</option>
-                                                        <option value="1928">1928</option>
-                                                        <option value="1927">1927</option>
-                                                        <option value="1926">1926</option>
-                                                        <option value="1925">1925</option>
-                                                        <option value="1924">1924</option>
-                                                        <option value="1923">1923</option>
-                                                        <option value="1922">1922</option>
-                                                        <option value="1921">1921</option>
-                                                        <option value="1920">1920</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="fake_year"></div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                                    <!--手機用 祈福者卡(none) 空值警告用 年-->
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                        <div class="light_Fill_in_theinformation_input_text col padright0 d-flex aic">
-                                        </div>
-                                        <div class="col-7  aic p-0">
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize_2 d-flex aic p-0 ">
-                                                    <div class="year vishidden"></div>
-                                                    <small class="form-text error"></small>
-
-                                                </div>
-                                                <div class="fake_width vishidden"></div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="paddingbottom40">
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                        <!--手機用 祈福者卡(none) *出生日期 -->
-                                        <div class="light_Fill_in_theinformation_input_text col  d-flex aic">
-                                            <p class="redcolorh5 vishidden">*</p>
-                                            <p class="vishidden">出生日期</p>
-                                        </div>
-                                        <!--手機用 祈福者卡(none) boostarp 下拉選單 -->
-                                        <div class="col-7 d-flex aic p-0">
-
-
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize_2 d-flex aic p-0">
-                                                    <select class="form-control col radius0 exampleInputMonth month" id="exampleInputTime_3">
-                                                        <option selected value="">選擇</option>
-                                                        <option value="01">1</option>
-                                                        <option value="02">2</option>
-                                                        <option value="03">3</option>
-                                                        <option value="04">4</option>
-                                                        <option value="05">5</option>
-                                                        <option value="06">6</option>
-                                                        <option value="07">7</option>
-                                                        <option value="08">8</option>
-                                                        <option value="09">9</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="fake_month"></div>
-                                            </div>
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize_2 d-flex aic p-0 ">
-                                                    <select class="form-control col radius0 exampleInputDay day " id="exampleInputTime_4">
-                                                        <option selected value="">選擇</option>
-                                                        <option value="01">1</option>
-                                                        <option value="02">2</option>
-                                                        <option value="03">3</option>
-                                                        <option value="04">4</option>
-                                                        <option value="05">5</option>
-                                                        <option value="06">6</option>
-                                                        <option value="07">7</option>
-                                                        <option value="08">8</option>
-                                                        <option value="09">9</option>
-                                                        <option value="10">10</option>
-                                                        <option value="11">11</option>
-                                                        <option value="12">12</option>
-                                                        <option value="13">13</option>
-                                                        <option value="14">14</option>
-                                                        <option value="15">15</option>
-                                                        <option value="16">16</option>
-                                                        <option value="17">17</option>
-                                                        <option value="18">18</option>
-                                                        <option value="19">19</option>
-                                                        <option value="20">20</option>
-                                                        <option value="21">21</option>
-                                                        <option value="22">22</option>
-                                                        <option value="23">23</option>
-                                                        <option value="24">24</option>
-                                                        <option value="25">25</option>
-                                                        <option value="26">26</option>
-                                                        <option value="27">27</option>
-                                                        <option value="28">28</option>
-                                                        <option value="29">29</option>
-                                                        <option value="30">30</option>
-                                                        <option value="31">31</option>
-                                                    </select>
-                                                </div>
-                                                <div class="fake_day"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--手機用 祈福者卡(none) 空值警告用 月日-->
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                        <div class="light_Fill_in_theinformation_input_text col padright0 d-flex aic">
-                                        </div>
-                                        <div class="col-7 d-flex aic p-0">
-
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize d-flex aic p-0">
-                                                    <div class="month vishidden"></div>
-                                                    <small class="form-text error"></small>
-
-                                                </div>
-                                                <div class="fake_width vishidden"></div>
-                                            </div>
-                                            <div class="boxset d-flex aic">
-                                                <div class="boxsize d-flex aic p-0 ">
-                                                    <div class="day vishidden"></div>
-                                                    <small class="form-text error"></small>
-                                                </div>
-                                                <div class="fake_width vishidden"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-
-                                <!--  手機用 祈福者卡(none) input_1_時辰-->
-                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-                                    <!--手機用 祈福者卡(none) *時辰 -->
-                                    <div class="light_Fill_in_theinformation_input_text col padright0 d-flex aic">
-                                        <p class="redcolorh5 opac">*</p>
-                                        <p>出生時辰</p>
-                                    </div>
-                                    <!--手機用 祈福者卡(none) 預設祈福者 boostarp 下拉選單 -->
-                                    <div class="col-7 d-flex aic p-0">
-                                        <div class="col p-0">
-                                            <select class="form-control col radius0 text_time_2">
-                                                <option selected>吉時</option>
-                                                <option value="子時 23~0">子時 23~01</option>
-                                                <option value="丑時 01~03">丑時 01~03</option>
-                                                <option value="寅時 03~05">寅時 03~05</option>
-                                                <option value="卯時 05~07">卯時 05~07</option>
-                                                <option value="辰時 07~09">辰時 07~09</option>
-                                                <option value="巳時 09~11">巳時 09~11</option>
-                                                <option value="午時 11~13">午時 11~13</option>
-                                                <option value="未時 13~15">未時 13~15</option>
-                                                <option value="申時 15~17">申時 15~17</option>
-                                                <option value="酉時 17~19">酉時 17~19</option>
-                                                <option value="戌時 19~21">戌時 19~21</option>
-                                                <option value="亥時 21~23">亥時 21~23</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!--  手機用 祈福者卡(none) input_1_性別-->
-                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-
-                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                        <p class="redcolorh5 vishidden">*</p>
-                                        <p>性別</p>
-                                    </div>
-
-                                    <div class="col-7 d-flex aic p-0">
-                                        <div class="col p-0">
-                                            <select class="form-control col radius0 text_xxxx_2">
-                                                <option value="男">男</option>
-                                                <option value="女">女</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!--  手機用 祈福者卡(none) input_1_電話-->
-                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto paddingbottom40">
-                                    <!--預設祈福者 *連絡電話 -->
-                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                        <p class="redcolorh5 opac">*</p>
-                                        <p>連絡電話</p>
-                                    </div>
-                                    <!--手機用 祈福者卡(none) boostarp input -->
-                                    <input type="text" class="form-control col-7 radius0  exampleInputPhoneNumber text_mobile_2 mobile" placeholder="請輸入連絡電話" id="exampleInputPhoneNumber" pattern="09\d{2}-?\d{3}-?\d{3}">
-                                </div>
-
-                                <!-- 手機用 祈福者卡(none) input_1_地址-->
-                                <div class="all paddingbottom40">
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                        <!--手機用 祈福者卡(none) *地址 -->
-                                        <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                            <p class="redcolorh5">*</p>
-                                            <p>地址</p>
-                                        </div>
-                                        <!-- 手機用 祈福者卡(none) boostarp input -->
-                                        <div class="col-7 p-0">
-                                            <input type="text" class="form-control  radius0 exampleInputaddress address text_address_2" placeholder="請輸入地址" cols="30" rows="3" name="address" id="address">
-
-                                        </div>
-                                    </div>
-                                    <!--手機用 祈福者卡(none) 空值警告用 地址-->
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                        <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                        </div>
-                                        <div class="col-7 p-0">
-                                            <div class="address vishidden"></div>
-                                            <small class="form-text error"></small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- 改 手機用 祈福者卡(none) 燈種+廟宇套裝-->
-                                <div class="light_add_set_md lightadd_this_md">
-                                    <div class="paddingbottom40 myselector_group">
-                                        <div class="light_Fill_in_theinformation_input_set  col marginauto lightcard" data-selector="myselector">
-                                            <!--  手機用 祈福者卡(none) input_1_選擇燈種 -->
-                                            <div class="paddingbottom40">
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto  ">
-                                                    <!-- 手機用 祈福者卡(none) *燈種 -->
-                                                    <div class="light_Fill_in_theinformation_input_text col  d-flex aic">
-                                                        <p class="redcolorh5">*</p>
-                                                        <p>選擇燈種</p>
-                                                    </div>
-                                                    <!--手機用 祈福者卡(none) boostarp 下拉選單 -->
-                                                    <div class="col-7 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <select name="light_type" class="form-control col-11 radius0 lightarray light_type" id="select-1" required>
-                                                                <option selected value="">選擇燈種</option>
-                                                                <option>光明燈</option>
-                                                                <option>文昌燈</option>
-                                                                <option>安太歲</option>
-                                                                <option>藥師燈</option>
-                                                                <option>發財燈</option>
-                                                                <option>姻緣燈</option>
-                                                            </select>
-                                                        </div>
-                                                        <!-- <i class="far fa-trash-alt marginauto removebut_far_md"></i> -->
-                                                    </div>
-                                                </div>
-                                                <!--手機用 祈福者卡(none) 空值警告用 地址-->
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                                    </div>
-                                                    <div class="col-7 p-0">
-                                                        <div class="light_type vishidden"></div>
-                                                        <small class="form-text error"></small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="paddingbottom40">
-                                                <!--  手機用 祈福者卡(none) input_1_ 選擇廟宇-->
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                                    <!--手機用 *廟宇_地區 -->
-                                                    <div class="light_Fill_in_theinformation_input_text col  d-flex aic">
-                                                        <p class="redcolorh5">*</p>
-                                                        <p>選擇廟宇</p>
-                                                    </div>
-                                                    <!-- 手機用 祈福者卡(none) boostarp 下拉選單 廟宇_地區 資料匯入-->
-                                                    <div class="col-7 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <select name="light_area" class="form-control col-11 radius0 areaarray light_area" id="select-2" disabled>
-                                                                <option selected value="">選擇地區</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <!--手機用 祈福者卡(none) 空值警告用 地址-->
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                                    </div>
-                                                    <div class="col-7 p-0">
-                                                        <div class="light_area vishidden"></div>
-                                                        <small class="form-text error"></small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="paddingbottom40">
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                                    <!--手機用 祈福者卡(none) *廟宇 -->
-                                                    <div class="light_Fill_in_theinformation_input_text col  d-flex aic visy">
-                                                        <p class="redcolorh5">*</p>
-                                                        <p>選擇廟宇</p>
-                                                    </div>
-                                                    <!-- 手機用 祈福者卡(none) boostarp 下拉選單 廟宇_宮廟 資料匯入-->
-                                                    <div class="col-7 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
-                                                                <option selected value="">選擇廟宇</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- 手機用 祈福者卡(none)空值警告用 地址-->
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
-                                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                                    </div>
-                                                    <div class="col-7 p-0">
-                                                        <div class="light_temple vishidden"></div>
-                                                        <small class="form-text error"></small>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 手機用 祈福者卡(none) _按鈕_新增廟宇 -->
-                                <div class="button_add_set_md d-flex juscsb  marginauto paddingbottom35 butmaxwid pad20">
-                                    <div class="button_add ">
-                                        <button class="graycolor butomcolor light_add_md">
-                                            <p>+ 新增燈種與廟宇</p>
-                                        </button>
-                                    </div>
-
-                                </div>
                             </div>
 
+                            <!-- 改 手機用 祈福者卡(none) 燈種+廟宇套裝-->
+                            <div class="light_add_set_md lightadd_this_md">
+                                <div class="paddingbottom40 myselector_group">
+                                    <div class="light_Fill_in_theinformation_input_set  col marginauto lightcard" data-selector="myselector">
+                                        <!--  手機用 祈福者卡(none) input_1_選擇燈種 -->
+                                        <div class="paddingbottom40">
+                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto  ">
+                                                <!-- 手機用 祈福者卡(none) *燈種 -->
+                                                <div class="light_Fill_in_theinformation_input_text col  d-flex aic">
+                                                    <p class="redcolorh5">*</p>
+                                                    <p>選擇燈種</p>
+                                                </div>
+                                                <!--手機用 祈福者卡(none) boostarp 下拉選單 -->
+                                                <div class="col-7 d-flex aic p-0">
+                                                    <div class="col p-0">
+                                                        <select name="light_type" class="form-control col-11 radius0 lightarray light_type" id="select-1" required>
+                                                            <option selected value="">選擇燈種</option>
+                                                            <option>光明燈</option>
+                                                            <option>文昌燈</option>
+                                                            <option>安太歲</option>
+                                                            <option>藥師燈</option>
+                                                            <option>發財燈</option>
+                                                            <option>姻緣燈</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- <i class="far fa-trash-alt marginauto removebut_far_md"></i> -->
+                                                </div>
+                                            </div>
+                                            <!--手機用 祈福者卡(none) 空值警告用 地址-->
+                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                                <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                                </div>
+                                                <div class="col-7 p-0">
+                                                    <div class="light_type vishidden"></div>
+                                                    <small class="form-text error"></small>
+                                                </div>
+                                            </div>
+                                        </div>
 
+
+                                        <div class="paddingbottom40">
+                                            <!--  手機用 祈福者卡(none) input_1_ 選擇廟宇-->
+                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                                <!--手機用 *廟宇_地區 -->
+                                                <div class="light_Fill_in_theinformation_input_text col  d-flex aic">
+                                                    <p class="redcolorh5">*</p>
+                                                    <p>選擇廟宇</p>
+                                                </div>
+                                                <!-- 手機用 祈福者卡(none) boostarp 下拉選單 廟宇_地區 資料匯入-->
+                                                <div class="col-7 d-flex aic p-0">
+                                                    <div class="col p-0">
+                                                        <select name="light_area" class="form-control col-11 radius0 areaarray light_area" id="select-2" disabled>
+                                                            <option selected value="">選擇地區</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--手機用 祈福者卡(none) 空值警告用 地址-->
+                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                                <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                                </div>
+                                                <div class="col-7 p-0">
+                                                    <div class="light_area vishidden"></div>
+                                                    <small class="form-text error"></small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="paddingbottom40">
+                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                                <!--手機用 祈福者卡(none) *廟宇 -->
+                                                <div class="light_Fill_in_theinformation_input_text col  d-flex aic visy">
+                                                    <p class="redcolorh5">*</p>
+                                                    <p>選擇廟宇</p>
+                                                </div>
+                                                <!-- 手機用 祈福者卡(none) boostarp 下拉選單 廟宇_宮廟 資料匯入-->
+                                                <div class="col-7 d-flex aic p-0">
+                                                    <div class="col p-0">
+                                                        <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
+                                                            <option selected value="">選擇廟宇</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- 手機用 祈福者卡(none)空值警告用 地址-->
+                                            <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto ">
+                                                <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                                </div>
+                                                <div class="col-7 p-0">
+                                                    <div class="light_temple vishidden"></div>
+                                                    <small class="form-text error"></small>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 手機用 祈福者卡(none) _按鈕_新增廟宇 -->
+                            <div class="button_add_set_md d-flex juscsb  marginauto paddingbottom35 butmaxwid pad20">
+                                <div class="button_add ">
+                                    <button class="graycolor butomcolor light_add_md">
+                                        <p>+ 新增燈種與廟宇</p>
+                                    </button>
+                                </div>
+
+                            </div>
                         </div>
+
+
                     </div>
+
 
                 </div>
 
@@ -2959,7 +2963,7 @@ $rows = $pdo->query($sql)->fetchAll();
                         // location.reload();
 
                         // 成功送出 轉跳至index首頁
-                        window.location.replace("./index.php");
+                        window.location.replace("./cart.php");
 
                     } else {
                         alert('error');
@@ -3119,7 +3123,7 @@ $rows = $pdo->query($sql)->fetchAll();
                         content: light.join(","),
                         qty: light.length,
                         price: 600,
-                        
+
                         mobile: mobile,
                         address: address,
                         stime: stime,
@@ -3156,10 +3160,10 @@ $rows = $pdo->query($sql)->fetchAll();
 
         function checkForm_input_1() {
             let isPass = true;
-            // 從light_Fill_in_theinformation_text_3 取得值 並forEach執行每一個 該動作宣告為info
+            // 從light_Fill_in_theinformation_text_4 取得值 並forEach執行每一個 該動作宣告為info
             $(".light_Fill_in_theinformation_set").find(".light_Fill_in_theinformation_text_4").get().forEach(info => {
 
-                // 宣告 $name 是從這個function  light_Fill_in_theinformation_text_3是整組祈福者卡 宣告為info 
+                // 宣告 $name 是從這個function  light_Fill_in_theinformation_text_4是整組祈福者卡 宣告為info 
                 // 宣告每個$XXXX = 由每個info找到該.XXXX
                 let $name = $(info).find('.name'),
                     $email = $(info).find('.email'),
@@ -3257,7 +3261,7 @@ $rows = $pdo->query($sql)->fetchAll();
                 blessers = [];
 
 
-                // 從.light_Fill_in_theinformation_text_3 取的值 forEach執行 涵式內每一個一次 
+                // 從.light_Fill_in_theinformation_text_4 取的值 forEach執行 涵式內每一個一次 
                 // 該動作宣告為info
                 $(".light_Fill_in_theinformation_set").find(".light_Fill_in_theinformation_text_4").get().forEach(info => {
 
@@ -3376,488 +3380,488 @@ $rows = $pdo->query($sql)->fetchAll();
 
         })
 
-        let addCard_new = `<div class="light_Fill_in_theinformation_text_3 padddingtop40 ">
-                                <!--  祈福者卡(none)  小提示 -->
-                                <div class="light_Fill_in_theinformation_text_star d-flex juscsb paddingbottom40">
-                                    <!--  祈福者卡(none)  小提示 必填資料 -->
-                                    <div class="light_Fill_in_theinformation_text_star_left">
-                                        <!-- *的 ICON -->
-                                        <!-- <img src=""> -->
-                                        <p class="redcolorh5">*為必填資料</p>
+        let addCard_new = `<div class="light_Fill_in_theinformation_text_3 padddingtop40">
+                        <!--  祈福者卡(none)  小提示 -->
+                        <div class="light_Fill_in_theinformation_text_star d-flex juscsb paddingbottom40">
+                            <!--  祈福者卡(none)  小提示 必填資料 -->
+                            <div class="light_Fill_in_theinformation_text_star_left">
+                                <!-- *的 ICON -->
+                                <!-- <img src=""> -->
+                                <p class="redcolorh5">*為必填資料</p>
+                            </div>
+
+                            <!-- 祈福者卡(none) boostarp 下拉選單 -->
+                            <div class=" d-flex aic p-0">
+                                <div class="col p-0">
+                                    <select class="form-control radius0 exampleInputfriend" id="exampleInputfriend">
+
+                                        <option value="">同親友資料</option>
+                                        <?php foreach ($rows as $p) : ?>
+                                            <option value="<?= $p['sid'] ?>" data-sid="<?= $p['sid'] ?>" data-address="<?= $p['address_'] ?>" data-mobile="<?= $p['mobile_'] ?>" data-birthday="<?= $p['birthday_'] ?>">
+
+
+                                                <?= $p['name_'] ?>
+                                            </option>
+
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--  祈福者卡(none) _標題 -->
+                        <div class="light_Fill_in_theinformation_title tac paddingbottom40 postre">
+                            <h3 class="postre">祈福者
+                                <!--  祈福者卡(none) _標題_刪除按鈕 -->
+                                <button class="graycolor postab padbut removebut">
+                                    <p>刪除</p>
+                                </button>
+                            </h3>
+
+                        </div>
+
+
+                        <!--  祈福者卡(none) input集合 桌機用-->
+                        <div class="light_Fill_in_theinformation_inputset borderbottom displayno_md">
+                            <!--  祈福者卡(none) input_1_姓名-->
+                            <div class="paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <!-- 祈福者卡(none) *姓名 -->
+                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>姓名</p>
                                     </div>
+                                    <!-- 祈福者卡(none) boostarp input -->
+                                    <div class="col-8 p-0">
+                                        <input type="text" class="form-control  radius0 exampleInputName name" placeholder="請輸入姓名" id="name" name="name">
 
-                                    <!-- 祈福者卡(none) boostarp 下拉選單 -->
-                                    <div class=" d-flex aic p-0">
-                                        <div class="col p-0">
-                                            <select class="form-control radius0 exampleInputfriend" id="exampleInputfriend">
+                                    </div>
+                                </div>
+                                <!-- 空值警告用 地址-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    </div>
+                                    <div class="col-8 p-0">
+                                        <div class="name vishidden"></div>
+                                        <small class="form-text error"></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  祈福者卡(none) input_1_生日-->
+                            <div class="paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <!--祈福者卡(none) *出生日期 -->
+                                    <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                        <p class="redcolorh5">*</p>
+                                        <p>出生日期</p>
+                                    </div>
+                                    <!--祈福者卡(none) boostarp 下拉選單 -->
+                                    <div class="col-lg-11 displayflex aic p-0">
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize_2 d-flex aic p-0 ">
+                                                <select class="form-control col radius0 exampleInputYear year" id="exampleInputTime_2">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2010">2010</option>
+                                                    <option value="2009">2009</option>
+                                                    <option value="2008">2008</option>
+                                                    <option value="2007">2007</option>
+                                                    <option value="2006">2006</option>
+                                                    <option value="2005">2005</option>
+                                                    <option value="2004">2004</option>
+                                                    <option value="2003">2003</option>
+                                                    <option value="2002">2002</option>
+                                                    <option value="2001">2001</option>
+                                                    <option value="2000">2000</option>
+                                                    <option value="1999">1999</option>
+                                                    <option value="1998">1998</option>
+                                                    <option value="1997">1997</option>
+                                                    <option value="1996">1996</option>
+                                                    <option value="1995">1995</option>
+                                                    <option value="1994">1994</option>
+                                                    <option value="1993">1993</option>
+                                                    <option value="1992">1992</option>
+                                                    <option value="1991">1991</option>
+                                                    <option value="1990">1990</option>
+                                                    <option value="1989">1989</option>
+                                                    <option value="1988">1988</option>
+                                                    <option value="1987">1987</option>
+                                                    <option value="1986">1986</option>
+                                                    <option value="1985">1985</option>
+                                                    <option value="1984">1984</option>
+                                                    <option value="1983">1983</option>
+                                                    <option value="1982">1982</option>
+                                                    <option value="1981">1981</option>
+                                                    <option value="1980">1980</option>
+                                                    <option value="1979">1979</option>
+                                                    <option value="1978">1978</option>
+                                                    <option value="1977">1977</option>
+                                                    <option value="1976">1976</option>
+                                                    <option value="1975">1975</option>
+                                                    <option value="1974">1974</option>
+                                                    <option value="1973">1973</option>
+                                                    <option value="1972">1972</option>
+                                                    <option value="1971">1971</option>
+                                                    <option value="1970">1970</option>
+                                                    <option value="1969">1969</option>
+                                                    <option value="1968">1968</option>
+                                                    <option value="1967">1967</option>
+                                                    <option value="1966">1966</option>
+                                                    <option value="1965">1965</option>
+                                                    <option value="1964">1964</option>
+                                                    <option value="1963">1963</option>
+                                                    <option value="1962">1962</option>
+                                                    <option value="1961">1961</option>
+                                                    <option value="1960">1960</option>
+                                                    <option value="1959">1959</option>
+                                                    <option value="1958">1958</option>
+                                                    <option value="1957">1957</option>
+                                                    <option value="1956">1956</option>
+                                                    <option value="1955">1955</option>
+                                                    <option value="1954">1954</option>
+                                                    <option value="1953">1953</option>
+                                                    <option value="1952">1952</option>
+                                                    <option value="1951">1951</option>
+                                                    <option value="1950">1950</option>
+                                                    <option value="1949">1949</option>
+                                                    <option value="1948">1948</option>
+                                                    <option value="1947">1947</option>
+                                                    <option value="1946">1946</option>
+                                                    <option value="1945">1945</option>
+                                                    <option value="1944">1944</option>
+                                                    <option value="1943">1943</option>
+                                                    <option value="1942">1942</option>
+                                                    <option value="1941">1941</option>
+                                                    <option value="1940">1940</option>
+                                                    <option value="1939">1939</option>
+                                                    <option value="1938">1938</option>
+                                                    <option value="1937">1937</option>
+                                                    <option value="1936">1936</option>
+                                                    <option value="1935">1935</option>
+                                                    <option value="1934">1934</option>
+                                                    <option value="1933">1933</option>
+                                                    <option value="1932">1932</option>
+                                                    <option value="1931">1931</option>
+                                                    <option value="1930">1930</option>
+                                                    <option value="1929">1929</option>
+                                                    <option value="1928">1928</option>
+                                                    <option value="1927">1927</option>
+                                                    <option value="1926">1926</option>
+                                                    <option value="1925">1925</option>
+                                                    <option value="1924">1924</option>
+                                                    <option value="1923">1923</option>
+                                                    <option value="1922">1922</option>
+                                                    <option value="1921">1921</option>
+                                                    <option value="1920">1920</option>
+                                                </select>
 
-                                                <option value="">同親友資料</option>
-                                                <?php foreach ($rows as $p) : ?>
-                                                    <option value="<?= $p['sid'] ?>" data-sid="<?= $p['sid'] ?>" data-address="<?= $p['address_'] ?>" data-mobile="<?= $p['mobile_'] ?>" data-year="<?= $p['year'] ?>" data-month="<?= $p['month'] ?>" data-day="<?= $p['day'] ?>">
+                                            </div>
+                                            <div class="fake_year"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0">
+                                                <select class="form-control col radius0 exampleInputMonth month" id="exampleInputTime_3">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                </select>
 
-                                                        <?= $p['name_'] ?>
-                                                    </option>
-
-                                                <?php endforeach; ?>
-                                            </select>
+                                            </div>
+                                            <div class="fake_month"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0 ">
+                                                <select class="form-control col radius0 exampleInputDay day " id="exampleInputTime_4">
+                                                    <option selected value="">選擇</option>
+                                                    <option value="01">1</option>
+                                                    <option value="02">2</option>
+                                                    <option value="03">3</option>
+                                                    <option value="04">4</option>
+                                                    <option value="05">5</option>
+                                                    <option value="06">6</option>
+                                                    <option value="07">7</option>
+                                                    <option value="08">8</option>
+                                                    <option value="09">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                    <option value="17">17</option>
+                                                    <option value="18">18</option>
+                                                    <option value="19">19</option>
+                                                    <option value="20">20</option>
+                                                    <option value="21">21</option>
+                                                    <option value="22">22</option>
+                                                    <option value="23">23</option>
+                                                    <option value="24">24</option>
+                                                    <option value="25">25</option>
+                                                    <option value="26">26</option>
+                                                    <option value="27">27</option>
+                                                    <option value="28">28</option>
+                                                    <option value="29">29</option>
+                                                    <option value="30">30</option>
+                                                    <option value="31">31</option>
+                                                </select>
+                                            </div>
+                                            <div class="fake_day"></div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--  祈福者卡(none) _標題 -->
-                                <div class="light_Fill_in_theinformation_title tac paddingbottom40 postre">
-                                    <h3 class="postre">祈福者
-                                        <!--  祈福者卡(none) _標題_刪除按鈕 -->
-                                        <button class="graycolor postab padbut removebut">
-                                            <p>刪除</p>
-                                        </button>
-                                    </h3>
-
-                                </div>
-
-
-                                <!--  祈福者卡(none) input集合 桌機用-->
-                                <div class="light_Fill_in_theinformation_inputset borderbottom displayno_md">
-                                    <!--  祈福者卡(none) input_1_姓名-->
-                                    <div class="paddingbottom40">
-                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                            <!-- 祈福者卡(none) *姓名 -->
-                                            <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                                <p class="redcolorh5">*</p>
-                                                <p>姓名</p>
-                                            </div>
-                                            <!-- 祈福者卡(none) boostarp input -->
-                                            <div class="col-8 p-0">
-                                                <input type="text" class="form-control  radius0 exampleInputName name" placeholder="請輸入姓名" id="name" name="name">
+                                <!-- 空值警告用 年月日-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                    </div>
+                                    <div class="col-lg-11 displayflex aic p-0">
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize_2 d-flex aic p-0 ">
+                                                <div class="year vishidden"></div>
+                                                <small class="form-text error"></small>
 
                                             </div>
+                                            <div class="fake_year vishidden"></div>
                                         </div>
-                                        <!-- 空值警告用 地址-->
-                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                            <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0">
+                                                <div class="month vishidden"></div>
+                                                <small class="form-text error"></small>
+
                                             </div>
-                                            <div class="col-8 p-0">
-                                                <div class="name vishidden"></div>
+                                            <div class="fake_month vishidden"></div>
+                                        </div>
+                                        <div class="boxset d-flex aic">
+                                            <div class="boxsize d-flex aic p-0 ">
+                                                <div class="day vishidden"></div>
                                                 <small class="form-text error"></small>
                                             </div>
+                                            <div class="fake_day vishidden"></div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <!--  祈福者卡(none) input_1_生日-->
-                                    <div class="paddingbottom40">
-                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                            <!--祈福者卡(none) *出生日期 -->
+                            </div>
+
+
+                            <!--  祈福者卡(none) input_1_時辰-->
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+                                <!-- 祈福者卡(none)*時辰 -->
+                                <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
+                                    <p class="redcolorh5 opac">*</p>
+                                    <p>出生時辰</p>
+                                </div>
+                                <!--祈福者卡(none) boostarp 下拉選單 -->
+                                <div class="col-11 d-flex aic p-0">
+                                    <div class="col-3 p-0">
+                                        <select class="form-control col-10 radius0 text_time_2">
+                                            <option selected>吉時</option>
+                                            <option value="子時 23~0">子時 23~01</option>
+                                            <option value="丑時 01~03">丑時 01~03</option>
+                                            <option value="寅時 03~05">寅時 03~05</option>
+                                            <option value="卯時 05~07">卯時 05~07</option>
+                                            <option value="辰時 07~09">辰時 07~09</option>
+                                            <option value="巳時 09~11">巳時 09~11</option>
+                                            <option value="午時 11~13">午時 11~13</option>
+                                            <option value="未時 13~15">未時 13~15</option>
+                                            <option value="申時 15~17">申時 15~17</option>
+                                            <option value="酉時 17~19">酉時 17~19</option>
+                                            <option value="戌時 19~21">戌時 19~21</option>
+                                            <option value="亥時 21~23">亥時 21~23</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--  祈福者卡(none) input_1_性別-->
+
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+
+                                <div class="light_Fill_in_theinformation_input_text col-4 d-flex">
+                                    <p class="redcolorh5 opac">*</p>
+                                    <p>性別</p>
+                                </div>
+
+                                <div class="col-11 d-flex aic p-0">
+                                    <div class="col-2 p-0">
+                                        <select class="form-control col-7 radius0 text_xxxx_2">
+                                            <option value="男">男</option>
+                                            <option value="女">女</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <!--  祈福者卡(none) input_1_電話-->
+                            <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
+                                <!--祈福者卡(none) *連絡電話 -->
+                                <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    <p class="redcolorh5 opac">*</p>
+                                    <p>連絡電話</p>
+                                </div>
+                                <!--祈福者卡(none) boostarp input -->
+                                <input type="text" class="form-control col-8 radius0  exampleInputPhoneNumber text_mobile_2 mobile" placeholder="請輸入連絡電話" id="exampleInputPhoneNumber" pattern="09\d{2}-?\d{3}-?\d{3}">
+                            </div>
+
+                            <!--  祈福者卡(none)input_1_地址  測試版本新增空值警告-->
+                            <div class="all paddingbottom40">
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <!--祈福者卡(none) *地址 -->
+                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                        <p class="redcolorh5">*</p>
+                                        <p>地址</p>
+                                    </div>
+                                    <!-- 祈福者卡(none)boostarp input -->
+                                    <div class="col-8 p-0">
+                                        <input type="text" class="form-control  radius0 exampleInputaddress address text_address_2" placeholder="請輸入地址" cols="30" rows="3" name="address" id="address">
+
+                                    </div>
+                                </div>
+                                <!-- 空值警告用 地址-->
+                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+                                    <div class="light_Fill_in_theinformation_input_text col d-flex">
+                                    </div>
+                                    <div class="col-8 p-0">
+                                        <div class="address vishidden"></div>
+                                        <small class="form-text error"></small>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- 祈福者卡(none) 改 -->
+                            <div class="light_add_set lightadd_this ">
+                                <div class="paddingbottom40 myselector_group">
+                                    <!-- 三層篩選 救救我QQ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                    <div class="light_Fill_in_theinformation_input_set d-flex col-8  marginauto chained-selects" data-selector="myselector">
+                                        <!--  input_1_選擇燈種 -->
+                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-7 marginauto p-0 ">
+                                            <!-- *燈種 -->
+                                            <div class="light_Fill_in_theinformation_input_text col-7 padright0 d-flex aic">
+                                                <p class="redcolorh5">*</p>
+                                                <p>選擇燈種</p>
+                                            </div>
+                                            <!-- boostarp 下拉選單 -->
+                                            <div class="col-4 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <select name="light_type" class="form-control col-11 radius0 lightarray light_type" id="select-1" required>
+                                                        <option selected value="">選擇燈種</option>
+                                                        <option>光明燈</option>
+                                                        <option>文昌燈</option>
+                                                        <option>安太歲</option>
+                                                        <option>藥師燈</option>
+                                                        <option>發財燈</option>
+                                                        <option>姻緣燈</option>
+                                                    </select>
+
+                                                    <!-- <small class="form-text error"></small> -->
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- 祈福者卡(none)input_1_ 選擇廟宇-->
+                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto p-0 flex-wrap">
+                                            <!-- 祈福者卡(none) *廟宇 -->
                                             <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
                                                 <p class="redcolorh5">*</p>
-                                                <p>出生日期</p>
+                                                <p>選擇廟宇</p>
                                             </div>
                                             <!--祈福者卡(none) boostarp 下拉選單 -->
-                                            <div class="col-lg-11 displayflex aic p-0">
-                                                <div class="boxset d-flex aic">
-                                                    <div class="boxsize_2 d-flex aic p-0 ">
-                                                        <select class="form-control col radius0 exampleInputYear year" id="exampleInputTime_2">
-                                                            <option selected value="">選擇</option>
-                                                            <option value="2021">2021</option>
-                                                            <option value="2020">2020</option>
-                                                            <option value="2019">2019</option>
-                                                            <option value="2018">2018</option>
-                                                            <option value="2017">2017</option>
-                                                            <option value="2016">2016</option>
-                                                            <option value="2015">2015</option>
-                                                            <option value="2014">2014</option>
-                                                            <option value="2013">2013</option>
-                                                            <option value="2012">2012</option>
-                                                            <option value="2011">2011</option>
-                                                            <option value="2010">2010</option>
-                                                            <option value="2009">2009</option>
-                                                            <option value="2008">2008</option>
-                                                            <option value="2007">2007</option>
-                                                            <option value="2006">2006</option>
-                                                            <option value="2005">2005</option>
-                                                            <option value="2004">2004</option>
-                                                            <option value="2003">2003</option>
-                                                            <option value="2002">2002</option>
-                                                            <option value="2001">2001</option>
-                                                            <option value="2000">2000</option>
-                                                            <option value="1999">1999</option>
-                                                            <option value="1998">1998</option>
-                                                            <option value="1997">1997</option>
-                                                            <option value="1996">1996</option>
-                                                            <option value="1995">1995</option>
-                                                            <option value="1994">1994</option>
-                                                            <option value="1993">1993</option>
-                                                            <option value="1992">1992</option>
-                                                            <option value="1991">1991</option>
-                                                            <option value="1990">1990</option>
-                                                            <option value="1989">1989</option>
-                                                            <option value="1988">1988</option>
-                                                            <option value="1987">1987</option>
-                                                            <option value="1986">1986</option>
-                                                            <option value="1985">1985</option>
-                                                            <option value="1984">1984</option>
-                                                            <option value="1983">1983</option>
-                                                            <option value="1982">1982</option>
-                                                            <option value="1981">1981</option>
-                                                            <option value="1980">1980</option>
-                                                            <option value="1979">1979</option>
-                                                            <option value="1978">1978</option>
-                                                            <option value="1977">1977</option>
-                                                            <option value="1976">1976</option>
-                                                            <option value="1975">1975</option>
-                                                            <option value="1974">1974</option>
-                                                            <option value="1973">1973</option>
-                                                            <option value="1972">1972</option>
-                                                            <option value="1971">1971</option>
-                                                            <option value="1970">1970</option>
-                                                            <option value="1969">1969</option>
-                                                            <option value="1968">1968</option>
-                                                            <option value="1967">1967</option>
-                                                            <option value="1966">1966</option>
-                                                            <option value="1965">1965</option>
-                                                            <option value="1964">1964</option>
-                                                            <option value="1963">1963</option>
-                                                            <option value="1962">1962</option>
-                                                            <option value="1961">1961</option>
-                                                            <option value="1960">1960</option>
-                                                            <option value="1959">1959</option>
-                                                            <option value="1958">1958</option>
-                                                            <option value="1957">1957</option>
-                                                            <option value="1956">1956</option>
-                                                            <option value="1955">1955</option>
-                                                            <option value="1954">1954</option>
-                                                            <option value="1953">1953</option>
-                                                            <option value="1952">1952</option>
-                                                            <option value="1951">1951</option>
-                                                            <option value="1950">1950</option>
-                                                            <option value="1949">1949</option>
-                                                            <option value="1948">1948</option>
-                                                            <option value="1947">1947</option>
-                                                            <option value="1946">1946</option>
-                                                            <option value="1945">1945</option>
-                                                            <option value="1944">1944</option>
-                                                            <option value="1943">1943</option>
-                                                            <option value="1942">1942</option>
-                                                            <option value="1941">1941</option>
-                                                            <option value="1940">1940</option>
-                                                            <option value="1939">1939</option>
-                                                            <option value="1938">1938</option>
-                                                            <option value="1937">1937</option>
-                                                            <option value="1936">1936</option>
-                                                            <option value="1935">1935</option>
-                                                            <option value="1934">1934</option>
-                                                            <option value="1933">1933</option>
-                                                            <option value="1932">1932</option>
-                                                            <option value="1931">1931</option>
-                                                            <option value="1930">1930</option>
-                                                            <option value="1929">1929</option>
-                                                            <option value="1928">1928</option>
-                                                            <option value="1927">1927</option>
-                                                            <option value="1926">1926</option>
-                                                            <option value="1925">1925</option>
-                                                            <option value="1924">1924</option>
-                                                            <option value="1923">1923</option>
-                                                            <option value="1922">1922</option>
-                                                            <option value="1921">1921</option>
-                                                            <option value="1920">1920</option>
-                                                        </select>
-
-                                                    </div>
-                                                    <div class="fake_year"></div>
+                                            <div class="col-3 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <select name="light_area" class="form-control col-11 radius0 areaarray light_area" id="select-2" disabled>
+                                                        <option selected value="">選擇地區</option>
+                                                    </select>
                                                 </div>
-                                                <div class="boxset d-flex aic">
-                                                    <div class="boxsize d-flex aic p-0">
-                                                        <select class="form-control col radius0 exampleInputMonth month" id="exampleInputTime_3">
-                                                            <option selected value="">選擇</option>
-                                                            <option value="01">1</option>
-                                                            <option value="02">2</option>
-                                                            <option value="03">3</option>
-                                                            <option value="04">4</option>
-                                                            <option value="05">5</option>
-                                                            <option value="06">6</option>
-                                                            <option value="07">7</option>
-                                                            <option value="08">8</option>
-                                                            <option value="09">9</option>
-                                                            <option value="10">10</option>
-                                                            <option value="11">11</option>
-                                                            <option value="12">12</option>
-                                                        </select>
-
-                                                    </div>
-                                                    <div class="fake_month"></div>
+                                            </div>
+                                            <div class="col-5 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
+                                                        <option selected value="">選擇廟宇</option>
+                                                    </select>
                                                 </div>
-                                                <div class="boxset d-flex aic">
-                                                    <div class="boxsize d-flex aic p-0 ">
-                                                        <select class="form-control col radius0 exampleInputDay day" id="exampleInputTime_4">
-                                                            <option selected value="">選擇</option>
-                                                            <option value="01">1</option>
-                                                            <option value="02">2</option>
-                                                            <option value="03">3</option>
-                                                            <option value="04">4</option>
-                                                            <option value="05">5</option>
-                                                            <option value="06">6</option>
-                                                            <option value="07">7</option>
-                                                            <option value="08">8</option>
-                                                            <option value="09">9</option>
-                                                            <option value="10">10</option>
-                                                            <option value="11">11</option>
-                                                            <option value="12">12</option>
-                                                            <option value="13">13</option>
-                                                            <option value="14">14</option>
-                                                            <option value="15">15</option>
-                                                            <option value="16">16</option>
-                                                            <option value="17">17</option>
-                                                            <option value="18">18</option>
-                                                            <option value="19">19</option>
-                                                            <option value="20">20</option>
-                                                            <option value="21">21</option>
-                                                            <option value="22">22</option>
-                                                            <option value="23">23</option>
-                                                            <option value="24">24</option>
-                                                            <option value="25">25</option>
-                                                            <option value="26">26</option>
-                                                            <option value="27">27</option>
-                                                            <option value="28">28</option>
-                                                            <option value="29">29</option>
-                                                            <option value="30">30</option>
-                                                            <option value="31">31</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="fake_day"></div>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                    <!-- 空值警告用  -->
+                                    <div class="light_Fill_in_theinformation_input_set d-flex col-8  marginauto chained-selects">
+                                        <!-- 空值警告用  選燈種-->
+                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-7 marginauto p-0 ">
+                                            <div class="light_Fill_in_theinformation_input_text col-7 padright0 d-flex aic">
+                                            </div>
+                                            <div class="col-4 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <div class="light_type vishidden"></div>
+                                                    <small class="form-text error"></small>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- 空值警告用 年月日-->
-                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
+
+                                        <!-- 空值警告用  選地區 廟宇-->
+                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto p-0 flex-wrap">
                                             <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
                                             </div>
-                                            <div class="col-lg-11 displayflex aic p-0">
-                                                <div class="boxset d-flex aic">
-                                                    <div class="boxsize_2 d-flex aic p-0 ">
-                                                        <div class="year vishidden"></div>
-                                                        <small class="form-text error"></small>
-
-                                                    </div>
-                                                    <div class="fake_year vishidden"></div>
-                                                </div>
-                                                <div class="boxset d-flex aic">
-                                                    <div class="boxsize d-flex aic p-0">
-                                                        <div class="month vishidden"></div>
-                                                        <small class="form-text error"></small>
-
-                                                    </div>
-                                                    <div class="fake_month vishidden"></div>
-                                                </div>
-                                                <div class="boxset d-flex aic">
-                                                    <div class="boxsize d-flex aic p-0 ">
-                                                        <div class="day vishidden"></div>
-                                                        <small class="form-text error"></small>
-                                                    </div>
-                                                    <div class="fake_day vishidden"></div>
+                                            <div class="col-3 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <div class="light_area vishidden"></div>
+                                                    <small class="form-text error"></small>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                    </div>
-
-
-                                    <!--  祈福者卡(none) input_1_時辰-->
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-                                        <!-- 祈福者卡(none)*時辰 -->
-                                        <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
-                                            <p class="redcolorh5 opac">*</p>
-                                            <p>出生時辰</p>
-                                        </div>
-                                        <!--祈福者卡(none) boostarp 下拉選單 -->
-                                        <div class="col-11 d-flex aic p-0">
-                                            <div class="col-3 p-0">
-                                                <select class="form-control col-10 radius0 text_time_2" id="">
-                                                    <option selected>吉時</option>
-                                                    <option value="子時 23~0">子時 23~01</option>
-                                                    <option value="丑時 01~03">丑時 01~03</option>
-                                                    <option value="寅時 03~05">寅時 03~05</option>
-                                                    <option value="卯時 05~07">卯時 05~07</option>
-                                                    <option value="辰時 07~09">辰時 07~09</option>
-                                                    <option value="巳時 09~11">巳時 09~11</option>
-                                                    <option value="午時 11~13">午時 11~13</option>
-                                                    <option value="未時 13~15">未時 13~15</option>
-                                                    <option value="申時 15~17">申時 15~17</option>
-                                                    <option value="酉時 17~19">酉時 17~19</option>
-                                                    <option value="戌時 19~21">戌時 19~21</option>
-                                                    <option value="亥時 21~23">亥時 21~23</option>
-
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <!--  祈福者卡(none) input_1_性別-->
-
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-
-                                        <div class="light_Fill_in_theinformation_input_text col-4 d-flex">
-                                            <p class="redcolorh5 opac">*</p>
-                                            <p>性別</p>
-                                        </div>
-
-                                        <div class="col-11 d-flex aic p-0">
-                                            <div class="col-2 p-0">
-                                                <select class="form-control col-7 radius0 text_xxxx_2">
-                                                    <option value="男">男</option>
-                                                    <option value="女">女</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <!--  祈福者卡(none) input_1_電話-->
-                                    <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto paddingbottom40">
-                                        <!--祈福者卡(none) *連絡電話 -->
-                                        <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                            <p class="redcolorh5 opac">*</p>
-                                            <p>連絡電話</p>
-                                        </div>
-                                        <!--祈福者卡(none) boostarp input -->
-                                        <input type="text" class="form-control col-8 radius0  exampleInputPhoneNumber text_mobile_2 mobile" placeholder="請輸入連絡電話" id="exampleInputPhoneNumber" pattern="09\d{2}-?\d{3}-?\d{3}">
-                                    </div>
-
-                                    <!--  祈福者卡(none)input_1_地址  測試版本新增空值警告-->
-                                    <div class="all paddingbottom40">
-                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                            <!--祈福者卡(none) *地址 -->
-                                            <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                                <p class="redcolorh5">*</p>
-                                                <p>地址</p>
-                                            </div>
-                                            <!-- 祈福者卡(none)boostarp input -->
-                                            <div class="col-8 p-0">
-                                                <input type="text" class="form-control  radius0 exampleInputaddress address text_address_2" placeholder="請輸入地址" cols="30" rows="3" name="address" id="address">
-
-                                            </div>
-                                        </div>
-                                        <!-- 空值警告用 地址-->
-                                        <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto ">
-                                            <div class="light_Fill_in_theinformation_input_text col d-flex">
-                                            </div>
-                                            <div class="col-8 p-0">
-                                                <div class="address vishidden"></div>
-                                                <small class="form-text error"></small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <!-- 祈福者卡(none) 改 -->
-                                    <div class="light_add_set lightadd_this ">
-                                        <div class="paddingbottom40 myselector_group">
-                                            <!-- 三層篩選 救救我QQ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                                            <div class="light_Fill_in_theinformation_input_set d-flex col-8  marginauto chained-selects" data-selector="myselector">
-                                                <!--  input_1_選擇燈種 -->
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-7 marginauto p-0 ">
-                                                    <!-- *燈種 -->
-                                                    <div class="light_Fill_in_theinformation_input_text col-7 padright0 d-flex aic">
-                                                        <p class="redcolorh5">*</p>
-                                                        <p>選擇燈種</p>
-                                                    </div>
-                                                    <!-- boostarp 下拉選單 -->
-                                                    <div class="col-4 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <select name="light_type" class="form-control col-11 radius0 lightarray light_type" id="select-1" required>
-                                                                <option selected value="">選擇燈種</option>
-                                                                <option>光明燈</option>
-                                                                <option>文昌燈</option>
-                                                                <option>安太歲</option>
-                                                                <option>藥師燈</option>
-                                                                <option>發財燈</option>
-                                                                <option>姻緣燈</option>
-                                                            </select>
-
-                                                            <!-- <small class="form-text error"></small> -->
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- 祈福者卡(none)input_1_ 選擇廟宇-->
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto p-0 flex-wrap">
-                                                    <!-- 祈福者卡(none) *廟宇 -->
-                                                    <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
-                                                        <p class="redcolorh5">*</p>
-                                                        <p>選擇廟宇</p>
-                                                    </div>
-                                                    <!--祈福者卡(none) boostarp 下拉選單 -->
-                                                    <div class="col-3 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <select name="light_area" class="form-control col-11 radius0 areaarray light_area" id="select-2" disabled>
-                                                                <option selected value="">選擇地區</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
-                                                                <option selected value="">選擇廟宇</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-
-                                            </div>
-                                            <!-- 空值警告用  -->
-                                            <div class="light_Fill_in_theinformation_input_set d-flex col-8  marginauto chained-selects">
-                                                <!-- 空值警告用  選燈種-->
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-7 marginauto p-0 ">
-                                                    <div class="light_Fill_in_theinformation_input_text col-7 padright0 d-flex aic">
-                                                    </div>
-                                                    <div class="col-4 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <div class="light_type vishidden"></div>
-                                                            <small class="form-text error"></small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- 空值警告用  選地區 廟宇-->
-                                                <div class="light_Fill_in_theinformation_input_1 d-flex aic col-lg-8 marginauto p-0 flex-wrap">
-                                                    <div class="light_Fill_in_theinformation_input_text col-4 padright0 d-flex aic">
-                                                    </div>
-                                                    <div class="col-3 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <div class="light_area vishidden"></div>
-                                                            <small class="form-text error"></small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-5 d-flex aic p-0">
-                                                        <div class="col p-0">
-                                                            <div class="light_temple vishidden"></div>
-                                                            <small class="form-text error"></small>
-                                                        </div>
-                                                    </div>
+                                            <div class="col-5 d-flex aic p-0">
+                                                <div class="col p-0">
+                                                    <div class="light_temple vishidden"></div>
+                                                    <small class="form-text error"></small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <!--  預設祈福者_按鈕_新增廟宇 -->
-                                    <div class="button_add_set d-flex juscsb  marginauto paddingbottom40 col-8">
-                                        <div class="button_add ">
-                                            <div class="btnss graycolor butomcolor light_add">
-                                                <p>+ 新增燈種與廟宇</p>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="button_add vishidden ">
+                            <!--  預設祈福者_按鈕_新增廟宇 -->
+                            <div class="button_add_set d-flex juscsb  marginauto paddingbottom40 col-8">
+                                <div class="button_add ">
+                                    <div class="btnss graycolor butomcolor light_add">
+                                        <p>+ 新增燈種與廟宇</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="button_add vishidden ">
                                         <button class="graycolor">
                                             <p>+ 新增燈種與廟宇</p>
                                         </button>
                                     </div> -->
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
 
-                            </div>`
+                    </div>`;
 
 
 
@@ -4025,7 +4029,7 @@ $rows = $pdo->query($sql)->fetchAll();
 
             // nowcard_md = nowcard_md + 1;
             // console.log(newLiiii_md);
-            $('.removeset').append(addCard_new_md);
+            $('.removeset_1').append(addCard_new_md);
 
         })
         let addCard_new_md = `  

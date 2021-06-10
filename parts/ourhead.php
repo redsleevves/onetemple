@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- navbar2 -->
-    <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/nav_footor.css">
+    <link rel="stylesheet" href="<?= WEB_ROOT ?>/css/nav_footer.css">
     <!--<link rel="stylesheet" href="<?= WEB_ROOT ?>/css/member_data.css">-->
     
     <?= $_gdata['styles'] ?>

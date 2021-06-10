@@ -26,14 +26,15 @@ $default_cat2 = '熱門商品';
 
 $shop_order = isset($_GET['o'])?$_GET['o']:"";
 $cat1 = isset($_GET['cat1'])?$_GET['cat1']:"";
-if(!$cat1) {
+$keyword = isset($_GET['keyword'])?$_GET['keyword']:"";
+if(!$cat1 && !$keyword) {
     $cat2 = isset($_GET['cat2'])?$_GET['cat2']:$default_cat2;
 } else {
     $cat2 = "";
 }
 $price = isset($_GET['price'])?$_GET['price']:$default_price;
 $wheres = [];
-if(!$cat1) {
+if(!$cat1 && !$keyword) {
     if (isset($_GET['cat2']) && $_GET['cat2']) {
         $wheres[] = "cat2 = '".$_GET['cat2']."'";
     } else {

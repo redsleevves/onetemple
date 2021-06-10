@@ -310,7 +310,9 @@ $row = $pdo->query($sql)->fetch();
                     </div>
                     <div class="lucky_btn06">
                         <button class="btnCursor lucky_button06 lucky_Favorites lucky_btn_add" data-toggle="mybtn">收藏此籤</button>
-                        <button class="btnCursor lucky_button06 lucky_btn_add" data-toggle="mybtn">拜訪神明</button>
+                        <a href="<?= WEB_ROOT ?>/discover_temple.php">
+                            <button>拜訪神明</button>
+                        </a>
                     </div>
                 </div>
             </section>

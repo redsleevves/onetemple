@@ -905,7 +905,9 @@ $_gdata = [
             <h3>Sansia Tzushr Temple</h3>
             <h3 id='www'>清水祖師廟</h3>
             <p>的難了老的地一怕斷氣夫所而料部機黨多大登引爸就果？太快覺天代來父處強都最業資不包力突？了文中手</p>
-            <button>READ MORE</button>
+            <a href="<?= WEB_ROOT?>/discover_temple.php">
+                    <button>READ MORE</button>
+                </a>
         </div>
         <img class="bg" src="<?= WEB_ROOT ?>/img/sent.png">
     </div>
