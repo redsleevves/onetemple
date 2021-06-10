@@ -2224,7 +2224,7 @@ $rows = $stmt->fetchAll();
                         <div class="light_Fill_in_theinformation_title paddingbottom40 postre">
                             <h3 class="postre">祈福者
                                 <!--  手機用 祈福者卡(none) _標題_刪除按鈕 -->
-                                <button class="graycolor postab padbut dipay">
+                                <button class="graycolor postab padbut removebut_md">
                                     <p>刪除</p>
                                 </button>
                             </h3>
@@ -3339,7 +3339,7 @@ $rows = $stmt->fetchAll();
 
 
 
-        // 通用 刪除祈福者 on版本
+        // 桌機 刪除祈福者 on版本
         $(document).on('click', '.removebut', (function() {
             console.log('click')
             $(this).parentsUntil('.removeset').remove();
@@ -3349,6 +3349,13 @@ $rows = $stmt->fetchAll();
         $(document).on('click', '.removebut_far', (function() {
             console.log('click')
             $(this).parentsUntil('.light_add_set').remove();
+        }))
+
+
+        // 手機 刪除祈福者 on版本
+        $(document).on('click', '.removebut_md', (function() {
+            console.log('click')
+            $(this).parentsUntil('.removeset_1').remove();
         }))
 
         // 手機 刪除燈種垃圾桶 on版本
@@ -4073,7 +4080,7 @@ $rows = $stmt->fetchAll();
                                 <div class="light_Fill_in_theinformation_title paddingbottom40 postre">
                                     <h3 class="postre">祈福者
                                         <!--  手機用 祈福者卡(none) _標題_刪除按鈕 -->
-                                        <button class="graycolor postab padbut dipay">
+                                        <button class="graycolor postab padbut removebut_md">
                                             <p>刪除</p>
                                         </button>
                                     </h3>
