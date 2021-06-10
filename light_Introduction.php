@@ -515,7 +515,7 @@
                 <h3 class="colorwhite text-focus-in">LIGHT | 祈福點燈</h3>
             </div>
             <!-- page_1 引導箭頭 -->
-            <div class="index_slideDown">
+            <div class="index_slideDown btnCursor">
                 <svg class="arrows">
                     <path class="a1" d="M0 0 L30 32 L60 0"></path>
                     <path class="a2" d="M0 20 L30 52 L60 20"></path>
@@ -691,20 +691,19 @@
         $('.index_slideDown').click(function () {
 
             let windowWidth = $(window).width();
+            var pageBelow = document.getElementById("nav_index_navbar_com").offsetTop;
+            var pageBelow_m = document.getElementById("nav_burgurBar").offsetTop;
 
-            if (windowWidth > 1400) {
-
+            if (windowWidth > 1000) {
                 $("html,body").animate({
-                    scrollTop: 980,
+                    scrollTop: pageBelow + 35,
                 }, 1000);
             };
             if (windowWidth < 400) {
-
                 $("html,body").animate({
-                    scrollTop: 818,
+                    scrollTop: pageBelow_m,
                 }, 1000);
             };
-
 
         });
 

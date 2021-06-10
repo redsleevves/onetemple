@@ -1949,7 +1949,7 @@ $_gdata = [
                 <p class="index_productName">檜木陶瓷杯</p>
             </div>
         </div>
-        <div class="index_shopLink"><a href="<?= WEB_ROOT ?>/product.php">看更多...</a></div>
+        <div class="index_shopLink"><a href="<?= WEB_ROOT ?>/shop.php">看更多...</a></div>
 
     </div>
 
@@ -2052,15 +2052,17 @@ $_gdata = [
         //click slidedown
         $('.index_slideDown').click(function() {
             let windowWidth = $(window).width();
+            var pageBelow = document.getElementById("nav_index_navbar_com").offsetTop;
+            var pageBelow_m = document.getElementById("nav_burgurBar").offsetTop;
 
-            if (windowWidth > 1400) {
+            if (windowWidth > 1000) {
                 $("html,body").animate({
-                    scrollTop: 940,
+                    scrollTop: pageBelow,
                 }, 1000);
             };
             if (windowWidth < 400) {
                 $("html,body").animate({
-                    scrollTop: 818,
+                    scrollTop: pageBelow_m,
                 }, 1000);
             };
 

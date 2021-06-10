@@ -1087,7 +1087,7 @@ $rows = $stmt->fetchAll();
                                                     <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
                                                         <option selected value="">選擇廟宇</option>
                                                     </select>
-                                                    <!-- <i class="far fa-trash-alt marginauto removebut_far_md"></i> -->
+                                                    <!-- <i class="far fa-trash-alt marginauto removebut_far"></i> -->
                                                 </div>
                                             </div>
 
@@ -3378,7 +3378,7 @@ $rows = $stmt->fetchAll();
             // nowcard = nowcard + 1;
             // console.log('click', newLiiii)
             $('.removeset').append(addCard_new);
-
+            bindMySelector(options);
         })
 
         let addCard_new = `<div class="light_Fill_in_theinformation_text_3 padddingtop40">
@@ -3770,7 +3770,7 @@ $rows = $stmt->fetchAll();
                                             <!-- boostarp 下拉選單 -->
                                             <div class="col-4 d-flex aic p-0">
                                                 <div class="col p-0">
-                                                    <select name="light_type" class="form-control col-11 radius0 lightarray light_type" id="select-1" required>
+                                                    <select name="light_type" class="form-control col-11 radius0 lightarray light_type" id="select-1" required >
                                                         <option selected value="">選擇燈種</option>
                                                         <option>光明燈</option>
                                                         <option>文昌燈</option>
@@ -3946,7 +3946,7 @@ $rows = $stmt->fetchAll();
                                                 <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
                                                     <option selected value="">選擇廟宇</option>
                                                 </select>
-                                           
+                                                <i class="far fa-trash-alt marginauto removebut_far"></i>
                                             </div>
                                         </div>
 
@@ -4033,7 +4033,7 @@ $rows = $stmt->fetchAll();
             // nowcard_md = nowcard_md + 1;
             // console.log(newLiiii_md);
             $('.removeset_1').append(addCard_new_md);
-
+            bindMySelector(options);
         })
         let addCard_new_md = `  
             <div class="light_Fill_in_theinformation_text_4 padddingtop40">
@@ -4563,7 +4563,8 @@ $rows = $stmt->fetchAll();
 
 
 
-        let addLight_new_md = `<div class="light_Fill_in_theinformation_input_set  col marginauto lightcard" data-selector="myselector">
+        let addLight_new_md = `<div class="paddingbottom40 myselector_group">
+        <div class="light_Fill_in_theinformation_input_set  col marginauto lightcard" data-selector="myselector">
                                     <!--  手機用 祈福者卡(none) input_1_選擇燈種 -->
                                     <div class="paddingbottom40">
                                         <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto  ">
@@ -4656,9 +4657,7 @@ $rows = $stmt->fetchAll();
                                             </div>
                                         </div>
                                     </div>
-
-
-
+</div>
                                 </div> `;
 
 
