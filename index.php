@@ -168,7 +168,7 @@ $_gdata = [
         position: absolute;
         top: 50px;
         width: 100%;
-        z-index: 2;
+        z-index: 10;
         color: #fff;
     }
 
@@ -202,6 +202,16 @@ $_gdata = [
         letter-spacing: 0.2rem;
         margin: 0 50px 0 10px;
 
+        position: relative;
+        left: 0;
+        transition: .5s;
+    }
+    .index_storyBtn:hover{
+        left: 10px;
+        transition: .5s;
+    }
+    .index_storyBtn a {
+        color: #fff;
     }
 
     /* slide-dots */
@@ -1297,7 +1307,7 @@ $_gdata = [
                     </g>
                 </svg>
             </div>
-            <p class="index_storyBtn">STORY</p>
+            <p class="index_storyBtn"><a href="<?= WEB_ROOT ?>/discover_temple.php">STORY</a></p>
         </div>
 
         <ul class="slider_dots">
