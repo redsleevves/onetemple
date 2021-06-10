@@ -361,7 +361,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         }
 
         .mobile_thumbnail {
-            height: 150px;
+            height: 120px;
             padding: 0 10px;
         }
 
@@ -509,13 +509,13 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 <table class="table table-light">
                     <thead>
                         <tr>
-                            <th scope="col">商品圖</th>
-                            <th scope="col">商品名稱</th>
-                            <th scope="col">內容</th>
-                            <th scope="col">數量</th>
-                            <th scope="col">金額</th>
-                            <th scope="col">備註</th>
-                            <th scope="col">刪除</th>
+                            <th scope="col" class="col-1">商品圖</th>
+                            <th scope="col" class="col-2">商品名稱</th>
+                            <th scope="col" class="col-3">內容</th>
+                            <th scope="col" class="col-2">數量</th>
+                            <th scope="col" class="col-2">金額</th>
+                            <th scope="col" class="col-2">備註</th>
+                            <th scope="col" class="col-2">刪除</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -566,13 +566,13 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 <table class="table table-light">
                     <thead>
                         <tr>
-                            <th scope="col">商品圖</th>
-                            <th scope="col">商品名稱</th>
-                            <th scope="col">內容</th>
-                            <th scope="col">數量</th>
-                            <th scope="col">金額</th>
-                            <th scope="col">備註</th>
-                            <th scope="col">刪除</th>
+                            <th scope="col" class="col-1">商品圖</th>
+                            <th scope="col" class="col-2">商品名稱</th>
+                            <th scope="col" class="col-3">內容</th>
+                            <th scope="col" class="col-2">數量</th>
+                            <th scope="col" class="col-2">金額</th>
+                            <th scope="col" class="col-2">備註</th>
+                            <th scope="col" class="col-2">刪除</th>
                         </tr>
                     </thead>
                     <tbody>
