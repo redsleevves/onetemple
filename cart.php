@@ -14,7 +14,7 @@ $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 
 $plan_sql = "SELECT * FROM `trips`";
 $plan_rows = $pdo->query($plan_sql)->fetchAll();
-
+var_dump($_SESSION);
 ?>
 <?php include __DIR__ . '/parts/ourhead.php'; ?>
 
@@ -633,6 +633,8 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 </tr>
             </thead>
             <tbody>
+            <?php if (empty($_SESSION['cart']['product'])) : ?>
+                <?php else : ?>
                 <?php foreach ($_SESSION['cart']['product'] as $i) : ?>
                     <?php foreach ($pdc_rows as $a)
                         if ($i['id'] == $a['id']) : ?>
@@ -645,13 +647,14 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                                     <div class="detail">
                                         <p><?= $i['name'] ?></p>
                                         <p><?= $i['content'] ?></p>
-                                        <p>NTD<?= $i['price'] ?></p>
+                                        <p>NTD <?= $i['price'] ?></p>
+                                        <p>數量 <?= $i['qty'] ?></p>
                                     </div>
-                                    <div class="input-group">
+                                    <!-- <div class="input-group">
                                         <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
                                         <input type="text" class="form-control input-number" value="1" />
                                         <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </td>
                             <td><a href="javascript:" onclick="deleteItem(event)">
@@ -660,7 +663,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         </tr>
                     <?php endif; ?>
                 <?php endforeach; ?>
-
+                <?php endif; ?>
             </tbody>
         </table>
         <table class="cart_card col-12 mb-5">
@@ -672,6 +675,8 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 </tr>
             </thead>
             <tbody>
+            <?php if (empty($_SESSION['cart']['plan'])) : ?>
+                <?php else : ?>
                 <?php foreach ($_SESSION['cart']['plan'] as $j) : ?>
                     <?php foreach ($plan_rows as $b)
                         if ($j['id'] == $b['id']) : ?>
@@ -684,13 +689,14 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                                     <div class="detail">
                                         <p><?= $j['name'] ?></p>
                                         <p><?= $j['content'] ?></p>
-                                        <p>NTD<?= $j['price'] ?></p>
+                                        <p>NTD <?= $j['price'] ?></p>
+                                        <p>數量 <?= $j['qty'] ?></p>
                                     </div>
-                                    <div class="input-group">
+                                    <!-- <div class="input-group">
                                         <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
                                         <input type="text" class="form-control input-number" value="1" />
                                         <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </td>
                             <td><a href="javascript:" onclick="deleteItem(event)">
@@ -699,6 +705,47 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         </tr>
                     <?php endif; ?>
                 <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+        <table class="cart_card col-12 mb-5">
+            <thead>
+                <tr>
+                    <th>點燈</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php if (empty($_SESSION['cart']['plan'])) : ?>
+                <?php else : ?>
+                <?php foreach ($_SESSION['cart']['light'] as $k) : ?>
+                        <tr>
+                            <td>
+                                <div class="mobile_thumbnail"><img src="<?= WEB_ROOT ?>/img/light.jpg"></div>
+                            </td>
+                            <td>
+                                <div class="data">
+                                    <div class="detail">
+                                        <p><?= $k['name'] ?></p>
+                                        <p><?= $k['content'] ?></p>
+                                        <p>NTD <?= $k['price'] ?></p>
+                                        <p>數量 <?= $k['qty'] ?></p>
+                                    </div>
+                                    <!-- <div class="input-group">
+                                        <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                        <input type="text" class="form-control input-number" value="1" />
+                                        <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                    </div> -->
+                                </div>
+                            </td>
+                            <td><a href="javascript:" onclick="deleteItem(event)">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a></td>
+                        </tr>
+                <?php endforeach; ?>
+                <?php endif; ?>
+
             </tbody>
         </table>
     </section>
