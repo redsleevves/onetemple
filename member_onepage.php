@@ -1475,7 +1475,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                             <p class='pl-1 pr-1 long-name'><?= $p['Commodity_name_smallLabel'] ?></p>
                             <p class='pl-1 pr-1 short-name'><?= $p['CommodityName_bigLabel'] ?></p>
                             <div class="d-flex" style="justify-content:space-around">
-                                <p>NTD <?= $p['price'] ?></p>
+                                <p class="price">NTD <?= $p['price'] ?></p>
                                 <a class="check_pdc" href="/onetemple/shop_page.php?id=<?= $p['pdc_sid'] ?>"><button>查看商品</button></a>
                             </div>
                         </div>
@@ -1505,7 +1505,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                                 <p><i class="fas fa-map-marker-alt"></i><?= $t['position'] ?></p>
                                 <p><i class="far fa-clock"></i><?= $t['days'] ?></p>
                                 <P><i class="fas fa-quote-left"></i><?= $t['title3'] ?></P>
-                                <span>NTD<?= $t['price'] ?>元起</span>
+                                <span class="price">NTD <?= $t['price'] ?> 元起</span>
                                 <a style='align-self: flex-end' href="/onetemple/trip_page.php?id=<?= $t['trip_sid'] ?>"><button>查看詳情</button></a>
                             </div>
                         </div>
@@ -1571,12 +1571,12 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
             <table class="table table-light">
                 <thead>
                     <tr>
-                        <th scope="col" style="color: white;">商品圖</th>
-                        <th scope="col">商品名稱</th>
-                        <th scope="col">內容</th>
-                        <th scope="col">數量</th>
-                        <th scope="col">金額</th>
-                        <th scope="col">備註</th>
+                        <th scope="col" class="col-3" style="color: white;">商品圖</th>
+                        <th scope="col" class="col-2">商品名稱</th>
+                        <th scope="col" class="col-2">內容</th>
+                        <th scope="col" class="col-1">數量</th>
+                        <th scope="col" class="col-1">金額</th>
+                        <th scope="col" class="col-2">備註</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1589,7 +1589,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                             <td scope="col"><?= $a['title2'] ?></td>
                             <td scope="col"><?= $a['trip_plan'] ?></td>
                             <td scope="col"><?= $a['trip_qty'] ?></td>
-                            <td scope="col"><?= $a['trip_price'] ?></td>
+                            <td scope="col" class="price"><?= $a['trip_price'] ?></td>
                             <td scope="col"><button type="button" data-toggle="modal" data-target="#comment_Modal">寫下評論</button></td>
                         </tr>
                     <?php endif; ?>
@@ -1602,7 +1602,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                             <td scope="col"><?= $b['CommodityName_bigLabel'] ?></td>
                             <td scope="col"><?= $b['member_sid'] ?></td>
                             <td scope="col"><?= $b['pdc_qty'] ?></td>
-                            <td scope="col"><?= $b['pdc_price'] ?></td>
+                            <td scope="col" class="price"><?= $b['pdc_price'] ?></td>
                             <td scope="col"></td>
                         </tr>
                     <?php endif; ?>
@@ -1615,7 +1615,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                             <td scope="col"><?= $m['name'] ?></td>
                             <td scope="col"></td>
                             <td scope="col"><?= $c['lit_qty'] ?></td>
-                            <td scope="col"><?= $c['lit_price'] ?></td>
+                            <td scope="col" class="price"><?= $c['lit_price'] ?></td>
                             <td scope="col"></td>
                         </tr>
                     <?php endif; ?>
@@ -1649,7 +1649,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                     <th colspan="3">
                         <div class="order_mobile_abstract">
                             <p>訂單編號<?= $s['order_id'] ?></p>
-                            <p>總金額<?= $s['order_totalPrice'] ?></p>
+                            <p class="price">總金額<?= $s['order_totalPrice'] ?></p>
                         </div>
                     </th>
                 </tr>
@@ -1668,7 +1668,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                                     <p><?= $a['trip_plan'] ?></p>
                                     <p>單價 <?= $a['trip_price'] ?></p>
                                     <p>數量 <?= $a['trip_qty'] ?></p>
-                                    <p>小計 <?= $a['trip_price'] * $a['trip_qty'] ?></p>
+                                    <p class="price">小計 <?= $a['trip_price'] * $a['trip_qty'] ?></p>
                                 </div>
                                 <div class="detail_total mt-1">
                                     <button type="button" data-toggle="modal" data-target="#comment_Modal">寫下評論</button>
@@ -1690,7 +1690,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                                     <p><?= $b['Categories'] ?></p>
                                     <p>單價 <?= $b['pdc_price'] ?></p>
                                     <p>數量 <?= $b['pdc_qty'] ?></p>
-                                    <p>小計 <?= $b['pdc_price'] * $b['pdc_qty'] ?></p>
+                                    <p class="price">小計 <?= $b['pdc_price'] * $b['pdc_qty'] ?></p>
                                 </div>
                                 <div class="detail_total mt-1">
                                     <button>再買一次</button>
@@ -1712,7 +1712,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                                     <p><?= $c['lit_cate'] ?></p>
                                     <p>單價 <?= $c['lit_price'] ?></p>
                                     <p>數量 <?= $c['lit_qty'] ?></p>
-                                    <p>小計 <?= $c['lit_price'] * $c['lit_qty'] ?></p>
+                                    <p class="price">小計 <?= $c['lit_price'] * $c['lit_qty'] ?></p>
                                 </div>
                             </div>
                         </td>
@@ -1769,18 +1769,20 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                 </button>
             </div>
             <div class="modal-body">
-                <form style="text-align: center;" id="form" action="main.php">
-                    <i star-rating="1" class="fas fa-star star"></i>
-                    <i star-rating="2" class="fas fa-star star"></i>
-                    <i star-rating="3" class="fas fa-star star"></i>
-                    <i star-rating="4" class="fas fa-star star"></i>
-                    <i star-rating="5" class="fas fa-star star"></i>
+                <form style="text-align: center; display:flex; flex-direction:column; align-items:center;" id="form" action="main.php">
+                    <div>
+                        <i star-rating="1" class="fas fa-star star"></i>
+                        <i star-rating="2" class="fas fa-star star"></i>
+                        <i star-rating="3" class="fas fa-star star"></i>
+                        <i star-rating="4" class="fas fa-star star"></i>
+                        <i star-rating="5" class="fas fa-star star"></i>
+                    </div>
                     <div>
                         <p id="ratingVal">Click on the Stars to Rate them!</p>
                     </div>
                     <input type="number" name="rating" id="ratingInput" value="3" style="display: none;">
                     <textarea name="comment" rows="6" cols="40" placeholder="你喜歡這段旅行嗎？旅途中遇到那些印象深刻的事情呢？寫下來給其他人參考吧！"></textarea>
-                    <input class="mt-3" id='comment_btn' type="submit" value="送出">
+                    <input class="mt-3" id='comment_btn' type="submit" value="送出" style="width: fit-content;">
                 </form>
             </div>
         </div>
@@ -2148,6 +2150,15 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
             });
         }
     }
+
+    var n = document.querySelector('.price');
+
+    function toCurrency() {
+        var parts = num.toString().split('.');
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return parts.join('.');
+    }
+
 
     const avatar = document.querySelector('#avatar');
 
