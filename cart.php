@@ -704,13 +704,6 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     </section>
 </div>
 <div class="mobile_bill">
-    <div class="mobile_discount">
-        <div class="d-flex">
-            <i class="fas fa-tags"></i>
-            <p>折扣碼</p>
-        </div>
-        <input type="text" placeholder="輸入折價券或折扣碼">
-    </div>
     <div class="mobile_sum">
         <p>XXX</p>
         <button type="submit">去買單</button>
