@@ -3890,7 +3890,7 @@ $rows = $stmt->fetchAll();
 
             // nowItem = nowItem + 1;
             // console.log(newLi);
-           
+
             $(this).parents('.button_add_set').prevAll('.lightadd_this').append(addLight_new);
 
             // 彈跳視窗 新增用
@@ -4563,7 +4563,8 @@ $rows = $stmt->fetchAll();
 
 
 
-        let addLight_new_md = `<div class="light_Fill_in_theinformation_input_set  col marginauto lightcard" data-selector="myselector">
+        let addLight_new_md = `<div class="paddingbottom40 myselector_group">
+        <div class="light_Fill_in_theinformation_input_set  col marginauto lightcard" data-selector="myselector">
                                     <!--  手機用 祈福者卡(none) input_1_選擇燈種 -->
                                     <div class="paddingbottom40">
                                         <div class="light_Fill_in_theinformation_input_1 d-flex aic  marginauto  ">
@@ -4656,9 +4657,7 @@ $rows = $stmt->fetchAll();
                                             </div>
                                         </div>
                                     </div>
-
-
-
+</div>
                                 </div> `;
 
 
