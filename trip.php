@@ -618,7 +618,7 @@ if(count($trips) > 0) {
     }
 } else {
 ?>
-                <div class="trip_result text-center">不好意思，我們沒有找到相關的行程</div>
+                <div class="trip_result text-center">不好意思，我們沒有找到相關的行程。</div>
 <?php
 }
 ?>
@@ -732,7 +732,7 @@ if(count($trips) > 0) {
     }
 } else {
 ?>
-<div class="trip_result text-center w-100">不好意思，我們沒有找到相關的行程</div>
+<div class="trip_result text-center w-100">不好意思，我們沒有找到相關的行程。</div>
 <?php
 }
 ?>

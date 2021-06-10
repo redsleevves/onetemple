@@ -592,7 +592,7 @@ if(count($shops) > 0) {
     }
 } else { 
 ?>
-<div class="shop_result text-center w-100"data-aos="fade-up" data-aos-duration="2000">不好意思，我們沒有找到相關的商品</div>
+<div class="shop_result text-center w-100"data-aos="fade-up" data-aos-duration="2000">不好意思，我們沒有找到相關的商品。</div>
                        
 <?php
 }

@@ -38,7 +38,7 @@ $stmt->execute([$member_sid, $_GET['id']]); //執行SQL
 $shop = $stmt->fetch(PDO::FETCH_ASSOC); //取資料
 
 
-$sql = "SELECT * FROM shops WHERE cat2 = '熱門商品' LIMIT 0, 6";
+$sql = "SELECT * FROM shops WHERE cat2 = '聯名合作' LIMIT 0, 12";
 $stmt = $pdo->prepare($sql);
 $stmt->execute();
 $hot_shops = $stmt->fetchAll(PDO::FETCH_ASSOC); // 手機熱門行程陣列
