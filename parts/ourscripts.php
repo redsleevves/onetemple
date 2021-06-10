@@ -119,7 +119,7 @@
                 $(document.formLog).serialize(),
                 function (data) {
                     if (data.success) {
-                        alert('登入成功');
+                        // alert('登入成功');
                         location.reload();
                     } else {
                         alert(data.error);

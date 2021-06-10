@@ -27,6 +27,18 @@ $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 $plan_sql = "SELECT * FROM `trips`";
 $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
+$_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
+
+
+// $order_id = (int)$_GET['order_id'];
+// $sql = 'SELECT `order_id` FROM `order_sum`';
+// $od = $pdo->query($sql)->fetchAll();
+
+// print_r($od)
+
+// $orderID_sql = "SELECT * FROM `order_sum` WHERE `order_id`";
+// $orderID_rows = $pdo->query($orderID_sql)->fetchAll();
+
 //測試用
 // $_SESSION = [
 //         'order_id' => date("YmdHis").substr(microtime(),2,4)
@@ -463,7 +475,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 <a href="" class="astlyep">首頁</a>
                 <!-- 共用雲端找箭頭icon-->
                 <img src="./img/nav_arrow_right.svg">
-                <a href="" class="astlyep">祈福商店</a>
+                <a href="<?= WEB_ROOT ?>/shop.php" class="astlyep">祈福商店</a>
                 <img src="./img/nav_arrow_right.svg">
                 <a href="<?= WEB_ROOT ?>/cart.php" class="astlyep">購物車</a>
                 <img src="./img/nav_arrow_right.svg">
@@ -528,7 +540,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         <p class="checkList_itemPrice" data-price="<?= $j['price'] ?>"></p>
                         <p class="checkList_itemNum" data-qty="<?= $j['qty'] ?>"></p>
                         <p class="checkList_itemTotalP"></p>
-                        <p class="checkList_itemNote"></p>
+                        <p class="checkList_itemNote"><?= $j['note'] ?></p>
                     </div>
                 </div>
             <?php endif; ?>
@@ -778,7 +790,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 </div>
                 <div class="modal-orderNum">
                     <span>訂單編號:</span>
-                    <span name="order_id" id="orderID"><?= date("YmdHis").substr(microtime(),2,4) ?></span>
+                        <span name="order_id" id="orderID"><?= $_SESSION['order_id'] ?></span>
                 </div>
             </div>
             <div class="modal-footer modal-footer-re">
@@ -899,8 +911,8 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     });
 
 
-        //bs-查看詳情
-        $(function () {
+    //bs-查看詳情
+    $(function () {
     $('[data-toggle="popover"]').popover();
     });
 
@@ -1172,28 +1184,52 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     };
 
     //ajex 傳送訂單編號
-        $('#orderbtn').on('click', function() {
+        // let orderID = [$("#orderID").html();
 
-            $.ajax({
-                url: "checkList-api.php",
-                // dataType: "json",
-                method: "POST",
-                data:{
-                    order_id: $("#orderID").html(),
-                    // shipment_fee: $(".checkList_shipFee").html()
-                },
-                error:function(){
-                    alert("失敗");
-                    // console.log(order_id);
-                },
-                success:function(data){
-                    // console.log(order_id);
-                    console.log(data);
-                    // $("#orderID").html(order_id);
-                    // alert("成功");
-                } 
-            });
-        })
+        // $('#orderbtn').click(function() {
+        //     // 用post方式傳送 格式為json
+        //     $.post(
+        //         'checkList-api.php',
+        //         orderID,
+        //         function(data) {
+        //             if (data.success) {
+        //                 alert('succ');
+        //                 // 原畫面刷新
+        //                 // location.reload();
+
+        //                 // 成功送出 轉跳至index首頁
+        //                 // window.location.replace("./cart.php");
+
+        //             } else {
+        //                 alert('error');
+        //             }
+        //         },
+        //         'json'
+        //     )
+
+        // });
+
+        // $('#orderbtn').on('click', function() {
+
+        //     $.ajax({
+        //         url: "checkList-api.php",
+        //         // dataType: "json",
+        //         method: "POST",
+        //         data:{
+        //             order_id: $("#orderID").html(),
+        //         },
+        //         error:function(){
+        //             alert("失敗");
+        //             // console.log(order_id);
+        //         },
+        //         success:function(data){
+        //             // console.log(order_id);
+        //             console.log(data);
+        //             // $("#orderID").html(order_id);
+        //             // alert("成功");
+        //         } 
+        //     });
+        // })
 
     // Go-Top
     $(window).scroll(function (event) {

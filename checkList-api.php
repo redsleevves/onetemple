@@ -11,8 +11,10 @@ $output = [
 
 if(isset($_POST['shipment_method']) ){
 
+    print_r($_POST);
+
     //訂單編號
-    $orderID = 111;
+    $_POST['order_id'] = $_SESSION['order_id'];
 
     //商品總金額
     $pdc_total = 0;
@@ -75,7 +77,7 @@ $o_sql = "INSERT INTO `order_sum`(
 $o_stmt = $pdo->prepare($o_sql);
 $o_stmt->execute([
 
-$orderID, //order_id
+$_POST['order_id'], //order_id
 $member_sid,
 $_POST['shipment_method'],
 $_POST['shipment_shipName'],
@@ -118,7 +120,7 @@ if(empty($_SESSION['cart']['product'])){
     $op_stmt->execute([
 
     $member_sid,
-    $p['sid'], 
+    $p['id'], 
     $p['qty'],
     $p['price'],
     $sum_id_p
