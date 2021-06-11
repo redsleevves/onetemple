@@ -229,7 +229,7 @@ $v = $pdo->query($sql)->fetchAll();
                 <img src="./img/nav_arrow_right.svg">
                 <a href="<?= WEB_ROOT ?>/news_main.php" class="astlyep">最新消息</a>
                 <img src="./img/nav_arrow_right.svg">
-                <a href="<?= WEB_ROOT ?>/news_detail.php?sid=<?= $vBC['sid'] ?>" class="astlyep"><?= $vBC['main_title'] ?></a>
+                <p class="astlyep"><?= $vBC['main_title'] ?></p>
             </div>
         </div>
     <?php endforeach; ?>

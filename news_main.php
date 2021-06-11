@@ -269,7 +269,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
                 <a href="<?= WEB_ROOT?>/index.php" class="astlyep">首頁</a>
                 <!-- 共用雲端找箭頭icon-->
                 <img src="./img/nav_arrow_right.svg">
-                <a href="<?= WEB_ROOT?>/news_main.php" class="astlyep">最新消息</a>
+                <p class="astlyep">最新消息</p>
             </div>
     </div>
 
