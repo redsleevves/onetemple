@@ -479,7 +479,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
                 <img src="./img/nav_arrow_right.svg">
                 <a href="<?= WEB_ROOT ?>/cart.php" class="astlyep">購物車</a>
                 <img src="./img/nav_arrow_right.svg">
-                <a href="#" class="astlyep">確認結帳</a>
+                <p class="astlyep">確認結帳</p>
             </div>
         </div>
 

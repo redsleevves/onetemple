@@ -51,16 +51,16 @@
         $password = $('#password'),
         $repassword = $('#repassword');
     const fileds = [$name, $email, $mobile];
-    const fileds1 = [$name, $email, $mobile, $password, $repassword];
+    const fileds_reg = [$name, $email, $mobile, $password, $repassword];
     // const smalls = [$name.next(), $email.next(), $mobile.next()];
 
     function checkForm() {
 
         let isPass = true;
 
-        fileds1.forEach(el1=>{
-            el1.css('border','1px solid #aaa');
-            el1.parent().find('.form-text').text('');
+        fileds_reg.forEach(el_reg=>{
+            el_reg.css('border','1px solid #aaa');
+            el_reg.parent().find('.form-text').text('');
         });
 
         if ($name.val().length < 2) {
