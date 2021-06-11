@@ -365,9 +365,9 @@ for($i=0;$i<count($hot_shops);$i++) {
             <a href="index.php" class="astlyep">首頁</a>
             <!-- 共用雲端找箭頭icon-->
             <img src="./img/nav_arrow_right.svg">
-            <a href="trip.php" class="astlyep">祈福商店</a>
+            <a href="shop.php" class="astlyep">祈福商店</a>
             <img src="./img/nav_arrow_right.svg">
-            <a href="trip.php" class="astlyep"><?=$shop['title1']?></a>
+            <P class="astlyep mt-3"><?=$shop['title1']?></P>
 
         </div>
     </div>
@@ -441,7 +441,7 @@ for($i=0;$i<count($hot_shops);$i++) {
                 <div class="pt-4"><?=$shop['feature']?>
                 </div>
             </div>
-            <ul class="shop_title col-lg-5  col-12 pt-5 pt-lg-3 pl-lg-5 pl-0">Description / 商品描述
+            <ul class="shop_title col-lg-5  col-12 pt-5 pt-lg-3 pl-lg-5">Description / 商品描述
                 <li class="pt-4">內容物 |</li>
                 <div class="pb-2"><?=$shop['contents']?></div>
                 <li>尺寸 |</li>

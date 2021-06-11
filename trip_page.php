@@ -74,7 +74,7 @@ for($i=0;$i<count($hot_trips);$i++) {
             <img src="./img/nav_arrow_right.svg">
             <a href="trip.php" class="astlyep">聖地行旅</a>
             <img src="./img/nav_arrow_right.svg">
-            <a href="trip.php" class="astlyep"><?=$trip['title2']?></a>
+            <p class="astlyep mt-3"><?=$trip['title2']?></p>
         </div>
     </div>
 
