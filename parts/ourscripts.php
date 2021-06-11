@@ -47,15 +47,21 @@
     const mobile_re = /^09\d{2}-?\d{3}-?\d{3}$/;
     const $name = $('#name'),
         $email = $('#email'),
-        $mobile = $('#mobile');
-    $password = $('#password');
-    $repassword = $('#repassword');
+        $mobile = $('#mobile'),
+        $password = $('#password'),
+        $repassword = $('#repassword');
     const fileds = [$name, $email, $mobile];
+    const fileds1 = [$name, $email, $mobile, $password, $repassword];
     // const smalls = [$name.next(), $email.next(), $mobile.next()];
 
     function checkForm() {
 
         let isPass = true;
+
+        fileds1.forEach(el1=>{
+            el1.css('border','1px solid #aaa');
+            el1.parent().find('.form-text').text('');
+        });
 
         if ($name.val().length < 2) {
             isPass = false;
@@ -84,10 +90,12 @@
                 $(document.formReg).serialize(),
                 function (data) {
                     if (data.success) {
-                        alert('註冊成功');
-                        location.reload();
+                        // alert('註冊成功');
+                        window.location.replace("./member_onepage.php");
                     } else {
-                        alert(data.error);
+                        // alert(data.error);
+                        $email.css('border', '1px solid red');
+                        $email.next().text('此email已註冊過');
                     }
                 },
                 'json'
@@ -95,6 +103,8 @@
         }
 
     }
+
+
     function checkLogin() {
         fileds.forEach(el => {
             el.css('border', '1px solid #CCCCCC');
@@ -122,7 +132,8 @@
                         // alert('登入成功');
                         location.reload();
                     } else {
-                        alert(data.error);
+                        // alert(data.error);
+                        $('#login_password').next().text('帳號或密碼有誤');
                     }
                 },
                 'json'
