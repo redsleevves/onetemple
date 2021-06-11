@@ -545,9 +545,10 @@ function getPageLink($page) {
             <a href="index.php" class="astlyep">首頁</a>
             <!-- 共用雲端找箭頭icon-->
             <img src="./img/nav_arrow_right.svg">
-            聖地行旅
+            <a href="index.php" class="astlyep">聖地行旅</a>
         </div>
     </div>
+    
     <div class="container-fluid trip_body_bg">
         <!-- mobile -->
         <div class="container d-block d-lg-none">

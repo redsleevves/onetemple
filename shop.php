@@ -484,9 +484,10 @@ function getPageLink($page) {
             <a href="index.php" class="astlyep">首頁</a>
             <!-- 共用雲端找箭頭icon-->
             <img src="./img/nav_arrow_right.svg">
-            祈福商店
+            <a href="index.php" class="astlyep">祈福商店</a>
         </div>
     </div>
+    
     <div class="container-fluid shop_body_bg">
         <div class="shop_container container-fluid px-lg-5 px-3 px-0">
             <div class="d-flex justify-content-between mb-2 d-lg-none">

@@ -366,10 +366,12 @@ for($i=0;$i<count($hot_shops);$i++) {
             <!-- 共用雲端找箭頭icon-->
             <img src="./img/nav_arrow_right.svg">
             <a href="trip.php" class="astlyep">祈福商店</a>
-            <img src="./img/nav_arrow_right.svg"><?=$shop['title1']?></div>
+            <img src="./img/nav_arrow_right.svg">
+            <a href="trip.php" class="astlyep"><?=$shop['title1']?></a>
 
         </div>
     </div>
+    
     <div class="shop_container container-fluid px-lg-5 ">
         <div class="row">
             <div id="carouselExampleIndicators" class="carousel slide d-lg-none" data-ride="carousel">

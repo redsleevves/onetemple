@@ -73,8 +73,12 @@ for($i=0;$i<count($hot_trips);$i++) {
             <!-- 共用雲端找箭頭icon-->
             <img src="./img/nav_arrow_right.svg">
             <a href="trip.php" class="astlyep">聖地行旅</a>
-            <img src="./img/nav_arrow_right.svg"><?=$trip['title2']?></div>
+            <img src="./img/nav_arrow_right.svg">
+            <a href="trip.php" class="astlyep"><?=$trip['title2']?></a>
+        </div>
     </div>
+
+    
     <div class="trip_container container-fluid px-lg-5">
         <div class="row">
             <div id="carouselExampleIndicators" class="carousel slide d-lg-none" data-ride="carousel">
