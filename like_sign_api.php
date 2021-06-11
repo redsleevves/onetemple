@@ -22,7 +22,15 @@ $lucky_sid = isset($_GET['lucky_sid']) ? intval($_GET['lucky_sid']) : 0;
 if (isset($_SESSION['user'])) {
     if ($lucky_sid < 1) {
         $output['error'] = 'bad lucky_sid';
-    } else {
+    }
+
+    $member_sid = intval($_SESSION['user']['sid']);
+    $output['addOrDel'] = 'add';
+    $sql2 = "INSERT INTO `fav_lucky`(`member_sid`, `lucky_sid`) VALUES ($member_sid, $lucky_sid) ";
+    $pdo->query($sql2);
+    $output['success'] = true;
+    /*
+    else {
         $member_sid = intval($_SESSION['user']['sid']);
         $sql = "SELECT * FROM `fav_lucky` WHERE `member_sid`=$member_sid AND `lucky_sid`=$lucky_sid";
         $row = $pdo->query($sql)->fetch();
@@ -33,12 +41,8 @@ if (isset($_SESSION['user'])) {
             $pdo->query($sql2);
             $output['success'] = true;
         }
-    }
+    }*/
 }
-
-
-
-echo json_encode($output, JSON_UNESCAPED_UNICODE);
 // $sign_id = isset($_GET['sign_id']) ? intval($_GET['sign_id']) : 0;
 
 // if (isset($_SESSION['user'])) {
@@ -57,3 +61,6 @@ echo json_encode($output, JSON_UNESCAPED_UNICODE);
 //         }
 //     }
 // }
+
+
+echo json_encode($output, JSON_UNESCAPED_UNICODE);
