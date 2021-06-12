@@ -493,7 +493,6 @@ function getPageLink($page) {
             <div class="d-flex justify-content-between mb-2 d-lg-none">
                 <select class="shop_item_body_more shadow bg-white text-center <?=($cat2||$cat1)?'active':''?>" id="exampleFormControlSelect1">
                     <option>商品分類</option>
-                    <option value="線香" <?=($cat1=='線香')?'selected':''?>>線香</option>
                     <option value="飾品" <?=($cat1=='飾品')?'selected':''?>>飾品</option>
                     <option value="擺飾" <?=($cat1=='擺飾')?'selected':''?>>擺飾</option>
                     <option value="平安符"<?=($cat1=='平安符')?'selected':''?>>平安符</option>
@@ -535,7 +534,6 @@ function getPageLink($page) {
                         <div class="shop_category">
                             <h3 class="py-2">商品分類 |</h3>
                             <ul>
-                                <li class="py-1"><a <?=(isset($_GET['cat1']) && $_GET['cat1'] == '線香')?'class="active"':''?>href="shop.php?cat1=線香">線香</a></li>
                                 <li class="py-1"><a <?=(isset($_GET['cat1']) && $_GET['cat1'] == '飾品')?'class="active"':''?>href="shop.php?cat1=飾品">飾品</a></li>
                                 <li class="py-1"><a <?=(isset($_GET['cat1']) && $_GET['cat1'] == '擺飾')?'class="active"':''?>href="shop.php?cat1=擺飾">擺飾</a></li>
                                 <li class="py-1"><a <?=(isset($_GET['cat1']) && $_GET['cat1'] == '平安符')?'class="active"':''?>href="shop.php?cat1=平安符">平安符</a></li>
