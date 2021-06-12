@@ -105,6 +105,10 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         z-index: 1;
     }
 
+    .container-fluid {
+        padding: 0 !important;
+    }
+
     .head {
         margin-top: 100px;
         display: flex;
