@@ -719,7 +719,7 @@ if(count($trips) > 0) {
                                     </div>
                                     <div class="tripc_item_body_price mx-4 pt-1"><span>NTD <?=number_format($trip['price'], 0, ".", ",")?></span> 元起</div>
 
-                                    <div class="d-lg-flex justify-content-end">
+                                    <div class="d-lg-flex justify-content-end pt-1">
                                         <div class="trip_btn1 mr-3 mt-1"><a href="trip_page.php?id=<?=$trip['id']?>">查看詳情</a></div>
                                     </div>
                                     <div

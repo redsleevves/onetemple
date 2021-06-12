@@ -586,7 +586,7 @@ if(count($shops) > 0) {
                                 </div>
                             </div>
                             <div
-                                class="shop_like position-absolute d-flex justify-content-center align-items-center mr-lg-4 mt-lg-2 mr-3 mt-1 <?=($shop['fav']!=0)?"active":""?>" data-id="<?=$shop['id']?>">
+                                class="shop_like position-absolute d-flex justify-content-center align-items-center mt-lg-2 mr-lg-3 mr-1 mt-1 <?=($shop['fav']!=0)?"active":""?>" data-id="<?=$shop['id']?>">
                                 <i class="far fa-heart"></i>
                             </div>
                         </div>
