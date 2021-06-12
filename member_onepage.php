@@ -48,7 +48,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     body {
         font-family: 'Faustina', serif;
         background-image: url(<?= WEB_ROOT ?>/img/bcc.png);
-        position: relative;
+        /* position: relative; */
         overflow-x: hidden;
         width: 100vw;
     }
@@ -162,8 +162,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 
     footer {
         width: 100%;
-        position: absolute;
-
+        margin-top: 70px;
     }
 
     .member_head {
@@ -200,6 +199,11 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         min-height: 700px;
     }
 
+    #fav_product_container,
+    #fav_plan_container {
+        width: 100%;
+    }
+
     .fav_product_container {
         display: flex;
         justify-content: start;
@@ -229,6 +233,14 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         box-shadow: 3px 3px 3px 3px rgb(202, 202, 202);
         border-radius: 5px;
         border: 1px solid gray;
+
+    }
+
+    .fav_product_text {
+        height: 28%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .fav_product_card p {
@@ -743,7 +755,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 
         .order_backdeco {
             position: absolute;
-            bottom: -300px;
+            bottom: 70px;
             right: 0;
             z-index: -1;
             opacity: 0.7;
@@ -1456,7 +1468,9 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
             <?php endforeach; ?>
         </div>
     </div>
-
+    <footer>
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
 </div>
 <section class="fav container-fluid animate__animated animate__fadeInUp animate__faster d-none">
     <div class="fav_product col-lg-8">
@@ -1472,11 +1486,13 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                         <div class="fav_product_card col-lg-3 p-0">
                             <a href="javascript:delete_fav_pdc(<?= $p['sid'] ?>)"><i class="fas fa-times-circle delete d-none"></i></a>
                             <div class="prod_pic"><img src="<?= WEB_ROOT ?>/img/<?= $p['img1'] ?>"></div>
-                            <p class='pl-1 pr-1 long-name'><?= $p['Commodity_name_smallLabel'] ?></p>
-                            <p class='pl-1 pr-1 short-name'><?= $p['CommodityName_bigLabel'] ?></p>
-                            <div class="d-flex" style="justify-content:space-around">
-                                <p class="price">NTD <?= $p['price'] ?></p>
-                                <a class="check_pdc" href="/onetemple/shop_page.php?id=<?= $p['pdc_sid'] ?>"><button>查看商品</button></a>
+                            <div class="fav_product_text">
+                                <p class='pl-1 pr-1 long-name'><?= $p['Commodity_name_smallLabel'] ?></p>
+                                <p class='pl-1 pr-1 short-name'><?= $p['CommodityName_bigLabel'] ?></p>
+                                <div class="d-flex" style="justify-content:space-around">
+                                    <p class="price">NTD <?= $p['price'] ?></p>
+                                    <a class="check_pdc" href="/onetemple/shop_page.php?id=<?= $p['pdc_sid'] ?>"><button>查看商品</button></a>
+                                </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -1539,6 +1555,9 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
             <i class="control d-none control_luck fas fa-chevron-right"></i>
         </div>
     </div>
+    <footer>
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
 </section>
 <section class="ordertable container-fluid animate__animated animate__faster animate__fadeInUp d-none">
     <table class="table table-borderless fixrow abstract col-lg-7">
@@ -1632,6 +1651,9 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     <div class="order_backdeco">
         <img src="<?= WEB_ROOT ?>/img/deco_Incense.png">
     </div>
+    <footer style="position: absolute; bottom:0;">
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
 </section>
 <section class="order_mobile container-fluid animate__animated animate__faster animate__fadeInUp d-none">
     <?php foreach ($sum_rows as $s) : ?>
@@ -1721,6 +1743,9 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
             </tbody>
         </table>
     <?php endforeach; ?>
+    <footer>
+        <p>Copyright© TempleTrip.tw</p>
+    </footer>
 </section>
 
 <!-- Modal -->
@@ -1793,22 +1818,8 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 <script>
     var detail = document.getElementsByClassName(".detail");
 
-    function dynamicFooter(e) {
-        let fixhead = document.querySelector('.member_head').offsetHeight
-        let fixnav = document.querySelector('.nav_navbar_com_container').offsetHeight
-        $('footer').css('top', e + fixhead + fixnav + 80 + 'px')
-        $('body').css('height', e + 300 + 'px')
-    }
-    $(document).ready(function() {
-        let el = document.querySelector('.member_profile')
-        let elh = el.offsetHeight
-        dynamicFooter(elh)
-    });
-
-
     $(".info").click(function() {
         let absoluteBut = document.body.scrollHeight
-        dynamicFooter(absoluteBut)
         $(this).next(detail).slideToggle();
     });
     $(".less").click(function() {
@@ -1829,7 +1840,6 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         $('.order_mobile').addClass('d-none')
         let el = document.querySelector('.member_profile')
         let elh = el.offsetHeight
-        dynamicFooter(elh)
     })
 
     $('.favorite').click(function() {
@@ -1846,7 +1856,6 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         control3()
         let el = document.querySelector('.fav')
         let elh = el.offsetHeight
-        dynamicFooter(elh)
     })
 
     $('.order').click(function() {
@@ -1861,7 +1870,6 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         let el = document.querySelector('.ordertable')
         let elh = el.offsetHeight + 300
         console.log(elh)
-        dynamicFooter(elh)
     })
 
     $(document).ready(function() {
@@ -1906,15 +1914,6 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         }
 
     })
-
-    // $(document).ready(function() {
-    //     $(window).resize(function() {
-    //         var wdth = $(window).width();
-    //         if (wdth < 1000) {
-    //             $('textarea').attr('cols', '30')
-    //         };
-    //     });
-    // });
 
     function control1() {
         if ($('.fav_product_card').length > 0) {
@@ -2297,4 +2296,6 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         );
     }
 </script>
-<?php include __DIR__ . '/parts/html-foot.php'; ?>
+</body>
+
+</html>
