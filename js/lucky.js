@@ -28,6 +28,10 @@ $('.unit').click(function () {
         return attr == "white" ? "#cc543a" : "white";
     });
     $(this).siblings().find('path').attr('fill', '#cc543a')
+    $(this).find('circle').attr('fill', function (index, attr) {
+        return attr == "white" ? "#cc543a" : "white";
+    });
+    $(this).siblings().find('circle').attr('fill', '#cc543a')
 
 })
 
@@ -52,7 +56,7 @@ $('.lucky_button01 .lucky_p2').click(function () {
         setTimeout(function () {
             $(chosen).parent().css({
                 position: 'absolute',
-                left: (boxleft + boxwidth / 2) + -30 + 'px',
+                left: (boxleft + boxwidth / 2) + -50 + 'px',
                 top: (boxtop + boxheight / 2) + 'px',
                 transform: 'scale(' + 3 + ')',
                 transition: 3 + 's'
@@ -71,8 +75,8 @@ $('.lucky_button01 .lucky_p2').click(function () {
     }
 })
 
-// p5
-// --------筊杯-動畫------------           
+
+
 let laugh = {
     "img": "./img/YanCup-02-1.svg",
     "name": "笑筊",
@@ -137,8 +141,14 @@ $('.lucky_button01 .lucky_p5').click(function () {
         $('.lucky_p5').addClass('nextstep');
         $('.node6').addClass('stageColor').siblings().removeClass('stageColor');
         $('.lucky_Swipe_page p').text('06');
+        let pageH = document.querySelector('.lucky_p6').offsetHeight
+        let winH = document.body.clientHeight
+
+        if (document.body.clientWidth < 1000) {
+            $('footer').css('top', pageH - winH + 100 + 'px');
+        }
+
     } else {
-        // lucky();
         failure++;
 
         $('.lucky_p3').removeClass('nextstep')
@@ -170,51 +180,10 @@ $('.lucky_button01 .lucky_p5').click(function () {
 
 
         )
-        // }
-
-        // document.getElementById("lucky_result05_1").innerHTML.replace("擲筊次數：" + failure);
-
     }
 
+
 })
-
-
-
-// $('.lucky_btn06 .lucky_Favorites').click(function (data) {
-//     if (please[luckyNum].name == '聖筊') {
-//         $('.lucky_p6').removeClass('nextstep');
-//         $('.lucky_p5').addClass('nextstep');
-//         $('.node6').addClass('stageColor').siblings().removeClass('stageColor');
-//         $('.lucky_Swipe_page p').text('06');
-//     } else {
-//         // lucky();
-//         failure++;
-
-//         $('.lucky_p3').removeClass('nextstep')
-//         $('.lucky_p4').addClass('nextstep')
-//         $('.lucky_p5').addClass('nextstep')
-
-//         $.get(
-//             'sign-api.php',
-//             function (data) {
-//                 console.log('data', data);
-//                 console.log(`你抽到 第${data.sid}籤<br>
-//                 請擲筊向神明確認賜籤`);
-//                 console.log(`${data.Lot_number}&emsp;${data.signature}`);
-//                 $('.lucky_result p').html(`你抽到 第${data.sid}籤<br>
-//                請擲筊向神明確認賜籤`)
-//                 $('.lucky_Sign_animation03 p').html(`${data.sid}`)
-//                 $('.lucky_title06_1 h4').html(`${data.Lot_number}&emsp;${data.signature}`)
-//                 $('.lucky_title06_2 h5').html(`${data.grade}`)
-//                 $('.lucky_Commentary06 p').html(`${data.content}`)
-//             }
-//             , 'json'
-//         )
-
-
-//         document.getElementById("lucky_result05_1").innerHTML.replace("擲筊次數：" + failure);
-
-//     }
 
 
 // 換頁
