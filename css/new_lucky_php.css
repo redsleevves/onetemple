@@ -1,6 +1,9 @@
 * {
     background-size: contain !important;
 }
+footer{
+    position: inherit;
+}
 
 .hidden{
     visibility: hidden;
@@ -46,34 +49,34 @@
     }
 
     100% {
-        transform: translate(150%, 180%);
+        transform: translate(150%, 160%);
     }
 }
 
 @keyframes YanCup01 {
     0% {
-        transform: translate(270%, 10%) rotate(-30deg);
+        transform: translate(270%, 0%) rotate(-30deg);
     }
 
     25% {
-        transform: translate(270%, 60%) rotate(-30deg);
+        transform: translate(270%, 50%) rotate(-30deg);
     }
 
     50% {
         background: url("../img/cup-2.png") no-repeat;
-        transform: translate(300%, 20%) rotate(-30deg);
+        transform: translate(300%, 10%) rotate(-30deg);
         opacity: 1;
     }
 
     75% {
         background: url("../img/cup-01.png") no-repeat;
-        transform: translate(270%, 10%) rotate(-20deg);
+        transform: translate(270%, 0%) rotate(-20deg);
         opacity: 0.5;
     }
 
     100% {
         background: url("../img/cup-2.png") no-repeat;
-        transform: translate(270%, 0%) rotate(-40deg);
+        transform: translate(270%, -10%) rotate(-40deg);
         opacity: 1;
     }
 
@@ -82,28 +85,28 @@
 
 @keyframes YanCup02 {
     0% {
-        transform: translate(120%, -60%) rotate(30deg);
+        transform: translate(120%, -70%) rotate(30deg);
     }
 
     25% {
-        transform: translate(120%, 0%) rotate(30deg);
+        transform: translate(120%, -10%) rotate(30deg);
     }
 
     50% {
         background: url("../img/cup-1.png") no-repeat;
-        transform: translate(50%, -30%) rotate(30deg);
+        transform: translate(50%, -40%) rotate(30deg);
         opacity: 1;
     }
 
     75% {
         background: url("../img/cup-02.png") no-repeat;
-        transform: translate(60%, -40%) rotate(40deg);
+        transform: translate(60%, -50%) rotate(40deg);
         opacity: 0.5;
     }
 
     100% {
         background: url("../img/cup-1.png") no-repeat;
-        transform: translate(70%, -50%)rotate(30deg);
+        transform: translate(70%, -60%)rotate(30deg);
         opacity: 1;
     }
 }
@@ -256,7 +259,7 @@ p {
     position: absolute;
     top: 0;
     width: 100%;
-    padding-top: 15vh;
+    padding-top: 20vh;
     margin: 0 auto;
 }
 
@@ -447,7 +450,7 @@ option {
 
 
 .lucky_Poetry06 {
-    width: 200px;
+    width: 240px;
 }
 
 .lucky_Poetry06 img {
@@ -622,8 +625,6 @@ option {
 .lucky_btn_add {
     color: #fff;
     border-radius: 50px;
-    font-size: 16px;
-  
     padding: 5px 15px;
 }
 
@@ -731,7 +732,7 @@ select{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    transform: translate(170%,-80%);
+    transform: translate(170%,-33%);
     padding: 0;
     /* background-image: url(/img/arrow-down-solid.svg); */
     background-repeat: no-repeat;
@@ -747,7 +748,7 @@ select{
     justify-content: center;
 }
 #quest {
-    margin:0;
+    margin:20px;
 }
 
 #quest h4{
@@ -843,6 +844,10 @@ select{
 }
 .lucky_btn06 button{
     padding: 10px 15px;
+}
+
+lucky_Sign_animation05_1{
+    width: 80%;
 }
 .lucky_Sign_animation05_1 h3{
     position: absolute;
@@ -943,38 +948,38 @@ select{
 
 @keyframes YanCup {
     0% {
-        transform: translate(-30%, -40%);
+        transform: translate(-35%, -40%);
     }
 
     100% {
-        transform: translate(-30%, 180%);
+        transform: translate(-35%, 180%);
     }
 }
 
 @keyframes YanCup01 {
     0% {
-        transform: translate(170%, 10%) rotate(-30deg);
+        transform: translate(150%, 10%) rotate(-30deg);
     }
 
     25% {
-        transform: translate(170%, 60%) rotate(-30deg);
+        transform: translate(150%, 60%) rotate(-30deg);
     }
 
     50% {
         background: url("../img/cup-2.png") no-repeat;
-        transform: translate(200%, 20%) rotate(-30deg);
+        transform: translate(180%, 20%) rotate(-30deg);
         opacity: 1;
     }
 
     75% {
         background: url("../img/cup-01.png") no-repeat;
-        transform: translate(200%, 10%) rotate(-20deg);
+        transform: translate(180%, 10%) rotate(-20deg);
         opacity: 0.5;
     }
 
     100% {
         background: url("../img/cup-2.png") no-repeat;
-        transform: translate(200%, 0%) rotate(-40deg);
+        transform: translate(180%, 0%) rotate(-40deg);
         opacity: 1;
     }
 
@@ -983,28 +988,28 @@ select{
 
 @keyframes YanCup02 {
     0% {
-        transform: translate(70%, -60%) rotate(30deg);
+        transform: translate(60%, -60%) rotate(30deg);
     }
 
     25% {
-        transform: translate(70%, 0%) rotate(30deg);
+        transform: translate(60%, 0%) rotate(30deg);
     }
 
     50% {
         background: url("../img/cup-1.png") no-repeat;
-        transform: translate(0%, -30%) rotate(30deg);
+        transform: translate(-10%, -30%) rotate(30deg);
         opacity: 1;
     }
 
     75% {
         background: url("../img/cup-02.png") no-repeat;
-        transform: translate(10%, -40%) rotate(40deg);
+        transform: translate(0%, -40%) rotate(40deg);
         opacity: 0.5;
     }
 
     100% {
         background: url("../img/cup-1.png") no-repeat;
-        transform: translate(20%, -50%)rotate(30deg);
+        transform: translate(10%, -50%)rotate(30deg);
         opacity: 1;
     }
 }
