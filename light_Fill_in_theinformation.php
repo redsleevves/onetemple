@@ -17,14 +17,16 @@ $_gdata = [
     crossorigin="anonymous" />
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11" />
+    
     ',
     //頁面私有 scripts
     'scripts' => '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"
         integrity="sha512-f0VlzJbcEB6KiW8ZVtL+5HWPDyW1+nJEjguZ5IVnSQkvZbwBt2RfCBY0CBO1PsMAqxxrG4Di6TfsCPP3ZRwKpA=="
         crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>',
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    ',
 ];
 
 $member_sid = isset($_SESSION['user']) ? $_SESSION['user']['sid'] : 0;
@@ -85,8 +87,8 @@ $rows = $stmt->fetchAll();
         /* 追加 */
         margin: 0;
         letter-spacing: 2px;
-        /* font-family: 'Faustina', serif; */
-        /* font-family: 'Noto Sans TC', serif !important; */
+        font-family: 'Faustina', serif;
+
         /* 追加修正 */
         text-align: justify;
     }
@@ -106,7 +108,7 @@ $rows = $stmt->fetchAll();
         border-radius: 30px;
         border: none;
 
-        /* font-family: 'Sitka Display', NSimSun, 'sans-serif'; */
+        font-family: 'Faustina', serif !important;
 
     }
 
@@ -122,9 +124,11 @@ $rows = $stmt->fetchAll();
         border-radius: 30px;
         border: none;
 
-        /* font-family: 'Sitka Display', NSimSun, 'sans-serif'; */
+        font-family: 'Faustina', serif;
         cursor: pointer;
     }
+
+
 
     i {
         padding: 0 8px;
@@ -467,6 +471,10 @@ $rows = $stmt->fetchAll();
 
         .paddingtop2 {
             padding-top: 2%;
+        }
+
+        .pad1rem {
+            padding: 1rem 1rem 0 1rem;
         }
 
     }
@@ -1664,7 +1672,7 @@ $rows = $stmt->fetchAll();
                             <p>新增祈福者</p>
                         </div>
                     </div>
-                    <button type="button" class="butstyle_1 addbtn" id="popt" onclick="checkForm_input(); return false;">
+                    <button type="button" class="butstyle_1 addbtn add_cart" id="popt" onclick="checkForm_input(); return false;">
                         <p>加入購物車</p>
                     </button>
 
@@ -2758,7 +2766,7 @@ $rows = $stmt->fetchAll();
                 </div>
 
                 <!-- 彈跳 整體 -->
-                <div class="modal-body pad0_md ">
+                <div class="modal-body pad0_md pad1rem">
                     <div class="modal-body_box borderline">
                         <!-- 彈跳 點燈清單 單人input集合-->
                         <!--彈跳 預設祈福者 -->
@@ -3105,9 +3113,26 @@ $rows = $stmt->fetchAll();
             });
             if (isPass == false)
                 // alert("請填入正確資訊");
-                $('#falsemodal').modal();
+                // $('#falsemodal').modal();
+                Swal.fire({
+                    icon: 'error',
+                    title: '填寫資料有錯呦!',
+                    // text: 'Something went wrong!',
+                    type: 'warning',
+                    background: 'url(./img/nav_background_1.png)',
+                    padding: '30px',
+                    confirmButtonText: '重新檢查',
+                    confirmButtonColor: '#cc543a',
+                    confirmButtonClass: 'btnss',
+                    customClass: 'radius20',
 
-            // Swal.fire('Any fool can use a computer')
+                    // 取消原本內建按鈕style
+                    buttonsStyling: false
+
+                });
+
+
+
 
             if (isPass) {
                 $('#checkjump').modal();
@@ -3284,7 +3309,26 @@ $rows = $stmt->fetchAll();
             if (isPass == false)
 
                 // alert("請填入正確資訊");
-                $('#falsemodal').modal();
+                // $('#falsemodal').modal();
+                Swal.fire({
+                    icon: 'error',
+                    title: '填寫資料有錯呦!',
+                    // text: 'Something went wrong!',
+                    type: 'warning',
+                    background: 'url(./img/nav_background_1.png)',
+                    padding: '30px',
+                    confirmButtonText: '重新檢查',
+                    confirmButtonColor: '#cc543a',
+                    confirmButtonClass: 'btnss',
+                    customClass: 'radius20',
+
+                    // 取消原本內建按鈕style
+                    buttonsStyling: false
+
+                });
+
+
+
 
             if (isPass) {
                 $('#checkjump').modal();
@@ -4698,8 +4742,9 @@ $rows = $stmt->fetchAll();
                                             </div>
                                         </div>
                                     </div>
-</div>
+                                 </div>
                                 </div> `;
+
 
 
 
@@ -4976,5 +5021,8 @@ $rows = $stmt->fetchAll();
             };
         }
     </script>
+
+
+
 
     <?php include __DIR__ . '/parts/html-foot.php'; ?>
