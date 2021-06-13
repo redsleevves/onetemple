@@ -310,9 +310,13 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
             bottom: 20px;
         }
 
+        .error{
+            color: red;
+        }
+
 
         /* footer */
-        footer {
+        /* footer {
             width: 100%;
             height: 70px;
             background-color: #cc543a;
@@ -321,50 +325,8 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
             display: flex;
             justify-content: center;
             align-items: center;
-        }
+        } */
 
-        /* 麵包屑 */
-        .breadcrumb_style_1 {
-            padding: 10px 0;
-            align-items: center;
-            margin: auto;
-        }
-
-        .astlyep {
-            font-size: 14px;
-            letter-spacing: 2px;
-            color: #707070;
-            list-style-type: none;
-            text-decoration: none;
-
-        }
-
-        .breadcrumb_style_1 img {
-            height: 10px;
-            width: 10px;
-            margin: 0 10px;
-        }
-
-        /* 警示小標語 */
-        .form-text{
-            color: red;
-        }
-
-        /* 桌機用 */
-        @media (min-width:1400px) {
-            
-            .breadcrumb_style_1 {
-                width: 80%;
-            }
-        }
-
-        /* 手機用 */
-        @media (max-width:1399px) {
-            .breadcrumb_style_1 {
-                /* 手機板寬 自行設定 */
-                width: 90%;
-            }
-        }
 
         /* finishorder */
         .modal_header_imgBox {
@@ -395,6 +357,22 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
         .btn-primary-re a {
             text-decoration: none;
             color: #fff;
+        }
+
+        /* errorBox */
+        .modal-header-error{
+            display: flex;
+            justify-content: center;
+        }
+        .error_imgBox{
+            width: 100px;
+        }
+        .error_imgBox img{
+            width: 100%;
+        }
+        .modal-title-error{
+            font-size: 24px;
+            font-weight: 700;
         }
 
 
@@ -771,7 +749,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
         
         
         <div class="checkList_finBtn">
-            <button type="submit" class="checkList_btn" data-toggle="modal" id="orderbtn" onclick="checkForm(); return false;">確認下訂</button>
+            <button type="submit" class="checkList_btn" id="orderbtn" onclick="checkForm(); return false;">確認下訂</button>
         </div>
     </form>
 </div>
@@ -809,13 +787,13 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
 <div class="modal fade" id="errorOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content modal-content-re">
-            <div class="modal-header modal-header-re">
-                <div class="modal_header_imgBox">
+            <div class="modal-header-error">
+                <div class="modal_header_imgBox error_imgBox">
                     <img src="./img/templeError.gif" alt="">
                 </div>
             </div>
             <div class="modal-body modal-body-re">
-                <h5 class="modal-title" id="exampleModalCenterTitle">填寫資訊有誤呦</h5>
+                <h5 class="modal-title-error" id="exampleModalCenterTitle">填寫資訊有誤呦</h5>
             </div>
             <div class="modal-footer modal-footer-re">
                 <button type="button" class="btn-primary-re"><a href="">重新檢查</a></button>
@@ -1076,104 +1054,108 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
         // let shipM_deli = document.getElementsByClassName('deliRadio');
 
 
-        if(arrivePayRadio.checked == true){
+        if(arrivePayRadio.checked == true || creditRadio.checked == true){
 
-            if (shipM_711.checked == true){
-                $('#errorOrder').modal()
-            }else{
-                isPass = false;
-                $('.shipMethod_red').text('請選擇寄送方式')
-                
-                if (shipM_fam.checked == true){
-                    isPass = true;
-                    $('#orderbtn').attr('data-target', '#errorOrder')
-                }else{
-                    isPass = false;
-                    $('.shipMethod_red').text('請選擇寄送方式');
+            
 
-                    if(shipM_hi.checked == true ){
-                        isPass = true;
-                        $('#orderbtn').attr('data-target', '#errorOrder')
-                    }
-                    else{
-                        isPass = false;
-                        $('.shipMethod_red').text('請選擇寄送方式');
-
-                        if(deliveryRadio.checked == true){
-                            isPass = true;
-                            $('#orderbtn').attr('data-target', '#errorOrder')
-                        }else{
-                            isPass = false;
-                            $('.shipMethod_red').text('請選擇寄送方式');
-                        }
-                    }
-                }
-            }
-
-        }
+        };
             
         //判斷貨到付款是否勾選
         if(arrivePayRadio.checked == true){
             // console.log('arrivePay', 'checked');
             
-                // if (shipMethod.checked == true){
+            if (shipM_711.checked == true){
+                $('#finishOrder').modal();
+            }else{
+                
+                if (shipM_fam.checked == true){
+                    $('#finishOrder').modal();
+                }else{
 
-                    //判斷宅配選項是否有選
-                    if (deliveryRadio.checked == true) {
+                    if(shipM_hi.checked == true ){
+                        $('#finishOrder').modal();
+                    }
+                    else{
 
-                        if (reciver.val() == ""){
+                        if(deliveryRadio.checked == true){
+
+                            if (reciver.val() == ""){
                             isPass = false;
                             $(reciver).css('border','1px solid red');
                             $(reciver).next().text('請輸入收件人姓名')
-                        }
-                        if (! mobile_re.test(phone.val())){
-                            isPass = false;
-                            $(phone).css('border','1px solid red');
-                            $(phone).next().text('請填入正確的手機格式')
-                        }
-                        if (address.val() == ""){
-                            isPass = false;
-                            $(address).css('border','1px solid red');
-                            $(address).next().text('請輸入收件地址')
-                        }
-                        if (isPass){
-                        $('#orderbtn').attr('data-target', '#finishOrder')
-                        }
-                    
+                            }
+                            if (! mobile_re.test(phone.val())){
+                                isPass = false;
+                                $(phone).css('border','1px solid red');
+                                $(phone).next().text('請填入正確的手機格式')
+                            }
+                            if (address.val() == ""){
+                                isPass = false;
+                                $(address).css('border','1px solid red');
+                                $(address).next().text('請輸入收件地址')
+                            }
+                            if (isPass){
+                                $('#finishOrder').modal();
+                            }
+                        }else{
 
+                            isPass = false;
+                            $('#errorOrder').modal()
+                            $('.shipMethod_red').css('color', 'red').text('請選擇寄送方式');
+                        }
+                    }
                 }
+            }
 
 
                 if (isPass){
-                    $('#orderbtn').attr('data-target', '#finishOrder');
+                    $('#finishOrder').modal();
                 }      
         };
 
 
         if (creditRadio.checked == true) {
 
-            // console.log('cradio', 'checked');
-
-            //判斷宅配選項是否有選
-            if (deliveryRadio.checked == true) {
-
-                    if (reciver.val() == ""){
-                        isPass = false;
-                        $(reciver).css('border','1px solid red');
-                        $(reciver).next().text('請輸入收件人姓名')
+            if (shipM_711.checked == true){
+            }else{
+                
+                if (shipM_fam.checked == true){
+                }else{
+                    if(shipM_hi.checked == true ){
                     }
-                    if (! mobile_re.test(phone.val())){
+                    else{
+
+                    //判斷宅配選項是否有選
+                    if (deliveryRadio.checked == true) {
+
+                            if (reciver.val() == ""){
+                                isPass = false;
+                                $(reciver).css('border','1px solid red');
+                                $(reciver).next().text('請輸入收件人姓名')
+                            }
+                            if (! mobile_re.test(phone.val())){
+                                isPass = false;
+                                $(phone).css('border','1px solid red');
+                                $(phone).next().text('請填入正確的手機格式')
+                            }
+                            if (address.val() == ""){
+                                isPass = false;
+                                $(address).css('border','1px solid red');
+                                $(address).next().text('請輸入收件地址')
+                            }
+
+                    }else{
+
                         isPass = false;
-                        $(phone).css('border','1px solid red');
-                        $(phone).next().text('請填入正確的手機格式')
-                    }
-                    if (address.val() == ""){
-                        isPass = false;
-                        $(address).css('border','1px solid red');
-                        $(address).next().text('請輸入收件地址')
+                        $('#errorOrder').modal()
+                        $('.shipMethod_red').css('color', 'red').text('請選擇寄送方式');
                     }
 
-            };
+                }
+            }
+        };
+
+                   
 
                 
 
@@ -1231,7 +1213,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
 
 
             if (isPass) {
-                $('#orderbtn').attr('data-target', '#finishOrder')
+                $('#finishOrder').modal()
             }
         };
 
@@ -1315,7 +1297,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
         $('.index_goTopImg').click(function () {
             $("html,body").animate({
                 scrollTop: 0}, 700);
-            });
+        });
 
     
 </script>
