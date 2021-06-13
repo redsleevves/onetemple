@@ -167,6 +167,8 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     footer {
         width: 100%;
         margin-top: 70px;
+        position: absolute;
+        bottom: 0;
     }
 
     .member_head {
@@ -205,7 +207,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         align-items: center;
         flex-wrap: wrap;
         justify-content: center;
-        min-height: 700px;
+        min-height: 80vh;
     }
 
     #fav_product_container,
@@ -387,7 +389,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         align-content: start;
         flex-wrap: wrap;
         position: absolute;
-        min-height: 120vh;
+        min-height: 90vh;
     }
 
 
