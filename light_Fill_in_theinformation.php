@@ -16,7 +16,9 @@ $_gdata = [
     integrity="sha512-3q8fi8M0VS+X/3n64Ndpp6Bit7oXSiyCnzmlx6IDBLGlY5euFySyJ46RUlqIVs0DPCGOypqP8IRk/EyPvU28mQ=="
     crossorigin="anonymous" />
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">
-    <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">',
+    <link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11" />
+    ',
     //頁面私有 scripts
     'scripts' => '
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"
@@ -2713,11 +2715,34 @@ $rows = $stmt->fetchAll();
             </form>
 
         </div>
-
-        <!-- 彈跳 點燈確認清單 -->
-
-
     </div>
+
+
+
+    <!-- 彈跳 點燈確認清單 -->
+    <div class="modal fade " id="falsemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content boxlineno radius20 backgroundimg_2 padding5">
+                <div class="modal-header boxlineno displaybor tac">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h5 class="modal-title">請填選正確資料</h5>
+                </div>
+
+                <!-- 彈跳 整體 -->
+                <div class="modal-body pad0_md ">
+
+
+
+                    <div class="modal-footer boxlineno marginauto col-9 jucse">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -3079,7 +3104,10 @@ $rows = $stmt->fetchAll();
 
             });
             if (isPass == false)
-                alert("請填入正確資訊");
+                // alert("請填入正確資訊");
+                $('#falsemodal').modal();
+
+            // Swal.fire('Any fool can use a computer')
 
             if (isPass) {
                 $('#checkjump').modal();
@@ -3254,7 +3282,9 @@ $rows = $stmt->fetchAll();
                 }
             });
             if (isPass == false)
-                alert("請填入正確資訊");
+
+                // alert("請填入正確資訊");
+                $('#falsemodal').modal();
 
             if (isPass) {
                 $('#checkjump').modal();
