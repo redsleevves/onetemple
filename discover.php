@@ -7,7 +7,7 @@ $_gdata = [
     // 頁面私有 css
     'styles' => '<link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar1.css">',
     //頁面私有 scripts
-    'scripts' => '', 
+    'scripts' => '',
 ];
 
 ?>
@@ -762,19 +762,21 @@ $_gdata = [
 
     /* discoverBox_scroll */
     .scrollStyle::-webkit-scrollbar {
-    width: 5px;
+        width: 5px;
     }
-    .scrollStyle::-webkit-scrollbar-button{
-    background: #f5f4f1;
-    display: none;
+
+    .scrollStyle::-webkit-scrollbar-button {
+        background: #f5f4f1;
+        display: none;
     }
-    .scrollStyle::-webkit-scrollbar-track-piece{
-    background: #f5f4f1;
+
+    .scrollStyle::-webkit-scrollbar-track-piece {
+        background: #f5f4f1;
     }
-    
+
     .scrollStyle::-webkit-scrollbar-thumb {
-    background-color: #cc543a;
-    border-radius: 10px;
+        background-color: #cc543a;
+        border-radius: 10px;
     }
 </style>
 
@@ -879,12 +881,11 @@ $_gdata = [
             <div class="text col-lg-5 col-10">
                 <h3>Sansia Tzushr Temple</h3>
                 <h3 id='www'>台北行天宮</h3>
-                <p>行天宮，又稱恩主公廟，為主祀關公的臺灣民間信仰廟宇，是全臺知名的關帝廟，由信仰齋教的煤礦主黃玄空創辦。</p>
+                <p>他話路聲回比；後看西工馬什領過值圖戰選乎到洲校言</p>
                 <p>
-                行天宮參訪香客眾多，本宮位於台北市市區，另有兩座分宮。
-                其中，歷史最悠久的是北投分宮 ，次之是三峽分宮，本宮位於臺灣臺北市中山區，為行天三宮最晚成立者，行天宮也成為大臺北地區關帝廟的代表，廟門設計上與文廟臺北市孔廟相同，大門均沒有門神圖樣，用欞星門108顆門釘代表108位神靈，即36天罡星、72地煞星。
+                    的難了老的地一怕斷氣夫所而料部機黨多大登引爸就果？太快覺天代來父處強都最業資不包力突？了文中手、是當傳地去市女源考用業明製太院息調其如本裡以商合屋許先界得養起？車種這區學流，東學錢相團沒的都類會者天利他，車種這區車種這區車種這區車種這區今再一調！阿院和的到。車有的告這這母火
                 </p>
-                <a href="<?= WEB_ROOT?>/discover_temple.php">
+                <a href="<?= WEB_ROOT ?>/discover_temple.php">
                     <button>READ MORE</button>
                 </a>
             </div>
@@ -906,9 +907,9 @@ $_gdata = [
             <h3>Sansia Tzushr Temple</h3>
             <h3 id='www'>清水祖師廟</h3>
             <p>的難了老的地一怕斷氣夫所而料部機黨多大登引爸就果？太快覺天代來父處強都最業資不包力突？了文中手</p>
-            <a href="<?= WEB_ROOT?>/discover_temple.php">
-                    <button>READ MORE</button>
-                </a>
+            <a href="<?= WEB_ROOT ?>/discover_temple.php">
+                <button>READ MORE</button>
+            </a>
         </div>
         <img class="bg" src="<?= WEB_ROOT ?>/img/sent.png">
     </div>
@@ -1047,7 +1048,7 @@ $_gdata = [
         $('.hot_feature').eq(i % picNum).css('opacity', '1').siblings('div').css('opacity', '0')
     })
 
-    let arr = ["大智山玄空法寺", "壽山巖觀音寺", "麥寮拱範宮", "草屯雷藏寺", "佛光山寺", "松山慈惠堂", "台灣護聖宮", "北港朝天宮", "松山慈祐宮", "大甲鎮瀾宮", "法鼓山", "南鯤鯓代天府", "正統鹿耳門聖母廟", "鹿港天后宮", "臺東天后宮", "高雄代天宮", "松山奉天宮", "鹿港龍山寺", "日月潭文武廟", "台北行天宮", "高雄玉皇宮", "萬華龍山寺", "三峽清水祖師廟", "長春路四面佛", "霞海城隍廟", "新竹都城隍廟"]
+    let arr = ["大智山玄空法寺", "壽山巖觀音寺", "麥寮拱範宮", "草屯雷藏寺", "佛光山寺", "松山慈惠堂", "台灣護聖宮", "北港朝天宮", "台北松山慈祐宮", "大甲鎮瀾宮", "法鼓山", "南鯤鯓代天府", "正統鹿耳門聖母廟", "鹿港天后宮", "臺東天后宮", "高雄代天宮", "松山奉天宮", "鹿港龍山寺", "日月潭文武廟", "台北行天宮", "高雄玉皇宮", "萬華龍山寺", "三峽清水祖師廟", "長春路四面佛", "霞海城隍廟", "新竹都城隍廟", "台北林神農宮", "台北芝山聖佑宮", "台北大龍峒保安宮", "台北關渡宮"]
 
     let keyword = document.getElementById('keyword')
     keyword.addEventListener('input', updateResult);
