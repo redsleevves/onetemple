@@ -325,6 +325,10 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         margin-right: 5px;
     }
 
+    .fav_lucky {
+        margin-bottom: 40px;
+    }
+
     .fav_lucky_card {
         display: flex;
         flex-direction: column;
@@ -566,6 +570,8 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     .family {
         width: 50%;
         margin: 100px auto;
+        margin-bottom: 200px;
+
     }
 
     .lucky_pic {
@@ -591,7 +597,6 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         color: #707070;
         list-style-type: none;
         text-decoration: none;
-
     }
 
     .breadcrumb_style_1 img {
@@ -845,6 +850,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         .member_img {
             width: 250px;
             height: 250px;
+            margin: 0 auto
         }
 
         .popwindow {
@@ -932,7 +938,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         }
 
         .fav_product_card {
-            width: 200px;
+            height: 230px;
         }
 
         .fav_product_card p {
@@ -1111,6 +1117,10 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         .order_mobile_abstract i {
             color: #cc543a;
         }
+
+        .order_mobile {
+            min-height: 90vh;
+        }
     }
 </style>
 
@@ -1258,7 +1268,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 </section>
 <div class="member_profile padtp50 container-fluid animate__animated animate__fadeInUp animate__faster">
     <!-- 底部照片+個人資料 -->
-    <div class=" displayflex jucse aic maxwidth displayno_md mt-5">
+    <div class=" displayflex jucse aic maxwidth displayno_md mt-5 col-lg-6">
         <!-- 底部照片頭像 -->
         <div class="col-lg-5 col-10 marginauto ppic">
             <div class="member_img">
@@ -1341,7 +1351,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     <div class="_set displayno">
         <div class=" displayflex jucse aic maxwidth ">
             <!-- 手機用 底部照片頭像 -->
-            <div class=" col-lg-5 col-10 marginauto">
+            <div class="mt-3 col-lg-5 col-10 marginauto">
                 <div class="member_img">
                     <img src="<?= WEB_ROOT ?>/upload/<?= htmlentities($_SESSION['user']['profilepic']) ?>">
                 </div>
@@ -1453,7 +1463,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     </div>
 
     <!-- 手機用  親友資料 -->
-    <div class=" maxwidth1400 marginauto padtp50 displayno col-11">
+    <div class="marginauto padtp50 displayno col-11 p-0" style="margin-bottom: 100px;">
         <!-- 手機用  親友資料標題 -->
         <div class=" displayflex_md pad00150">
             <h5 class="margin0">親友資料</h5>
