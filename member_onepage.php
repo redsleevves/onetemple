@@ -566,7 +566,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         margin: 100px auto;
     }
 
-    .lucky_Poetry06 {
+    .lucky_pic {
         display: flex;
         justify-content: center
     }
@@ -779,14 +779,14 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
             display: none;
         }
 
-        .lucky_p6 {
+        .lucky_detail {
             display: flex;
             flex-direction: row;
             text-align: justify;
             justify-content: center;
         }
 
-        .lucky_content06 {
+        .lucky_content {
             display: flex;
             flex-direction: column;
             width: 320px;
@@ -794,37 +794,37 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
             margin-right: 0px;
         }
 
-        .lucky_result06 {
+        .lucky_head {
             display: flex;
             width: 325px;
             justify-content: space-between;
         }
 
-        .lucky_title06_1 {
+        .lucky_title_1 {
             display: flex;
             flex-direction: row;
             align-items: center;
         }
 
-        .lucky_title06_2 {
+        .lucky_title_2 {
             background-color: #cc543a;
             width: 60px;
             height: 60px;
             border-radius: 50%;
         }
 
-        .lucky_title06_1 h4 {
+        .lucky_title_1 h4 {
             font-weight: 600;
         }
 
-        .lucky_title06_2 h5 {
+        .lucky_title_2 h5 {
             color: #fff;
             line-height: 65px;
             font-size: 15px;
             text-align: center;
         }
 
-        .lucky_Commentary06 p {
+        .lucky_text p {
             font-size: 18px;
         }
     }
@@ -1256,7 +1256,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 </section>
 <div class="member_profile padtp50 container-fluid animate__animated animate__fadeInUp animate__faster">
     <!-- 底部照片+個人資料 -->
-    <div class=" displayflex jucse aic maxwidth displayno_md">
+    <div class=" displayflex jucse aic maxwidth displayno_md mt-5">
         <!-- 底部照片頭像 -->
         <div class="col-lg-5 col-10 marginauto ppic">
             <div class="member_img">
@@ -1559,7 +1559,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                             <a href="javascript:delete_fav_lucky(<?= $l['sid'] ?>)">
                                 <i class="fas fa-times-circle delete d-none"></i></a>
                             <img src="<?= WEB_ROOT ?>/img/<?= $l['img1'] ?>">
-                            <div class="more" data-sid='<?= $l['sid'] ?>'><button data-toggle="modal" data-target="#lucky_Modal">點擊查看</button>
+                            <div class="more" data-img='<?= $l['img1'] ?>' data-sid='<?= $l['lucky_sid'] ?>' data-sig='<?= $l['signature'] ?>' data-gra='<?= $l['grade'] ?>' data-con='<?= $l['content'] ?>'><button data-toggle="modal" data-target="#lucky_Modal">點擊查看</button>
                             </div>
                             <p>求籤日期：<br><?= $l['getdate'] ?></p>
                         </div>
@@ -1772,27 +1772,23 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                 </button>
             </div>
             <div class="modal-body">
-                <section class="lucky_p6 nextstep">
-                    <?php foreach ($lucky_rows as $l)
-                        if ("3" == $l['lucky_sid']) : ?>
-                        <div class="lucky_Poetry06">
-                            <img src="<?= WEB_ROOT ?>/img/<?= $l['img1'] ?>" alt="">
-                        </div>
-                        <div class="lucky_content06">
-                            <div class="lucky_result06">
-                                <div class="lucky_title06_1">
-                                    <h4>第 <?= $l['lucky_sid'] ?> 籤&emsp;<?= $l['signature'] ?></h4>
-                                </div>
-                                <div class="lucky_title06_2">
-                                    <h5><?= $l['grade'] ?></h5>
-                                </div>
+                <section class="lucky_detail">
+                    <div class="lucky_pic">
+                        <img src="" alt="">
+                    </div>
+                    <div class="lucky_content">
+                        <div class="lucky_head">
+                            <div class="lucky_title_1">
+                                <h4></h4>
                             </div>
-                            <div class="lucky_Commentary06">
-                                <p><?= $l['content'] ?>
-                                </p>
+                            <div class="lucky_title_2">
+                                <h5></h5>
                             </div>
                         </div>
-                    <?php endif; ?>
+                        <div class="lucky_text">
+                            <p></p>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -1898,14 +1894,24 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         });
     });
 
-    let move = $('.fav_product_card').width();
 
     let containerLucky = document.querySelector('#fav_lucky_container')
     let containerPlan = document.querySelector('#fav_plan_container')
     let containerProduct = document.querySelector('#fav_product_container')
-    let productCardW = document.querySelector('.fav_product_card').offsetWidth
-    let planCardW = document.querySelector('.fav_plan_card').offsetWidth
-    let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
+
+
+    let move = $('.fav_product_card').width();
+
+    if ($('.fav_lucky_card').length > 0) {
+        let luckyCardW = document.querySelector('.fav_lucky_card').offsetWidth
+    }
+    if ($('.fav_product_card').length > 0) {
+        let productCardW = document.querySelector('.fav_product_card').offsetWidth
+    }
+    if ($('.fav_plan_card').length > 0) {
+        let planCardW = document.querySelector('.fav_plan_card').offsetWidth
+    }
+
 
     $('.control').click(function() {
         let move = $('.fav_product_card').width();
@@ -2164,14 +2170,18 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         }
     }
 
-    var n = document.querySelector('.price');
 
-    function toCurrency() {
-        var parts = num.toString().split('.');
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-        return parts.join('.');
-    }
-
+    $(document).on('click', '.more', (function() {
+        let lucky_img = $(this).attr('data-img');
+        let lucky_sid = $(this).attr('data-sid');
+        let lucky_gra = $(this).attr('data-gra');
+        let lucky_sig = $(this).attr('data-sig');
+        let lucky_con = $(this).attr('data-con');
+        $('.lucky_pic img').attr('src', `<?= WEB_ROOT ?>/img/` + lucky_img);
+        $('.lucky_title_1 h4').html(`第 ` + lucky_sid + ` 籤&emsp;` + lucky_sig);
+        $('.lucky_title_2 h5').html(lucky_gra);
+        $('.lucky_text p').html(lucky_con);
+    }))
 
     const avatar = document.querySelector('#avatar');
 
