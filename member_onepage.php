@@ -181,8 +181,13 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         font-size: 18px !important;
     }
 
+    .prod_pic {
+        height: 65%;
+    }
+
     .fav_product img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
     }
 
@@ -230,6 +235,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     }
 
     .fav_product_card {
+        height: 440px;
         background-color: white;
         padding: 0;
         padding-bottom: 15px;
@@ -241,14 +247,16 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     }
 
     .fav_product_text {
-        height: 28%;
+        height: 35%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding: 12px 0;
     }
 
     .fav_product_card p {
-        margin-top: 20px;
+        margin-top: 10px;
+        vertical-align: middle;
     }
 
     .fav_product_card .delete {
@@ -379,7 +387,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         align-content: start;
         flex-wrap: wrap;
         position: absolute;
-        min-height: 500px;
+        min-height: 120vh;
     }
 
 
@@ -1491,7 +1499,9 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
                             <a href="javascript:delete_fav_pdc(<?= $p['sid'] ?>)"><i class="fas fa-times-circle delete d-none"></i></a>
                             <div class="prod_pic"><img src="<?= WEB_ROOT ?>/img/<?= $p['img1'] ?>"></div>
                             <div class="fav_product_text">
-                                <p class='pl-1 pr-1 long-name'><?= $p['Commodity_name_smallLabel'] ?></p>
+                                <div style="height:50%; display:flex; align-items:center;justify-content:center;">
+                                    <p class='pl-1 pr-1 long-name'><?= $p['Commodity_name_smallLabel'] ?></p>
+                                </div>
                                 <p class='pl-1 pr-1 short-name'><?= $p['CommodityName_bigLabel'] ?></p>
                                 <div class="d-flex" style="justify-content:space-around">
                                     <p class="price">NTD <?= $p['price'] ?></p>
