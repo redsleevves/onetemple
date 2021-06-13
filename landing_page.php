@@ -5,7 +5,9 @@ $_gdata = [
     // 網頁名稱
     'title' => '灣廟 Collection of Taiwan Temple', 
     // 頁面私有 css
-    'styles' => '',
+    'styles' => ' <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>',
     //頁面私有 scripts
     'scripts' => '', 
 ];
@@ -50,6 +52,21 @@ $_gdata = [
           position: absolute;
           top: calc(50% - 10rem);
           left: calc(50% - 10rem);
+        }
+        .magBox p{
+          position: absolute;
+          top: 70%;
+          left: 30%;
+          width: 100%;
+          height: 100%;
+
+          font-family: 'Raleway', sans-serif;
+          font-size: 30px;
+          font-weight: 500;
+          color: #CB4042;
+
+          z-index: 1;
+          display: none;
         }
         .magic {
          
@@ -176,7 +193,10 @@ $_gdata = [
 
         <h1><a href="./index.php">Taiwan Temple</a></h1>
 
-        <div class="magBox"><div class="magic"></div></div>
+        <div class="magBox">
+          <p>CLICK！</p>
+          <div class="magic"></div>
+        </div>
 
         <div class="wrapper">
           <div class="wave1"></div>
@@ -198,12 +218,16 @@ $_gdata = [
         });
 
         $('a').mouseenter(function(){
-          $('.magic').css({'width': '450px','height':'450px','transition':'.6s','opacity':'.6'})
+          $('.magic').css({'width': '450px','height':'450px','transition':'.6s','opacity':'.4'})
+          $('.magBox p').css({'display': 'block'});
         });
+          
 
         $('a').mouseleave(function(){
-        $('.magic').css({'width': '300px','height':'300px','transition':'.6s','opacity':'1'})
+        $('.magic').css({'width': '300px','height':'300px','transition':'.6s','opacity':'1'});
+        $('.magBox p').css({'display': 'none'});
         })
+
 
 
     </script>

@@ -586,14 +586,17 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
     <form name="form1" method="post" novalidate onsubmit="checkForm(); return false;">
         <div class="checkList_deliverBox">
             <div class="checkList_subTitle">寄送方式</div>
-            <div class="checkList_info">選擇寄送方式</div>
+            <div class="checkList_info">
+                <p>選擇寄送方式</p>
+                <small class="form-text error shipMethod_red"></small>
+            </div>
 
             <div class="checkList_deliverContent">
                 <div class="checkList_deliver_cho">
                     <div class="checkList_deliver_choName">
 
                         <label class="checkList_shopChoName">
-                            <input type="radio" name="shipment_method" value="7-11" class="shopRadio"> 711
+                            <input type="radio" name="shipment_method" value="7-11" class="shopRadio" id="711Radio"> 711
                         </label>
 
                         <p data-price="60">+ NT. 60</p>
@@ -619,7 +622,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
                 <div class="checkList_deliver_cho">
                     <div class="checkList_deliver_choName">
                         <label class="checkList_shopChoName">
-                            <input type="radio" name="shipment_method" value="familyMart" class="shopRadio"> 全家
+                            <input type="radio" name="shipment_method" value="familyMart" class="shopRadio" id="famRadio"> 全家
                         </label>
                         <p data-price="60">+ NT. 60</p>
                     </div>
@@ -644,7 +647,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
                 <div class="checkList_deliver_cho">
                     <div class="checkList_deliver_choName">
                         <label class="checkList_shopChoName">
-                            <input type="radio" name="shipment_method" value="hiLife" class="shopRadio"> 萊爾富
+                            <input type="radio" name="shipment_method" value="hiLife" class="shopRadio" id="hiRadio"> 萊爾富
                         </label>
                         <p data-price="60">+ NT. 60</p>
                     </div>
@@ -768,7 +771,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
         
         
         <div class="checkList_finBtn">
-            <button type="submit" class="checkList_btn" data-target="#finishOrder" id="orderbtn" onclick="checkForm(); return false;">確認下訂</button>
+            <button type="submit" class="checkList_btn" data-toggle="modal" id="orderbtn" onclick="checkForm(); return false;">確認下訂</button>
         </div>
     </form>
 </div>
@@ -796,6 +799,26 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
             <div class="modal-footer modal-footer-re">
                 <button type="button" class="btn-primary-re"><a href="<?=WEB_ROOT?>/index.php">回到首頁</a></button>
                 <button type="button" class="btn-primary-re"><a href="<?=WEB_ROOT?>/member_onepage.php">查看訂單</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- finishOrder -->
+<div class="modal fade" id="errorOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content modal-content-re">
+            <div class="modal-header modal-header-re">
+                <div class="modal_header_imgBox">
+                    <img src="./img/templeError.gif" alt="">
+                </div>
+            </div>
+            <div class="modal-body modal-body-re">
+                <h5 class="modal-title" id="exampleModalCenterTitle">填寫資訊有誤呦</h5>
+            </div>
+            <div class="modal-footer modal-footer-re">
+                <button type="button" class="btn-primary-re"><a href="">重新檢查</a></button>
             </div>
         </div>
     </div>
@@ -1046,38 +1069,83 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
         let creditRadio = document.getElementById('creditRadio');
         let arrivePayRadio = document.getElementById('arrivePayRadio');
         let deliveryRadio = document.getElementById('deliveryRadio');
-            
+
+        let shipM_711 = document.getElementById('711Radio');
+        let shipM_fam = document.getElementById('famRadio');
+        let shipM_hi = document.getElementById('hiRadio');
+        // let shipM_deli = document.getElementsByClassName('deliRadio');
+
 
         if(arrivePayRadio.checked == true){
 
-            // console.log('arrivePay', 'checked');  
+            if (shipM_711.checked == true){
+                $('#errorOrder').modal()
+            }else{
+                isPass = false;
+                $('.shipMethod_red').text('請選擇寄送方式')
+                
+                if (shipM_fam.checked == true){
+                    isPass = true;
+                    $('#orderbtn').attr('data-target', '#errorOrder')
+                }else{
+                    isPass = false;
+                    $('.shipMethod_red').text('請選擇寄送方式');
 
-                //判斷宅配選項是否有選
-                if (deliveryRadio.checked == true) {
+                    if(shipM_hi.checked == true ){
+                        isPass = true;
+                        $('#orderbtn').attr('data-target', '#errorOrder')
+                    }
+                    else{
+                        isPass = false;
+                        $('.shipMethod_red').text('請選擇寄送方式');
 
+                        if(deliveryRadio.checked == true){
+                            isPass = true;
+                            $('#orderbtn').attr('data-target', '#errorOrder')
+                        }else{
+                            isPass = false;
+                            $('.shipMethod_red').text('請選擇寄送方式');
+                        }
+                    }
+                }
+            }
 
-                    if (reciver.val() == ""){
-                        isPass = false;
-                        $(reciver).css('border','1px solid red');
-                        $(reciver).next().text('請輸入收件人姓名')
-                    }
-                    if (! mobile_re.test(phone.val())){
-                        isPass = false;
-                        $(phone).css('border','1px solid red');
-                        $(phone).next().text('請填入正確的手機格式')
-                    }
-                    if (address.val() == ""){
-                        isPass = false;
-                        $(address).css('border','1px solid red');
-                        $(address).next().text('請輸入收件地址')
-                    }
-                    if (isPass){
-                    $('#orderbtn').attr('data-toggle', 'modal')
-                    }
+        }
+            
+        //判斷貨到付款是否勾選
+        if(arrivePayRadio.checked == true){
+            // console.log('arrivePay', 'checked');
+            
+                // if (shipMethod.checked == true){
+
+                    //判斷宅配選項是否有選
+                    if (deliveryRadio.checked == true) {
+
+                        if (reciver.val() == ""){
+                            isPass = false;
+                            $(reciver).css('border','1px solid red');
+                            $(reciver).next().text('請輸入收件人姓名')
+                        }
+                        if (! mobile_re.test(phone.val())){
+                            isPass = false;
+                            $(phone).css('border','1px solid red');
+                            $(phone).next().text('請填入正確的手機格式')
+                        }
+                        if (address.val() == ""){
+                            isPass = false;
+                            $(address).css('border','1px solid red');
+                            $(address).next().text('請輸入收件地址')
+                        }
+                        if (isPass){
+                        $('#orderbtn').attr('data-target', '#finishOrder')
+                        }
+                    
 
                 }
+
+
                 if (isPass){
-                    $('#orderbtn').attr('data-toggle', 'modal');
+                    $('#orderbtn').attr('data-target', '#finishOrder');
                 }      
         };
 
@@ -1105,7 +1173,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
                         $(address).next().text('請輸入收件地址')
                     }
 
-                };
+            };
 
                 
 
@@ -1163,7 +1231,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
 
 
             if (isPass) {
-                $('#orderbtn').attr('data-toggle', 'modal')
+                $('#orderbtn').attr('data-target', '#finishOrder')
             }
         };
 
