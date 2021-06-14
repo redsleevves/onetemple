@@ -783,27 +783,6 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
 </div>
 
 
-<!-- finishOrder -->
-<div class="modal fade" id="errorOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content modal-content-re">
-            <div class="modal-header-error">
-                <div class="modal_header_imgBox error_imgBox">
-                    <img src="./img/templeError.gif" alt="">
-                </div>
-            </div>
-            <div class="modal-body modal-body-re">
-                <h5 class="modal-title-error" id="exampleModalCenterTitle">填寫資訊有誤呦</h5>
-            </div>
-            <div class="modal-footer modal-footer-re">
-                <button type="button" class="btn-primary-re"><a href="">重新檢查</a></button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 
 <div class="checkList_bccImg">
     <img src="./img/checkList_bccImg.png" alt="">
@@ -1100,7 +1079,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
                         }else{
 
                             isPass = false;
-                            $('#errorOrder').modal()
+                            
                             $('.shipMethod_red').css('color', 'red').text('請選擇寄送方式');
                         }
                     }
@@ -1147,7 +1126,7 @@ $_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
                     }else{
 
                         isPass = false;
-                        $('#errorOrder').modal()
+                        
                         $('.shipMethod_red').css('color', 'red').text('請選擇寄送方式');
                     }
 
