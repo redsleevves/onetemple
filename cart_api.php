@@ -9,19 +9,19 @@ $id = isset($_GET['id']) ? intval($_GET['id']) : 0;  // 商品
 
 switch ($type) {
     case 'pdc':
-        if (!empty($id)) {
+        if (is_numeric($id)) {
             unset($_SESSION['cart']['product'][$id]);
             $_SESSION['cart']['product'] = array_values($_SESSION['cart']['product']);
         }
         break;
     case 'plan':
-        if (!empty($id)) {
+        if (is_numeric($id)) {
             unset($_SESSION['cart']['plan'][$id]);
             $_SESSION['cart']['plan'] = array_values($_SESSION['cart']['plan']);
         }
         break;
     case 'light':
-        if (!empty($id)) {
+        if (is_numeric($id)) {
             unset($_SESSION['cart']['light'][$id]);
             $_SESSION['cart']['light'] = array_values($_SESSION['cart']['light']);
         }

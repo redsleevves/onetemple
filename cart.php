@@ -461,7 +461,6 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     </thead>
                     <tbody>
                         <?php foreach ($_SESSION['cart']['product'] as $i => $dataP) : ?>
-                            <?php print($i) ?>
                             <?php foreach ($pdc_rows as $a)
                                 if ($dataP['id'] == $a['id']) : ?>
                                 <tr data-id="<?= $i ?>">
@@ -870,18 +869,5 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 }, 'json');
         }
     };
-
-    // function delete_it_pdc(sid){
-    // if(confirm(`確定要刪除 ${name} 嗎?`)){
-    //     location.href = 'delete_product.php?sid=' + sid;
-    // }}
-    // function delete_it_pln(sid){
-    // if(confirm(`確定要刪除 ${name} 嗎?`)){
-    //     location.href = 'cart_plan_api.php?sid=' + sid;
-    // }}
-    // function delete_it_lit(sid){
-    // if(confirm(`確定要刪除 ${name} 嗎?`)){
-    //     location.href = 'delete_light.php?sid=' + sid;
-    // }}
 </script>
 <?php include __DIR__ . '/parts/html-foot.php'; ?>
