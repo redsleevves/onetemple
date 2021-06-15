@@ -460,20 +460,20 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($_SESSION['cart']['product'] as $i) : ?>
+                        <?php foreach ($_SESSION['cart']['product'] as $i => $dataP) : ?>
                             <?php foreach ($pdc_rows as $a)
-                                if ($i['id'] == $a['id']) : ?>
-                                <tr>
+                                if ($dataP['id'] == $a['id']) : ?>
+                                <tr data-id="<?= $i ?>">
                                     <td>
                                         <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img2'] ?>"></div>
                                     </td>
-                                    <td><?= $i['name'] ?></td>
-                                    <td><?= $i['content'] ?></td>
-                                    <td><?= $i['qty'] ?></td>
-                                    <td class="price"><?= $i['price'] * $i['qty'] ?></td>
-                                    <td><?= $i['note'] ?></td>
+                                    <td><?= $dataP['name'] ?></td>
+                                    <td><?= $dataP['content'] ?></td>
+                                    <td><?= $dataP['qty'] ?></td>
+                                    <td class="price"><?= $dataP['price'] * $dataP['qty'] ?></td>
+                                    <td><?= $dataP['note'] ?></td>
                                     <td class="trash">
-                                        <a href="javascript:delete_it_pdc(<?= $i['sid'] ?>)">
+                                        <a href="javascript:" onclick="deleteItem(event)">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
@@ -852,33 +852,22 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         $('.cart_light .subsum').html('<p>' + sum + '</p>')
     })
 
-    //這段報錯，先註解了~
-    // const deleteItem = function(event) {
-    //     let me = $(event.currentTarget);
-    //     let id = me.closest('tr').attr('data-id');
-    //     // let name = me.closest('tr').attr('data-name');
-    //     if(confirm(`確定要刪除 ${id} 嗎?`)){
-    //     $.get('cart_api.php', foreach($_SESSION['cart']['plan'] as $j => $assign), 
-    //     function(data){
-    //         me.closest('tr').remove();
-    //         if($('tbody>tr').length < 1){
-    //             location.reload(); 
-    //         }
-    //     }, 'json');
-    //     }
-    // };
 
-    // function delete_it_pdc(sid){
-    // if(confirm(`確定要刪除 ${name} 嗎?`)){
-    //     location.href = 'delete_product.php?sid=' + sid;
-    // }}
-    // function delete_it_pln(sid){
-    // if(confirm(`確定要刪除 ${name} 嗎?`)){
-    //     location.href = 'cart_plan_api.php?sid=' + sid;
-    // }}
-    // function delete_it_lit(sid){
-    // if(confirm(`確定要刪除 ${name} 嗎?`)){
-    //     location.href = 'delete_light.php?sid=' + sid;
-    // }}
+    const deleteItem = function(event) {
+        let me = $(event.currentTarget);
+        let id = me.closest('tr').attr('data-id');
+        if (confirm(`確定要刪除嗎?`)) {
+            $.get('cart_api.php', {
+                    type: 'pdc',
+                    id: id
+                },
+                function(data) {
+                    me.closest('tr').remove();
+                    if ($('tbody>tr').length < 1) {
+                        location.reload();
+                    }
+                }, 'json');
+        }
+    };
 </script>
 <?php include __DIR__ . '/parts/html-foot.php'; ?>
