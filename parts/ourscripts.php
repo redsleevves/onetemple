@@ -42,7 +42,28 @@
         })
     });
 
-    
+
+    // 快速登入 test
+    $('.fastinput_1').click(function(event) {
+        event.preventDefault();
+
+        $('.fastinput_1_email').val('vvvvv@RVE.COM');
+        $('.fastinput_1_password').val('vvv');
+    })
+
+    // 註冊快速
+    $('.fastinput_2').click(function(event) {
+        event.preventDefault();
+
+        $('.fastinput_2_email').val('abc@gmail.com');
+        $('.fastinput_2_password').val('abc');
+        $('.fastinput_2_mobile').val('0987654321');
+        $('.fastinput_2_name').val('資策會');
+
+    })
+
+
+
     const email_re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     const mobile_re = /^09\d{2}-?\d{3}-?\d{3}$/;
     const $name = $('#name'),
@@ -58,8 +79,8 @@
 
         let isPass = true;
 
-        fileds_reg.forEach(el_reg=>{
-            el_reg.css('border','1px solid #aaa');
+        fileds_reg.forEach(el_reg => {
+            el_reg.css('border', '1px solid #aaa');
             el_reg.parent().find('.form-text').text('');
         });
 
@@ -88,7 +109,7 @@
             $.post(
                 'add_member_api.php',
                 $(document.formReg).serialize(),
-                function (data) {
+                function(data) {
                     if (data.success) {
                         // alert('註冊成功');
                         window.location.replace("./member_onepage.php");
@@ -127,7 +148,7 @@
             $.post(
                 'login-api.php',
                 $(document.formLog).serialize(),
-                function (data) {
+                function(data) {
                     if (data.success) {
                         // alert('登入成功');
                         location.reload();

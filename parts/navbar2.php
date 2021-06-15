@@ -147,17 +147,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="exampleModalCenterTitle">登入 | LOGIN</h5>
+                <h5 class="modal-title fastinput_1" id="exampleModalCenterTitle">登入 | LOGIN</h5>
             </div>
             <div class="modal-body">
                 <form class="mt-3" name="formLog" method="post" novalidate onsubmit="checkLogin(); return false;">
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control form-control-re" id="login_email" name="email" placeholder="Email">
+                        <input type="text" class="form-control form-control-re fastinput_1_email" id="login_email" name="email" placeholder="Email">
                         <small class="form-text error"></small>
 
                     </div>
                     <div class="form-group">
-                        <input class="form-control form-control-re" type="password" id="login_password" name="password" placeholder="Password">
+                        <input class="form-control form-control-re fastinput_1_password" type="password" id="login_password" name="password" placeholder="Password">
                         <small class="form-text error"></small>
 
                     </div>
