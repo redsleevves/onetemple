@@ -331,7 +331,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
         .mobile_bill {
             width: 100%;
-            height: 40px;
+            height: 59px;
             position: fixed;
             display: flex;
             justify-content: space-between;
@@ -343,6 +343,9 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
         .mobile_bill p {
             margin: 0;
+            width:70%;
+            margin: auto;
+            
         }
 
         .mobile_sum {
@@ -380,6 +383,10 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             font-size: 16px;
             margin: 0;
         }
+        footer {
+                display: none;
+            }
+
     }
 </style>
 <?php include __DIR__ . '/parts/navbar2.php'; ?>
