@@ -339,6 +339,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             z-index: 2;
             background-color: white;
             /* box-shadow: 0 -3px 3px 3px rgba(102, 102, 102, 0.562); */
+            font-weight: bold;
         }
 
         .mobile_bill p {
