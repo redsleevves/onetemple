@@ -27,7 +27,7 @@ $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
 $plan_sql = "SELECT * FROM `trips`";
 $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
-$_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,4);
+$_SESSION['order_id'] = date("YmdHis").substr(microtime(),2,1);
 
 
 // $order_id = (int)$_GET['order_id'];
