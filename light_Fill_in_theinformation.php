@@ -3115,7 +3115,7 @@ $rows = $stmt->fetchAll();
                 // alert("請填入正確資訊");
                 // $('#falsemodal').modal();
                 Swal.fire({
-                    icon: 'error',
+                    icon: 'warning',
                     title: '填寫資料有錯呦!',
                     // text: 'Something went wrong!',
                     type: 'warning',
@@ -3311,7 +3311,7 @@ $rows = $stmt->fetchAll();
                 // alert("請填入正確資訊");
                 // $('#falsemodal').modal();
                 Swal.fire({
-                    icon: 'error',
+                    icon: 'warning',
                     title: '填寫資料有錯呦!',
                     // text: 'Something went wrong!',
                     type: 'warning',
