@@ -1839,6 +1839,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 
 <script>
     var detail = document.getElementsByClassName(".detail");
+    $(".ordertable .detail").last().css("margin-bottom", "110px")
 
     $(".info").click(function() {
         let absoluteBut = document.body.scrollHeight
@@ -2087,6 +2088,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
     $('.addfriends').click(function() {
         $(".scrollbox").append(addfriends);
     })
+
 
     // 親友修改 刪除Buttom
 
