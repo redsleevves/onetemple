@@ -195,13 +195,15 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         text-align: center;
     }
 
-    a {
+    .cart_mobile a,
+    .carttable a {
         text-decoration: none;
         font-weight: bold;
         color: black;
     }
 
-    a:hover {
+    .cart_mobile a:hover,
+    .carttable a:hover {
         color: #cc543a;
     }
 
@@ -329,23 +331,18 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
         .mobile_bill {
             width: 100%;
+            height: 40px;
             position: fixed;
+            display: flex;
+            justify-content: space-between;
             bottom: 0;
             z-index: 2;
             background-color: white;
-            box-shadow: 0 -3px 3px 3px rgba(102, 102, 102, 0.562);
+            /* box-shadow: 0 -3px 3px 3px rgba(102, 102, 102, 0.562); */
         }
 
         .mobile_bill p {
             margin: 0;
-        }
-
-        .mobile_discount,
-        .mobile_bill div {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .mobile_sum {
@@ -412,7 +409,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     <?php foreach ($_SESSION['cart']['product'] as $i) : ?>
                         <ul>
                             <li><?= $i['name'] ?></li>
-                            <li><?= $i['price'] ?></li>
+                            <li><?= $i['price'] * $i['qty'] ?></li>
                         </ul>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -430,7 +427,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     <?php foreach ($_SESSION['cart']['light'] as $k) : ?>
                         <ul>
                             <li><?= $k['name'] ?></li>
-                            <li><?= $k['price'] ?></li>
+                            <li><?= $k['price'] * $k['qty'] ?></li>
                         </ul>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -597,10 +594,10 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
                                     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="
                         
-                        手機: <?= $k['mobile'] ?><br>
-                        生辰: <?= $k['birthday'] ?><br>
-                        出生時間: <?= $k['stime'] ?><br>
-                        地址: <?= $k['address'] ?>
+                        手機: <?= $dataL['mobile'] ?><br>
+                        生辰: <?= $dataL['birthday'] ?><br>
+                        出生時間: <?= $dataL['stime'] ?><br>
+                        地址: <?= $dataL['address'] ?>
 
                         " data-html='true'>查看詳情</button>
 
@@ -776,10 +773,8 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     </section>
 </div>
 <div class="mobile_bill">
-    <div>
-        <p class="totalSum">XXX</p>
-        <button type="submit"><a href="<?= WEB_ROOT ?>/checkList.php">確認結帳</a></button>
-    </div>
+    <p class="totalSum">XXX</p>
+    <button type="submit"><a href="<?= WEB_ROOT ?>/checkList.php">確認結帳</a></button>
 </div>
 <div class="cart_backdeco">
     <img src="<?= WEB_ROOT ?>/img/cart_Incense.png">
@@ -819,8 +814,36 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         return sum
     }
 
+    // let xxx = document.querySelectorAll('.price')
+    // $(xxx).text($('.price').html().numberFormat(0, '.', ','))
+    // // var sum_text = sum.numberFormat(0, '.', ',');
 
-    $(document).ready(function() {
+
+
+    var pdc_sum = 0;
+    $('.cart_product .price').each(function() {
+        pdc_sum += parseFloat(this.innerHTML);
+    });
+    $('.cart_product .subsum').html('<p>' + 'NTD. ' + dallorCommas(pdc_sum) + '</p>')
+
+    var plan_sum = 0;
+    $('.cart_plan .price').each(function() {
+        plan_sum += parseFloat(this.innerHTML);
+    });
+    $('.cart_plan .subsum').html('<p>' + 'NTD. ' + dallorCommas(plan_sum) + '</p>')
+
+    var lit_sum = 0;
+    $('.cart_light .price').each(function() {
+        lit_sum += parseFloat(this.innerHTML);
+    });
+    $('.cart_light .subsum').html('<p>' + 'NTD. ' + dallorCommas(lit_sum) + '</p>')
+
+    //最後的商品總金額
+    $('.totalSum').text('NTD. ' + dallorCommas(pdc_sum + plan_sum + lit_sum));
+
+
+
+    $(document).on('click', '.fa-trash-alt', function() {
         var pdc_sum = 0;
         $('.cart_product .price').each(function() {
             pdc_sum += parseFloat(this.innerHTML);
@@ -838,29 +861,6 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             lit_sum += parseFloat(this.innerHTML);
         });
         $('.cart_light .subsum').html('<p>' + 'NTD. ' + dallorCommas(lit_sum) + '</p>')
-
-        //最後的商品總金額
-        $('.totalSum').text('NTD. ' + dallorCommas(pdc_sum + plan_sum + lit_sum));
-
-    });
-
-
-
-
-    $(document).on('click', '.fa-trash-alt', function() {
-        var sum = 0;
-        $('.cart_product .price').each(function() {
-            sum += parseFloat(this.innerHTML);
-        });
-        $('.cart_product .subsum').html('<p>' + sum + '</p>')
-        $('.cart_plan .price').each(function() {
-            sum += parseFloat(this.innerHTML);
-        });
-        $('.cart_plan .subsum').html('<p>' + sum + '</p>')
-        $('.cart_light .price').each(function() {
-            sum += parseFloat(this.innerHTML);
-        });
-        $('.cart_light .subsum').html('<p>' + sum + '</p>')
     })
 
 
