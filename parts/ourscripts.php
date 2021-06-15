@@ -112,7 +112,7 @@
                 function(data) {
                     if (data.success) {
                         // alert('註冊成功');
-                        window.location.replace("./member_onepage.php");
+                        location.reload();
                     } else {
                         // alert(data.error);
                         $email.css('border', '1px solid red');
