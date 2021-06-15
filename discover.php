@@ -800,10 +800,10 @@ $_gdata = [
     <img class="discover_footprint" src="<?= WEB_ROOT ?>/img/footprints.svg">
     <div class="discover_box col-lg-10">
         <div class="discover_list col-lg-5 col-12">
-            <h3>What are you looking for?</h3>
-            <h3>尋找神之所在</h3>
+            <h3 class="fastinput_6">What are you looking for?</h3>
+            <h3 class="fastinput_5">尋找神之所在</h3>
             <form class="inputs" style="position: relative;">
-                <input type="search" id="keyword" name="keyword" placeholder="搜尋廟宇">
+                <input class="fastinput_5_temple" type="search" id="keyword" name="keyword" placeholder="搜尋廟宇">
                 <select name="area">
                     <option value="all">全台</option>
                     <option value="north">北</option>
@@ -1065,7 +1065,7 @@ $_gdata = [
                     console.log(bingo, word)
                     if (bingo.indexOf(word) != -1) {
                         isResult = true;
-                        resultList.innerHTML += `<li class="result_list">${bingo}</li>`;
+                        resultList.innerHTML += `<li class="result_list btnCursor">${bingo}</li>`;
                     }
                 })
                 $("#secondHead").text("RESULT");
@@ -1114,5 +1114,20 @@ $_gdata = [
     }
 
     // resultHead.innerHTML = `<p>搜尋結果</p>`
+
+    // 快速輸入 行天宮
+    $('.fastinput_5').click(function(event) {
+        event.preventDefault();
+
+        $('.fastinput_5_temple').val('台北行天宮');
+
+    });
+
+    $('.fastinput_6').click(function(event) {
+        event.preventDefault();
+
+        $('.fastinput_5_temple').val('廟');
+
+    });
 </script>
 <?php include __DIR__ . '/parts/html-foot.php'; ?>
