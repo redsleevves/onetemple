@@ -463,7 +463,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         <?php foreach ($_SESSION['cart']['product'] as $i => $dataP) : ?>
                             <?php foreach ($pdc_rows as $a)
                                 if ($dataP['id'] == $a['id']) : ?>
-                                <tr data-id="<?= $i ?>">
+                                <tr data-id="<?= $i ?>" data-type="pdc">
                                     <td>
                                         <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img2'] ?>"></div>
                                     </td>
@@ -518,18 +518,18 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($_SESSION['cart']['plan'] as $j) : ?>
+                        <?php foreach ($_SESSION['cart']['plan'] as $j => $dataT) : ?>
                             <?php foreach ($plan_rows as $b)
-                                if ($j['id'] == $b['id']) : ?>
-                                <tr data-id="<?= $j['id'] ?>">
+                                if ($dataT['id'] == $b['id']) : ?>
+                                <tr data-id="<?= $j ?>" data-type="plan">
                                     <td>
                                         <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['photo1'] ?>"></div>
                                     </td>
-                                    <td><?= $j['name'] ?></td>
-                                    <td><?= $j['content'] ?></td>
-                                    <td><?= $j['qty'] ?></td>
-                                    <td class="price"><?= $j['price'] * $j['qty'] ?></td>
-                                    <td><?= $j['note'] ?></td>
+                                    <td><?= $dataT['name'] ?></td>
+                                    <td><?= $dataT['content'] ?></td>
+                                    <td><?= $dataT['qty'] ?></td>
+                                    <td class="price"><?= $dataT['price'] ?></td>
+                                    <td><?= $dataT['note'] ?></td>
                                     <td class="trash">
                                         <a href="javascript:" onclick="deleteItem(event)">
                                             <i class="fas fa-trash-alt"></i>
@@ -575,15 +575,15 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($_SESSION['cart']['light'] as $k) : ?>
-                            <tr>
+                        <?php foreach ($_SESSION['cart']['light'] as $k => $dataL) : ?>
+                            <tr data-id="<?= $k ?>" data-type="light">
                                 <td>
                                     <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/light.jpg"></div>
                                 </td>
-                                <td><?= $k['name'] ?></td>
-                                <td><?= $k['content'] ?></td>
-                                <td><?= $k['qty'] ?></td>
-                                <td class="price"><?= $k['price'] * $k['qty'] ?></td>
+                                <td><?= $dataL['name'] ?></td>
+                                <td><?= $dataL['content'] ?></td>
+                                <td><?= $dataL['qty'] ?></td>
+                                <td class="price"><?= $dataL['price'] * $dataL['qty'] ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="
@@ -597,7 +597,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
                                 </td>
                                 <td class="trash">
-                                    <a href="javascript:delete_it_pdc(<?= $k['sid'] ?>)">
+                                    <a href="javascript:" onclick="deleteItem(event)">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </td>
@@ -856,17 +856,20 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     const deleteItem = function(event) {
         let me = $(event.currentTarget);
         let id = me.closest('tr').attr('data-id');
+        let type = me.closest('tr').attr('data-type');
+
         if (confirm(`確定要刪除嗎?`)) {
             $.get('cart_api.php', {
-                    type: 'pdc',
+                    type: type,
                     id: id
                 },
                 function(data) {
                     me.closest('tr').remove();
-                    if ($('tbody>tr').length < 1) {
-                        location.reload();
-                    }
+
                 }, 'json');
+        }
+        if ($('tbody>tr').length = 1) {
+            location.reload();
         }
     };
 </script>
