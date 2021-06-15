@@ -339,14 +339,13 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             z-index: 2;
             background-color: white;
             /* box-shadow: 0 -3px 3px 3px rgba(102, 102, 102, 0.562); */
-            font-weight: bold;
         }
 
         .mobile_bill p {
             margin: 0;
-            width:70%;
+            width: 70%;
             margin: auto;
-            
+
         }
 
         .mobile_sum {
@@ -384,10 +383,14 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             font-size: 16px;
             margin: 0;
         }
-        footer {
-                display: none;
-            }
 
+        footer {
+            display: none;
+        }
+
+        .fwb {
+            font-weight: bold;
+        }
     }
 </style>
 <?php include __DIR__ . '/parts/navbar2.php'; ?>
@@ -781,8 +784,8 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     </section>
 </div>
 <div class="mobile_bill">
-    <p class="totalSum">XXX</p>
-    <button type="submit"><a href="<?= WEB_ROOT ?>/checkList.php">確認結帳</a></button>
+    <p class="totalSum fwb">XXX</p>
+    <button type="submit"><a class="fwb" href="<?= WEB_ROOT ?>/checkList.php">確認結帳</a></button>
 </div>
 <div class="cart_backdeco">
     <img src="<?= WEB_ROOT ?>/img/cart_Incense.png">
