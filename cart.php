@@ -783,9 +783,9 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         </table>
     </section>
 </div>
-<div class="mobile_bill">
-    <p class="totalSum fwb">XXX</p>
-    <button type="submit"><a class="fwb" href="<?= WEB_ROOT ?>/checkList.php">確認結帳</a></button>
+<div class="mobile_bill pl-2">
+    <p class="totalSum"></p>
+    <button type="submit" class="pr-2"><a href="<?= WEB_ROOT ?>/checkList.php">確認結帳</a></button>
 </div>
 <div class="cart_backdeco">
     <img src="<?= WEB_ROOT ?>/img/cart_Incense.png">
