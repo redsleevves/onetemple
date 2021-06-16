@@ -446,6 +446,11 @@ $_SESSION['order_id'] = date("YmdHis") . substr(microtime(), 2, 1);
         .checkList_bccImg {
             display: none;
         }
+
+        .modal-footer-re{
+            padding: 0;
+            flex-wrap: nowrap;
+        }
     }
 </style>
 
