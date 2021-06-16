@@ -1280,7 +1280,7 @@ $_SESSION['order_id'] = date("YmdHis") . substr(microtime(), 2, 1);
     $('.fastinput_3').click(function(event) {
         event.preventDefault();
 
-        $('.fastinput_3_name').val('同期醬');
+        $('.fastinput_3_name').val('虎爺');
         $('.fastinput_3_mobile').val('0912345678');
         $('.fastinput_3_address').val('台北市大安區復興南路一段390號2樓');
     });
@@ -1289,9 +1289,9 @@ $_SESSION['order_id'] = date("YmdHis") . substr(microtime(), 2, 1);
     $('.fastinput_4').click(function(event) {
         event.preventDefault();
 
-        $('.fastinput_4_name').val('DOU KI CHAN');
-        $('.fastinput_4_safe').val('618');
-        $('.fastinput_4_month').val('02');
+        $('.fastinput_4_name').val('HU YEH');
+        $('.fastinput_4_safe').val('606');
+        $('.fastinput_4_month').val('06');
         $('.fastinput_4_year').val('23');
     });
 </script>
