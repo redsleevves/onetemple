@@ -423,7 +423,7 @@ for($i=0;$i<count($hot_shops);$i++) {
                         </div>
                     </div>
                 </div>
-                <div class="shop_fixed_bottom w-100 d-flex justify-content-between py-2 px-2 fixed-bottom d-lg-none ">
+                <div class="shop_fixed_bottom w-100 d-flex justify-content-between p-2 fixed-bottom d-lg-none ">
                     <div class="shop_fixed_bottom1 py-2"><i class="fas fa-shopping-cart px-2"
                             style="color: #fff;"></i><span>已</span>加入購物車
                     </div>

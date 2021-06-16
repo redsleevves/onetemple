@@ -353,6 +353,7 @@ $_gdata = [
         font-size: 20px;
         font-weight: 500;
         letter-spacing: 0.1rem;
+        min-width: 140px;
     }
 
     .index_news_container02 {

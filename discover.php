@@ -273,9 +273,24 @@ $_gdata = [
     }
 
     .hot_feature {
-        padding: 5px;
+        border: 5px solid transparent;
         position: relative;
+        overflow: hidden;
+        padding: 0;
     }
+
+    .hot_feature img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .hot_feature p {
+        width: 100%;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
 
     .tempname {
         position: absolute;
@@ -478,7 +493,7 @@ $_gdata = [
             height: 400px;
             overflow-x: hidden;
             justify-content: start;
-            align-items: start;
+            align-content: start;
         }
 
         .tempname {
@@ -696,6 +711,7 @@ $_gdata = [
         .hot_feature {
             position: absolute;
             transition: 0.8s;
+
         }
 
         .hot_feature img {
@@ -752,6 +768,8 @@ $_gdata = [
 
     .darken {
         filter: brightness(60%);
+        transform: scale(1.2);
+        transition: 0.5s;
     }
 
     .show {
@@ -800,10 +818,10 @@ $_gdata = [
     <img class="discover_footprint" src="<?= WEB_ROOT ?>/img/footprints.svg">
     <div class="discover_box col-lg-10">
         <div class="discover_list col-lg-5 col-12">
-            <h3>What are you looking for?</h3>
-            <h3>尋找神之所在</h3>
+            <h3 class="fastinput_6">What are you looking for?</h3>
+            <h3 class="fastinput_5">尋找神之所在</h3>
             <form class="inputs" style="position: relative;">
-                <input type="search" id="keyword" name="keyword" placeholder="搜尋廟宇">
+                <input class="fastinput_5_temple" type="search" id="keyword" name="keyword" placeholder="搜尋廟宇">
                 <select name="area">
                     <option value="all">全台</option>
                     <option value="north">北</option>
@@ -820,35 +838,35 @@ $_gdata = [
             </form>
             <h3 id="secondHead">HOT</h3>
             <div id='discover_hot' class="discover_hot d-flex result scrollStyle">
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
                     <p class="tempname">清水祖師廟</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
                     <p class="tempname">北港朝天宮</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
                     <p class="tempname">松山慈祐宮</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
                     <p class="tempname">大甲鎮瀾宮</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (5).jpg">
                     <p class="tempname">南鯤鯓代天府</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (6).jpg">
                     <p class="tempname">法鼓山</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (7).jpg">
                     <p class="tempname">正統鹿耳門聖母廟</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (8).jpg">
                     <p class="tempname">鹿港天后宮</p>
                 </div>
@@ -1048,7 +1066,7 @@ $_gdata = [
         $('.hot_feature').eq(i % picNum).css('opacity', '1').siblings('div').css('opacity', '0')
     })
 
-    let arr = ["大智山玄空法寺", "壽山巖觀音寺", "麥寮拱範宮", "台中草屯雷藏寺", "佛光山寺", "松山慈惠堂", "台灣護聖宮", "北港朝天宮", "台北松山慈祐宮", "台中大甲鎮瀾宮", "法鼓山", "南鯤鯓代天府", "正統鹿耳門聖母廟", "鹿港天后宮", "臺東天后宮", "高雄代天宮", "松山奉天宮", "鹿港龍山寺", "日月潭文武廟", "台北行天宮", "高雄玉皇宮", "萬華龍山寺", "三峽清水祖師廟", "長春路四面佛", "霞海城隍廟", "新竹都城隍廟", "台北林神農宮", "台北芝山聖佑宮", "台北大龍峒保安宮", "台北關渡宮"]
+    let arr = ["大智山玄空法寺", "壽山巖觀音寺", "麥寮拱範宮", "台中草屯雷藏寺", "佛光山寺", "松山慈惠堂", "台灣護聖宮", "北港朝天宮", "台北松山慈祐宮", "台中大甲鎮瀾宮", "法鼓山", "南鯤鯓代天府", "正統鹿耳門聖母廟", "鹿港天后宮", "臺東天后宮", "高雄代天宮", "松山奉天宮", "鹿港龍山寺", "日月潭文武廟", "台北行天宮", "高雄玉皇宮", "萬華龍山寺", "三峽清水祖師廟", "長春路四面佛", "霞海城隍廟", "新竹都城隍廟", "台北林神農宮", "台北芝山聖佑宮", "台北大龍峒保安宮", "台北關渡宮", "頭城慶元宮", "鹿港興安宮", "二林仁和宮", "鹿耳門天后宮", "山上天后宮", "茅港尾堡天后宮", "南投市配天宮", "新屋天后宮", "新港奉天宮", "崙背奉天宮", "旗山天后宮", "六堆天后宮", "澎湖天后宮"]
 
     let keyword = document.getElementById('keyword')
     keyword.addEventListener('input', updateResult);
@@ -1065,7 +1083,7 @@ $_gdata = [
                     console.log(bingo, word)
                     if (bingo.indexOf(word) != -1) {
                         isResult = true;
-                        resultList.innerHTML += `<li class="result_list">${bingo}</li>`;
+                        resultList.innerHTML += `<li class="result_list btnCursor">${bingo}</li>`;
                     }
                 })
                 $("#secondHead").text("RESULT");
@@ -1076,35 +1094,35 @@ $_gdata = [
             }
         } else {
             $("#secondHead").text("HOT");
-            resultList.innerHTML = `                    <div class="hot_feature col-lg-6">
+            resultList.innerHTML = `                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
                         <p class="tempname">清水祖師廟</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
                         <p class="tempname">北港朝天宮</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
                         <p class="tempname">松山慈祐宮</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
                         <p class="tempname">大甲鎮瀾宮</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (5).jpg">
                         <p class="tempname">南鯤鯓代天府</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (6).jpg">
                         <p class="tempname">法鼓山</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (7).jpg">
                         <p class="tempname">正統鹿耳門聖母廟</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (8).jpg">
                         <p class="tempname">鹿港天后宮</p>
                     </div>
@@ -1114,5 +1132,20 @@ $_gdata = [
     }
 
     // resultHead.innerHTML = `<p>搜尋結果</p>`
+
+    // 快速輸入 行天宮
+    $('.fastinput_5').click(function(event) {
+        event.preventDefault();
+
+        $('.fastinput_5_temple').val('台北行天宮');
+
+    });
+
+    $('.fastinput_6').click(function(event) {
+        event.preventDefault();
+
+        $('.fastinput_5_temple').val('廟');
+
+    });
 </script>
 <?php include __DIR__ . '/parts/html-foot.php'; ?>

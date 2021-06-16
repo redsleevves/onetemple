@@ -473,7 +473,7 @@ $_gdata = [
         <div class="light_Description_page_1_h5p padding_bottom_rem ">
             <h5 class="redcolor">安奉費用:</h5>
             <br>
-            <p>安太歲為每盞800元，其餘燈種每盞燈安奉費用為600元，各項服務特色請參考本網站相關說明。</p>
+            <p>每盞燈安奉費用為600元，各項服務特色請參考本網站相關說明。</p>
         </div>
         <!-- page_1內文 付費方式 -->
         <div class="light_Description_page_1_h5p padding_bottom_rem ">

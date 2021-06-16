@@ -58,7 +58,7 @@
         $('.fastinput_2_email').val('abc@gmail.com');
         $('.fastinput_2_password').val('abc');
         $('.fastinput_2_mobile').val('0987654321');
-        $('.fastinput_2_name').val('資策會');
+        $('.fastinput_2_name').val('通靈少女');
 
     })
 
@@ -112,7 +112,7 @@
                 function(data) {
                     if (data.success) {
                         // alert('註冊成功');
-                        window.location.replace("./member_onepage.php");
+                        location.reload();
                     } else {
                         // alert(data.error);
                         $email.css('border', '1px solid red');

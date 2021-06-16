@@ -1099,7 +1099,9 @@ $rows = $stmt->fetchAll();
                                                     <select name="light_temple" class="form-control col-11 radius0 light_temple " id="select-3" disabled>
                                                         <option selected value="">選擇廟宇</option>
                                                     </select>
+
                                                     <!-- <i class="far fa-trash-alt marginauto removebut_far"></i> -->
+
                                                 </div>
                                             </div>
 
@@ -1135,7 +1137,7 @@ $rows = $stmt->fetchAll();
                                             <div class="col-5 d-flex aic p-0">
                                                 <div class="col p-0">
                                                     <div class="light_temple vishidden"></div>
-                                                    <small class="form-text error"></small>
+                                                    <small class="form-text error light_temple_error"></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -1631,7 +1633,8 @@ $rows = $stmt->fetchAll();
                                             <div class="col-5 d-flex aic p-0">
                                                 <div class="col p-0">
                                                     <div class="light_temple vishidden"></div>
-                                                    <small class="form-text error"></small>
+                                                    <small class="form-text error light_temple_error"></small>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -3087,7 +3090,8 @@ $rows = $stmt->fetchAll();
                     if ($light_temple.val() == "") {
                         isPass = false;
                         $light_temple.css('border', '1px solid red');
-                        $light_temple.next().text('請選擇廟宇');
+                        // 避開 text 改掉垃圾桶 方式
+                        $light_temple.parents(".myselector_group").find(".light_temple_error").text('請選擇廟宇');
                     }
                 });
 
@@ -3925,7 +3929,7 @@ $rows = $stmt->fetchAll();
                                             <div class="col-5 d-flex aic p-0">
                                                 <div class="col p-0">
                                                     <div class="light_temple vishidden"></div>
-                                                    <small class="form-text error"></small>
+                                                    <small class="form-text error light_temple_error"></small>
                                                 </div>
                                             </div>
                                         </div>
@@ -4066,7 +4070,7 @@ $rows = $stmt->fetchAll();
                                         <div class="col-5 d-flex aic p-0">
                                             <div class="col p-0">
                                                 <div class="light_temple vishidden"></div>
-                                                <small class="form-text error"></small>
+                                                <small class="form-text error light_temple_error"></small>
                                             </div>
                                         </div>
                                     </div>

@@ -7,7 +7,7 @@ $_gdata = [
     // 頁面私有 css
     'styles' => '<link rel="stylesheet" href="' . WEB_ROOT . '/css/member_data.css"><link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">',
     //頁面私有 scripts
-    'scripts' => '',
+    'scripts' => '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>',
 ];
 
 $title = '灣廟 | 會員中心';
@@ -655,6 +655,26 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 
     form>i:active {
         transform: translate(0, 1px);
+    }
+
+    .swal-modal {
+        background-image: url(<?= WEB_ROOT ?>/img/bcc2.png);
+    }
+
+    .swal-footer {
+        text-align: center;
+    }
+
+    .swal-button--confirm {
+        background-color: #cc543a;
+        font-weight: normal;
+        font-size: 18px;
+    }
+
+    .swal-button--cancel {
+        background-color: white;
+        font-weight: normal;
+        font-size: 18px;
     }
 
     /* 桌機用 */
@@ -1839,6 +1859,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 
 <script>
     var detail = document.getElementsByClassName(".detail");
+    $(".ordertable .detail").last().css("margin-bottom", "110px")
 
     $(".info").click(function() {
         let absoluteBut = document.body.scrollHeight
@@ -2088,6 +2109,7 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
         $(".scrollbox").append(addfriends);
     })
 
+
     // 親友修改 刪除Buttom
 
 
@@ -2135,36 +2157,61 @@ $sum_lit_rows = $pdo->query($sum_lit_sql)->fetchAll();
 
 
     function delete_fav_pdc(sid) {
-        if (confirm(`確定要刪除嗎?`)) {
-            $('.selected').remove();
-            $.ajax({
-                url: 'delete_fav_pdc.php?sid=' + sid,
-                method: "DELETE",
-                dataType: "json"
+        swal({
+                title: "確定要刪除嗎？",
+                buttons: ["考慮一下", "確定"],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $('.selected').remove();
+                    $.ajax({
+                        url: 'delete_fav_pdc.php?sid=' + sid,
+                        method: "DELETE",
+                        dataType: "json"
+
+                    });
+                }
             });
-        }
     }
 
-    function delete_fav_trip(sid, name) {
-        if (confirm(`確定要刪除嗎?`)) {
-            $('.selected').remove();
-            $.ajax({
-                url: 'delete_fav_trip.php?sid=' + sid,
-                method: "DELETE",
-                dataType: "json"
+    function delete_fav_trip(sid) {
+        swal({
+                title: "確定要刪除嗎？",
+                buttons: ["考慮一下", "確定"],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $('.selected').remove();
+                    $.ajax({
+                        url: 'delete_fav_trip.php?sid=' + sid,
+                        method: "DELETE",
+                        dataType: "json"
+
+                    });
+                }
             });
-        }
     }
+
 
     function delete_fav_lucky(sid) {
-        if (confirm(`確定要刪除嗎?`)) {
-            $('.selected').remove();
-            $.ajax({
-                url: 'delete_fav_lucky.php?sid=' + sid,
-                method: "DELETE",
-                dataType: "json"
+        swal({
+                title: "確定要刪除嗎？",
+                buttons: ["考慮一下", "確定"],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $('.selected').remove();
+                    $.ajax({
+                        url: 'delete_fav_lucky.php?sid=' + sid,
+                        method: "DELETE",
+                        dataType: "json"
+
+                    });
+                }
             });
-        }
     }
 
     $(document).on('click', '.unfriends', (function() {

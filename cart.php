@@ -7,7 +7,8 @@ $_gdata = [
     'styles' => '<link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">',
     //頁面私有 scripts
-    'scripts' => '',
+    'scripts' => '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    ',
 ];
 $pdc_sql = "SELECT * FROM `shops`";
 $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
@@ -54,6 +55,18 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         color: white;
         border-radius: 30px;
         border: none;
+    }
+
+    .swal-button--confirm {
+        background-color: #cc543a;
+        font-weight: normal;
+        font-size: 18px;
+    }
+
+    .swal-button--cancel {
+        background-color: white;
+        font-weight: normal;
+        font-size: 18px;
     }
 
     button:hover {
@@ -127,7 +140,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     }
 
     .bill hr {
-        height: 1px;
+        /* height: 0.5px; */
         width: 90%;
         background-color: rgb(196, 196, 196);
         margin: 10px;
@@ -192,6 +205,26 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     .input-group input {
         padding: 0;
         border: none;
+        text-align: center;
+    }
+
+    .cart_mobile a,
+    .carttable a {
+        text-decoration: none;
+        font-weight: bold;
+        color: black;
+    }
+
+    .cart_mobile a:hover,
+    .carttable a:hover {
+        color: #cc543a;
+    }
+
+    .swal-modal {
+        background-image: url(<?= WEB_ROOT ?>/img/bcc2.png);
+    }
+
+    .swal-footer {
         text-align: center;
     }
 
@@ -292,7 +325,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
         .cart_card {
             background-color: white;
-            border: 3px solid rgb(192, 192, 192);
+            border: 0.5px solid rgb(192, 192, 192);
             margin-right: 0;
             border-collapse: separate;
             border-spacing: 0 12px;
@@ -308,7 +341,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             display: block;
             position: absolute;
             width: 300px;
-            height: 2px;
+            height: 0.5px;
             background-color: rgb(182, 182, 182);
         }
 
@@ -318,23 +351,22 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
         .mobile_bill {
             width: 100%;
+            height: 59px;
             position: fixed;
+            display: flex;
+            justify-content: space-between;
             bottom: 0;
             z-index: 2;
             background-color: white;
-            box-shadow: 0 -3px 3px 3px rgba(102, 102, 102, 0.562);
+            /* box-shadow: 0 -3px 3px 3px rgba(102, 102, 102, 0.562); */
+            font-weight: bold;
         }
 
         .mobile_bill p {
             margin: 0;
-        }
+            width: 70%;
+            margin: auto;
 
-        .mobile_discount,
-        .mobile_bill div {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
         }
 
         .mobile_sum {
@@ -372,6 +404,11 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             font-size: 16px;
             margin: 0;
         }
+
+        footer {
+            display: none;
+        }
+
     }
 </style>
 <?php include __DIR__ . '/parts/navbar2.php'; ?>
@@ -381,8 +418,6 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     <div class="d-flex flex-wrap breadcrumb_style_1 ">
         <a href="" class="astlyep">首頁</a>
         <!-- 共用雲端找箭頭icon-->
-        <img src="./img/nav_arrow_right.svg">
-        <a href="" class="astlyep">祈福商店</a>
         <img src="./img/nav_arrow_right.svg">
         <a href="<?= WEB_ROOT ?>/cart.php" class="astlyep">購物車</a>
     </div>
@@ -403,7 +438,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     <?php foreach ($_SESSION['cart']['product'] as $i) : ?>
                         <ul>
                             <li><?= $i['name'] ?></li>
-                            <li><?= $i['price'] ?></li>
+                            <li><?= $i['price'] * $i['qty'] ?></li>
                         </ul>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -421,7 +456,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     <?php foreach ($_SESSION['cart']['light'] as $k) : ?>
                         <ul>
                             <li><?= $k['name'] ?></li>
-                            <li><?= $k['price'] ?></li>
+                            <li><?= $k['price'] * $k['qty'] ?></li>
                         </ul>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -444,7 +479,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             <h4 class="cartName">商品</h4>
             <?php if (empty($_SESSION['cart']['product'])) : ?>
                 <div class="alert" role="alert">
-                    您並未選購任何商品，請至祈福商店選購。
+                    您並未選購任何商品，請至<a href="<?= WEB_ROOT ?>/shop.php"> 祈福商店 </a>選購。
                 </div>
             <?php else : ?>
                 <table class="table table-light">
@@ -463,7 +498,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         <?php foreach ($_SESSION['cart']['product'] as $i => $dataP) : ?>
                             <?php foreach ($pdc_rows as $a)
                                 if ($dataP['id'] == $a['id']) : ?>
-                                <tr data-id="<?= $i ?>">
+                                <tr data-id="<?= $i ?>" data-type="pdc">
                                     <td>
                                         <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img2'] ?>"></div>
                                     </td>
@@ -502,7 +537,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             <h4 class="cartName">行旅</h4>
             <?php if (empty($_SESSION['cart']['plan'])) : ?>
                 <div class="alert" role="alert">
-                    您並未選購任何商品，請至聖地巡禮選購。
+                    您並未選購任何商品，請至<a href="<?= WEB_ROOT ?>/trip.php"> 聖地巡禮 </a>選購。
                 </div>
             <?php else : ?>
                 <table class="table table-light">
@@ -518,18 +553,18 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($_SESSION['cart']['plan'] as $j) : ?>
+                        <?php foreach ($_SESSION['cart']['plan'] as $j => $dataT) : ?>
                             <?php foreach ($plan_rows as $b)
-                                if ($j['id'] == $b['id']) : ?>
-                                <tr data-id="<?= $j['id'] ?>">
+                                if ($dataT['id'] == $b['id']) : ?>
+                                <tr data-id="<?= $j ?>" data-type="plan">
                                     <td>
                                         <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['photo1'] ?>"></div>
                                     </td>
-                                    <td><?= $j['name'] ?></td>
-                                    <td><?= $j['content'] ?></td>
-                                    <td><?= $j['qty'] ?></td>
-                                    <td class="price"><?= $j['price'] * $j['qty'] ?></td>
-                                    <td><?= $j['note'] ?></td>
+                                    <td><?= $dataT['name'] ?></td>
+                                    <td><?= $dataT['content'] ?></td>
+                                    <td><?= $dataT['qty'] ?></td>
+                                    <td class="price"><?= $dataT['price'] ?></td>
+                                    <td><?= $dataT['note'] ?></td>
                                     <td class="trash">
                                         <a href="javascript:" onclick="deleteItem(event)">
                                             <i class="fas fa-trash-alt"></i>
@@ -559,7 +594,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             <h4 class="cartName">點燈</h4>
             <?php if (empty($_SESSION['cart']['light'])) : ?>
                 <div class="alert" role="alert">
-                    您並未選購任何商品，請至線上服務選購。
+                    您並未選購任何商品，請至<a href="<?= WEB_ROOT ?>/light_Introduction.php"> 祈福點燈 </a>選購。
                 </div>
             <?php else : ?>
                 <table class="table table-light">
@@ -575,29 +610,29 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($_SESSION['cart']['light'] as $k) : ?>
-                            <tr>
+                        <?php foreach ($_SESSION['cart']['light'] as $k => $dataL) : ?>
+                            <tr data-id="<?= $k ?>" data-type="light">
                                 <td>
                                     <div class="thumbnail"><img src="<?= WEB_ROOT ?>/img/light.jpg"></div>
                                 </td>
-                                <td><?= $k['name'] ?></td>
-                                <td><?= $k['content'] ?></td>
-                                <td><?= $k['qty'] ?></td>
-                                <td class="price"><?= $k['price'] * $k['qty'] ?></td>
+                                <td><?= $dataL['name'] ?></td>
+                                <td><?= $dataL['content'] ?></td>
+                                <td><?= $dataL['qty'] ?></td>
+                                <td class="price"><?= $dataL['price'] * $dataL['qty'] ?></td>
                                 <td>
 
                                     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="
                         
-                        手機: <?= $k['mobile'] ?><br>
-                        生辰: <?= $k['birthday'] ?><br>
-                        出生時間: <?= $k['stime'] ?><br>
-                        地址: <?= $k['address'] ?>
+                        手機: <?= $dataL['mobile'] ?><br>
+                        生辰: <?= $dataL['birthday'] ?><br>
+                        出生時間: <?= $dataL['stime'] ?><br>
+                        地址: <?= $dataL['address'] ?>
 
                         " data-html='true'>查看詳情</button>
 
                                 </td>
                                 <td class="trash">
-                                    <a href="javascript:delete_it_pdc(<?= $k['sid'] ?>)">
+                                    <a href="javascript:" onclick="deleteItem(event)">
                                         <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </td>
@@ -634,25 +669,26 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             <?php if (empty($_SESSION['cart']['product'])) : ?>
                 <tbody>
                     <tr>
-                        <td>您並未選購任何商品，請至祈福商店選購。</td>
+                        <td>您並未選購任何商品，請至<a href="<?= WEB_ROOT ?>/shop.php"> 祈福商店 </a>選購。
+                        </td>
                     </tr>
                 </tbody>
             <?php else : ?>
                 <tbody>
-                    <?php foreach ($_SESSION['cart']['product'] as $i) : ?>
+                    <?php foreach ($_SESSION['cart']['product'] as $i => $dataP) : ?>
                         <?php foreach ($pdc_rows as $a)
-                            if ($i['id'] == $a['id']) : ?>
-                            <tr>
+                            if ($dataP['id'] == $a['id']) : ?>
+                            <tr data-id="<?= $i ?>" data-type="product">
                                 <td>
                                     <div class="mobile_thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img2'] ?>"></div>
                                 </td>
                                 <td>
                                     <div class="data">
                                         <div class="detail">
-                                            <p><?= $i['name'] ?></p>
-                                            <p><?= $i['content'] ?></p>
-                                            <p>NTD <?= $i['price'] ?></p>
-                                            <p>數量 <?= $i['qty'] ?></p>
+                                            <p><?= $dataP['name'] ?></p>
+                                            <p><?= $dataP['content'] ?></p>
+                                            <p>NTD <?= $dataP['price'] ?></p>
+                                            <p>數量 <?= $dataP['qty'] ?></p>
                                         </div>
                                         <!-- <div class="input-group">
                                         <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
@@ -681,31 +717,31 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             <?php if (empty($_SESSION['cart']['plan'])) : ?>
                 <tbody>
                     <tr>
-                        <td>您並未選購任何商品，請至聖地行旅選購。</td>
+                        <td>您並未選購任何商品，請至<a href="<?= WEB_ROOT ?>/trip.php"> 聖地巡禮 </a>選購。</td>
                     </tr>
                 </tbody>
             <?php else : ?>
                 <tbody>
-                    <?php foreach ($_SESSION['cart']['plan'] as $j) : ?>
+                    <?php foreach ($_SESSION['cart']['plan'] as $j => $dataT) : ?>
                         <?php foreach ($plan_rows as $b)
-                            if ($j['id'] == $b['id']) : ?>
-                            <tr>
+                            if ($dataT['id'] == $b['id']) : ?>
+                            <tr data-id="<?= $j ?>" data-type="plan">
                                 <td>
                                     <div class="mobile_thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $b['photo1'] ?>"></div>
                                 </td>
                                 <td>
                                     <div class="data">
                                         <div class="detail">
-                                            <p><?= $j['name'] ?></p>
-                                            <p><?= $j['content'] ?></p>
-                                            <p>NTD <?= $j['price'] ?></p>
-                                            <p>數量 <?= $j['qty'] ?></p>
+                                            <p><?= $dataT['name'] ?></p>
+                                            <p><?= $dataT['content'] ?></p>
+                                            <p>NTD <?= $dataT['price'] ?></p>
+                                            <p>數量 <?= $dataT['qty'] ?></p>
                                         </div>
                                         <!-- <div class="input-group">
-                                        <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
-                                        <input type="text" class="form-control input-number" value="1" />
-                                        <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
-                                    </div> -->
+                                            <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                            <input type="text" class="form-control input-number" value="1" />
+                                            <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                        </div> -->
                                     </div>
                                 </td>
                                 <td><a href="javascript:" onclick="deleteItem(event)">
@@ -728,23 +764,23 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             <?php if (empty($_SESSION['cart']['light'])) : ?>
                 <tbody>
                     <tr>
-                        <td>您並未選購任何商品，請至線上祈福選購。</td>
+                        <td>您並未選購任何商品，請至<a href="<?= WEB_ROOT ?>/light_Introduction.php"> 祈福點燈 </a>選購。</td>
                     </tr>
                 </tbody>
             <?php else : ?>
                 <tbody>
-                    <?php foreach ($_SESSION['cart']['light'] as $k) : ?>
-                        <tr>
+                    <?php foreach ($_SESSION['cart']['light'] as $k => $dataL) : ?>
+                        <tr data-id="<?= $k ?>" data-type="light">
                             <td>
                                 <div class="mobile_thumbnail"><img src="<?= WEB_ROOT ?>/img/light.jpg"></div>
                             </td>
                             <td>
                                 <div class="data">
                                     <div class="detail">
-                                        <p><?= $k['name'] ?></p>
-                                        <p><?= $k['content'] ?></p>
-                                        <p>NTD <?= $k['price'] ?></p>
-                                        <p>數量 <?= $k['qty'] ?></p>
+                                        <p><?= $dataL['name'] ?></p>
+                                        <p><?= $dataL['content'] ?></p>
+                                        <p>NTD <?= $dataL['price'] ?></p>
+                                        <p>數量 <?= $dataL['qty'] ?></p>
                                     </div>
                                     <!-- <div class="input-group">
                                         <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
@@ -765,11 +801,9 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         </table>
     </section>
 </div>
-<div class="mobile_bill">
-    <div class="mobile_sum">
-        <p>XXX</p>
-        <button type="submit">去買單</button>
-    </div>
+<div class="mobile_bill pl-2">
+    <p class="totalSum"></p>
+    <button type="submit" class="pr-2"><a href="<?= WEB_ROOT ?>/checkList.php">確認結帳</a></button>
 </div>
 <div class="cart_backdeco">
     <img src="<?= WEB_ROOT ?>/img/cart_Incense.png">
@@ -809,8 +843,36 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         return sum
     }
 
+    // let xxx = document.querySelectorAll('.price')
+    // $(xxx).text($('.price').html().numberFormat(0, '.', ','))
+    // // var sum_text = sum.numberFormat(0, '.', ',');
 
-    $(document).ready(function() {
+
+
+    var pdc_sum = 0;
+    $('.cart_product .price').each(function() {
+        pdc_sum += parseFloat(this.innerHTML);
+    });
+    $('.cart_product .subsum').html('<p>' + 'NTD. ' + dallorCommas(pdc_sum) + '</p>')
+
+    var plan_sum = 0;
+    $('.cart_plan .price').each(function() {
+        plan_sum += parseFloat(this.innerHTML);
+    });
+    $('.cart_plan .subsum').html('<p>' + 'NTD. ' + dallorCommas(plan_sum) + '</p>')
+
+    var lit_sum = 0;
+    $('.cart_light .price').each(function() {
+        lit_sum += parseFloat(this.innerHTML);
+    });
+    $('.cart_light .subsum').html('<p>' + 'NTD. ' + dallorCommas(lit_sum) + '</p>')
+
+    //最後的商品總金額
+    $('.totalSum').text('NTD. ' + dallorCommas(pdc_sum + plan_sum + lit_sum));
+
+
+
+    $(document).on('click', '.fa-trash-alt', function() {
         var pdc_sum = 0;
         $('.cart_product .price').each(function() {
             pdc_sum += parseFloat(this.innerHTML);
@@ -828,46 +890,41 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             lit_sum += parseFloat(this.innerHTML);
         });
         $('.cart_light .subsum').html('<p>' + 'NTD. ' + dallorCommas(lit_sum) + '</p>')
-
-        //最後的商品總金額
-        $('.totalSum').text('NTD. ' + dallorCommas(pdc_sum + plan_sum + lit_sum));
-    });
-
-
-
-
-    $(document).on('click', '.fa-trash-alt', function() {
-        var sum = 0;
-        $('.cart_product .price').each(function() {
-            sum += parseFloat(this.innerHTML);
-        });
-        $('.cart_product .subsum').html('<p>' + sum + '</p>')
-        $('.cart_plan .price').each(function() {
-            sum += parseFloat(this.innerHTML);
-        });
-        $('.cart_plan .subsum').html('<p>' + sum + '</p>')
-        $('.cart_light .price').each(function() {
-            sum += parseFloat(this.innerHTML);
-        });
-        $('.cart_light .subsum').html('<p>' + sum + '</p>')
     })
+
 
 
     const deleteItem = function(event) {
         let me = $(event.currentTarget);
         let id = me.closest('tr').attr('data-id');
-        if (confirm(`確定要刪除嗎?`)) {
-            $.get('cart_api.php', {
-                    type: 'pdc',
-                    id: id
-                },
-                function(data) {
-                    me.closest('tr').remove();
-                    if ($('tbody>tr').length < 1) {
-                        location.reload();
-                    }
-                }, 'json');
-        }
+        let type = me.closest('tr').attr('data-type');
+
+        swal({
+                title: "確定要刪除嗎？",
+                // text: "Once deleted, you will not be able to recover this imaginary file!",
+                // icon: "warning",
+                buttons: ["考慮一下", "確定"],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.get('cart_api.php', {
+                            type: type,
+                            id: id
+                        },
+                        function(data) {
+                            me.closest('tr').remove();
+
+                        }, 'json');
+                }
+                if ($('tbody>tr').length = 1) {
+                    location.reload();
+                }
+
+            });
+
+
+
     };
 </script>
 <?php include __DIR__ . '/parts/html-foot.php'; ?>
