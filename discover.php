@@ -838,35 +838,35 @@ $_gdata = [
             </form>
             <h3 id="secondHead">HOT</h3>
             <div id='discover_hot' class="discover_hot d-flex result scrollStyle">
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
                     <p class="tempname">清水祖師廟</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
                     <p class="tempname">北港朝天宮</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
                     <p class="tempname">松山慈祐宮</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
                     <p class="tempname">大甲鎮瀾宮</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (5).jpg">
                     <p class="tempname">南鯤鯓代天府</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (6).jpg">
                     <p class="tempname">法鼓山</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (7).jpg">
                     <p class="tempname">正統鹿耳門聖母廟</p>
                 </div>
-                <div class="hot_feature col-lg-6">
+                <div class="hot_feature col-lg-6 btnCursor">
                     <img src="<?= WEB_ROOT ?>/img/hotTemple (8).jpg">
                     <p class="tempname">鹿港天后宮</p>
                 </div>
@@ -1094,35 +1094,35 @@ $_gdata = [
             }
         } else {
             $("#secondHead").text("HOT");
-            resultList.innerHTML = `                    <div class="hot_feature col-lg-6">
+            resultList.innerHTML = `                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (1).jpg">
                         <p class="tempname">清水祖師廟</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (2).jpg">
                         <p class="tempname">北港朝天宮</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (3).jpg">
                         <p class="tempname">松山慈祐宮</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (4).jpg">
                         <p class="tempname">大甲鎮瀾宮</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (5).jpg">
                         <p class="tempname">南鯤鯓代天府</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (6).jpg">
                         <p class="tempname">法鼓山</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (7).jpg">
                         <p class="tempname">正統鹿耳門聖母廟</p>
                     </div>
-                    <div class="hot_feature col-lg-6">
+                    <div class="hot_feature col-lg-6 btnCursor">
                         <img src="<?= WEB_ROOT ?>/img/hotTemple (8).jpg">
                         <p class="tempname">鹿港天后宮</p>
                     </div>
