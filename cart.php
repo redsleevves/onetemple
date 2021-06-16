@@ -61,13 +61,25 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         background-color: #cc543a;
         font-weight: normal;
         font-size: 18px;
+        padding: 12px 18px;
+        color: white;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
     }
 
     .swal-button--cancel {
-        background-color: white;
+        background-color: #c0c0c0;
         font-weight: normal;
         font-size: 18px;
+        padding: 12px 18px;
+        color: white;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
     }
+
+
 
     button:hover {
         background-color: #DD745E;
@@ -222,10 +234,24 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
     .swal-modal {
         background-image: url(<?= WEB_ROOT ?>/img/bcc2.png);
+        border-radius: 20px;
+        padding: 30px;
     }
+
+    .btnss {
+        padding: 12px 18px;
+        background-color: #cc543a;
+        color: white;
+        border-radius: 30px;
+        border: none;
+        /* font-family: 'Sitka Display', NSimSun, 'sans-serif'; */
+        cursor: pointer;
+    }
+
 
     .swal-footer {
         text-align: center;
+        border-radius: 20px;
     }
 
     @media screen and (min-width: 1000px) {
@@ -242,7 +268,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
         .each_table table {
             text-align: center;
-            box-shadow: 0 0 0 1pt rgb(77, 77, 77);
+            box-shadow: 0 0 0 0.5px rgb(77, 77, 77);
         }
 
         .each_table thead {
@@ -898,7 +924,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         let me = $(event.currentTarget);
         let id = me.closest('tr').attr('data-id');
         let type = me.closest('tr').attr('data-type');
-        
+
         swal({
                 title: "確定要刪除嗎？",
                 // text: "Once deleted, you will not be able to recover this imaginary file!",
