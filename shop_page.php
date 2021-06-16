@@ -424,7 +424,7 @@ for($i=0;$i<count($hot_shops);$i++) {
                     </div>
                 </div>
                 <div class="shop_fixed_bottom w-100 d-flex justify-content-between p-2 fixed-bottom d-lg-none ">
-                    <div class="shop_fixed_bottom1 py-2"><i class="fas fa-shopping-cart px-2"
+                    <div class="shop_fixed_bottom1 py-2 add_cart_mobile"><i class="fas fa-shopping-cart px-2"
                             style="color: #fff;"></i><span>已</span>加入購物車
                     </div>
                     <div class="shop_fixed_bottom_line"></div>
@@ -720,7 +720,7 @@ foreach($pc_hot_shops as $key => $group) {
         });
 
         // 加入購物車_mobile
-        $('.shop_fixed_bottom1').click(function(){
+        $('.add_cart_mobile').click(function(){
             if($(this).hasClass('active')) {
                 return;
             }

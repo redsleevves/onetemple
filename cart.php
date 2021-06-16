@@ -678,7 +678,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                     <?php foreach ($_SESSION['cart']['product'] as $i => $dataP) : ?>
                         <?php foreach ($pdc_rows as $a)
                             if ($dataP['id'] == $a['id']) : ?>
-                            <tr data-id="<?= $i ?>" data-type="product">
+                            <tr data-id="<?= $i ?>" data-type="pdc">
                                 <td>
                                     <div class="mobile_thumbnail"><img src="<?= WEB_ROOT ?>/img/<?= $a['img2'] ?>"></div>
                                 </td>
@@ -898,7 +898,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         let me = $(event.currentTarget);
         let id = me.closest('tr').attr('data-id');
         let type = me.closest('tr').attr('data-type');
-
+        
         swal({
                 title: "確定要刪除嗎？",
                 // text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -922,8 +922,6 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                 }
 
             });
-
-
 
     };
 </script>
