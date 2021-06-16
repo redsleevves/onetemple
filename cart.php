@@ -7,7 +7,8 @@ $_gdata = [
     'styles' => '<link rel="stylesheet" href="' . WEB_ROOT . '/css/navbar2.css">
     <link rel="stylesheet" href="' . WEB_ROOT . '/css/breadcrumb.css">',
     //頁面私有 scripts
-    'scripts' => '',
+    'scripts' => '<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    ',
 ];
 $pdc_sql = "SELECT * FROM `shops`";
 $pdc_rows = $pdo->query($pdc_sql)->fetchAll();
@@ -54,6 +55,18 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         color: white;
         border-radius: 30px;
         border: none;
+    }
+
+    .swal-button--confirm {
+        background-color: #cc543a;
+        font-weight: normal;
+        font-size: 18px;
+    }
+
+    .swal-button--cancel {
+        background-color: white;
+        font-weight: normal;
+        font-size: 18px;
     }
 
     button:hover {
@@ -207,6 +220,13 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
         color: #cc543a;
     }
 
+    .swal-modal {
+        background-image: url(<?= WEB_ROOT ?>/img/bcc2.png);
+    }
+
+    .swal-footer {
+        text-align: center;
+    }
 
     @media screen and (min-width: 1000px) {
 
@@ -339,6 +359,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             z-index: 2;
             background-color: white;
             /* box-shadow: 0 -3px 3px 3px rgba(102, 102, 102, 0.562); */
+            font-weight: bold;
         }
 
         .mobile_bill p {
@@ -388,9 +409,6 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             display: none;
         }
 
-        .fwb {
-            font-weight: bold;
-        }
     }
 </style>
 <?php include __DIR__ . '/parts/navbar2.php'; ?>
@@ -720,10 +738,10 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
                                             <p>數量 <?= $dataT['qty'] ?></p>
                                         </div>
                                         <!-- <div class="input-group">
-                                        <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
-                                        <input type="text" class="form-control input-number" value="1" />
-                                        <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
-                                    </div> -->
+                                            <button class="down btn btn-default"><i class="fas fa-minus"></i></button>
+                                            <input type="text" class="form-control input-number" value="1" />
+                                            <button class="up btn btn-default"><i class="fas fa-plus"></i></button>
+                                        </div> -->
                                     </div>
                                 </td>
                                 <td><a href="javascript:" onclick="deleteItem(event)">
@@ -875,24 +893,38 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     })
 
 
+
     const deleteItem = function(event) {
         let me = $(event.currentTarget);
         let id = me.closest('tr').attr('data-id');
         let type = me.closest('tr').attr('data-type');
 
-        if (confirm(`確定要刪除嗎?`)) {
-            $.get('cart_api.php', {
-                    type: type,
-                    id: id
-                },
-                function(data) {
-                    me.closest('tr').remove();
+        swal({
+                title: "確定要刪除嗎？",
+                // text: "Once deleted, you will not be able to recover this imaginary file!",
+                // icon: "warning",
+                buttons: ["考慮一下", "確定"],
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.get('cart_api.php', {
+                            type: type,
+                            id: id
+                        },
+                        function(data) {
+                            me.closest('tr').remove();
 
-                }, 'json');
-        }
-        if ($('tbody>tr').length = 1) {
-            location.reload();
-        }
+                        }, 'json');
+                }
+                if ($('tbody>tr').length = 1) {
+                    location.reload();
+                }
+
+            });
+
+
+
     };
 </script>
 <?php include __DIR__ . '/parts/html-foot.php'; ?>
