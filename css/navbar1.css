@@ -40,6 +40,11 @@ body::-webkit-scrollbar {
     margin: 0 10px;
 }
 
+.mobile_login a{
+    color: rgba(255, 255, 255, 0.64);
+    font-family: 'Noto Serif TC';
+}
+
 
 /* overlayNav */
 .nav_overlayNav {

@@ -91,6 +91,11 @@ body::-webkit-scrollbar {
     padding-left: 18px !important; 
 }
 
+.mobile_login a{
+    color: rgba(255, 255, 255, 0.64);
+    font-family: 'Noto Serif TC';
+}
+
 
 
 
