@@ -140,7 +140,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
     }
 
     .bill hr {
-        height: 1px;
+        /* height: 0.5px; */
         width: 90%;
         background-color: rgb(196, 196, 196);
         margin: 10px;
@@ -325,7 +325,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
 
         .cart_card {
             background-color: white;
-            border: 3px solid rgb(192, 192, 192);
+            border: 0.5px solid rgb(192, 192, 192);
             margin-right: 0;
             border-collapse: separate;
             border-spacing: 0 12px;
@@ -341,7 +341,7 @@ $plan_rows = $pdo->query($plan_sql)->fetchAll();
             display: block;
             position: absolute;
             width: 300px;
-            height: 2px;
+            height: 0.5px;
             background-color: rgb(182, 182, 182);
         }
 
