@@ -1,6 +1,6 @@
 # OneTemple 灣廟
 
-台灣廟宇整合平台
+資策會-MMMH60 UIUX 專題發表 台灣廟宇整合平台
 
 ## 參訪網址
 
@@ -10,16 +10,29 @@
 * 密碼 : vvv
 
 ## 基本條件
-* 請先安裝XAMPP 進入 http://localhost/phpmyadmin/ 匯入資料夾當中的 onetemple.sql 資料庫
 * 檢視網頁 Chrome 瀏覽器
-* 螢幕解析度 1080*1920 以及 手機版本 iphoneX 375*812 (由於製作時間有限 僅提供兩種版本顯示)
+* 螢幕解析度 1080x1920 以及 手機版本 iphoneX 375x812 (由於製作時間有限 僅提供兩種版本顯示)
 
 ## 安裝
 請安裝後並開啟模擬 MySQL 以及 Apache
 * XAMPP
-
+* 請先安裝XAMPP 進入 http://localhost/phpmyadmin/ 匯入資料夾當中的 onetemple.sql 資料庫
+* clone下來資料夾 整包放進 C:\xampp\htdocs 當中
+  
 ## 分支協作圖
 <a href="https://github.com/redsleevves/onetemple/network">GitHub Branch</a>
+
+## 螢幕截圖
+
+
+## 作者
+
+<a href="https://github.com/redsleevves">redsleevves</a>
+<a href="https://github.com/VumKu">VumKu</a>
+<a href="https://github.com/karenchiang605">karenchiang605</a>
+<a href="https://github.com/Dex-kei">Dex-kei</a>
+<a href="https://github.com/kaiqiwan">kaiqiwan</a>
+<a href="https://github.com/vodkalei">vodkalei</a>
 
 ### This is an 
 ## This is an 
