@@ -27,12 +27,12 @@
 
 ## 作者
 
-<a href="https://github.com/redsleevves">redsleevves</a>
-<a href="https://github.com/VumKu">VumKu</a>
-<a href="https://github.com/karenchiang605">karenchiang605</a>
-<a href="https://github.com/Dex-kei">Dex-kei</a>
-<a href="https://github.com/kaiqiwan">kaiqiwan</a>
-<a href="https://github.com/vodkalei">vodkalei</a>
+* <a href="https://github.com/redsleevves">redsleevves</a>
+* <a href="https://github.com/VumKu">VumKu</a>
+* <a href="https://github.com/karenchiang605">karenchiang605</a>
+* <a href="https://github.com/Dex-kei">Dex-kei</a>
+* <a href="https://github.com/kaiqiwan">kaiqiwan</a>
+* <a href="https://github.com/vodkalei">vodkalei</a>
 
 ### This is an 
 ## This is an 
